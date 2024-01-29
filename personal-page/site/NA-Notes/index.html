@@ -1,0 +1,3751 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../CV-Notes/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>数值分析笔记 - 大观散人</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=仿宋:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"仿宋";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="大观散人" class="md-header__button md-logo" aria-label="大观散人" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            大观散人
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              数值分析笔记
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  数值分析
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../CV-Notes/" class="md-tabs__link">
+          
+  
+  计算机视觉
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="大观散人" class="md-nav__button md-logo" aria-label="大观散人" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    大观散人
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    数值分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            数值分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    数值分析笔记
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    数值分析笔记
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第一讲 误差计算
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第一讲 误差计算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、数值分析简介
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、舍入与计算机代数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、浮点运算与误差
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、算法和收敛性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第二讲 单变量方程的解法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第二讲 单变量方程的解法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、二分法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、不动点迭代
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、不动点迭代——牛顿迭代法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第三讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第三讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、一元方程组迭代解法的误差分析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、一些加快收敛速度的迭代方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、高斯消元法——直接求解线性方程组
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第四讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第四讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、消元法解线性方程组
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、主元策略——高斯消元法的改进方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、矩阵分解(Factorization)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、一些特殊系数矩阵及其在方程组求解中的优势
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、迭代法求解稀疏大规模线性方程组
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第五讲 迭代法求解稀疏大规模线性方程组
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第五讲 迭代法求解稀疏大规模线性方程组">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、基本定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、特征值与特征向量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、求解稀疏大规模线性方程组的一些迭代方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、迭代方法的收敛性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第六讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第六讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、不动点迭代法的收敛性（续）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、松弛迭代法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、近似计算矩阵最大特征值——幂次法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、幂次法的改进思路
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、逆幂次法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、插值法和多项式近似——研究背景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      七、插值法与拉格朗日多项式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      八、拉格朗日插值法——误差分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第七讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第七讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、矩阵迭代计算方法——误差分析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、拉格朗日插值法（续）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neville" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、Neville方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第八讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第八讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#divided-differences" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、差商(Divided Differences)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、等距差商与差分公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hermite" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、Hermite插值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、三次样条插值
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第九讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第九讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、近似理论简介
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、离散最小二乘近似
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、正交多项式与最小平方近似
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、最小平方近似算法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第十讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第十讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、近似理论
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、切比雪夫多项式近似——近似目标与问题转化思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、切比雪夫多项式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、幂级数降阶
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、数值微分
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、数值积分
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第十一讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第十一讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、复合数值积分
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#romberg" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、Romberg积分法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#richardson" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、Richardson外部插值积分法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、自适应积分方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、常微分方程基本定理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、常微分方程初值问题——欧拉方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、常微分方程初值问题——高阶泰勒方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、高斯积分公式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第十三讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第十三讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、其他欧拉方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runge-kutta" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、Runge-Kutta方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、多步方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_61" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、多步方法——总结与深入研究
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_62" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、高阶方程与微分方程组
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_63" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第十四讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第十四讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_64" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、基本定义
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、基本定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ivp" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、IVP问题稳定性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_65" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、特征多项式与根条件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    计算机视觉
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            计算机视觉
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CV-Notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    复习提纲全解
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第一讲 误差计算
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第一讲 误差计算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、数值分析简介
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、舍入与计算机代数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、浮点运算与误差
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、算法和收敛性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第二讲 单变量方程的解法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第二讲 单变量方程的解法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、二分法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、不动点迭代
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、不动点迭代——牛顿迭代法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第三讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第三讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、一元方程组迭代解法的误差分析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、一些加快收敛速度的迭代方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、高斯消元法——直接求解线性方程组
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第四讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第四讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、消元法解线性方程组
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、主元策略——高斯消元法的改进方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、矩阵分解(Factorization)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、一些特殊系数矩阵及其在方程组求解中的优势
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、迭代法求解稀疏大规模线性方程组
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第五讲 迭代法求解稀疏大规模线性方程组
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第五讲 迭代法求解稀疏大规模线性方程组">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、基本定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、特征值与特征向量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、求解稀疏大规模线性方程组的一些迭代方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、迭代方法的收敛性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第六讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第六讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、不动点迭代法的收敛性（续）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、松弛迭代法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、近似计算矩阵最大特征值——幂次法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、幂次法的改进思路
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、逆幂次法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、插值法和多项式近似——研究背景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      七、插值法与拉格朗日多项式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      八、拉格朗日插值法——误差分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第七讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第七讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、矩阵迭代计算方法——误差分析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、拉格朗日插值法（续）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neville" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、Neville方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第八讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第八讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#divided-differences" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、差商(Divided Differences)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、等距差商与差分公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hermite" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、Hermite插值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、三次样条插值
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第九讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第九讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、近似理论简介
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、离散最小二乘近似
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、正交多项式与最小平方近似
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、最小平方近似算法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第十讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第十讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、近似理论
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、切比雪夫多项式近似——近似目标与问题转化思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、切比雪夫多项式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、幂级数降阶
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、数值微分
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、数值积分
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第十一讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第十一讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、复合数值积分
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#romberg" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、Romberg积分法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#richardson" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、Richardson外部插值积分法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、自适应积分方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、常微分方程基本定理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、常微分方程初值问题——欧拉方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、常微分方程初值问题——高阶泰勒方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、高斯积分公式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第十三讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第十三讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、其他欧拉方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runge-kutta" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、Runge-Kutta方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、多步方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_61" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、多步方法——总结与深入研究
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_62" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、高阶方程与微分方程组
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_63" class="md-nav__link">
+    <span class="md-ellipsis">
+      数值分析 第十四讲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数值分析 第十四讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_64" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、基本定义
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、基本定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ivp" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、IVP问题稳定性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_65" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、特征多项式与根条件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>数值分析笔记</h1>
+
+<h4 id="_1">数值分析 第一讲 误差计算</h4>
+<h5 id="_2">一、数值分析简介</h5>
+<p>1.目的：解决<strong>根号、幂指函数、微分和积分、矩阵</strong>等的计算问题。 <br />
+2.计算过程<br />
+（1）计算方法 <br />
+·方法一：<strong>逼近</strong><br />
+·方法二：<strong>变换</strong><br />
+（2）判断<strong>计算方法的好坏</strong>，以及<strong>不同情况下各种方法的适用性</strong>。<br />
+3.课程内容<br />
+·<strong>经典逼近方法</strong>的介绍<br />
+·方法的<strong>工作原理</strong>，以及<strong>何时效果好</strong><br />
+·<strong>科学计算</strong>基础  </p>
+<h5 id="_3">二、舍入与计算机代数</h5>
+<p>1.讨论一：积分逼近
+<span class="arithmatex">\(\int_{0}^{1}e^{x^2}dx\)</span>
+<img alt="1" src="../assets/NA/1-1.JPG" />
+【解法】泰勒展开<br />
+（1）<strong>何处展开</strong>：此处选择<span class="arithmatex">\(x=0\)</span>，便于计算。<br />
+（2）展开的<strong>项数</strong>与<strong>截断</strong>（<code>truncation</code>）<br />
+【解】<br />
+（1）取前4项<span class="arithmatex">\(S_4\)</span>，在<span class="arithmatex">\([0,1]\)</span>区间上积分进行逼近<br />
+（2）<strong>误差的估计</strong><br />
+·本计算的<strong>误差</strong>由两部分组成：<strong>舍入误差、截断误差</strong>。  <br />
+·<strong>舍入误差</strong>：使用<strong>有限位数的浮点数</strong>，近似表示<strong>前4项的计算结果</strong>，带来的误差。<br />
+·<strong>截断误差</strong>：<strong>丢弃前4项以外的项</strong>引起的误差。<br />
+（3）<strong>误差的计算</strong><br />
+·<strong>误差计算的关键</strong>：使用<strong>合理的上界</strong>，对误差进行<strong>估计</strong>。 <br />
+·<strong>舍入误差</strong>：<strong>两个浮点数四舍五入，3位小数点</strong>，<strong>一个浮点数四舍五入</strong>到<strong>小数点后3位</strong>，带来误差为<span class="arithmatex">\(0.0005\)</span>，则<strong>两个浮点数四舍五入</strong>，舍入误差上限为<span class="arithmatex">\(0.0005*2 = 0.001\)</span>。<br />
+·<strong>截断误差</strong>：根据余项<strong>加减交错、绝对值严格递减的形式</strong>，用<strong>第五项的近似值</strong>作为<strong>截断误差</strong>的<strong>一个上界</strong>。<br />
+2.总结<br />
+<img alt="2" src="../assets/NA/2.JPG" />
+（1）<strong>截断误差</strong>：用<strong>级数有限和</strong>近似<strong>级数无穷和</strong>，带来的误差。<br />
+（2）<strong>舍入误差</strong>：用<strong>有限位数的浮点数</strong>，近似表示<strong>无限位数的浮点数</strong>，带来的误差。<br />
+3.<strong>实数的标准化浮点表示</strong><br />
+<img alt="3" src="../assets/NA/3.JPG" />
+·标准表示格式：<span class="arithmatex">\(\pm 0.d_1d_2\dots d_k * 10^{n}, where \space 1 \leq d_i \le 9\space and \space0 \leq d_i \le 9\)</span>
+【注】<strong>小数末尾的0有意义</strong>，表示<strong>精确程度</strong>。  </p>
+<h5 id="_4">三、浮点运算与误差</h5>
+<p>1.<strong>浮点数的近似表示</strong><span class="arithmatex">\(fl(y)\)</span><br />
+（1）<strong>截断</strong>(<code>chopping</code>)：<strong>直接丢弃有限位之后其他</strong>的位。<br />
+（2）<strong>舍入</strong>(<code>rounding</code>)：四舍五入、向上、向下、向零、向无穷大舍入等。<br />
+2.<strong>绝对误差</strong>与<strong>相对误差</strong>
+<img alt="4" src="../assets/NA/4.JPG" />
+（1）绝对误差<span class="arithmatex">\(|p-p^*|\)</span><br />
+（2）相对误差<span class="arithmatex">\(\frac{|p-p^*|}{|p|}\)</span><br />
+3.<strong>有效数字定义</strong>
+<img alt="5" src="../assets/NA/5.JPG" />
+若<span class="arithmatex">\(t\)</span>是<strong>满足<span class="arithmatex">\(\frac{|p-p^*|}{|p|}&lt;5 \times 10^{-t}\)</span>的最大非负整数</strong>，则称该数有<span class="arithmatex">\(t\)</span>位<strong>有效数字</strong>。<br />
+（1）<code>Chopping</code>误差分析
+·<strong>相对误差定义式</strong><br />
+·<strong>放缩</strong>：把<strong>分子放大为<span class="arithmatex">\(1\)</span></strong>，<strong>分母缩小为<span class="arithmatex">\(0.1\)</span></strong><br />
+·得到<strong>误差上界</strong>：<strong><span class="arithmatex">\(10^{-k+1}\)</span></strong><br />
+（2）<code>Rounding</code>误差分析<br />
+·与<code>Chopping</code>步骤类似<br />
+·<strong>分子</strong>只需放大到<strong><span class="arithmatex">\(0.5\)</span></strong><br />
+·得到<strong>误差上界</strong>：<span class="arithmatex">\(0.5 \times 10^{-k+1}\)</span><br />
+4.【<strong>注意事项一</strong>】<strong>避免大小相近数字相减</strong><br />
+<img alt="6" src="../assets/NA/6.JPG" />
+两个<strong>大小相近</strong>的数字<strong>直接相减</strong>，会导致<strong>有效数字位数减少</strong>，<strong>增大相对误差</strong>。<br />
+【例】<br />
+<span class="arithmatex">\(a_1 = 0.12345, \space a_2 = 0.12346\)</span><br />
+<span class="arithmatex">\(a_2 - a_1 = 0.00001\)</span><br />
+<span class="arithmatex">\(a_1, a_2\)</span>均为<span class="arithmatex">\(5\)</span>位有效数字，<span class="arithmatex">\(a_1 - a_2\)</span>有效数字仅有<span class="arithmatex">\(1\)</span>位。  <br />
+5.【<strong>注意事项二</strong>】<strong>避免除以很小的数</strong><br />
+<img alt="7" src="../assets/NA/7.JPG" />
+·<strong>除以很小的数，会增大误差</strong>。<br />
+·解决方法：<strong>公式变换</strong><br />
+·公式正式由计算机运算前，<strong>尽量简化</strong>公式。<br />
+6.【讨论二】<strong>函数计算</strong><br />
+<img alt="8" src="../assets/NA/8.JPG" />
+（1）直接运算：<code>Chopping</code>和<code>Rounding</code>的相对误差均较大。<br />
+（2）简化：使用秦九韶算法，相对误差减小。<br />
+（3）<strong>乘法误差的估计</strong><br />
+·<span class="arithmatex">\(|a+\epsilon_{a}| \cdot |b+\epsilon_{b}|\)</span></p>
+<h5 id="_5">四、算法和收敛性</h5>
+<p>1.算法的<strong>稳定性</strong>
+<img alt="9" src="../assets/NA/9.JPG" />
+（1）<strong>稳定</strong>：<strong>输入</strong>数据的<strong>小幅度</strong>变化，只会导致<strong>输出</strong>数据的<strong>小幅度变化</strong>。<br />
+（2）<strong>不稳定</strong>：<strong>输入</strong>数据的<strong>小幅度</strong>变化，会<strong>大幅影响输出结果</strong>。<br />
+（3）<strong>条件稳定</strong>：对于<strong>特定输入数据</strong>是<strong>稳定</strong>的，而对于<strong>其他数据不稳定</strong>。<br />
+2.<strong>误差的线性增长、指数增长</strong>——对<strong>稳定性</strong>的<strong>量化</strong>描述
+<img alt="10" src="../assets/NA/10.JPG" />
+对于算法经过<span class="arithmatex">\(n\)</span>步运算后：<br />
+（1）<strong>指数增长误差</strong>：<span class="arithmatex">\(E_n = C^{n}E_0\)</span><br />
+（2）<strong>线性增长误差</strong>：<span class="arithmatex">\(E_n = CnE_0\)</span><br />
+【注】误差增长
+<img alt="11" src="../assets/NA/11.JPG" />
+·<strong>线性增长误差</strong>通常<strong>不可避免</strong>，若<span class="arithmatex">\(C, E_0\)</span>均<strong>较小</strong>，则算法<strong>可接受</strong>。此时<strong>进一步提高精度</strong>的方法是<strong>增加有效位数，减少<span class="arithmatex">\(E_0\)</span></strong>；或<strong>减少<span class="arithmatex">\(C\)</span></strong>。<br />
+·<strong>误差指数增长</strong>的算法，通常需要<strong>避免</strong>。<br />
+3.【例】<strong>计算积分</strong><br />
+【方法一】<strong>递推法（不稳定）</strong><br />
+<img alt="12" src="../assets/NA/12.JPG" />
+（1）使用递推公式<span class="arithmatex">\(I_n = 1-nI_{n-1}\)</span><br />
+（2）对于<span class="arithmatex">\(I_0\)</span>的估算：<span class="arithmatex">\(\frac{1}{e(n+1)}\lt I_n \lt \frac{1}{n+1}\)</span><br />
+（3）误差的<strong>累积</strong>：<span class="arithmatex">\(|E_n| = n|E_{n-1}| = \dots = n!|E_0|\)</span>  <br />
+【方法二】<strong>变换公式，改为稳定算法</strong>
+<img alt="13" src="../assets/NA/11.JPG" />
+（1）变换递推式的形式：<span class="arithmatex">\(I_{n-1} = \frac{1}{n}(1-I_n)\)</span><br />
+（2）取<strong>大于实际所需</strong><span class="arithmatex">\(N\)</span>的<span class="arithmatex">\(N^*\)</span>，往<strong>更小</strong>的<span class="arithmatex">\(N\)</span>进行递推。 <br />
+（3）<span class="arithmatex">\(I_{N^*}\)</span>的估计：同样<strong>使用不等式<span class="arithmatex">\(\frac{1}{e(n+1)}\lt I_n \lt \frac{1}{n+1}\)</span>进行估计</strong>，取上下界的均值。<br />
+（4）误差的累积：<span class="arithmatex">\(E_{n} = \frac{1}{N(N-1)\cdots(n+1)}E_{N}\)</span><br />
+【实验提示】
+递推法</p>
+<h4 id="_6">数值分析 第二讲 单变量方程的解法</h4>
+<h5 id="_7">一、二分法</h5>
+<p>1.介值定理——说明解的存在性
+<img alt="1" src="../assets/NA2/1.JPG" />
+·前提：连续性<br />
+·结论：介于<span class="arithmatex">\(f(a), f(b)\)</span>的函数值对应的根的存在性
+2.二分法绝对误差
+<img alt="2" src="../assets/NA2/2.JPG" /><br />
+3.二分法收敛条件<br />
+（1）<strong>绝对误差</strong>收敛条件：精确度有限。<br />
+<span class="arithmatex">\(|p_N - p_{N - 1}| &lt; \epsilon\)</span> <br />
+（2）<strong>相对误差</strong>收敛条件：采用相对误差作为收敛条件的实际情况更多，一般更适合作为收敛终止条件。  <br />
+<span class="arithmatex">\(\frac{|p_N - p_{N - 1}|}{|p_N|} \lt \epsilon\)</span>
+（3）<strong>函数绝对值</strong>收敛条件：<span class="arithmatex">\(|f(p_N)|&lt;\epsilon\)</span>.<br />
+4.计算注意事项：<br />
+判断区间如何二分收紧时，应计算<span class="arithmatex">\(sign(FA) \cdot sign(FB) &gt; 0\)</span>而非<span class="arithmatex">\(FA \cdot FB&gt; 0\)</span>。<br />
+·<strong>后者算出的数值</strong>可能<strong>跳出有效区间</strong>。<br />
+·原因：<strong>有效位数不足</strong>。<br />
+5.二分法的问题<br />
+（1）<strong>收敛速度慢</strong>，可能<strong>丢弃</strong>运算<strong>中间</strong>过程产生的<strong>较为精确的解</strong>。<br />
+（2）无法解决<strong>复根、多重根</strong>的问题。  </p>
+<h5 id="_8">二、不动点迭代</h5>
+<p>1.<span class="arithmatex">\(f(x) = 0 \leftrightarrow x = g(x)\)</span>
+·<span class="arithmatex">\(x\)</span>是<span class="arithmatex">\(f(x)\)</span>的<strong>零点</strong>。<br />
+·<span class="arithmatex">\(x\)</span>是<span class="arithmatex">\(g(x)\)</span>的<strong>不动点</strong>。<br />
+2.思想：为了<strong>求解某函数的零点</strong>，可通过<strong>适当的形式变换</strong>，将问题等价转换为<strong>求解另一函数的不动点</strong>。<br />
+3.收敛情况判断
+<img alt="3" src="../assets/NA2/3.JPG" /><br />
+运用不动点定理，根据函数在区间内的<strong>导数绝对值</strong>是否<span class="arithmatex">\(\ge 1\)</span>进行判断：前二者收敛，后二者发散。<br />
+4.<strong>不动点定理</strong>
+<img alt="4" src="../assets/NA2/4.JPG" /><br />
+（1）前提一（<strong>函数值的有界性</strong>）：<span class="arithmatex">\(\forall x \in [a, b], g(x) \in [a, b]\)</span>.<br />
+（2）前提二（<strong>导数绝对值小于某个位于<span class="arithmatex">\((0, 1)\)</span>区间的常数<span class="arithmatex">\(k\)</span></strong>）：区间<span class="arithmatex">\([a, b]\)</span>中<strong>导数存在</strong>，且其<strong>绝对值小于某个常数<span class="arithmatex">\(k, 0 &lt; k &lt; 1\)</span></strong>。<br />
+（3）结论：对于<span class="arithmatex">\([a, b]\)</span>中<strong>任意一个初始点<span class="arithmatex">\(p_0\)</span></strong>，采取<strong>不动点迭代法</strong>，作迭代<span class="arithmatex">\(p_n = g(p_{n - 1})\)</span>，都能<strong>收敛</strong>于<strong>唯一</strong>的不动点<span class="arithmatex">\(p\)</span>.<br />
+【证明】
+（1）由<strong>介值定理</strong>易证<strong>不动点存在性</strong>。<br />
+（2）用<strong>反证法</strong>证明<strong>不动点唯一性</strong>：
+假设存在<strong>两个不动点<span class="arithmatex">\(p, q\)</span></strong>, 则存在点<span class="arithmatex">\(p, q\)</span>之间的一点<span class="arithmatex">\(\epsilon\)</span>使得
+<span class="arithmatex">\(g(p) - g(q) = g'(\epsilon)(p - q) \Rightarrow g'(\epsilon) = 1\)</span>，与<strong>导数绝对值被小于1的常数<span class="arithmatex">\(k\)</span>控制的前提矛盾</strong>。<br />
+（3）<strong>不动点迭代收敛性证明</strong>：<br />
+利用<strong>中值定理、导数绝对值小于等于<span class="arithmatex">\(k\)</span>的前提</strong>，有：
+<span class="arithmatex">\(|p_n - p| = |g(p_{n-1}) - p| = |g(p_{n - 1}) - g(p)| = |g'(\epsilon)(p_{n-1} - p)| \le k|p_{n-1} - p| \le \cdots \le k^n|p_0 - p|\)</span>.<br />
+5.不动点迭代法的<strong>误差上界</strong><br />
+<span class="arithmatex">\(|p_n - p| \le \frac{1}{1 - k}|p_{n+1} - p_n| \cdots (1)\)</span><br />
+<span class="arithmatex">\(|p_n - p| \le \frac{k^n}{1 - k}|p_1 - p_0| \cdots (2)\)</span><br />
+【理解】<br />
+·在迭代计算过程中，<span class="arithmatex">\(p\)</span>是未知的，因此隐式的绝对误差<span class="arithmatex">\(|p_n - p|\)</span>不能直接作为迭代运算的终止条件，而是应该通过某些变形、放缩处理，获得某些由迭代计算结果描述的、易于计算的显式上界，以之判断迭代运算应于何时终止。<br />
+·<span class="arithmatex">\((1)\)</span>式用实际计算所得相邻两项的误差<span class="arithmatex">\(|p_{n + 1} - p_n|\)</span>，描述了<span class="arithmatex">\(|p_n - p|\)</span>的一个误差上界，可以作为<strong>算法的终止条件</strong>。<br />
+·<span class="arithmatex">\((2)\)</span>式可以<strong>估计迭代次数，减少无效计算</strong>。<br />
+·<span class="arithmatex">\(k\)</span>值尽量<strong>缩小</strong>，可以<strong>减少迭代次数</strong>。<br />
+6.【例】使用<strong>不同的函数形式进行不动点迭代</strong><br />
+下列各函数均用于方程<span class="arithmatex">\(x^3 + 4x^2 - 10 = 0\)</span>在区间<span class="arithmatex">\([1, 2]\)</span>内根的计算，但由于形式上的差异，而导致不动点迭代的收敛性、收敛速率各不相同。  <br />
+<img alt="5" src="../assets/NA2/5.JPG" /><br />
+（1）对<span class="arithmatex">\(g_i(x)\)</span>求导，通过导数绝对值的上界，对不动点迭代的效果好坏进行判断。<br />
+（2）<span class="arithmatex">\(g_1(x)\)</span>两边同时添加<span class="arithmatex">\(x\)</span>，不作其他变形：求导发现绝对值超过<span class="arithmatex">\(1\)</span>，希望不大。<br />
+（3）后三个函数形式恰当，可以满足不动点迭代的充分条件。<br />
+【<strong>思考</strong>】<strong>如何得到上述各式</strong>？</p>
+<h5 id="_9">三、不动点迭代——牛顿迭代法</h5>
+<p>1.基本思想：使用<strong>一阶泰勒展开式</strong>，对一个<strong>非线性方程</strong>进行<strong>线性化</strong>处理，以达到化繁为简的目的。<br />
+2.算法推导过程与特点<br />
+（1）推导过程
+<img alt="6" src="../assets/NA2/6.JPG" /><br />
+·对<span class="arithmatex">\(f(p)\)</span>在点<span class="arithmatex">\(p_0\)</span>处进行一阶<code>Taylor</code>展开，下列式子近似成立：<br />
+<span class="arithmatex">\(f(p) \approx f(p_0) + f'(p_0)(p - p_0)\)</span><br />
+·利用上式求解<span class="arithmatex">\(p\)</span>，即得<span class="arithmatex">\(p \approx p_0 - \frac{f(p_0)}{f'(p_0)}\)</span><br />
+·上式获得的<span class="arithmatex">\(p\)</span>即作为<span class="arithmatex">\(p_1\)</span>，再将<span class="arithmatex">\(p_1\)</span>输入迭代式子，进行下一步迭代，由此获得的迭代公式为：<br />
+<span class="arithmatex">\(p_n = p_{n - 1} - \frac{f(p_{n - 1})}{f'(p_{n - 1})}\)</span><br />
+（2）算法特点<br />
+·算法精确的前提：二阶项<span class="arithmatex">\((x - p_0)^2\)</span>足够小，可以舍弃。<br />
+·思想：使用<strong>线性函数逼近原始函数</strong>。<br />
+3.<strong>牛顿迭代法收敛性定理</strong>（<strong>求解函数零点</strong>）
+<img alt="7" src="../assets/NA2/7.JPG" /><br />
+·前提：<strong>二阶连续可导</strong>，且其零点<span class="arithmatex">\(p\)</span>满足<span class="arithmatex">\(f(p) = 0, f'(p) \ne 0\)</span>。<br />
+·结论：存在<span class="arithmatex">\(\delta &gt; 0\)</span>，使得对<strong>任意初始点<span class="arithmatex">\(p_0 \in [p - \delta, p + \delta]\)</span></strong>，运用牛顿法迭代，所得序列<strong>都可以收敛</strong>于<span class="arithmatex">\(p\)</span>.<br />
+<img alt="8" src="../assets/NA2/8.JPG" /><br />
+【证明】<br />
+牛顿迭代法即<span class="arithmatex">\(p_n = g(p_{n - 1})\)</span>，满足：<br />
+<span class="arithmatex">\(g(x) = x - \frac{f(x)}{f'(x)}\)</span><br />
+（1）<span class="arithmatex">\(g(x)\)</span>在<span class="arithmatex">\(p\)</span>的<span class="arithmatex">\(\delta\)</span>邻域内的<strong>连续性</strong>：<br />
+由二阶连续可微，<span class="arithmatex">\(p'(x) \ne 0\)</span>易证。<br />
+（2）<span class="arithmatex">\(|g'(x)|\)</span>被<strong>常数<span class="arithmatex">\(0 &lt; k &lt; 1\)</span>控制</strong>在<span class="arithmatex">\(p\)</span>的<span class="arithmatex">\(\delta\)</span>邻域内：<br />
+由于<span class="arithmatex">\(g'(x) = \frac{f(x)f''(x)}{f'(x)^2}\)</span>，<span class="arithmatex">\(g'(p) = 0\)</span>，且<span class="arithmatex">\(g'(x)\)</span>连续，故存在某邻域，使得<span class="arithmatex">\(|g'(x)| &lt; k, 0 \lt k \lt 1, k \in R\)</span>.<br />
+（3）<span class="arithmatex">\(g(x)\)</span>将<strong>区间</strong><span class="arithmatex">\([p - \delta, p + \delta]\)</span><strong>映射</strong>到<span class="arithmatex">\([p - \delta, p + \delta]\)</span>：<br />
+<span class="arithmatex">\(|g(x) - p| = |g(x) - g(p)| = |g'(\epsilon)(x - p)| \le k |x - p| \lt |x - p| \lt \delta\)</span>.<br />
+【注】<strong><span class="arithmatex">\(p_0\)</span>的选取对迭代结果的影响较大</strong>。  </p>
+<h4 id="_10">数值分析 第三讲</h4>
+<h5 id="_11">一、一元方程组迭代解法的误差分析</h5>
+<p>1.收敛的阶数与渐进误差  <br />
+设<span class="arithmatex">\(\{p_n\} \rarr p\)</span>，若存在正常数<span class="arithmatex">\(\alpha, \lambda\)</span>，使得：<br />
+<span class="arithmatex">\(lim_{n \rightarrow \infty} \frac{|p_{n+1} - p|}{|p_n - p| ^ \alpha} = \lambda\)</span>
+称：序列<span class="arithmatex">\(\{p_n\}\)</span>收敛于<span class="arithmatex">\(p\)</span>的<strong>阶数为<span class="arithmatex">\(\alpha\)</span>，渐进误差是<span class="arithmatex">\(\lambda\)</span></strong>.<br />
+【理解】<strong>收敛阶数</strong><span class="arithmatex">\(\alpha\)</span><strong>越大</strong>，收敛<strong>速度越快</strong>。<br />
+2.<strong><span class="arithmatex">\(g'(p) \ne 0\)</span></strong>时迭代方法的<strong>收敛阶</strong>：<br />
+<span class="arithmatex">\(lim_{n \rightarrow \infty} \frac{|p_{n+1} - p|}{|p_n - p|} = lim_{n \rightarrow \infty} \frac{g'(\xi_{n})|p_n - p|}{|p_n - p|} = |g'(p)|\)</span><br />
+结论：<strong>线性收敛</strong>。<br />
+3.牛顿法的收敛阶<br />
+（1）根据一阶泰勒展开有：<br />
+<span class="arithmatex">\(f(p) = f(p_n) + f'(p_n)(p - p_n) + \frac{f''(\xi_n)}{2}(p - p_n) ^ 2\)</span><br />
+（2）牛顿迭代法收敛阶推导<br />
+·注意到：上式中，使用<span class="arithmatex">\(p_{n + 1} = f(p_n) + f'(p_n)(p - p_n)\)</span>进行迭代，即<strong>取一阶泰勒展开，截断含二阶导数的项</strong>。 <br />
+·因此有：  <br />
+<span class="arithmatex">\(\frac{|p_{n+1} - p|}{|p_n - p|^2} = \frac{f''(\xi_n)}{2f'(p_n)}\)</span><br />
+（3）结论<br />
+·只要<span class="arithmatex">\(f'(p) \ne 0\)</span>，牛顿法<strong>至少是二阶收敛</strong>。<br />
+·牛顿法在<strong>单根附近</strong>收敛<strong>较快</strong>。<br />
+4.牛顿法中<span class="arithmatex">\(\alpha, \lambda\)</span>的确定<br />
+【定理】（特殊情况）设<span class="arithmatex">\(p\)</span>是<span class="arithmatex">\(g(x)\)</span>的一个<strong>不动点</strong>，若：<br />
+（1）存在常数<span class="arithmatex">\(\alpha \ge 2\)</span>使得<span class="arithmatex">\(g \in C^\alpha[p - \delta, p + \delta]\)</span>（条件一：函数<strong>在不动点<span class="arithmatex">\(p\)</span>附近<span class="arithmatex">\(\alpha\)</span>阶连续</strong>）<br />
+（2）<span class="arithmatex">\(g'(p) = \cdots = g^{(\alpha - 1)(p)} = 0, g^{(\alpha)}(p) \ne 0\)</span>（条件二：不动点<span class="arithmatex">\(p\)</span>的<span class="arithmatex">\(\alpha\)</span><strong>阶导数非0，且<span class="arithmatex">\(0 - \alpha - 1\)</span>阶导数均为<span class="arithmatex">\(0\)</span></strong>）<br />
+则不动点迭代<span class="arithmatex">\(p_n = g(p_{n-1})\)</span>是<span class="arithmatex">\(\alpha\)</span><strong>阶收敛</strong>的。<br />
+【理解】上述定理可以用于推导<strong>牛顿法二阶收敛的特殊情形</strong>，是对牛顿法收敛阶数的<strong>更一般</strong>刻画。<br />
+5.<strong>渐进误差常数</strong><span class="arithmatex">\(\lambda\)</span>的确定<br />
+<span class="arithmatex">\(\lambda = \frac{g^{(\alpha)}(\xi_n)}{\alpha !}\)</span><br />
+6.<strong>牛顿法在非单根（重根）时的收敛情况</strong><br />
+（1）若<span class="arithmatex">\(p\)</span>是<span class="arithmatex">\(f\)</span>的<span class="arithmatex">\(m\)</span>重根，则<span class="arithmatex">\(f(x) = (x - p)^m q(x), q(p) \ne 0\)</span>.  <br />
+（2）牛顿法是针对函数<span class="arithmatex">\(g(x) = x - \frac{f(x)}{f'(x)}\)</span>的不动点迭代，从而对于函数<span class="arithmatex">\(g(x)\)</span>有：
+<span class="arithmatex">\(|g'(p)| = |1 - \frac{f'(p)^2 - f(p)f''(p)}{f'(p) ^ 2}| = |\frac{f(p)f''(p)}{f'(p) ^ 2}| = |\frac{m - 1}{m}| &lt; 1\)</span>.<br />
+结论：<strong>线性收敛</strong>，但<strong>不是二阶收敛</strong>。<br />
+7.<strong>牛顿法加速收敛的方式</strong><br />
+（1）对问题进行<strong>等价变形</strong>，使函数<span class="arithmatex">\(f\)</span>的<strong>多重根</strong><span class="arithmatex">\(p\)</span>变成<strong>另一函数</strong>的<strong>单根</strong>，从而使<strong>线性收敛</strong>变成<strong>二阶收敛</strong>。<br />
+（2）<strong>转化函数的构造</strong>：令<span class="arithmatex">\(\mu(x) = \frac{f(x)}{f'(x)}\)</span>，则函数<span class="arithmatex">\(f\)</span>的多重根即为函数<span class="arithmatex">\(\mu\)</span>的<strong>单根</strong>。<br />
+（3）对函数<span class="arithmatex">\(\mu\)</span>作<strong>牛顿迭代</strong>：<span class="arithmatex">\(g(x) = x - \frac{\mu(x)}{\mu'(x)} = x - \frac{f(x)f'(x)}{f'(x)^2 - f(x)f''(x)}\)</span> ，则实现了<strong>收敛速度的增大</strong>。<br />
+（4）上述算法的不足之处<br />
+·计算<strong>二阶导数</strong><span class="arithmatex">\(f''(x)\)</span>，带来了<strong>额外的计算开销</strong>。<br />
+·<strong>分母</strong>为<strong>两项之差</strong>，这两项<strong>可能都接近<span class="arithmatex">\(0\)</span></strong>.  </p>
+<h5 id="_12">二、一些加快收敛速度的迭代方法</h5>
+<p>1.<code>Aitken</code><span class="arithmatex">\(\Delta ^2\)</span>（二阶差分）不动点迭代法<br />
+（1）迭代公式<br />
+·<span class="arithmatex">\(\hat{p}_n = p_n - \frac{(p_{n+1} - p_n)^2}{p_n - 2p_{n+1} + p_{n+2}}\)</span>
+·<span class="arithmatex">\(p_n = g(p_{n - 1})\)</span><br />
+·<span class="arithmatex">\(g(x) = x - \frac{\mu(x)}{\mu '(x)}\)</span>
+迭代过程中，<span class="arithmatex">\(\hat{p}_n\)</span>需由<span class="arithmatex">\(p_n, p_{n + 1}, p_{n + 2}\)</span>共同确定。  <br />
+（2）迭代计算过程<br />
+·给定初始点<span class="arithmatex">\(p_0\)</span>，计算：<span class="arithmatex">\(p_1 = g(p_0), p(2) = g(p_1)\)</span>。<br />
+·计算<span class="arithmatex">\(\hat{p}_0 = p_0 - \frac{(p_1 - p_0)^2}{p_0 - 2p_1 + p_2}\)</span>，以及<span class="arithmatex">\(p_3 = g(p_2)\)</span>；其余迭代计算依次类推。<br />
+2.【定义】<strong>前向差分</strong><br />
+（1）<strong>一阶前向差分</strong>：<span class="arithmatex">\(\Delta p_n = p_{n+1} - p_n\)</span>
+（2）<strong>高阶前向差分</strong>：<span class="arithmatex">\(\Delta^k p_n = \Delta(\Delta^{k - 1}p_n)\)</span>
+（3）<strong><code>Aitken</code>方法</strong>的<strong>差分表达式</strong>：<span class="arithmatex">\(\hat{p} = p_n - \frac{(\Delta p_n)^2}{\Delta^2 p_n}\)</span>.<br />
+3.【定理】<code>Aitken</code>序列<span class="arithmatex">\(\{\hat{p}_n\}\)</span>的<strong>加速收敛性</strong><br />
+设<strong>序列</strong><span class="arithmatex">\(\{p_n\}\)</span><strong>线性收敛</strong>于<span class="arithmatex">\(p\)</span>，且对任意足够大的<span class="arithmatex">\(n\)</span>有：
+<span class="arithmatex">\((p_n - p)(p_{n+1} - p) &gt; 0\)</span>（<strong>相邻两项分别位于不动点<span class="arithmatex">\(p\)</span>的两端</strong>）
+则：
+<code>Aitken</code>序列<span class="arithmatex">\(\{\hat{p}_n\}\)</span><strong>收敛于<span class="arithmatex">\(p\)</span>的速度快于序列<span class="arithmatex">\(\{p_n\}\)</span></strong>，即：
+<span class="arithmatex">\(lim_{n \rightarrow \inf} \frac{\hat{p_n} - p}{p_n - p} = 0\)</span>.<br />
+4.<code>Steffensen</code>方法<br />
+（1）若<span class="arithmatex">\(g(x) = x - \frac{\mu(x)}{\mu'(x)}\)</span>满足<span class="arithmatex">\(g'(p) \ne 1\)</span>，则<strong>该方法可达到局部二阶收敛</strong>。<br />
+（2）方法：<strong>两次牛顿迭代、一次<span class="arithmatex">\(Aitken\)</span>迭代交替</strong>进行。<br />
+（3）计算过程<br />
+·给定初始点<span class="arithmatex">\(p_0^{(0)}\)</span>，计算<span class="arithmatex">\(p_1^{(0)} = g(p_0^{(0)}), p_2^{(0)} = g(p_1^{(0)})\)</span><br />
+·计算<span class="arithmatex">\(p_1^{(0)} = \{\Delta^2\}(p_0^{(0)}), p_1^{(1)} = g(p_1^{0}), p_2^{(1)} = g(p_1^{(1)})\)</span>；其余迭代过程以此类推。  </p>
+<h5 id="_13">三、高斯消元法——直接求解线性方程组</h5>
+<p>1.步骤：<br />
+（1）将矩阵变换为上三角矩阵。<br />
+（2）使用<code>backward-substitution</code>进行替换，解决未知方程。<br />
+2.方程组的矩阵形式<br />
+令<br />
+<span class="arithmatex">\(A^{(1)} = A = (a_{ij}^{(1)})_{n \times n}, \vec{b}^{(1)} = \vec{b} = \begin{bmatrix}
+b_1^{(1)} \\
+\cdots \\
+b_n^{(1)} 
+\end{bmatrix}\)</span><br />
+方程组形式为：<span class="arithmatex">\(A\vec{x} = \vec{b}\)</span>.</p>
+<h4 id="_14">数值分析 第四讲</h4>
+<h5 id="_15">一、消元法解线性方程组</h5>
+<p>1.<strong>系数矩阵</strong><span class="arithmatex">\(A\)</span>化成<strong>上三角矩阵</strong>  <br />
+（1）若<span class="arithmatex">\(a_{11} \ne 0\)</span>，计算<span class="arithmatex">\(m_{i1} = \frac{a_{i1}}{a_{11}}\)</span>，令行<span class="arithmatex">\(i, i \ge 1\)</span>减去<span class="arithmatex">\(m_{i1}r_1\)</span>.<br />
+目的是：使得<strong>除了第一行</strong>，<strong>其余各行<span class="arithmatex">\(x_1\)</span>的系数均为<span class="arithmatex">\(0\)</span></strong>.<br />
+（2）完成上述步骤后，问题转化为<span class="arithmatex">\(n-1\)</span>维的<strong>子问题</strong>，其中：<br />
+<span class="arithmatex">\(a_{ij}^{(2)} = a_{ij} - m_{i1}a_{1j}\)</span>
+<span class="arithmatex">\(b_i^{(2)} = b_i^{(1)} - m_{i1}b_1^{(1)}\)</span><br />
+（3）按上述方法迭代消元，<span class="arithmatex">\(n-1\)</span>次迭代后形成上三角矩阵。<br />
+（4）将<span class="arithmatex">\(a_{kk} \ne 0\)</span>称为<code>pivot element</code>.<br />
+[注]<br />
+若第<span class="arithmatex">\(i\)</span>轮迭代时，<strong>对角元<span class="arithmatex">\(a_{ii}^{(i)} = 0\)</span></strong>，则在进行<strong>行变换前</strong>，需<strong>寻找某个整数</strong><span class="arithmatex">\(k \gt i\)</span>，满足<span class="arithmatex">\(a_{ki}^{(i)} \ne 0\)</span>，将行<span class="arithmatex">\(k\)</span>与行<span class="arithmatex">\(i\)</span>进行<strong>交换</strong>。<br />
+2.<strong>向后替换</strong>(<code>Backward Substitution</code>)<br />
+<span class="arithmatex">\(x_n = \frac{b_n^{(n)}}{a_{nn}^{(n)}}\)</span>
+<span class="arithmatex">\(x_i = \frac{b_i^{(i)} - \Sigma_{i+1}^na_{ij}^{(i)}x_j}{a_ii^{(i)}}\)</span>.<br />
+3.消元后<span class="arithmatex">\(a_{nn} = 0\)</span>时方程组解的情况<br />
+（1）<span class="arithmatex">\(b_n = 0\)</span>，方程组有<strong>无穷多解</strong>。<br />
+（2）<span class="arithmatex">\(b_n \ne 0\)</span>，方程组<strong>无解</strong>。<br />
+4.<span class="arithmatex">\(a_{ii} = 0\)</span>时，需从后续行中寻找非<span class="arithmatex">\(0\)</span>系数<span class="arithmatex">\(a_{ki}, k \ge i\)</span>，将<span class="arithmatex">\(i, k\)</span>两行互换。<br />
+（1）若<strong>能找到</strong><span class="arithmatex">\(k\)</span>，则<strong>互换后继续进行迭代</strong>即可。<br />
+（2）若<strong>找不到</strong><span class="arithmatex">\(k\)</span>，则该方程组<strong>无解/有无穷多解</strong>。<br />
+5.消元法的<strong>操作次数与时间复杂度</strong><br />
+【注】<strong>一次乘法/除法</strong>作为一次<strong>单位操作</strong>。<br />
+（1）计算消元系数：<span class="arithmatex">\(O(n^2)\)</span>.<br />
+（2）<strong>行减法</strong>：<span class="arithmatex">\(O(n^3)\)</span>.<br />
+【例1】<strong>高斯消元法</strong>涉及的<strong>乘除操作次数</strong>  </p>
+<h5 id="_16">二、主元策略——高斯消元法的改进方法</h5>
+<p>[注]<br />
+（1）主元策略应用于<strong>消元</strong>过程，目的是尽可能<strong>减少高斯消元带来的误差</strong>。
+（2）较小的主元可能带来一些计算问题，下列方法的共性是：在某个范围内寻找<strong>最大系数</strong>，将该<strong>系数</strong>作为<strong>当前迭代的主元</strong>。  </p>
+<p>1.策略一：<strong>部分主元法/最大列主元法</strong><br />
+对于第<span class="arithmatex">\(i\)</span>轮消元，将<strong>第<span class="arithmatex">\(i\)</span>列最大系数</strong>设置为<strong>主元</strong>。<br />
+（1）寻找最小的<span class="arithmatex">\(p \ge k\)</span>，使得<span class="arithmatex">\(|a_{pk}^{(k)}| = max_{k \le i \le n}|a_{ik}^{(k)}|\)</span>.<br />
+（2）对第<span class="arithmatex">\(p, i\)</span>列进行交换。<br />
+2.策略二：<strong>主元放缩法</strong> <br />
+对于第<span class="arithmatex">\(k\)</span>轮消元： 
+（1）对于每一行<span class="arithmatex">\(1\le i \le n\)</span>，寻找行中的最大元素<span class="arithmatex">\(s_i = max_{1 \le j \le n}|a_{ij}|\)</span>，将其作为放缩因子。<br />
+（2）寻找最小的<span class="arithmatex">\(p \ge k\)</span>，满足<span class="arithmatex">\(\frac{|a_{pk}^{(k)}|}{s_p} = max_{k \le i \le n} \frac{|a_{ik}^{(k)}|}{s_i}\)</span>，并交换第<span class="arithmatex">\(p, k\)</span>行。<br />
+[注]对于第<span class="arithmatex">\(k\)</span>轮消元，针对第<span class="arithmatex">\(i\)</span>行(<span class="arithmatex">\(k \le i \le n\)</span>)，分别计算该行第<span class="arithmatex">\(k\)</span>列元素<span class="arithmatex">\(a_{pk}^{(k)}\)</span>和该行放缩因子<span class="arithmatex">\(s_p\)</span>的比值，然后逐行比较该比值的大小。比值最大者即为主元所在行。  <br />
+3.策略三：<strong>完全主元法</strong><br />
+<strong>遍历系数矩阵</strong>以<strong>寻找最大系数</strong>，使用行交换以调整主元。<br />
+4.时间复杂度<br />
+（1）部分主元法：<span class="arithmatex">\(O(n^2)\)</span>次比较。<br />
+（2）主元放缩法：<span class="arithmatex">\(O(n^2)\)</span>次比较、<span class="arithmatex">\(O(n^2)\)</span>次除法。<br />
+（3）完全主元法：<span class="arithmatex">\(O(\frac{n^3}{3})\)</span>比较。<br />
+[注]若每次行交换后，需确定新的放缩因子，则主元放缩法需要<span class="arithmatex">\(O(\frac{n^3}{3})\)</span>次比较和<span class="arithmatex">\(O(n^2)\)</span>次除法。  </p>
+<h5 id="factorization">三、矩阵分解(<code>Factorization</code>)</h5>
+<p>1.矩阵形式的高斯消元法<br />
+（1）高斯消元对应的行变换矩阵<br />
+<span class="arithmatex">\(L_1 = \begin{bmatrix}
+1 \ 0 \ \cdots\ 0 \\
+-m_{21} \ 1 \ \cdots \ 0 \\
+\cdots \\
+-m_{n1} \ 0 \ \cdots \ 1 \\
+\end{bmatrix}\)</span><br />
+（2）高斯消元结果的矩阵形式<br />
+·将<span class="arithmatex">\(L_1\)</span>作用于增广矩阵<span class="arithmatex">\([A, \vec{b}]\)</span>，得到：<br />
+<span class="arithmatex">\(L_1[A^{(1)}, \vec{b}^{(1)}] = 
+\begin{bmatrix}
+a_{11}^{(1)} \ a_{12}^{(1)} \cdots \ a_{1n}^{(1)} \ b_1^{(1)} \\
+0 \ a_{12}^{(1)} \ \cdots \ a_{2n}^{(1)} \ b_2^{(2)}
+\\ \cdots
+\\ 
+0 \ a_{n2}^{(1)} \ \cdots \ a_{nn}^{(1)} \ b_n^{(2)}
+\end{bmatrix}\)</span>
+（3）高斯消元<span class="arithmatex">\(L_k ^{-1}\)</span><br />
+只需去除左下角各系数<span class="arithmatex">\(-m_{k+1, k}, \cdots ,- m_{n, k}\)</span>的负号，其余项均为<span class="arithmatex">\(1, 0\)</span>，保持不变。<br />
+2.系数矩阵<span class="arithmatex">\(A\)</span>的<code>LU</code>分解
+·系数矩阵<span class="arithmatex">\(A\)</span>可分解为<span class="arithmatex">\(A = LU\)</span>的形式，其中<span class="arithmatex">\(L\)</span>是<strong>下三角矩阵</strong>，<span class="arithmatex">\(U\)</span>是<strong>上三角矩阵</strong>。<br />
+·矩阵<span class="arithmatex">\(L = L_1^{-1} L_2^{-1} \cdots L_{n-1}^{-1}\)</span>，即各高斯消元矩阵的逆矩阵的乘积。 <br />
+上述式子称为矩阵<span class="arithmatex">\(A\)</span>的<code>LU</code>分解。<br />
+3.<code>LU</code>分解对线性方程组求解的好处<br />
+·对于<span class="arithmatex">\(AX = \vec{b_1}, \vec{b_2}, \cdots\)</span>这样一组<strong>系数矩阵相同</strong>，<strong>仅常数向量<span class="arithmatex">\(\vec{b}\)</span>不同</strong>的方程组的求解，可根据<span class="arithmatex">\(LUx = b\)</span>作两步求解：
+<span class="arithmatex">\(Ly = b, y = Ux\)</span>。<br />
+·注意到矩阵<span class="arithmatex">\(L, U\)</span>分别为<strong>下三角、上三角矩阵</strong>，因此方程组求解的<strong>时间复杂度</strong>得到了<strong>显著降低</strong>。<br />
+4.【定理】<br />
+（1）若高斯消元法在<strong>不进行行交换</strong>的情况下，可以用于<span class="arithmatex">\(A\vec{x} = \vec{b}\)</span>的求解，则矩阵<span class="arithmatex">\(A\)</span>可以<strong>直接分解</strong>为<strong>下三角</strong>矩阵<span class="arithmatex">\(L\)</span>和<strong>上三角</strong>矩阵<span class="arithmatex">\(U\)</span>的乘积。<br />
+（2）若令<span class="arithmatex">\(L\)</span>的<strong>对角线全为1</strong>(<code>unitary</code>)，则对系数矩阵<span class="arithmatex">\(A\)</span>的<code>LU</code>分解是<strong>唯一</strong>的。<br />
+【证明】<br />
+用反证法。
+设<span class="arithmatex">\(L\)</span>的对角线全为1时，分解不唯一，
+即存在一组矩阵<span class="arithmatex">\(L_1, U_1, L_2, U_2\)</span>，
+使得：<span class="arithmatex">\(A = L_1U_1 = L_2U_2\)</span>
+则：<span class="arithmatex">\(U_1U_2^{-1} = (L_1^{-1}L_2U_2)U_2^{-1} = L_1^{-1}L_2\)</span><br />
+注意到<span class="arithmatex">\(U_1U_2^{-1}\)</span>为上三角矩阵，<span class="arithmatex">\(L_1^{-1}L_2\)</span>为对角线全为<span class="arithmatex">\(1\)</span>的下三角矩阵，故有：<br />
+<span class="arithmatex">\(U_1U_2^{-1} = L_1^{-1}L_2 = I\)</span>.<br />
+从而<span class="arithmatex">\(U_1 = U_2, L_1 = L_2\)</span>，<span class="arithmatex">\(L\)</span>的对角线全为<span class="arithmatex">\(1\)</span>时，<code>LU</code>分解唯一性得证。<br />
+[注]<code>Crout</code>分解<br />
+·<code>Crout</code>分解方法：令<span class="arithmatex">\(U\)</span>的对角线全为<span class="arithmatex">\(1\)</span>。<br />
+·先对转置<span class="arithmatex">\(A^T\)</span>作<span class="arithmatex">\(LU\)</span>分解，则<span class="arithmatex">\(A = U^TL^T\)</span>即为原矩阵的<code>LU</code>分解。  </p>
+<h5 id="_17">四、一些特殊系数矩阵及其在方程组求解中的优势</h5>
+<p>1.【定义】严格对角占优矩阵
+<span class="arithmatex">\(|a_{ii}| \gt \Sigma _{j = 1, j \ne i} ^n |a_{ij}|\)</span>。<br />
+2.【定理】<strong>严格对角占优矩阵的一些性质</strong><br />
+任何一个严格对角占优矩阵都具有下列性质：<br />
+（1）<strong>非奇异</strong>。<br />
+（2）使用<strong>高斯消元法</strong>求解线性方程组时，<strong>无需交换行、列</strong>。<br />
+（3）<strong>高斯消元计算</strong>对于<strong>取整误差</strong>是<strong>稳定</strong>的。<br />
+3.正定矩阵<br />
+（1）定义<br />
+若矩阵<span class="arithmatex">\(A\)</span>满足<span class="arithmatex">\(\vec{x}^TAx \gt 0, \forall \vec{x} \ne 0\)</span>，则称其为<strong>正定矩阵</strong>。  <br />
+（2）性质<br />
+·正定矩阵<span class="arithmatex">\(A\)</span>的<strong>逆矩阵</strong><span class="arithmatex">\(A^{-1}\)</span>也是<strong>正定</strong>矩阵。<br />
+·<span class="arithmatex">\(max|a_{ij}| \le max|a_{kk}|\)</span>
+·<span class="arithmatex">\((a_{ij})^2 \lt a_{ii}a_{jj}, \forall i \ne j\)</span>.<br />
+（3）等价定义<br />
+矩阵<span class="arithmatex">\(A\)</span>是<strong>正定</strong>矩阵<span class="arithmatex">\(\Leftrightarrow\)</span>矩阵<span class="arithmatex">\(A\)</span>的<strong>各个顺序主子式行列式均为正</strong>。<br />
+4.<strong>正定矩阵的矩阵分解</strong>——<code>Choleski</code>分解法<br />
+（1）令上三角矩阵<span class="arithmatex">\(U = D\tilde{U}\)</span>，其中：矩阵<span class="arithmatex">\(D\)</span>为对角矩阵，<span class="arithmatex">\(D\)</span>的各个对角元恰好等于<span class="arithmatex">\(U\)</span>的各个对角元；矩阵<span class="arithmatex">\(\tilde{U}\)</span>为上三角矩阵，对角元均为<span class="arithmatex">\(1\)</span>，非对角元与<span class="arithmatex">\(D\)</span>相同。<br />
+（2）正定矩阵<span class="arithmatex">\(A\)</span>必定是对称的，从而有<span class="arithmatex">\(L = \tilde{U}^t\)</span>，从而<span class="arithmatex">\(A = LDL^t\)</span>。<br />
+（3）又令<span class="arithmatex">\(D^{\frac{1}{2}}\)</span>为对角矩阵<span class="arithmatex">\(D\)</span>各对角元开根号所得矩阵，令<span class="arithmatex">\(\tilde{L} = LD^{\frac{1}{2}}\)</span>，从而有：<br />
+<span class="arithmatex">\(A = \tilde{L}\tilde{L}^t\)</span>.<br />
+5.正定矩阵分解——<code>Choleski</code>分解<strong>算法步骤</strong><br />
+6.<strong>三对角矩阵的分解方法——<code>Crout</code>归约</strong><br />
+（1）对于线性方程组<span class="arithmatex">\(A\vec{x} = \vec{b}\)</span>，三对角矩阵<span class="arithmatex">\(A\)</span>可通过<code>Crout</code>归约方法实现<code>LU</code>分解，其中：<br />
+·下三角矩阵<span class="arithmatex">\(L\)</span>的<strong>主对角线，以及主对角线下方与之相邻的对角线上</strong>具有<strong>非零元</strong>，其余元素均为<span class="arithmatex">\(0\)</span>。<br />
+·上三角矩阵<span class="arithmatex">\(U\)</span>的<strong>主对角线，以及主对角线上方与之相邻的对角线上具有非零元</strong>，其余元素均为<span class="arithmatex">\(0\)</span>。<br />
+（2）原问题等价转化为求解下列两个系数矩阵分别为下三角、上三角矩阵的线性方程组，从而降低求解的时间复杂度：<br />
+·<span class="arithmatex">\(L\bar{y} = \bar{f}\)</span>。<br />
+·<span class="arithmatex">\(U\bar{x} = \bar{y}\)</span>。<br />
+7.【定理】一类特殊三对角系数矩阵
+若系数矩阵<span class="arithmatex">\(A\)</span>既是三对角矩阵，又是对角占优矩阵，且<span class="arithmatex">\(|b_1| \gt |c_1| \gt 0, |b_n | \gt |c_n| \gt 0, a_i \ne 0, c_i \ne 0\)</span>，则：<br />
+该系数矩阵是<strong>非奇异</strong>矩阵，相应的线性方程组可以解出。<br />
+[注]<br />
+（1）若矩阵<span class="arithmatex">\(A\)</span>是严格对角占优的，则无需令所有元素<span class="arithmatex">\(a_i, b_i, c_i\)</span>均为非零元。<br />
+（2）计算量：<span class="arithmatex">\(O(n)\)</span>。<br />
+（3）计算过程中的所有数值都收到矩阵<span class="arithmatex">\(A\)</span>元素初始值的限制，因此相应的求解方法是稳定的。<br />
+[注]本定理中，系数<span class="arithmatex">\(a_i, b_j, c_k\)</span>的定义详见前述<code>PPT</code>课件。  </p>
+<h5 id="_18">五、迭代法求解稀疏大规模线性方程组</h5>
+<p>1.思想：类比于解方程<span class="arithmatex">\(f(x) = 0\)</span>中的不动点迭代法。<br />
+2.格式变换：将<span class="arithmatex">\(A\bar{x} = \bar{b}\)</span>变形为<span class="arithmatex">\(\bar{x} = T\bar{x} + \bar{c}\)</span>。  </p>
+<h4 id="_19">数值分析 第五讲 迭代法求解稀疏大规模线性方程组</h4>
+<h5 id="_20">一、基本定义</h5>
+<p>1.迭代方法设计需要考虑问题<br />
+（1）如何设计迭代方案。<br />
+（2）迭代方法的收敛性。<br />
+（3）收敛速度。<br />
+（4）误差估计。<br />
+2.【定义】向量范数<span class="arithmatex">\(|| \cdot ||\)</span><br />
+（1）正定性<br />
+<span class="arithmatex">\(||\vec{x}||\ge 0; ||\vec{x}|| = 0 \lrArr \vec{x} = \vec{0}\)</span><br />
+（2）齐次性<br />
+<span class="arithmatex">\(||\alpha \vec{x}|| = \alpha ||\vec{x}||\)</span><br />
+（3）三角不等式<br />
+<span class="arithmatex">\(||\vec{x} + \vec{y}|| \le ||\vec{x}|| + ||\vec{y}||\)</span><br />
+3.【定义】无穷范数<br />
+<span class="arithmatex">\(||\vec{x}||_{\infin} = max\{x_i\}, 1 \le i \le n\)</span><br />
+4.【定义】向量的收敛性<br />
+[理解]用<span class="arithmatex">\(\vec{x^{(k)}}, \vec{x}\)</span>之差的范数的收敛性进行刻画。<br />
+5.【定理】向量序列的收敛性<span class="arithmatex">\(\lrArr\)</span>向量各分量的收敛性<br />
+[理解]向量序列收敛于某一向量 <span class="arithmatex">\(\lrArr\)</span> 向量的每一个分量，收敛于各自对应的极限。 <br />
+6.【定义】向量范数的等价性<br />
+若存在常数<span class="arithmatex">\(C_1, C_2\)</span>，使得<span class="arithmatex">\(C_1||\vec{x}||_B \le ||\vec{x}||_A \le C_2||\vec{x}||_B\)</span>成立，则称向量范数<span class="arithmatex">\(||\cdot||_A\)</span>和<span class="arithmatex">\(||\cdot||_B\)</span>是等价的。  <br />
+7.矩阵范数的性质<br />
+矩阵范数基于某向量范数<span class="arithmatex">\(||\cdot||\)</span>进行定义，并具有如下性质：<br />
+（1）基本性质：正定性、齐次性、三角不等式。<br />
+（2）<strong>一致性</strong>：<span class="arithmatex">\(||AB|| \le ||A|| \cdot ||B||\)</span><br />
+8.【定义】矩阵的佛罗贝尼乌斯范数<br />
+（1）定义：<span class="arithmatex">\(||A||_F = \sqrt{\Sigma_{i = 1}^{n}\Sigma_{j = 1}^{n}|a_{ij}|^2}\)</span>.<br />
+（2）理解：将整个矩阵当作一个大向量，计算<span class="arithmatex">\(L_2\)</span>范数。<br />
+9.【定义】矩阵的自然范数<br />
+（1）定义：<span class="arithmatex">\(||A||_p = max_{\vec{x} \ne 0} \frac{||A\vec{x}||_p}{||\vec{x}||_p} = max_{||\vec{x}||_p = 1}||A\vec{x}||_p\)</span><br />
+（2）理解：对于<strong>方向任意的单位向量<span class="arithmatex">\(\vec{x}\)</span></strong>，计算<span class="arithmatex">\(||A\vec{x}||\)</span>的<strong>最大值</strong>作为其范数。<br />
+（3）性质<br />
+·<strong>矩阵的无穷范数</strong>，即为<strong>同一行元素绝对值之和的最大值</strong>：<span class="arithmatex">\(||A||_\infty = max_{1 \le i \le n} \Sigma_{j = 1}^{n}|a_{ij}|\)</span><br />
+·<strong>矩阵的<span class="arithmatex">\(L_1\)</span>范数</strong>，即为<strong>同一列元素绝对值之和的最大值</strong>：<span class="arithmatex">\(||A||_1 = max_{1 \le j \le n} \Sigma_{i = 1}^n|a_{ij}|\)</span><br />
+·<span class="arithmatex">\(||A||_2 = \sqrt{\lambda_{max}(A^TA)}\)</span><br />
+【证明】下证<span class="arithmatex">\(||A||_\infty = max_{1 \le i \le n} \Sigma_{j = 1}^{n}|a_{ij}|\)</span><br />
+（1）首先证明：<span class="arithmatex">\(||A||_{\infty} = max_{||\vec{x}||_\infty = 1}||A\vec{x}||_\infty \le max_{1 \le i \le n} \Sigma_{j = 1}^{n}|a_{ij}|\)</span>.<br />
+<span class="arithmatex">\(||A\vec{x}||_{\infty} = max_{1 \le i \le n}|(Ax)_i|（行和最大值）= max|\Sigma_{i = 1}^{n}a_{ij}x_j| \le max_{1 \le i \le n} \Sigma_{j = 1}^{n} |a_{ij}| max|x_j|（提取绝对值放大）\)</span><br />
+（2）再证明：<span class="arithmatex">\(||A||_{\infty} = max_{||\vec{x}||_\infty = 1}||A\vec{x}||_\infty \ge max_{1 \le i \le n} \Sigma_{j = 1}^{n}|a_{ij}|\)</span><br />
+对于最大的一行<span class="arithmatex">\(p\)</span>，取特殊向量<span class="arithmatex">\(\vec{x}\)</span>，其正负符号跟<span class="arithmatex">\(\vec{p}\)</span>各分量的正负符号相对应，故结论成立。  </p>
+<h5 id="_21">二、特征值与特征向量</h5>
+<p>1.【定义】谱半径<br />
+将矩阵特征值的最大绝对值称为矩阵的<strong>谱半径</strong>，即：<span class="arithmatex">\(\rho(A)  max|\lambda|\)</span>.<br />
+2.【定理】谱半径不超过矩阵范数  <br />
+对于任意类型的自然范数<span class="arithmatex">\(||\cdot||\)</span>，都有：<br />
+<span class="arithmatex">\(\rho(A) \le ||A||\)</span>.<br />
+【证明】<span class="arithmatex">\(|\lambda|||\vec{x}|| = ||A\vec{x}|| \le ||A||\cdot||\vec{x}||\)</span>
+（运用了<strong>特征值的基本性质</strong>、<strong>矩阵范数的一致性</strong>）<br />
+3.【定义】矩阵的收敛性<br />
+若<span class="arithmatex">\(\forall i, j \in [1, n], lim_{k \rightarrow \infty}(A^k)_{ij} = 0\)</span>，则称矩阵<span class="arithmatex">\(A\)</span>是收敛的。<br />
+4.<strong>利用矩阵分解简化矩阵收敛性的判断</strong><br />
+（1）推导<br />
+若系数矩阵可分解为：<span class="arithmatex">\(A = U Y U^T\)</span>，其中矩阵<span class="arithmatex">\(U, U^T\)</span>行列式均为<span class="arithmatex">\(1\)</span>，<span class="arithmatex">\(Y\)</span>为对角矩阵，则有：<span class="arithmatex">\(A^k = U Y^k U^T\)</span>。<br />
+（2）结论<br />
+原系数矩阵<span class="arithmatex">\(A^k\)</span>收敛，等价转化为对角矩阵<span class="arithmatex">\(Y^k\)</span>收敛。  </p>
+<h5 id="_22">三、求解稀疏大规模线性方程组的一些迭代方法</h5>
+<p>1.<code>Jacobi</code>迭代法<br />
+（1）逐行变换：各方程化为类似于<span class="arithmatex">\(x_1 = \frac{1}{a_{11}}(-a_{12}x_2 - \cdots a_{1n}x_n + b_1)\)</span>的形式，使得左边只有<span class="arithmatex">\(x_i\)</span>。<br />
+（2）逐行变换对应的矩阵形式<br />
+设<span class="arithmatex">\(A\)</span>由<span class="arithmatex">\(D, -L, -U\)</span>相加组成，其中<span class="arithmatex">\(-L, -U\)</span>分别为下三角、上三角矩阵，<span class="arithmatex">\(D\)</span>为对角矩阵，则<span class="arithmatex">\(A\vec{x} = \vec{b} \Leftrightarrow (D-L-U)\vec{x} = \vec{b} \Leftrightarrow D\vec{x} = (L + U)\vec{x} + \vec{b}\)</span>。<br />
+从而：<span class="arithmatex">\(x = D^{-1}(L+U)\vec{x} + D^{-1}\vec{b}\)</span><br />
+（3）迭代公式<br />
+记<span class="arithmatex">\(T_j = D^{-1}(L+U), c_j = D^{-1}\vec{b}\)</span>, 则得到了迭代公式：<br />
+<span class="arithmatex">\(\vec{x}^{(k)} = T_j \vec{x}^{(k-1)} + c_j\)</span>.<br />
+（4）换行操作与系数矩阵奇异性<br />
+为保证<span class="arithmatex">\(a_{ii} \ne 0, \forall i = 1, 2, \cdots, n\)</span>，应进行换行操作；如果换行后某个<span class="arithmatex">\(a_{ii}\)</span>始终为<span class="arithmatex">\(0\)</span>，则<span class="arithmatex">\(A\)</span>为奇异矩阵。<br />
+（5）算法步骤  </p>
+<p>[注]对于<code>Jacobi</code>迭代法而言，<span class="arithmatex">\(X^{(k)}\)</span>的所有元素完成计算后，<span class="arithmatex">\(X^{(k + 1)}\)</span>才能开始计算，需要两个向量，分别保存<span class="arithmatex">\(X^{(k)}\)</span>和<span class="arithmatex">\(X^{(k + 1)}\)</span>。<br />
+2.<code>Gauss-Seidel</code>迭代法<br />
+（1）观察<br />
+·<span class="arithmatex">\(x_2^{(k)} = \frac{1}{a_{22}}(-a_{21}x_1^{(k)} - a_{23}x_3^{(k - 1)} - \cdots a_{2n}x_n^{(k-1)} + b_2)\)</span><br />
+·此时，<span class="arithmatex">\(x_1^{(k)}\)</span>已经算出，则<span class="arithmatex">\(x_2^{(k)}\)</span>的计算可以利用新计算的<span class="arithmatex">\(x_1^{(k)}\)</span>。<br />
+（2）<span class="arithmatex">\(x_i^{(k)}\)</span>进行迭代计算时，利用的是<span class="arithmatex">\(x_m^{(k)}, m \lt i\)</span>以及<span class="arithmatex">\(x_m^{(k - 1)}, m \gt i\)</span>，即对于下标小于<span class="arithmatex">\(i\)</span>的迭代项，使用第<span class="arithmatex">\(k\)</span>次运算成果；对于下标大于<span class="arithmatex">\(i\)</span>的迭代项，使用第<span class="arithmatex">\(k - 1\)</span>次运算成果。<br />
+（3）<code>Gauss-Seidel</code>迭代法的矩阵形式<br />
+<span class="arithmatex">\(\vec{x}^{(k)} = D^{-1}(L\vec{x}^{(k)} + U\vec{x}^{(k-1)}) + D^{-1}b\)</span><br />
+即：<span class="arithmatex">\(\vec{x}^{(k)} = (D - L) ^{-1}U \vec{x}^{(k-1)} + (D - L)^{-1}\vec{b}\)</span>.<br />
+（4）记号<br />
+·<span class="arithmatex">\(T_g = (D - L) ^{-1}U, c_g = (D - L)^{-1}\vec{b}\)</span>.<br />
+·<span class="arithmatex">\(T_g = (D - L) ^{-1}U\)</span>称为<code>Gauss-Seidel</code>迭代矩阵。  </p>
+<h5 id="_23">四、迭代方法的收敛性</h5>
+<p><span class="arithmatex">\(\vec{x}^{(k)} = T\vec{x}^{(k-1)} + \vec{c}\)</span><br />
+1.【定理】<strong>矩阵收敛的等价描述</strong>  <br />
+（1）<span class="arithmatex">\(A\)</span>是<strong>收敛矩阵</strong>。<br />
+（2）<span class="arithmatex">\(lim_{n \rightarrow \infty} ||A^n|| = 0\)</span>，对<strong>某类自然范数</strong>成立。<br />
+（3）<span class="arithmatex">\(lim_{n \rightarrow \infty} ||A^n|| = 0\)</span>，对<strong>所有自然范数</strong>成立。<br />
+（4）矩阵<span class="arithmatex">\(A\)</span>的<strong>谱半径</strong>（特征值最大绝对值）<strong>小于1</strong>：<span class="arithmatex">\(\rho(A) \lt 1\)</span>.<br />
+（5）<span class="arithmatex">\(lim_{n \rightarrow \infty}A^n\vec{x} = \vec{0}, \forall \vec{x}\)</span>.<br />
+2.【定理】<strong>通过误差向量判断迭代矩阵<span class="arithmatex">\(T\)</span>的收敛性</strong><br />
+（1）误差向量：<span class="arithmatex">\(\vec{e}^{(k)} = \vec{x}^{(k)} - \vec{x}^* = (T\vec{x}^{(k-1)} + \vec{c}) - (T\vec{x}^{*} + \vec{c}) = T\vec{e}^{(k-1)}\)</span><br />
+（2）<span class="arithmatex">\(T\)</span>为<strong>收敛矩阵</strong>的一个<strong>充分</strong>条件：矩阵范数<span class="arithmatex">\(||T|| \lt 1\)</span>.<br />
+（3）<span class="arithmatex">\(T\)</span>为<strong>收敛矩阵</strong>的一个<strong>必要</strong>条件：<span class="arithmatex">\(\vec{e}^{(k)} \rightarrow  0, k \rightarrow \infty\)</span></p>
+<h4 id="_24">数值分析 第六讲</h4>
+<h5 id="_25">一、不动点迭代法的收敛性（续）</h5>
+<p>1.[回顾]不动点迭代法收敛性
+（1）充分条件：若<span class="arithmatex">\(||T|| \lt 1\)</span>，则<span class="arithmatex">\(||T^k|| \rightarrow  0, k \rightarrow  \infty\)</span>，这是迭代法<span class="arithmatex">\({\vec{x}^{(k)}} = T\vec{x}^{(k-1)} + \vec{c}\)</span>收敛的一个充分条件。<br />
+（2）必要条件：<span class="arithmatex">\(\vec{e}^{(k)} \rightarrow \vec{0}, k\rightarrow \infty, T^k \rightarrow  O\)</span>。  </p>
+<p>2.【定理1】谱半径与不动点迭代收敛性的关系<br />
+对于任意<span class="arithmatex">\(\vec{x}^{(0)}\in R^n\)</span>，序列<span class="arithmatex">\({\vec{x}^{(k)}} = T\vec{x}^{(k-1)} + \vec{c}\)</span>收敛与于独特解<span class="arithmatex">\(\vec{x} = T\vec{x} + \vec{c}\)</span>，当且仅当<strong>谱半径<span class="arithmatex">\(\rho(T) \le 1\)</span></strong>.<br />
+【证明】<br />
+（1）给定谱半径<span class="arithmatex">\(\rho(T) \lt 1\)</span>，利用迭代公式，对<span class="arithmatex">\(\vec{x}^{(k)}\)</span>展开得到<span class="arithmatex">\(\vec{x}^{(k)} = T^k\vec{x}^{(0)} + (T^{k-1} + \cdots+T+I) \vec{c} \rightarrow  (I - T)^{-1}\vec{c}\)</span>，因此和式中的两项均收敛。 
+[注]教材443页结论：对于收敛矩阵<span class="arithmatex">\(T\)</span>，有：<span class="arithmatex">\(\Sigma_{j = 0} ^ \infty T^j = (I - T)^{-1}\)</span>。 <br />
+（2）已知误差极限<span class="arithmatex">\(lim_{k\rightarrow  \infty}\vec{e}^k = 0\)</span>，则<span class="arithmatex">\(lim _{k \rightarrow  \infty}T^k\vec{e}^{(0)} = 0\)</span>，从而必有<span class="arithmatex">\(\rho(K) \lt 1\)</span>.  </p>
+<p>3.【定理2】迭代法误差界估计<br />
+（1）已知<span class="arithmatex">\(\vec{x}\)</span>，估计误差界：<br />
+<span class="arithmatex">\(||\vec{x} - \vec{x}^{(k)}|| \le ||T||^k||\vec{x} - \vec{x}^{(0)}|| \approx \rho^k(T)||\vec{x} - \vec{x}^{(0)}||\)</span><br />
+（2）未知<span class="arithmatex">\(\vec{x}\)</span>，用初始项估计误差界：<br />
+<span class="arithmatex">\(||\vec{x} - \vec{x}^{(k)}|| \le \frac{||T||^k}{1 - ||T||}||x^{(1)} - x^{(0)}||\)</span><br />
+[注]推导时，注意利用添项法：<br />
+<span class="arithmatex">\(||\vec{x}^{(0)} - \vec{x}^{(1)}|| = ||\vec{x}^{(0)} -\vec{x} + \vec{x} - \vec{x}^{(1)}|| =  ||(\vec{x}^{(0)} -\vec{x}) - (\vec{x}^{(1)} - \vec{x})|| \ge  ||\vec{x} - \vec{x}^{(0)}|| - ||\vec{x} - \vec{x}^{(1)}|| \ge \frac{1}{||T||^k}||\vec{x} - \vec{x}^{(k)}|| - \frac{||T||}{||T||^k}||\vec{x} - \vec{x}^{(k)}||\)</span><br />
+（3）整理得：<br />
+<span class="arithmatex">\(||\vec{x} - \vec{x}^{(k)}|| \le \frac{||T||^k}{1 - ||T||}||x^{(1)} - x^{(0)}||\)</span><br />
+（4）该不等式的作用是，计算迭代到指定误差范围所需要的<strong>迭代次数</strong>，根据<span class="arithmatex">\(||T||\)</span>的大小可以得到收敛速度的快慢。  </p>
+<p>4.【定理3】严格对角占优阵与迭代法收敛性<br />
+对于<strong>严格对角占优矩阵</strong><span class="arithmatex">\(A\)</span>，使用雅可比迭代、高斯-塞达尔迭代方法，解线性方程组<span class="arithmatex">\(A \vec{x} = \vec{b}\)</span>，对于<strong>任一初值</strong><span class="arithmatex">\(\vec{x}^{(0)}\)</span>都是收敛的。<br />
+【证明】证明<span class="arithmatex">\(\forall |\lambda|\ge 1\)</span>，都有<span class="arithmatex">\(|\lambda I - T| \ne 0\)</span>，从而<strong>严格对角占优矩阵的特征值绝对值均小于1</strong>，因此迭代法收敛。  </p>
+<h5 id="_26">二、松弛迭代法</h5>
+<p>1.[回顾]高斯-塞达尔方法：<br />
+<span class="arithmatex">\(x_i^{(k)} = \frac{1}{a_{ii}}[b_i -\Sigma _{j = 1}^{i-1}a_{ij}x_j^{(k)} - \Sigma_{j = i+1}^n a_{ij}x_j^{(k-1)}] \newline 
+= x_i^{(k-1)} + \frac{r_i^{(k)}}{a_{ii}}\)</span><br />
+其中残差表达式为:<br />
+<span class="arithmatex">\(r_i^{(k)} = b_i - \Sigma _{j \lt i} a_{ij}x_j^{(k)} - \Sigma_{j \ge i}a_{ij}x_j^{(k-1)}\)</span><br />
+[注]残差的理解<br />
+（1）残差定义<span class="arithmatex">\(r = b - A \tilde{x}\)</span><br />
+（2）从优化的角度看，残差<span class="arithmatex">\(r_i^{(k)}\)</span>可以看作<strong>梯度方向</strong>。  </p>
+<p>2.松弛迭代法的一般形式<br />
+<span class="arithmatex">\(x_i^{(k)} = x_i^{(k-1)} + \omega \frac{r_i^{(k)}}{a_{ii}}\)</span><br />
+（1）该方法称为松弛迭代法，即控制当前解在“梯度”方向可以更新多少距离。<br />
+（2）通过学习率<span class="arithmatex">\(\omega\)</span>的适当选取，可以<strong>加快收敛速度</strong>。<br />
+（3）<span class="arithmatex">\(0 \lt \omega \lt 1\)</span>：松弛方法。<br />
+（4）<span class="arithmatex">\(\omega = 1\)</span>：高斯-塞达尔迭代法。<br />
+（5）<span class="arithmatex">\(\omega \gt 1\)</span>：超松弛迭代法（<code>Successive Over-Relaxation Method, SOR</code>）。  </p>
+<p>3.松弛迭代法的矩阵形式<br />
+（1）配项<br />
+<span class="arithmatex">\(x_i^{(k)} = x_i^{(k-1)}+ \omega\frac{r_i^{(k)}}{a_{ii}} 
+\newline = (1 - \omega)x_i^{(k-1)} + \frac{\omega}{a_{ii}}[-\Sigma _{j \lt i}a_{ij}x_j^{(k)} - \Sigma_{j \ge i}a_{ij} x_j^{(k-1)} + b_i]\)</span><br />
+（2）作<span class="arithmatex">\(LU\)</span>分解<br />
+<span class="arithmatex">\(\vec{x}^{(k)} = (1-w)\vec{x}^{(k-1)} + \omega D^{-1}(L\vec{x}^{(k)} + U \vec{x}^{(k-1)} + \vec{b})\)</span><br />
+（3）改写<br />
+由于<span class="arithmatex">\(a_{ii}x_i^{(k)} + \omega \Sigma_{j = 1} ^ {i - 1} a_{ij}x_j^{(k)} = (1 - \omega)a_{ii}x_i^{(k-1)} - \omega \Sigma _{j = i + 1}^n a_{ij}x_k^{(k-1)} + \omega b_i\)</span><br />
+故<span class="arithmatex">\((D - \omega L)\vec{x}^{(k)} = [(1-\omega)D + \omega U]\vec{x}^{(k-1)} + \omega \vec{b}\)</span><br />
+（4）令<span class="arithmatex">\(T_\omega = (D - \omega L)^{-1}[(1-\omega)D + \omega U], \vec{c_\omega} = \omega (D - \omega L)^{-1} \vec{b}\)</span>，即得到带有学习率<span class="arithmatex">\(\omega\)</span>的松弛迭代表达式。  </p>
+<p>4.【定理4】（<code>Kahan</code>定理）超松弛方法收敛的必要条件<br />
+若矩阵的<strong>对角元素全部不为<span class="arithmatex">\(0\)</span></strong>，则<span class="arithmatex">\(\rho(T_\omega) \ge|\omega - 1|\)</span>，这说明：<code>SOR</code>方法在<span class="arithmatex">\(0 \lt \omega \lt 2\)</span>时才有可能收敛。  </p>
+<p>5.【定理5】（<code>Ostrowski-Reich</code>定理）<strong>正定矩阵</strong>超松弛迭代的收敛性<br />
+若<span class="arithmatex">\(A\)</span>是<strong>正定矩阵，且<span class="arithmatex">\(0 \lt \omega \lt 2\)</span></strong>，则<strong>SOR方法</strong>对于<strong>任意选择的初始近似解</strong>都是<strong>收敛</strong>的。  </p>
+<p>6.【定理6】<strong>正定三对角矩阵</strong>的最优学习率<br />
+若<span class="arithmatex">\(A\)</span>是<strong>正定</strong>的<strong>三对角</strong>矩阵，则<span class="arithmatex">\(\rho(T_g) =  \ [\rho(T_j)]^2 \lt 1\)</span>，并且SOR方法的最优<span class="arithmatex">\(w\)</span>为<span class="arithmatex">\(\omega = \frac{2}{1 + \sqrt{1 - \rho^2(T_j)}}\)</span>，且<span class="arithmatex">\(\rho(T_\omega) = \omega - 1\)</span>.<br />
+【注】<span class="arithmatex">\(T_g = (D - L)^{-1}U, T_j = D^{-1}(L + U)\)</span>  </p>
+<p>7.【讨论】<br />
+给定<span class="arithmatex">\(A = \begin{bmatrix} 2 \ 1 \\ 1 \ 2 \\\end{bmatrix}, b = [1 \space 2]^T\)</span>，以及迭代方法<span class="arithmatex">\(\vec{x}^{(k)} = \vec{x}^{(k-1)} + \omega(A \vec{x}^{(k-1)} - \vec{b})\)</span>，问：<br />
+（1）<span class="arithmatex">\(\omega\)</span>为多少时，方法会收敛？<br />
+（2）<span class="arithmatex">\(\omega\)</span>为多少时，方法收敛最快？  </p>
+<p>【理解】<br />
+上述方法直接利用残差进行学习，可以认为是一种雅可比迭代法。  </p>
+<p>【解题思路】<br />
+（1）计算矩阵<span class="arithmatex">\(I + \omega A\)</span>的特征值。<br />
+<span class="arithmatex">\(\lambda_1 = 1 + \omega, \lambda_2 = 1 + e \omega\)</span>.<br />
+（2）求谱半径（矩阵<span class="arithmatex">\(I + \omega A\)</span>最大特征值）最小值。  </p>
+<h5 id="_27">三、近似计算矩阵最大特征值——幂次法</h5>
+<p>1.[引入]特征值分解<br />
+（1）<span class="arithmatex">\(A = U \Sigma U^T\)</span>，其中<span class="arithmatex">\(\Sigma\)</span>为对角矩阵，各元素即为矩阵的各个特征值。<br />
+（2）分拆：<span class="arithmatex">\(A = U_1 \lambda_1 U_1^T + \cdots + U_n \lambda_n U_n^T\)</span>。<br />
+（3）矩阵近似存储（压缩存储空间）：仅存储最大的前<span class="arithmatex">\(k\)</span>个特征值。<br />
+（4）本章内容：<strong>绝对值最大</strong>的特征值以及相应特征向量的近似计算方法。  </p>
+<p>2.假设<br />
+<span class="arithmatex">\(A\)</span>矩阵的特征值满足：<span class="arithmatex">\(|\lambda_1|\ge |\lambda_2| \ge \cdots \ge |\lambda_n| \ge 0\)</span>，相应的<span class="arithmatex">\(n\)</span>个特征向量<span class="arithmatex">\(\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}\)</span>线性无关。  </p>
+<p>3.思想：<br />
+（1）给定任一初始值向量<span class="arithmatex">\(\vec{x}^{(0)} \ne 0\)</span>，且满足初值向量与特征向量<span class="arithmatex">\(\vec{v_1}\)</span>非正交，即<span class="arithmatex">\((\vec{x}^{(0)}, \vec{v_1}) \ne 0\)</span>，则：<br />
+<span class="arithmatex">\(\vec{x}^{(0)} = \Sigma_{j = 1}^n \beta_j\vec{v_j}\)</span><br />
+上式表示：<span class="arithmatex">\(\vec{x}^{(0)}\)</span>可由各特征向量进行线性表示。  <br />
+（2）对于上述线性表达式，两边同时左乘<span class="arithmatex">\(A\)</span>得：<span class="arithmatex">\(\vec{x}^{(1)} = A \vec{x}^{(0)} = \Sigma_{j = 1}^n \beta_j\lambda_j\vec{v_j}\)</span>，其中<span class="arithmatex">\(\beta_1 \ne 0\)</span>。<br />
+[注]推导依据：<span class="arithmatex">\(A\vec{x} = \lambda \vec{x}\)</span>
+（3）<span class="arithmatex">\(\vec{x}^{(k)}\)</span>不断左乘<span class="arithmatex">\(A\)</span>矩阵，从而实现对特征值的近似计算，有：<br />
+<span class="arithmatex">\(\vec{x}^{(k)} \approx \lambda_1^k\beta_1\vec{v}_1\)</span><br />
+<span class="arithmatex">\(\vec{x}^{(k-1)} \approx \lambda_1^{k-1}\beta_1\vec{v}_1\)</span><br />
+两个向量各分量相除，即得<span class="arithmatex">\(\lambda_1\)</span>得近似值。<br />
+4.正则化<br />
+（1）针对每一步操作，均无穷范数限制<span class="arithmatex">\(||\vec{x}^{(k)}||_\infin = 1\)</span>，以增强算法的稳定性。<br />
+（2）令<span class="arithmatex">\(\vec{u}^{(k-1)} = \frac{\vec{x}^{(k-1)}}{|\vec{x}_{p_{k-1}}^{(k-1)}|}, |x_{p_k}^{(k)}| = ||x^{(k)}||_\infin\)</span><br />
+由<span class="arithmatex">\(\vec{x}^{(k)} = A \vec{u}^{(k-1)}\)</span><br />
+推导出<br />
+<span class="arithmatex">\(\vec{u}^{(k)} = \frac{\vec{x}^{(k)}}{|x_{p_k}^{(k)}|} \rarr \vec{v_1}\)</span><br />
+<span class="arithmatex">\(\lambda_1 \approx \frac{x_i^{(k)}}{u_i^{(k-1)}} = x_{p_{k - 1}}^{(k)}\)</span><br />
+5.幂次法——算法步骤<br />
+<img alt="" src="../assets/NA6/1.JPG" /><br />
+6.注意事项<br />
+（1）若绝对值最大的特征根为多重根，该方法同样适用，原因是：<br />
+<span class="arithmatex">\(\vec{x}^{(k)} = \lambda_1^k[\Sigma_{j = 1}^r \beta_j \vec{v}_j + \Sigma_{j = r+1}^n \beta_j(\frac{\lambda_j}{\lambda_1})^k \vec{v}_j] \approx \lambda_1^k(\Sigma_{j = 1}^r \beta_j \vec{v}_j)\)</span><br />
+（2）若<span class="arithmatex">\(\lambda_1 = - \lambda_2\)</span>，则算法不收敛。<br />
+（3）对于任一选择的初始值向量<span class="arithmatex">\(\vec{x}^{(0)}\)</span>，不能保证<span class="arithmatex">\(\beta_1 \ne 0\)</span>，故迭代的结果可能不是<span class="arithmatex">\(\vec{v}_1\)</span>，而是首先满足非正交条件的特征值向量<span class="arithmatex">\(\vec{v}_m\)</span>，此时相应的特征值向量为<span class="arithmatex">\(\lambda_m\)</span>。<br />
+（4）<code>Aitken</code>方法：加快特征值近似计算方法的收敛速度。<br />
+7.算法收敛率<br />
+（1）观察迭代公式：<span class="arithmatex">\(\vec{x}^{(k)} = A \vec{x}^{(k - 1)} = \lambda_1^k \Sigma_{j = 1}^n \beta_j (\frac{\lambda_j}{\lambda_1})^k \vec{v_j}\)</span><br />
+（2）收敛率：<span class="arithmatex">\(|\frac{\lambda_2}{\lambda_1}|\)</span>  </p>
+<h5 id="_28">四、幂次法的改进思路</h5>
+<p>1.假设<span class="arithmatex">\(|\lambda_2| \ge |\lambda_n|\)</span>，令<span class="arithmatex">\(p  = \frac{\lambda_2 + \lambda_n}{2}\)</span><br />
+<img alt="" src="../assets/NA6/2.JPG" /><br />
+2.令矩阵<span class="arithmatex">\(B = A - pI\)</span>，则<span class="arithmatex">\(|\lambda I - A| = |\lambda I - (B+pI)| = |(\lambda - p)I + B|\)</span><br />
+从而有<span class="arithmatex">\(\lambda_A - p = \lambda_B\)</span><br />
+3.注意到<span class="arithmatex">\(\frac{|\lambda_2 - p|}{|\lambda_1 - p|} \lt \frac{\lambda_2}{\lambda_1}\)</span>，故迭代近似计算<span class="arithmatex">\(B\)</span>的特征值，收敛速度快于直接计算<span class="arithmatex">\(A\)</span>的特征值。  </p>
+<h5 id="_29">五、逆幂次法</h5>
+<p>1.基本思想<br />
+设<span class="arithmatex">\(A\)</span>的特征值，按照绝对值非升序排列为<span class="arithmatex">\(\lambda_1, \cdots,  \lambda_n\)</span>，则对于<span class="arithmatex">\(A^{-1}\)</span>矩阵，成立：<span class="arithmatex">\(\frac{1}{|\lambda_n|} \ge \cdots \ge \frac{1}{|\lambda_1|}\)</span><br />
+2.算法目的：计算矩阵<span class="arithmatex">\(A\)</span><strong>绝对值最小的特征值</strong>。<br />
+3.计算<span class="arithmatex">\(\vec{x}^{(k+1)} = A^{-1}\vec{x}^{(k)}\)</span>的方法<br />
+（1）上式两边左乘<span class="arithmatex">\(A\)</span>，等价于：<br />
+<span class="arithmatex">\(A \vec{x}^{(k+1)} = \vec{x}^{(k)}\)</span><br />
+（2）使用<span class="arithmatex">\(LU\)</span>分解，解上述线性方程组，即得<span class="arithmatex">\(\vec{x}^{(k+1)}\)</span>。<br />
+4.【思考】已知<span class="arithmatex">\(\lambda_i\)</span>在所有特征值中，最接近一个已知数<span class="arithmatex">\(p\)</span>，问如何更好地近似计算<span class="arithmatex">\(\lambda_i\)</span>？<br />
+【解答】<br />
+（1）已知条件表明<span class="arithmatex">\(|\lambda_i - p| \lt \lt |\lambda_j - p|\)</span>，即矩阵<span class="arithmatex">\((A - pI)\)</span>中，<span class="arithmatex">\(\lambda_i - p\)</span>为<strong>绝对值最小的特征值</strong>。<br />
+（2）若逆矩阵<span class="arithmatex">\((A - pI)^{-1}\)</span>存在，则可以通过<strong>逆幂次法</strong>，<strong>计算<span class="arithmatex">\((A - pI)^{-1}\)</span>的最大特征值</strong>，从而算出<span class="arithmatex">\(\lambda_i\)</span>更加精确的近似值。  </p>
+<h5 id="_30">六、插值法和多项式近似——研究背景</h5>
+<p>1.设某函数十分复杂，不易获得解析式，只能观察到其中<span class="arithmatex">\(n\)</span>个点的函数值<span class="arithmatex">\(y_i = f(x_i)\)</span>。<br />
+2.若<span class="arithmatex">\(g(x)\)</span>满足<span class="arithmatex">\(g(x_i) = f(x_i)\)</span>，称<span class="arithmatex">\(g(x)\)</span>为函数<span class="arithmatex">\(f(x)\)</span>的<strong>插值函数</strong>。<br />
+3.最常用的插值函数：代数多项式函数。  </p>
+<h5 id="_31">七、插值法与拉格朗日多项式</h5>
+<p>1.目标：寻找一个<span class="arithmatex">\(n\)</span>阶多项式，<span class="arithmatex">\(P(n) = a_nx^n + \cdots + a_0\)</span>，使得<span class="arithmatex">\(P_n(x_i) = y_i, i = 0, 1, \cdots, n\)</span><br />
+2.<span class="arithmatex">\(n = 1\)</span>的情形<br />
+（1）<span class="arithmatex">\(P_1(x) = y_0 + \frac{y_1 - y_0}{x_1 - x_0}(x - x_0) \newline = (\frac{x - x_1}{x_0 - x_1})y_0 + \frac{x-x_0}{x_1 - x_0}y_1\)</span><br />
+（2）拉格朗日系数<br />
+<span class="arithmatex">\(L_{1, 0}(x) = \frac{x - x_1}{x_0 - x_1}\)</span><br />
+<span class="arithmatex">\(L_{1, 1} = \frac{x-x_0}{x_1 - x_0}\)</span><br />
+（3）<span class="arithmatex">\(P_1(x) = \Sigma_{i = 0}^1L_{1, i}(x)y_i\)</span>，称<span class="arithmatex">\(L_{1, i}(x_j) = \delta_{ij}\)</span>为<strong>拉格朗日基函数</strong>。<br />
+3.<span class="arithmatex">\(n \gt 1\)</span>的情形<br />
+（1）目标：同样是寻找基函数<span class="arithmatex">\(L_{n, i}(x_j) = \delta_{ij}\)</span>，从而获得插值多项式<span class="arithmatex">\(P_n(x) = \Sigma_{i = 0}^nL(n, i)(x)y_i\)</span>，使得<span class="arithmatex">\(P_n(x_i) = y_i\)</span>。<br />
+（2）各个拉格朗日基函数<span class="arithmatex">\(L_{n, i}\)</span>都有<span class="arithmatex">\(n\)</span>个根，即<span class="arithmatex">\(x_0, \cdots, \hat{x}_i, \cdots, x_n\)</span><br />
+从而<span class="arithmatex">\(L_{n, i} = C_i(x - x_0)\cdots (x-x_i) \cdots (x - x_n)\)</span><br />
+（3）注意到<span class="arithmatex">\(L_{n, i}(x_i) = 1\)</span>，从而<span class="arithmatex">\(C = \Pi _{j \ne i}\frac{1}{x_i - x_j}\)</span><br />
+（4）结论：<span class="arithmatex">\(L_{n, i}(x) = \Pi_{j = 0, j \ne i}^n \frac{x - x_j}{x_i - x_j}\)</span><br />
+（5）拉格朗日插值多项式：<span class="arithmatex">\(P_n(x) = \sum_{i = 0}^nL_{n, i}(x)y_i\)</span><br />
+4.【定理】拉格朗日插值多项式的唯一性<br />
+若<span class="arithmatex">\(x_0, \cdots, x_n\)</span>互不相同，<span class="arithmatex">\(f\)</span>在这些点的函数值给定，则<span class="arithmatex">\(f\)</span>的<span class="arithmatex">\(n\)</span>阶插值多项式是<strong>唯一</strong>的。<br />
+【证明】<br />
+（1）用反证法。若否，则存在<span class="arithmatex">\(P_n(x), Q_n(x)\)</span>均满足插值条件。<br />
+（2）构造<span class="arithmatex">\(D(x) = P_n(x) - Q_n(x)\)</span>，至多<span class="arithmatex">\(n\)</span>阶；但是<span class="arithmatex">\(D(x)\)</span>有<span class="arithmatex">\(n+1\)</span>个互不相同的根<span class="arithmatex">\(x_0, \cdots, x_n\)</span>，与<span class="arithmatex">\(n\)</span>阶多项式至多<span class="arithmatex">\(n\)</span>个根的事实形成矛盾。<br />
+[注]<br />
+（1）若插值多项式的度数<span class="arithmatex">\(\gt n\)</span>，则插值多项式不唯一。<br />
+（2）举例：构造<span class="arithmatex">\(P(x)\)</span>，在基本的拉格朗日多项式基础上，添加高阶项，即<span class="arithmatex">\(P(x) = L_n(x) + p(x)\Pi_{i = 0}^n (x - x_i)\)</span>，其中<span class="arithmatex">\(p(x)\)</span>可以是任意阶的多项式。  </p>
+<h5 id="_32">八、拉格朗日插值法——误差分析</h5>
+<p>1.假设<span class="arithmatex">\(a \le x_0 \le \cdots \le x_n \le b, f \in C^{n+1}[a, b]\)</span>，考虑<strong>截断误差</strong><span class="arithmatex">\(R_n(x) = f(x) - P_n(x)\)</span>。<br />
+2.回顾——罗尔定理<br />
+（1）<span class="arithmatex">\(\phi(x_0) = \phi(x_1) = \phi(x_2) = 0\)</span>，则<span class="arithmatex">\(\exists \xi _0 \in(x_0, x_1), \xi_1 \in (x_1, x_2)\)</span>，使得<span class="arithmatex">\(\phi'(\xi_0) = \phi'(\xi_1) = 0\)</span>，故存在<span class="arithmatex">\(\xi'', \phi''(\xi'') = 0\)</span><br />
+（2）对于<span class="arithmatex">\(n+1\)</span>个零点，若函数足够光滑，则<span class="arithmatex">\(\exists \xi \in (a, b), \phi^{(n)}(\xi) = 0\)</span><br />
+3.误差分析<br />
+（1）考虑误差函数<span class="arithmatex">\(R_n(x) = f(x) - P_n(x)\)</span><br />
+此函数至少有<span class="arithmatex">\(n+1\)</span>个零点，即原函数零点<span class="arithmatex">\(x_0, \cdots, x_n\)</span>，从而<span class="arithmatex">\(R_n(x) = K(x) \Pi _{i = 0}^n(x - x_i)\)</span><br />
+（2）定义函数<span class="arithmatex">\(g(t) = R_n(t) - K(x)\Pi _{i = 0}^n(t - x_i)\)</span>，则<span class="arithmatex">\(g(t)\)</span>的<span class="arithmatex">\(n+2\)</span>个零点为<span class="arithmatex">\(x_0, \cdots, x_n, x\)</span>。<br />
+（3）针对<span class="arithmatex">\(g(t)\)</span>函数的<span class="arithmatex">\(k+1\)</span>阶导数有：<span class="arithmatex">\(\exists \xi_x, g^{(n+1)}(\xi_x) = 0\)</span>。<br />
+（4）注意到<span class="arithmatex">\(g^{(n+1)}(\xi_x) = R_n^{(n+1)}(\xi_x) - K(x)(n+1)! = 0\)</span>，作展开<span class="arithmatex">\(R_n^{(n+1)} = f^{(n+1)}(\xi_x) - P_n^{(n+1)}(\xi_x)\)</span>，可得：<br />
+<span class="arithmatex">\(f^{(n+1)}(\xi_x) - P_n^{(n+1)}(\xi_x)- K(x)(n+1)! = 0\)</span> 
+（5）又由于<span class="arithmatex">\(P_n^{(n+1)}(\xi_x) = 0\)</span>，故：<br />
+<span class="arithmatex">\(K(x) = \frac{f^{(n+1)}(\xi_x)}{(n+1)!}\)</span><br />
+（6）结论<br />
+<span class="arithmatex">\(R_n(x) = \frac{f^{(n+1)}(\xi_x)}{(n+1)!} \Pi _{i = 0}^n(x - x_i)\)</span><br />
+[注]上式与泰勒多项式余项形式上相似，不同之处是泰勒多项式的余项以<span class="arithmatex">\(x_0\)</span>为<span class="arithmatex">\(n\)</span>重根，而拉格朗日多项式的余项分别以各个零点<span class="arithmatex">\(x_0, \cdots, x_n\)</span>为一重根。  </p>
+<h4 id="_33">数值分析 第七讲</h4>
+<h5 id="_34">一、矩阵迭代计算方法——误差分析</h5>
+<p>1.目的<br />
+分析<span class="arithmatex">\(A, \vec{b}\)</span>的误差对于方程组<span class="arithmatex">\(A\vec{x} = \vec{b}\)</span>的解<span class="arithmatex">\(\vec{x}\)</span>误差的影响。<br />
+2.<span class="arithmatex">\(\vec{b}\)</span>的误差对<span class="arithmatex">\(\vec{x}\)</span>的误差的影响<br />
+（1）设<span class="arithmatex">\(A\)</span>是精确的，<span class="arithmatex">\(\vec{b}\)</span>的误差是<span class="arithmatex">\(\delta \vec{b}\)</span>，则<span class="arithmatex">\(A(\vec{x} + \delta \vec{x}) = \vec{b} + \delta \vec{b}\)</span><br />
+（2）由上式可导出：<span class="arithmatex">\(\frac{||\delta \vec{x}||}{||\vec{x}||} \le ||A||\cdot ||A^{-1}||\cdot \frac{||\delta \vec{b}||}{||\vec{b}||}\)</span><br />
+2.【定理1】根据矩阵范数估计<span class="arithmatex">\(I \pm B\)</span>的范数  <br />
+设对于某种自然范数而言，矩阵<span class="arithmatex">\(B\)</span>的行列式<span class="arithmatex">\(||B|| \lt 1\)</span>，则:<br />
+（1）<span class="arithmatex">\(I \pm B\)</span>是非奇异矩阵。<br />
+（2）<span class="arithmatex">\(||(I \pm B)^{-1}|| \le \frac{1}{1 - ||B||}\)</span>。<br />
+3.<span class="arithmatex">\(A, \vec{b}\)</span>的误差对<span class="arithmatex">\(\vec{x}\)</span>误差的影响<br />
+（1）<span class="arithmatex">\((A + \delta A)(\vec{x} + \delta \vec{x}) = \vec{b}\)</span><br />
+（2）推导结果<br />
+<span class="arithmatex">\(\frac{||\delta \vec{x}||}{||\vec{x}||} \le \frac{||A^{-1}||\cdot||\delta A||}{1 - ||A^{-1}|| \cdot ||\delta A||} = \frac{||A||\cdot||A^{-1}||\cdot\frac{||\delta A||}{||A||}}{1 - ||A||\cdot||A^{-1}||\cdot\frac{||\delta A||}{||A||}}\)</span><br />
+4.【定义1】条件数<br />
+称<span class="arithmatex">\(||A|| \cdot ||A||^{-1}\)</span>为条件数<span class="arithmatex">\(K(A)\)</span>。<br />
+<strong>[注]</strong><br />
+<strong>（1）条件数是矩阵迭代计算误差的关键因素</strong>。<br />
+<strong>（2）条件数越大，矩阵越难得到较为精确的近似解。</strong><br />
+5.【定理2】误差界估计<br />
+设<span class="arithmatex">\(A\)</span>是非奇异矩阵，且<span class="arithmatex">\(||\delta A|| \lt \frac{1}{||A^{-1}||}\)</span>，则方程组<span class="arithmatex">\((A + \delta A)(\vec{x} + \delta \vec{x}) = \vec{b} + \delta \vec{b}\)</span>的近似解<span class="arithmatex">\(\vec{x} + \delta \vec{x}\)</span>有如下误差上界：<br />
+<span class="arithmatex">\(\frac{||\delta \vec{x}||}{||\vec{x}||} \le \frac{K(A)}{1 - K(A)\frac{||\delta A||}{||A||}} (\frac{||\delta A||}{||A||} + \frac{||\delta \vec{b}||}{||\vec{b}||})\)</span><br />
+6.几个注意事项<br />
+（1）对称矩阵的条件数：<span class="arithmatex">\(K(A)_2 = \frac{|\lambda|_{max}}{|\lambda|_{min}}\)</span><br />
+（2）对于任意的自然范数<span class="arithmatex">\(||\cdot||_p\)</span>，都有<span class="arithmatex">\(K(A)_p \ge 1\)</span>。<br />
+（3）<span class="arithmatex">\(K(\alpha A) = \alpha K(A), \forall \alpha \in R\)</span><br />
+（4）正交矩阵<span class="arithmatex">\(A^{-1} = A^t\)</span>满足<span class="arithmatex">\(K(A)_2 = 1\)</span><br />
+（5）任取正交矩阵<span class="arithmatex">\(R\)</span>，都有：<span class="arithmatex">\(K(RA)_2 = K(AR)_2 = K(A)_2\)</span>。<br />
+【例1】设<span class="arithmatex">\(A = \begin{bmatrix}1 &amp; 0.99 \\ 0.99 &amp; 0.98 \end{bmatrix}, \vec{b} = \begin{bmatrix} 1.99 \\ 1.97 \end{bmatrix}\)</span><br />
+（1）计算<span class="arithmatex">\(K(A)_2\)</span>。<br />
+（2）设<span class="arithmatex">\(\vec{b}\)</span>受到扰动<span class="arithmatex">\(\delta \vec{b} = \begin{bmatrix} -0.97\times 10^{-4} \\ 1.06 \times 10^{-4}\end{bmatrix}\)</span>，问方程组的解发生了怎样的变化。<br />
+【解】<br />
+（1）<span class="arithmatex">\(\lambda_1 = 1.98005, \lambda_2 = -0.00005\)</span><br />
+故<span class="arithmatex">\(K(A)_2 = |\frac{\lambda_1}{\lambda_2}| = 39206 \gt \gt 1\)</span>。<br />
+（2）<span class="arithmatex">\(\frac{||\delta \vec{b}||_2}{||\vec{b}||_2} = 5.13 \times 10^{-5}\)</span>，精确解<span class="arithmatex">\(\vec{x}^* = \begin{bmatrix} 3 \\ -1.0203 \end{bmatrix}\)</span><br />
+<span class="arithmatex">\(\delta \vec{x} = \vec{x}^* - \vec{x} = \begin{bmatrix} 2 \\ -2.0203\\ \end{bmatrix}\)</span><br />
+<span class="arithmatex">\(\frac{||\delta \vec{x}||_2}{||\vec{x}||_2} = 2.0102 \gt 200 %\)</span>  </p>
+<h5 id="_35">二、拉格朗日插值法（续）</h5>
+<p>【例2】求<span class="arithmatex">\(f(x) = e^x\)</span>，各个数精确到小数点后<span class="arithmatex">\(8\)</span>位，问：线性插值近似的步长<span class="arithmatex">\(h\)</span>为多少时，绝对值的误差<span class="arithmatex">\(\lt 10^{-6}\)</span>？<br />
+【解答】见教材95页例4，精读教材后听讲遇到本题，已理解，不再重复记录。<br />
+【例3】<br />
+给定<span class="arithmatex">\(sin\frac{\pi}{6} = \frac{1}{2}, sin \frac{\pi}{4} = \frac{1}{\sqrt{2}}, \sin \frac{\pi}{3} = \frac{\sqrt{3}}{2}\)</span>，使用<span class="arithmatex">\(sin x\)</span>的线性、二次拉格朗日多项式，计算<span class="arithmatex">\(sin 50\deg\)</span>，并估计误差。<br />
+【解答】<br />
+（1）外部插值法<br />
+<img alt="" src="../assets/NA7/1.JPG" />
+（2）内部插值法<br />
+<img alt="" src="../assets/NA7/2.JPG" /><br />
+（3）结论<br />
+一般情况下，内部插值法优于外部插值法。<br />
+（4）二次插值法<br />
+<img alt="" src="../assets/NA7/3.JPG" />  </p>
+<h5 id="neville">三、<code>Neville</code>方法</h5>
+<p>1.【定义1】设函数<span class="arithmatex">\(f\)</span>在<span class="arithmatex">\(x_0, \cdots, x_n\)</span>处有定义，<span class="arithmatex">\(m_1, \cdots, m_k\)</span>是<span class="arithmatex">\(k\)</span>个互不相同的整数，并满足<span class="arithmatex">\(0 \le m_i \le n,\forall i\)</span>，则称：拉格朗日多项式<span class="arithmatex">\(P_{m_1, \cdots, m_k}(x)\)</span>与函数<span class="arithmatex">\(f(x)\)</span>在<span class="arithmatex">\(k\)</span>个点<span class="arithmatex">\(x_{m_1}, \cdots, x_{m_k}\)</span>吻合。<br />
+2.【定理3】拉格朗日多项式和<span class="arithmatex">\(P(x)\)</span>的递归定义<br />
+设<span class="arithmatex">\(x_i, x_j\)</span>是函数<span class="arithmatex">\(f\)</span>的两个互不相同的自变量，则<span class="arithmatex">\(P(x) = \frac{(x - x_j)P_{0, 1, \cdots, j - 1, j + 1, \cdots, k}(x) - (x-x_i)P_{0, 1, \cdots, i - 1, i + 1, \cdots, k}(x)}{x_i - x_j}\)</span>定义了<span class="arithmatex">\(f\)</span>在<span class="arithmatex">\(x_0, \cdots, x_k\)</span>处的<span class="arithmatex">\(k\)</span>阶拉格朗日多项式。<br />
+3.<code>Neville</code>方法的计算步骤<br />
+·<span class="arithmatex">\(P_0, \cdots, P_4\)</span><br />
+·<span class="arithmatex">\(P_{0, 1}, \cdots, P_{3, 4}\)</span><br />
+·<span class="arithmatex">\(\cdots\)</span>
+·<span class="arithmatex">\(P_{0, 1, 2, 3, 4}\)</span>  </p>
+<h4 id="_36">数值分析 第八讲</h4>
+<h5 id="divided-differences">一、差商(<code>Divided Differences</code>)</h5>
+<p>[理解]差商的作用<br />
+（1）用于<strong>插值</strong><br />
+（2）用于<strong>导数的近似</strong><br />
+1.定义<br />
+（1）一阶差商<br />
+<span class="arithmatex">\(f[x_i, x_j] = \frac{f(x_i) - f(x_j)}{x_i - x_j}, i \ne j, x_i \ne x_j\)</span><br />
+（2）二阶差商<br />
+<span class="arithmatex">\(f[x_i, x_{i+1}, x_{i+2}] = \frac{f[x_{i+1}, x_{i+2}] - f[x_i, x_{i+1}]}{x_{i+2} - x_i}\)</span><br />
+（3）<span class="arithmatex">\(k+1\)</span>阶差商<br />
+<span class="arithmatex">\(f[x_0, \cdots, x_{k+1}] = \frac{f[x_0, \cdots, x_k] - f[x_1, \cdots, x_{k+1}]}{x_0 - x_{k+1}}\)</span><br />
+2.差商的求和形式<br />
+<span class="arithmatex">\(f[x_0, \cdots, x_k] = \Sigma_{i = 0}^k \frac{f(x_i)}{w_{k+1}'(x_i)}\)</span>，其中：<br />
+<span class="arithmatex">\(w_{k+1}(x) = \Pi_{i = 0}^k(x - x_i), w_{k+1}'(x_i) = \Pi_{j = 0, j \ne i}^k(x_i - x_j)\)</span><br />
+[注]
+（1）取对数，可以降低求导复杂度。<br />
+（2）上式说明：<span class="arithmatex">\(k+1\)</span>阶差商与变量的顺序无关。<br />
+3.性质<br />
+差商的取值<strong>与变量的顺序无关</strong>。<br />
+4.牛顿插值法与差商<br />
+（1）牛顿插值多项式<br />
+<span class="arithmatex">\(N_n(x) = a_0 + a_1(x - x_0) + a_2(x-x_0)(x-x_1) + \cdots + a_n(x-x_0)\cdots(x - x_{n-1})\)</span><br />
+（2）观察与推导<br />
+①<span class="arithmatex">\(f(x) = f(x_0) + (x-x_0)f[x, x_0]\)</span>，因此<span class="arithmatex">\(a_0 = f(x_0)\)</span><br />
+②<span class="arithmatex">\(a_i = f[x_0, \cdots, x_i]\)</span>  <br />
+③一阶插值多项式：<span class="arithmatex">\(f(x) = f(x_0) + (x-x_0)f[x, x_0]\)</span><br />
+（3）牛顿插值法——基本形式<br />
+<span class="arithmatex">\(f(x) = f(x_0) + f[x_0, x_1](x-x_0) + f[x_0, x_1, x_2](x-x_0)(x-x_1) + \cdots + f[x_0, \cdots, x_n](x-x_0)\cdots(x-x_{n-1}) + f[x, x_0, \cdots, x_n](x-x_0)\cdots(x-x_{n})\)</span><br />
+①插值多项式——<span class="arithmatex">\(f(x)\)</span>的前<span class="arithmatex">\(n+1\)</span>项<br />
+<span class="arithmatex">\(N_n(x) = f(x_0) + f[x_0, x_1](x-x_0) + f[x_0, x_1, x_2](x-x_0)(x-x_1) + \cdots + f[x_0, \cdots, x_n](x-x_0)\cdots(x-x_{n-1})\)</span>
+②误差项——<span class="arithmatex">\(f(x)\)</span>的最后一项<br />
+<span class="arithmatex">\(R_n(x) = f[x, x_0, \cdots, x_n](x-x_0)\cdots(x-x_{n})\)</span><br />
+③系数<span class="arithmatex">\(a_i = f[x_0, \cdots, x_i]\)</span><br />
+（4）注意事项<br />
+①<span class="arithmatex">\(n\)</span>阶插值多项式是唯一的，故<span class="arithmatex">\(N_n(x) = P_n(x)\)</span><br />
+②结论——差商与截断误差：由于<span class="arithmatex">\(N_x(x) = P_n(x)\)</span>，因此二者的截断误差相同。<br />
+<span class="arithmatex">\(f[x, x_0, \cdots, x_n]w_{k+1}(x) = \frac{f^{(n+1)}(\xi_x)}{(n+1)!}w_{k+1}(x)\)</span><br />
+即：<span class="arithmatex">\(\exists \xi_x\in(x_0, x_k), f[x_0, \cdots, x_n] = \frac{f^{(n+1)}(\xi_x)}{(n+1)!}\)</span><br />
+③<span class="arithmatex">\(\exists \xi \in(x_0, x_k), f[x_0, \cdots, x_k] = \frac{f^{(k)}(\xi)}{k!}\)</span><br />
+[理解]<br />
+差商利用低阶定义式导出高阶定义式，思想与<code>Neville</code>方法类似。<br />
+5.差商表<br />
+（1）从左往右计算。<br />
+（2）位于主对角线上的结果即为<span class="arithmatex">\(a_0, a_1, \cdots, a_n\)</span>。  </p>
+<h5 id="_37">二、等距差商与差分公式</h5>
+<p>1.等距差分公式（前向差分）<br />
+前提：设各点等距，即<span class="arithmatex">\(x_i = x_0 + ih, h \gt 0\)</span>。<br />
+（1）一阶前向差分公式<br />
+<span class="arithmatex">\(\Delta f_i = f_{i+1} - f_i\)</span><br />
+（2）<span class="arithmatex">\(k\)</span>阶前向差分公式<br />
+<span class="arithmatex">\(\Delta^k f_i = \Delta (\Delta ^{k-1}f_i) = \Delta^{k-1}f_{i+1} - \Delta^{k-1}f_{i}\)</span><br />
+2.等距差分公式（后向差分）<br />
+（1）一阶后向差分公式<br />
+<span class="arithmatex">\(\nabla f_i = f_i - f_{i - 1}\)</span><br />
+（2）<span class="arithmatex">\(k\)</span>阶后向差分公式<br />
+<span class="arithmatex">\(\nabla^k f_i = \nabla (\nabla ^{k-1}f_i) = \nabla^{k-1}f_{i} - \nabla^{k-1}f_{i - 1}\)</span><br />
+3.中心差分<br />
+<span class="arithmatex">\(\delta ^k f_i = \delta^{k - 1}f_{i + \frac{1}{2}} - \delta^{k - 1}f _{i - \frac{1}{2}}\)</span><br />
+其中：<span class="arithmatex">\(f_{i \pm \frac{1}{2}} = f(x_i \pm \frac{h}{2})\)</span><br />
+4.差分的性质<br />
+（1）线性性 
+<span class="arithmatex">\(\Delta (af(x) + bg(x)) = a \Delta f(x) + b \Delta g(x)\)</span> <br />
+（2）差分阶数与<span class="arithmatex">\(f(x)\)</span>阶数的关系<br />
+若<span class="arithmatex">\(f(x)\)</span>是<span class="arithmatex">\(m\)</span>阶多项式，则<span class="arithmatex">\(k\)</span>阶差商<span class="arithmatex">\(\Delta^k f(x)(0 \le k \le m)\)</span>是<span class="arithmatex">\(m - k\)</span>阶多项式，且<span class="arithmatex">\(\Delta^kf(x) = 0, k \gt m\)</span>。<br />
+（3）<strong>高阶差分与低阶差分的关系</strong><br />
+①<strong>前向差分</strong><br />
+<span class="arithmatex">\(\Delta^nf_k = \Sigma_{j = 0}^n(-1)^jC_n^jf_{n + k - j}\)</span><br />
+②<strong>后向差分</strong><br />
+<span class="arithmatex">\(\nabla^nf_k = \Sigma_{j = 0}^n(-1)^{n - j}C_n^jf_{k + j - n}\)</span><br />
+③<span class="arithmatex">\(f_{n+k} = \Sigma_{j = 0}^n C_n^j \Delta^j f_k\)</span><br />
+5.<strong>等距差分与差商的关系</strong><br />
+（1）<span class="arithmatex">\(f[x_0, \cdots, x_k] = \frac{\Delta^k f_0}{k!h^k}\)</span><br />
+（2）<span class="arithmatex">\(f[x_n, x_{n-1}, \cdots, x_{n - k}] = \frac{\nabla^kf_n}{k!h^k}\)</span><br />
+（3）根据余项<span class="arithmatex">\(R_n(x)\)</span>有：<span class="arithmatex">\(\exists \xi \in(x_0, x_k), f^{(k)}(\xi) = \frac{\Delta^k f_0}{h^k}\)</span><br />
+6.<strong>牛顿公式的差商形式</strong><br />
+（1）<strong>一般形式</strong><br />
+<span class="arithmatex">\(N_n(x) = f(x_0) + f[x_0, x_1](x-x_0) + f[x_0, x_1, x_2](x-x_0)(x-x_1) + \cdots + f[x_0, \cdots, x_n](x-x_0)\cdots(x-x_{n-1})\)</span>
+（2）<strong>前向差商</strong><br />
+<span class="arithmatex">\(N_n(x) = N_n(x_0 + th) = \Sigma_{k = 0}^n C_t^k\Delta^kf(x_0)\)</span><br />
+<span class="arithmatex">\(R_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!}t(t-1)\cdots(t-n)h^{n+1}, \xi \in (x_0, x_n)\)</span><br />
+（3）<strong>后向差商</strong><br />
+<span class="arithmatex">\(N_n(x) = f(x_n) + f[x_n, x_{n-1}](x - x_n) + \cdots  + f[x_n, \cdots, x_0](x - x_n) \cdots(x - x_1)\)</span><br />
+<span class="arithmatex">\(N_n(x) = N_n(x + th) = \Sigma_{k = 0}^n(-1)^k c_{-t}^k \nabla^kf(x_n)\)</span>  </p>
+<h5 id="hermite">三、<code>Hermite</code>插值</h5>
+<p>1.目标：<br />
+给定一组点<span class="arithmatex">\(x_0, \cdots, x_n\)</span>，以及一组非负整数<span class="arithmatex">\(m_0, \cdots, m_n\)</span>，寻找<strong>密切多项式</strong><span class="arithmatex">\(P(x)\)</span>，使得：<br />
+<span class="arithmatex">\(P(x_i) = f(x_i), P'(x_i) = f'(x_i), \cdots, P^{(m_i)}(x_i) = f^{(m_i)}(x_i), i = 0, 1, \cdots, n\)</span><br />
+即：对于一点<span class="arithmatex">\(x_i\)</span>，<span class="arithmatex">\(P(x)\)</span>不仅要跟<span class="arithmatex">\(f(x)\)</span><strong>函数值相等</strong>，而且在<span class="arithmatex">\(x_i\)</span>处，<span class="arithmatex">\(P(x), f(x)\)</span>的<span class="arithmatex">\(1, 2, \cdots, m_i\)</span>阶<strong>导数全部相等</strong>。<br />
+[理解]<br />
+（1）给定<span class="arithmatex">\(N\)</span>个条件（<span class="arithmatex">\(N\)</span>个方程），一个<span class="arithmatex">\(N - 1\)</span>阶多项式可被唯一确定。<br />
+（2）针对<strong>单点函数值及导数值</strong>的密切多项式<span class="arithmatex">\(P(x)\)</span>：若在<span class="arithmatex">\(x_0\)</span>处，与<span class="arithmatex">\(f(x), f'(x), \cdots, f^{(m_0)}(x_0)\)</span>均相等，则<span class="arithmatex">\(P(x)\)</span>恰好是<span class="arithmatex">\(f(x)\)</span>在点<span class="arithmatex">\(x_0\)</span>处的<span class="arithmatex">\(m_0\)</span>阶泰勒展开式。<br />
+此时：<span class="arithmatex">\(P(x) = f(x_0) + f'(x_0)(x - x_0) + \cdots + \frac{f^{(m_0)}(x_0)}{m_0!}(x - x_0)^{m_0}\)</span><br />
+余项：<span class="arithmatex">\(R(x) = \frac{f^{(m_0 + 1)}(\xi)}{(m_0 + 1)!}(x - x_0)^{m_0+1}\)</span><br />
+2.【定义1】<br />
+上述目标中，<span class="arithmatex">\(m_i = 1, i = 0, 1, \cdots, n\)</span>的多项式称为<code>Hermite</code>多项式。<br />
+【理解】对于每个插值点，要求插值多项式在该点的<strong>函数值、一阶导数值均与原函数相同</strong>。<br />
+【例1】分析针对三个点<span class="arithmatex">\(x_0, x_1, x_2\)</span>，要求<span class="arithmatex">\(f(x_0), f(x_1),f(x_2), f'(x_1)\)</span>与原函数均吻合的插值多项式的误差。<br />
+【解答】<br />
+（1）首先，<span class="arithmatex">\(P(x)\)</span>必为<span class="arithmatex">\(3\)</span>阶多项式。<br />
+（2）<strong>类比于拉格朗日插值多项式的形式</strong>，假设多项式可以写成如下形式：<br />
+<span class="arithmatex">\(P_3(x) = \Sigma_{i = 0}^2f(x_i)h_i(x) + f'(x_1)\hat{h}_1(x)\)</span><br />
+其中：<span class="arithmatex">\(h_i(x_j) = \delta_{ij}, h_i'(x_1) = 0, \hat{h}_1(x_i) = 0, \hat{h}_1'(x_i) = 1\)</span><br />
+[注]
+<span class="arithmatex">\(\delta_{ij} = 1, i = j\)</span><br />
+<span class="arithmatex">\(\delta_{ij} = 0, i \ne j\)</span><br />
+（3）考虑<span class="arithmatex">\(h_0(x)\)</span><br />
+·<span class="arithmatex">\(h_0(x)\)</span>的根为<span class="arithmatex">\(x_1, x_2\)</span>；<strong>由于<span class="arithmatex">\(h_0'(x_1) = 0\)</span>，因此<span class="arithmatex">\(x_1\)</span>是<span class="arithmatex">\(h_0(x)\)</span>的重根</strong>。<br />
+·猜测<span class="arithmatex">\(h_0(x) = C_0(x - x_1)^2(x - x_2)\)</span><br />
+·计算结果：<span class="arithmatex">\(h_0(x) = \frac{(x - x_1)^2(x - x_2)}{(x_0 - x_1)^2(x_0 - x_2)}\)</span><br />
+·<span class="arithmatex">\(h_2(x)\)</span>与<span class="arithmatex">\(h_0(x)\)</span>形式相似。<br />
+（4）考虑<span class="arithmatex">\(h_1(x)\)</span><br />
+·<span class="arithmatex">\(h_1(x)\)</span>有根<span class="arithmatex">\(x_0, x_2\)</span>，且为<span class="arithmatex">\(3\)</span>次多项式，故猜测<span class="arithmatex">\(h_1(x) = (Ax + B)(x - x_0)(x - x_2)\)</span><br />
+·利用<span class="arithmatex">\(h_1(x_1) = 1, h_1'(x_1) = 0\)</span>，解得<span class="arithmatex">\(A, B\)</span>。<br />
+（5）考虑<span class="arithmatex">\(\hat{h}_1(x)\)</span><br />
+·<span class="arithmatex">\(\hat{h}_1(x)\)</span>有根<span class="arithmatex">\(x_0, x_1, x_2\)</span>，故<span class="arithmatex">\(\hat{h}_1(x) = C_1(x - x_0)(x - x_1)(x - x_2)\)</span><br />
+·利用<span class="arithmatex">\(\hat{h}'(x_1) = 1\)</span>，解得<span class="arithmatex">\(C_1\)</span>。<br />
+（6）误差公式<br />
+<span class="arithmatex">\(R_3(x) = f(x) - P_3(x) = K(x)(x - x_0)(x - x_1)^2(x - x_2)\newline K(x) = \frac{f^{(4)}(\xi_x)}{4!}\)</span><br />
+3.一般形式的<code>Hermite</code>多项式<br />
+（1）给定<span class="arithmatex">\(x_0, \cdots, x_n,y_0, \cdots, y_n, y_0', \cdots, y_n'\)</span>，则<code>Hermite</code>多项式<span class="arithmatex">\(H_{2n+1}(x)\)</span>满足<span class="arithmatex">\(H_{2n+1}(x_i) = y_i, H'_{2n+1}(x_i) = y_i'\)</span><br />
+（2）<code>Hermite</code>多项式的构造<br />
+·构造<span class="arithmatex">\(H_{2n+1}(x) = \Sigma_{i = 0}^ny_ih_i(x) + \Sigma_{i = 0}^ny_i'\hat{h}_i(x)\)</span><br />
+·<span class="arithmatex">\(h_i(x_j) = \delta_{ij}, h_i'(x_j) = 0, \hat{h}_i(x_j) = 0, \hat{h}_i'(x_j) = \delta_{ij}\)</span><br />
+·针对<span class="arithmatex">\(h_i(x)\)</span>，<span class="arithmatex">\(x_0,\cdot\)</span>, <strong>由于<span class="arithmatex">\(x_{i - 1}, x_{i + 1}, \cdots, x_n\)</span>都是二重根</strong>，故构造<span class="arithmatex">\(h_i(x) = (A_i x + B_i)L_{n,i}^2(x)\)</span>，其中<span class="arithmatex">\(L_{n, i} = \Pi_{j \ne i}\frac{(x - x_j)}{(x_i - x_j)}\)</span><br />
+·根据<span class="arithmatex">\(h_i(x_i) = 1, h_i'(x_i) = 0\)</span>，解得<span class="arithmatex">\(A_i, B_i\)</span><br />
+·<strong>结论</strong>：<span class="arithmatex">\(h_i(x) = [1 - 2 L_{n, i}'(x_i)(x - x_i)]L_{n, i}^2(x)\)</span><br />
+·针对<span class="arithmatex">\(\hat{h}_i(x)\)</span>，<strong>由于<span class="arithmatex">\(x_0, \cdots, x_{i - 1}, x_{i + 1},\cdots, x_n\)</span>均为二重根</strong>，故<span class="arithmatex">\(\hat{h}_i(x) = C_i(x - x_i)L_{n, i}^2(x)\)</span><br />
+·利用<span class="arithmatex">\(\hat{h}_i(x_i) = 1\)</span>，解得<span class="arithmatex">\(C_i = 1\)</span><br />
+·<strong>结论</strong>：<span class="arithmatex">\(\hat{h}_i(x) = (x - x_i)L_{n, i}^2(x)\)</span><br />
+·余项：若<span class="arithmatex">\(a = x_0 \lt x_1 \lt \cdots x_n = b, f \in C^{2n}[a, b]\)</span>，则<span class="arithmatex">\(R_n(x) = \frac{f^{(2n+2)}(\xi_x)}{(2n+2)!}[\Pi_{i = 0}^n(x - x_i)]^2\)</span><br />
+【例】给定<span class="arithmatex">\(x_i = i+1, i = 0, 1, 2, 3, 4, 5\)</span>，问：<span class="arithmatex">\(\hat{h}_2(x)\)</span>是哪一个？</p>
+<p>【解答】第二个，原因是<span class="arithmatex">\(x_2 = 3\)</span>处导数为<span class="arithmatex">\(1\)</span>。  </p>
+<h5 id="_38">四、三次样条插值</h5>
+<p>【例】考虑使用拉格朗日多项式<span class="arithmatex">\(p_n(x)\)</span>对<span class="arithmatex">\(f(x) = \frac{1}{1 + x^2}, x \in [-5, 5]\)</span>进行插值，令<span class="arithmatex">\(x_i = -5 + \frac{10i}{n}, i = 0, 1, \cdots, n\)</span>  </p>
+<p>【思考】<br />
+（1）问题：<strong><span class="arithmatex">\(n\)</span>较大时，拟合函数产生振荡</strong>，即<span class="arithmatex">\(P_n(x) \rightarrow f(x)\)</span>并不成立。<br />
+（2）解决方案：<br />
+·需要<strong>控制插值多项式的阶数</strong>，<strong>避免阶数过高</strong>产生<strong>振荡</strong>现象。<br />
+·针对<strong>每一组相邻点</strong>，分别构造一个<strong>低阶多项式</strong>进行拟合。  </p>
+<p>1.<strong>分片(<code>piecewise</code>)线性插值</strong><br />
+（1）基本思想：对于每个子区间<span class="arithmatex">\([x_i, x_{i+1}]\)</span>，分别使用不同的线性多项式对<span class="arithmatex">\(f(x)\)</span>进行拟合。<br />
+<span class="arithmatex">\(f(x) \approx P_1(x) = \frac{x - x_{i+1}}{x_i - x_{i+1}}y_i + \frac{x - x_i}{x_{i+1} - x_i}y_{i+1}, x\in[x_i, x_{i+1}]\)</span><br />
+（2）收敛性<br />
+令<span class="arithmatex">\(h = max|x_{i+1} - x_i|\)</span>，则<span class="arithmatex">\(P_1^h(x) \rightarrow f(x), h \rightarrow 0\)</span>
+（3）问题
+·<strong>近似函数不连续</strong>。<br />
+·所需<strong>点数很多，计算开销巨大</strong>。<br />
+2.<code>Hermite</code><strong>分片多项式插值</strong><br />
+（1）已知条件<br />
+针对点<span class="arithmatex">\(x_0, \cdots, x_n\)</span>，给定<strong>各点函数值</strong><span class="arithmatex">\(y_0, \cdots, y_n\)</span>以及<strong>各点导数值</strong><span class="arithmatex">\(y_0', \cdots, y_n'\)</span>。<br />
+（2）<span class="arithmatex">\(3\)</span>阶<code>Hermite</code>多项式构造<br />
+给定区间<span class="arithmatex">\([x_i, x_{i+1}]\)</span>两端的函数值及其导数值，<strong>可根据<span class="arithmatex">\(4\)</span>个已知条件，构造<span class="arithmatex">\(3\)</span>阶<code>Hermite</code>插值多项式</strong>。<br />
+（3）问题<br />
+·<strong>不容易获得函数的导数值</strong>。<br />
+3.<strong>三次样条插值的基本思想</strong><br />
+在对函数<span class="arithmatex">\(f\)</span><strong>已知条件有限</strong>的情况下，获得函数<span class="arithmatex">\(f\)</span>的<strong>平滑近似</strong>。<br />
+4.【定义】三次样条插值体<br />
+给定区间<span class="arithmatex">\([a, b]\)</span>上的一个函数<span class="arithmatex">\(f\)</span>，以及一系列有序点<span class="arithmatex">\(a = x_0 \lt x_1, \lt \cdots \lt x_n = b\)</span>，函数<span class="arithmatex">\(f\)</span>的一个<strong>三次样条插值体</strong><span class="arithmatex">\(S\)</span>是一个满足如下条件的函数：<br />
+（1）<strong>分段插值函数</strong><br />
+<span class="arithmatex">\(S(x)\)</span>是一个由三次多项式组成的分段函数，在<span class="arithmatex">\([x_i, x_{i+1}]\)</span>上的分段函数记为<span class="arithmatex">\(s_i(x), i = 0, 1, \cdots, n - 1\)</span>。<br />
+（2）<strong>各插值点函数值等于原函数值</strong><br />
+<span class="arithmatex">\(S(x_i) = f(x_i), i = 0, 1, \cdots, n\)</span><br />
+（3）<strong>相邻分段函数连接点</strong>的<strong>函数值相等</strong><br />
+<span class="arithmatex">\(S_{i + 1}(x_{i + 1}) = S_i(x_{i + 1}), i = 0, 1, \cdots, n - 2\)</span><br />
+（4）<strong>相邻分段函数连接点</strong>的<strong>导数值相等</strong><br />
+<span class="arithmatex">\(S_{i+1}'(x_{i + 1}) = S_i'(x_{i+1})\)</span><br />
+（5）<strong>相邻分段函数连接点</strong>的<strong>二阶导数值相等</strong><br />
+<span class="arithmatex">\(S_{i + 1}''(x_{i + 1}) = S_{i}''(x_{i+1}), i = 0, 1, \cdots, n - 2\)</span><br />
+5.<strong>三次样条求解——弯矩(<code>bending moment</code>)方法</strong><br />
+（1）<strong>数学定义</strong><br />
+令<span class="arithmatex">\(h_j = x_j - x_{j - 1}\)</span>，<span class="arithmatex">\(S(x) = S_j(x), x \in [x_{j - 1}, x_j]\)</span>，其中<span class="arithmatex">\(S_j(x)\)</span>是<strong>三次多项式</strong>。<br />
+（2）<strong>分段三次插值多项式二阶导数的确定</strong><br />
+①注意到<span class="arithmatex">\(S_j''(x)\)</span>是<strong>一阶多项式</strong>，因此<strong>可由两点的取值进行确定</strong>。<br />
+②给定<strong>两个插值端点的二阶导数值</strong><span class="arithmatex">\(S_j''(x_{j - 1}) = M_{j - 1}, S_j''(x_j) = M_j\)</span>，则<span class="arithmatex">\(\forall x \in [x_{j - 1}, x_j]\)</span>，其三次样条多项式的二阶导数可以<strong>线性确定</strong>：<br />
+<span class="arithmatex">\(S_j''(x) = M_{j - 1}\frac{x_j - x}{h_j} + M_j \frac{x - x_{j - 1}}{h_j}\)</span><br />
+③针对<strong>二阶线性导函数</strong><span class="arithmatex">\(S_j''(x)\)</span>作<strong>两次积分</strong>，可分别<strong>获得<span class="arithmatex">\(S_j'(x), S_j(x)\)</span></strong>：<br />
+<span class="arithmatex">\(S_j'(x) = -M_{j - 1}\frac{(x_i - x)^2}{2h_j} + m_{j} \frac{(x - x_{j - 1})^2}{2h_j} + A_j\)</span><br />
+<span class="arithmatex">\(S_j(x) = M_{j - 1}\frac{(x_j - x)^3}{6h_j} + M_j\frac{(x - x_{j - 1})^3}{6h_j} + A_jx + B_j\)</span><br />
+（3）<strong>积分式中常数项的获得</strong><br />
+·<strong>一阶导数表达式的常数项——可利用两点的函数值、二阶导数值求解：</strong><span class="arithmatex">\(A_j = \frac{y_j - y_{j - 1}}{h_j} - \frac{M_j - M_{j - 1}}{6}h_j\)</span><br />
+·<strong>插值多项式中的常数项——同样可利用两点的函数值、二阶导数值求解：</strong><span class="arithmatex">\(A_jx + B_j = (y_{j - 1} - \frac{M_{j - 1}}{6}h^2_j)\frac{x_j - x}{h_j} + (y_i - \frac{M_j}{6}h_j^2)\frac{x - x_{j - 1}}{h_j}\)</span><br />
+（4）<strong>端点二阶导数<span class="arithmatex">\(M_j\)</span>的求解</strong>
+·求解思想：根据<strong>相邻插值区间连接点导数值相等</strong>的条件，构造<strong>关于<span class="arithmatex">\(M_{j - 1}, M_j, M_{j + 1}\)</span>的线性方程组</strong>。  <br />
+①注意到，<span class="arithmatex">\(S(x)\)</span>在点<span class="arithmatex">\(x_j\)</span>处连续，将（3）中一次项系数<span class="arithmatex">\(A_j, A_{j + 1}\)</span>的表达式代入<span class="arithmatex">\(S'_j(x), S_{j+1}'(x)\)</span>。<br />
+②在<span class="arithmatex">\([x_{j - 1}, x_j]\)</span>处有：<br />
+<span class="arithmatex">\(S_j'(x) = -M_{j - 1}\frac{(x_j - x)^2}{2h_j} + M_j\frac{(x - x_{j - 1})^2}{2h_j} + f[x_{j - 1}, x_j] - \frac{M_j - M_{j - 1}}{6}h_j\)</span><br />
+③在<span class="arithmatex">\([x_j, x_{j+1}]\)</span>区间上有：<span class="arithmatex">\(S_{j+1}'(x) = -M_{j }\frac{(x_{j+1} - x)^2}{2h_{j+1}} + M_{j+1}\frac{(x - x_{j})^2}{2h_{j+1}} + f[x_{j}, x_{j+1}] - \frac{M_{j+1} - M_{j}}{6}h_{j+1}\)</span><br />
+④利用<span class="arithmatex">\(S_j'(x_j) = S_{j+1}'(x_j)\)</span>，<strong>形成关于<span class="arithmatex">\(M_{j - 1}, M_j, M_{j+1}\)</span>的线性方程组</strong>，可求解<span class="arithmatex">\(M_{j - 1}, M_j, M_{j+1}\)</span>。<br />
+（5）<strong>整理与矩阵化</strong><br />
+①令<span class="arithmatex">\(\lambda_j = \frac{h_{j + 1}}{h_j + h_{j + 1}}, \mu_j = 1 - \lambda_j, g_j = \frac{6}{h_j + h_{j+1}}(f[x_j, x_{j+1}] - f[x_{j - 1}, x_j])\)</span><br />
+②上述方程组化为：<br />
+<span class="arithmatex">\(\mu_j M_{j - 1} + 2M_j + \lambda_j M_{j+1} = g_j, 1 \le j \le n - 1\)</span><br />
+③由此：获得了<strong>关于<span class="arithmatex">\(n+1\)</span>个未知量<span class="arithmatex">\(M_0, \cdots, M_n\)</span>的<span class="arithmatex">\(n - 1\)</span>个方程</strong>。<br />
+（6）钳制边界(<code>clamped boundary</code>)<br />
+[理解]钳制边界条件，即对一组插值点<span class="arithmatex">\(\{x_0, \cdots, x_n\}\)</span>的<strong>左端点</strong><span class="arithmatex">\(x_0\)</span>、<strong>右端点</strong><span class="arithmatex">\(x_n\)</span>作出了<strong>导数值限制</strong>。<br />
+①<strong>钳制边界条件：<span class="arithmatex">\(S'(a) = y_0', S'(b) = y_n'\)</span></strong><br />
+②对于区间<span class="arithmatex">\([a, x_1]\)</span>，可写出<strong>一阶导函数表达式</strong>：<br />
+<span class="arithmatex">\(S_1'(x) = -M_0\frac{(x_1 - x)^2}{2h_1} + M_1\frac{(x - a)^2}{2h_1} + f[x_0, x_1] - \frac{M_1 - M_0}{6}h_1\)</span><br />
+③对于区间<span class="arithmatex">\([x_{n - 1}, b]\)</span>，可获得类似表达式。<br />
+④方程组
+<span class="arithmatex">\(2M_0 + M_1 = \frac{6}{h_1}(f[x_0, x_1] - y_0') = g_0\)</span><br />
+<span class="arithmatex">\(M_{n - 1} + 2M_n = \frac{6}{h_n}(y_n' - f[x_{n - 1}, x_n]) = g_n\)</span><br />
+⑤另一种情形是，<strong>直接给定左、右端点的二阶导数值<span class="arithmatex">\(M_0, M_n\)</span></strong>，即：<br />
+<span class="arithmatex">\(S''(a) = y_0'' = M_0, S''(b) = y_n'' = M_n\)</span><br />
+此时：<span class="arithmatex">\(\lambda_0 = 0, g_0 = 2y_0'', \mu_n = 0, g_n = 2y_n
+''\)</span><br />
+（7）一些特殊情况<br />
+①<strong>左、右端点二阶导数值为<span class="arithmatex">\(0\)</span></strong>：<span class="arithmatex">\(M_0 = M_n = 0\)</span>——<strong>自由边界、自然样条</strong>。<br />
+②周期性边界<br />
+<span class="arithmatex">\(y_n = y_0, S'(a^+) = S'(b^-)\)</span>，此时<span class="arithmatex">\(M_0 = M_n\)</span>。<br />
+[注]<br />
+（1）若<strong>参数矩阵严格对角占优</strong>，则<strong>三次样条</strong>可通过<strong>边界条件</strong>进行唯一确定。<br />
+（2）若<span class="arithmatex">\(f\in C[a, b], \frac{max \space h_i}{min \space h_i} \le C \lt \infty\)</span>，则<span class="arithmatex">\(S(x) \rightarrow f(x), h_i \rightarrow 0\)</span>（一致收敛）。<br />
+5.算法步骤<br />
+（1）计算<span class="arithmatex">\(\mu_j, \lambda_j, g_j\)</span><br />
+（2）求解<span class="arithmatex">\(M_j\)</span><br />
+（3）寻找包含<span class="arithmatex">\(x\)</span>的区间<br />
+（4）用<span class="arithmatex">\(S_j(x)\)</span>近似函数<span class="arithmatex">\(f(x)\)</span>  </p>
+<h4 id="_39">数值分析 第九讲</h4>
+<h5 id="_40">一、近似理论简介</h5>
+<p>1.基本定义<br />
+（1）给定若干个点<span class="arithmatex">\(x_1, \cdots, x_m\)</span>及其函数值<span class="arithmatex">\(y_1, \cdots, y_m\)</span>，求一个<strong>形式较为简单</strong>的函数<span class="arithmatex">\(P(x)\)</span>，使得<span class="arithmatex">\(P(x) \approx f(x)\)</span>。<br />
+（2）注意事项<br />
+·<span class="arithmatex">\(m\)</span>足够大。<br />
+·<span class="arithmatex">\(y_i\)</span>是实验数据，存在一定误差，因此<span class="arithmatex">\(y_i \neq f(x_i)\)</span>。<br />
+（3）目标：寻找一个最佳拟合函数<span class="arithmatex">\(P(x)\)</span>，使得<span class="arithmatex">\(D[P(x_i), y_i]\)</span>最小化，<span class="arithmatex">\(D\)</span>表示<strong>各点近似值与真实值的偏差</strong>，按照实际需求，有下列不同的分类。<br />
+2.<strong>近似问题分类</strong><br />
+（1）<code>min-max</code>问题——对<strong>最大偏差</strong>进行<strong>最小化</strong>
+<span class="arithmatex">\(min \space max_{1 \le i \le m}|P(x_i) - y_i|\)</span><br />
+（2）<strong>绝对值和偏差</strong>
+<span class="arithmatex">\(min \space \sum_{i = 1}^m|P(x_i) - y_i|\)</span>
+（3）<strong>平方和偏差</strong><br />
+<span class="arithmatex">\(min \space \sum_{i = 1}^m[P_n(x_i) - y_i]^2\)</span>  </p>
+<h5 id="_41">二、离散最小二乘近似</h5>
+<p>1.<strong>基本定义</strong><br />
+根据给定点<span class="arithmatex">\((x_i, y_i), i = 1, 2, \cdots, m\)</span>，构造多项式函数<span class="arithmatex">\(P_n(x) = a_0 + a_1x + \cdots + a_nx^n\)</span>，以<strong>最小化平方和误差</strong>：<br />
+<span class="arithmatex">\(E_2 = \sum_{i = 1}^m[P_n(x_i) - y_i]^2\)</span><br />
+其中：<span class="arithmatex">\(n \lt \lt m\)</span><br />
+[注]若方程数<span class="arithmatex">\(\gt\)</span>变量数，则该情况称为<code>over-determined</code>。<br />
+2.推导过程<br />
+（1）误差函数展开式<br />
+·<span class="arithmatex">\(E_2(a_0, \cdots, a_n) = \sum_{i = 1}^m[a_0 + a_1x_1+\cdots + a_nx^n - y_i]^2\)</span><br />
+（2）<strong>极小值的必要条件</strong>（<strong>针对系数<span class="arithmatex">\(a_0, \cdots, a_k\)</span>求偏导</strong>，<strong>各偏导均为<span class="arithmatex">\(0\)</span></strong>）<br />
+<span class="arithmatex">\(\frac{\partial E_2}{\partial a_k} = 0, k = 0, 1, \cdots, n\)</span>（注：<span class="arithmatex">\(n+1\)</span>个方程，对应于<span class="arithmatex">\(n+1\)</span>个系数）<br />
+（3）<strong>求展开式关于各系数的偏导</strong>（<strong>链式法则</strong>，首次求导以方括号中式子为主元/整体）<br />
+<span class="arithmatex">\(0 = \frac{\partial E_2}{\partial a_k} = 2 \sum_{i = 1}^m[P_n(x_i) - y_i] \frac{\partial P_n(x_i)}{\partial a_{k}} = 2 \sum_{i = 1}^{m}[P_n(x_i) - y_i]x_i^k = 2 \sum_{i = 1}^{m}[\sum_{j = 0}^na_j x_i^j - y_i]x_i^k\)</span>
+（4）<strong>提取常量、变量（利用有穷求和可以交换顺序的性质）</strong><br />
+<span class="arithmatex">\(0 = 2 \sum_{i = 1}^{m}[\sum_{j = 0}^na_j x_i^j - y_i]x_i^k = 2\{\sum_{j = 0}^n a_j [\sum_{i = 1}^mx_i^{j+k}] - \sum_{i = 1}^my_ix_i^k\}\)</span><br />
+（5）合并为<strong>矩阵/线性方程组</strong>形式<br />
+令<span class="arithmatex">\(b_k = \sum_{i = 1}^mx_i^k, c_k = \sum_{i = 1}^my_ix_i^k\)</span>，并以<span class="arithmatex">\(n+1\)</span>个系数<span class="arithmatex">\(a_0, \cdots, a_k\)</span>为变元，则上述方程组化为：<br />
+<span class="arithmatex">\([b_{i+j}]_{n+1}\vec{a} = \vec{c}\)</span><br />
+其中<span class="arithmatex">\(\vec{a} = [a_0, a_1, \cdots, a_n]^T\)</span>即为待求解近似多项式<span class="arithmatex">\(P_n(x)\)</span>的系数组成的向量，矩阵<span class="arithmatex">\([b_{i+j}]_{n+1}\)</span>的第<span class="arithmatex">\((i,j)\)</span>个元素是<span class="arithmatex">\(b_{i+j}\)</span>。<br />
+该方程组称为<strong>正则化方程组</strong>。<br />
+[注]<br />
+·若<strong>各<span class="arithmatex">\(x_i\)</span>互不相同，则方程组有唯一解</strong>。<br />
+·若<span class="arithmatex">\(n&gt;m\)</span>，则方程组奇异。<br />
+3.注意事项<br />
+（1）给定<span class="arithmatex">\(m\)</span>个已知条件，用户可以在范围<span class="arithmatex">\([0, m - 1]\)</span>中选取<span class="arithmatex">\(P_n(x)\)</span>的阶数<span class="arithmatex">\(n\)</span>（即：不超过已知条件数<span class="arithmatex">\(-1\)</span>）。<br />
+（2）若<span class="arithmatex">\(n = m - 1\)</span>，则<span class="arithmatex">\(P_n(x)\)</span>为<strong>拉格朗日多项式</strong>，且<strong>平方和误差为<span class="arithmatex">\(0\)</span></strong>。<br />
+（3）实际上，<span class="arithmatex">\(P_n(x)\)</span><strong>不必是多项式函数形式</strong>，还<strong>可以是其他函数形式</strong>。<br />
+【例1】曲线拟合<br />
+【解答】<br />
+[方法一]分式函数线性化  <br />
+（1）拟合函数原始形式<br />
+<span class="arithmatex">\(y \approx P(x) = \frac{x}{ax + b}\)</span><br />
+（2）拟合目标<br />
+寻求参数<span class="arithmatex">\(a, b\)</span>使得<span class="arithmatex">\(E_2(a, b) = \sum_{i = 1}^m(\frac{x_i}{ax_i + b} - y_i)^2\)</span>最小化。<br />
+（3）<strong>【方法】分式函数线性化</strong><br />
+注意上述拟合函数<strong>不是线性形式</strong>，<strong>作代换<span class="arithmatex">\(Y = \frac{1}{y}, X = \frac{1}{x}\)</span>，以使拟合函数线性化。此时，原问题转化为线性问题<span class="arithmatex">\(Y = a+bX\)</span>。</strong><br />
+[方法二]指数函数线性化<br />
+（1）拟合函数原始形式<br />
+<span class="arithmatex">\(y \approx P(x) = a e^{-\frac{b}{x}}\)</span><br />
+（2）<strong>【方法】指数函数线性化</strong><br />
+上式两边同时取对数得：<span class="arithmatex">\(lny = lna - \frac{b}{x}\)</span><br />
+作代换<span class="arithmatex">\(Y = lny, X = \frac{1}{x}, A = lna, B = -b\)</span>，原问题转化为线性问题：
+<span class="arithmatex">\(Y \approx A + BX\)</span>。<br />
+（3）解决线性问题后，进行回代：<br />
+<span class="arithmatex">\(a = e^A, b = -B, P(x) = ae^{-\frac{b}{x}}\)</span>  </p>
+<h5 id="_42">二、正交多项式与最小平方近似</h5>
+<p>1.<strong>基本定义</strong><br />
+（1）<strong>离散形式</strong><br />
+给定若干点<span class="arithmatex">\(x_1, \cdots, c_m\)</span>及函数值<span class="arithmatex">\(y_1, \cdots, y_m\)</span>，求一个简单函数<span class="arithmatex">\(P(x)\approx f(x)\)</span>，使得<strong>平方和误差<span class="arithmatex">\(E = \sum_{i = 1}^m[P(x_i) - y_i]^2\)</span>最小化</strong>。<br />
+（2）<strong>连续形式</strong>（<strong>假设：各点误差权重相等</strong>）<br />
+<span class="arithmatex">\(E = \int_a^b[P(x)  - f(x)]^2dx\)</span><br />
+2.[定义1]<strong>线性无关函数</strong><br />
+给定函数集合<span class="arithmatex">\(\{\phi_0(x), \phi_1(x), \cdots, \phi_n(x)\}\)</span>，若<span class="arithmatex">\(a_0\phi_0(x) + a_0\phi_n(x) = 0\)</span>成立时，恒有<span class="arithmatex">\(a_0 = a_1 = \cdots = a_n = 0\)</span>，则称这一组函数是<strong>线性无关</strong>的；否则，称这一组函数<strong>线性相关</strong>。<br />
+3.[定理1]<strong>不同阶多项式的线性无关属性</strong><br />
+若<span class="arithmatex">\(\phi_j(x)\)</span>是<span class="arithmatex">\(j\)</span>阶多项式，<span class="arithmatex">\(j = 0, 1, \cdots, n\)</span>，则<span class="arithmatex">\(\{\phi_0(x), \phi_1(x), \cdots, \phi_n(x)\}\)</span>在<strong>任意区间<span class="arithmatex">\([a, b]\)</span>上都是线性无关的</strong>。<br />
+[证明]<br />
+①若上述多项式<strong>线性相关</strong>，则存在一组<strong>不全为<span class="arithmatex">\(0\)</span>的系数</strong><span class="arithmatex">\(a_0, \cdots, a_n\)</span>，使得<span class="arithmatex">\(P(x) = a_0 \phi_0(x) + \cdots + a_n \phi_n(x) = 0,\forall x \in[a, b]\)</span>。<br />
+注意：上述等式在<strong>区间<span class="arithmatex">\([a, b]\)</span>上</strong>是<strong>恒成立</strong>的。<br />
+②故<span class="arithmatex">\(P(x)\)</span>是<strong>零多项式</strong>，即<strong>各个系数全部为<span class="arithmatex">\(0\)</span></strong>，说明如下：<br />
+首先<span class="arithmatex">\(x^n\)</span>的系数<span class="arithmatex">\(a_n = 0\)</span><br />
+故<span class="arithmatex">\(P(x) = a_0 \phi_0(x) + \cdots + a_{n - 1}\phi_{n - 1}(x) = 0\)</span>恒成立
+按上述递推方法，可得<span class="arithmatex">\(a_0 = \cdots = a_n = 0\)</span>，故<span class="arithmatex">\(P(x)\)</span>为<strong>零多项式</strong>，与<span class="arithmatex">\(a_0, \cdots, a_n\)</span>不全为0<strong>矛盾</strong>。<br />
+③因此这一组多项式必定<strong>线性无关</strong>。<br />
+4.[定理2]<strong>阶数有限多项式的唯一线性组合</strong><br />
+设<span class="arithmatex">\(\Pi_n\)</span>是<strong>所有不超过<span class="arithmatex">\(n\)</span>阶的多项式构成的集合</strong>。若<span class="arithmatex">\(n+1\)</span>个多项式<span class="arithmatex">\(\{\phi_0(x), \phi_1(x), \cdots, \phi_n(x)\}\)</span>是<span class="arithmatex">\(\Pi_n\)</span>中一组<strong>线性无关多项式</strong>，则<span class="arithmatex">\(\Pi_n\)</span>中<strong>任何</strong>多项式都可以<strong>唯一</strong>写成<span class="arithmatex">\(\phi_0(x), \phi_1(x), \cdots, \phi_n(x)\)</span>的线性组合。<br />
+5.[定义2]<strong>生成多项式</strong><br />
+对于一组<strong>线性无关函数</strong><span class="arithmatex">\(\{\phi_0(x), \phi_1(x), \cdots, \phi_n(x)\}\)</span>，称它们的一个<strong>线性组合</strong><span class="arithmatex">\(P(x) = \sum_{j = 0}^n \alpha_j \phi_j(x)\)</span>为一个<strong>生成多项式</strong>。<br />
+[注]<strong>广义的生成多项式</strong><br />
+（1）<strong>三角多项式</strong><br />
+由<span class="arithmatex">\(\{\phi_j(x) = cosjx\}, \{\psi_j(x) = sinjx\}\)</span>生成。<br />
+（2）<strong>指数多项式</strong><br />
+由<strong>若干指数多项式</strong><span class="arithmatex">\(\{\phi_j(x) = e^{k_jx}, k_i \ne k_j\}\)</span>生成。<br />
+6.<strong>正交多项式线性组合</strong>的目的：尽量<strong>近似原始函数</strong>。<br />
+7.[定义3]<strong>带权重的误差函数</strong><br />
+（1）<strong>离散</strong>形式<br />
+<span class="arithmatex">\(E = \sum w_i[P(x_i) - y_i]^2\)</span><br />
+（2）<strong>连续</strong>形式<br />
+<span class="arithmatex">\(E = \int_a^b w(x)[P(x) - f(x)]^2dx\)</span><br />
+8.[定义4]<strong>一般形式的最小平方近似问题</strong><br />
+（1）<strong>离散</strong>形式<br />
+<span class="arithmatex">\(min \space E = \sum w_i[P(x_i) - y_i]^2\)</span><br />
+（2）<strong>连续</strong>形式<br />
+<span class="arithmatex">\(min \space E = \int_a^b w(x)[P(x) - f(x)]^2dx\)</span>  </p>
+<h5 id="_43">三、最小平方近似算法</h5>
+<p>1.【定义5】<strong>函数内积与函数范数</strong><br />
+·函数内积的<strong>离散</strong>形式（<strong>各点函数值乘积的带权和</strong>）<br />
+<span class="arithmatex">\((f, g) = \sum_{i = 1}^mw_if(x_i)g(x_i)\)</span><br />
+·函数内积的<strong>连续</strong>形式<br />
+<span class="arithmatex">\(\int_a^bw(x)f(x)g(x)dx\)</span><br />
+·<strong>函数自身的内积</strong><span class="arithmatex">\(||f|| = \sqrt{(f, f)}\)</span><strong>满足范式定义</strong>。<br />
+2.【定义6】<strong>正交函数</strong><br />
+若函数<span class="arithmatex">\(f, g\)</span>的内积<span class="arithmatex">\((f, g) = 0\)</span>，称函数<span class="arithmatex">\(f, g\)</span><strong>正交</strong>。<br />
+3.最小平方近似问题——<strong>函数内积形式</strong><br />
+寻找一个生成多项式<span class="arithmatex">\(P(x)\)</span>，使得<strong>误差内积<span class="arithmatex">\(E = (P - y, P - y) = ||P - y||^2\)</span>最小化</strong>。<br />
+4.<strong>最小平方近似</strong>问题——使用<strong>函数内积</strong>形式进行<strong>矩阵化表达</strong><br />
+[注]对<strong>离散、连续形式</strong>的表达进行了<strong>统一</strong>。<br />
+（1）<strong>假设</strong><br />
+给定一组<strong>基函数</strong><span class="arithmatex">\(\phi_0(x), \cdots, \phi_n(x)\)</span>，它们的<strong>生成多项式</strong>为<span class="arithmatex">\(P(x) = a_0\phi_0(x) + \cdots + a_n\phi_n(x)\)</span>。<br />
+（2）推导过程<br />
+·根据<span class="arithmatex">\(E = (P - y, P - y) = ||P - y||^2\)</span>的误差函数形式:<br />
+<span class="arithmatex">\(E = \int_a^b w(x)[\sum_{i = 1}^na_i\phi_i(x) - f(x)]^2dx\)</span><br />
+·对<span class="arithmatex">\(a_k\)</span>求导得：<br />
+<span class="arithmatex">\(\frac{\partial E}{\partial a_k} = \int_a^b2w(x)[\sum_{i = 1}^na_i\phi_i(x) - f(x)]\phi_k(x)dx = 0\)</span><br />
+·<strong>注意到<span class="arithmatex">\(a, b\)</span>是可以变化的，因此被积函数应恒为<span class="arithmatex">\(0\)</span></strong>。<br />
+·上式整理得：<br />
+<span class="arithmatex">\(\sum_{j = 0}^n(\phi_k, \phi_j)a_j = (\phi_k, f)\)</span><br />
+·矩阵化：令<span class="arithmatex">\(b_{ij} = (\phi_i, \phi_j), \vec{c} = [(\phi_o, f), \cdots, (\phi_n, f)]^T\)</span>，可得正则化方程组：<br />
+<span class="arithmatex">\([b_{ij}]_{n+1}\vec{a} = \vec{c}\)</span><br />
+【例2】给定<span class="arithmatex">\(f(1) = 4, f(2) = 10, f(3) = 18, f(4) = 26\)</span>，利用<span class="arithmatex">\(y = a_0 + a_1x + a_2x^2, w(x) = 1\)</span>，进行函数近似。<br />
+【解答】<br />
+（1）使用形式最简单的函数<span class="arithmatex">\(\phi_0(x) = 1, \phi_1(x) = x, \phi_2(x) = x^2\)</span>作为基函数。<br />
+（2）计算矩阵<span class="arithmatex">\([b_{ij}]_{n+1}\)</span>中各元素数值，其中<span class="arithmatex">\(b_{ij} = (\phi_i, \phi_j)\)</span>（函数内积：采用离散形式）。<br />
+<span class="arithmatex">\((\phi_0, \phi_2) = \sum_{i = 1}^4 1 \cdot x_i^2 = 30\)</span>，其余元素计算与之类似。<br />
+（3）计算<span class="arithmatex">\(\vec{c}\)</span>，其中<span class="arithmatex">\(c_i = (\phi_i, y) = \sum_{j = 1}^4 \phi_i(x_j)\cdot f(x_j)\)</span>。<br />
+（4）解线性方程组<span class="arithmatex">\([b_{ij}]_{n+1}\vec{a} = \vec{c}\)</span>，即得多项式<span class="arithmatex">\(P(x)\)</span>中各待求系数。<br />
+【例3】<strong>特殊近似条件下正交多项式近似失效问题</strong><br />
+（1）利用<span class="arithmatex">\(\phi_j(x) = x^j, w(x) = 1\)</span>近似<span class="arithmatex">\(f(x)\in C[0, 1]\)</span>，则<span class="arithmatex">\((\phi_i, \phi_j) = \int_0^1x^ix^jdx = \frac{1}{i+j+1}\)</span>。<br />
+（2）上式说明：在<strong>特殊区间</strong>内，两个函数<span class="arithmatex">\(\phi_i(x), \phi_j(x)\)</span>之间是<strong>非正交</strong>的。<br />
+（3）改进想法：<strong>寻找一组线性无关函数</strong>，且这些函数之间<strong>两两正交</strong>。<br />
+（4）改进效果：对<span class="arithmatex">\(a_k\)</span>的形式进行了简化。<br />
+4.两两正交的正交函数组——系数求解公式<br />
+·对于一般的正交函数组，有：<br />
+<span class="arithmatex">\(\sum_{j = 0}^n(\phi_k, \phi_j)a_j = (\phi_k, f)\)</span><br />
+·对于两两正交的正交函数组：<br />
+<span class="arithmatex">\(a_k = \frac{(\phi_k, f)}{(\phi_k, \phi_k)}\)</span>。<br />
+[理解]如果一组基函数满足两两正交，则最小平方和误差对应的系数<span class="arithmatex">\(a_0, \cdots, a_n\)</span>不必再通过线性方程组求解，而是可以利用函数内积直接求解。这是一个非常简洁、优美的性质。  </p>
+<h4 id="_44">数值分析 第十讲</h4>
+<p>[注]本笔记中，函数内积符号<span class="arithmatex">\((T_n, T_m)\)</span>已经<strong>包含误差权重函数</strong><span class="arithmatex">\(w(x)\)</span>，只是没有显式说明。  </p>
+<h5 id="_45">一、近似理论</h5>
+<p>1.【定理1】<strong>正交多项式 </strong>——关于<strong>误差权重函数</strong><span class="arithmatex">\(w(x)\)</span>的<strong>正交多项式构造方法</strong><br />
+按照下列方法定义的插值多项式组<span class="arithmatex">\(\{\phi_0(x), \phi_1(x), \cdots, \phi_n(x)\}\)</span>，在区间<span class="arithmatex">\([a, b]\)</span>上关于误差权重函数<span class="arithmatex">\(w(x)\)</span>正交。<br />
+<span class="arithmatex">\(\phi_0(x) = 1\)</span>
+<span class="arithmatex">\(\phi_1(x) = x - B_1\)</span>
+<span class="arithmatex">\(\phi_k(x) = (x - B_k)\phi_{k - 1}(x) - C_k \phi_{k - 1}(x)\)</span><br />
+其中系数为：<br />
+<span class="arithmatex">\(B_k = \frac{(x\phi_{k - 1}, \phi_{k - 1})}{(\phi_{k - 1}, \phi_{k - 1})}\)</span><br />
+<span class="arithmatex">\(C_k = \frac{(x\phi_{k - 1}, \phi_{k - 2})}{(\phi_{k - 2}, \phi_{k - 2})}\)</span>
+[注]<br />
+（1）上述“函数内积”，在给定有限个点的情况下，应该是<strong>离散内积</strong>！<br />
+（2）上述函数内积是一般形式的内积，包含<strong>权重函数</strong><span class="arithmatex">\(w(x)\)</span>。<br />
+2.【例1】利用上述构造方法求解正交多项式<span class="arithmatex">\(y = c_0 + c_1x + c_2x^2\)</span>，求解<span class="arithmatex">\(f(1) = 4, f(2) = 10, f(3) = 18, f(4) = 26\)</span>。<br />
+【解】<br />
+（1）首先构造正交多项式<span class="arithmatex">\(\phi_0(x), \phi_1(x), \phi_2(x)\)</span>，如果完成了这些正交多项式的构造，则只需求解系数<span class="arithmatex">\(a_k = \frac{(\phi_k, y)}{(\phi_k, \phi_k)}\)</span>，就能构造出我们期望的正交插值多项式<span class="arithmatex">\(y = a_0\phi_0(x) + a_1\phi_1(x) + a_2\phi_2(x)\)</span>。<br />
+（2）利用迭代公式递归求解<span class="arithmatex">\(\phi(x)\)</span>  <br />
+·<span class="arithmatex">\(\phi_0(x) = 1\)</span><br />
+·利用<strong>离散内积</strong>求解系数<span class="arithmatex">\(a_0\)</span>：<span class="arithmatex">\(a_0 = \frac{(\phi_0, y)}{(\phi_0, \phi_0)}\)</span><br />
+·其余系数<span class="arithmatex">\(B_i, C_j, a_k\)</span>以及插值多项式<span class="arithmatex">\(\phi_l(x)\)</span>的求解按照公式递推即可。<br />
+3.正交多项式近似——迭代算法<br />
+（1）算法流程<br />
+<img alt="" src="../assets/NA10/1.JPG" />
+（2）误差分析<br />
+<span class="arithmatex">\(E = ||P - y|| ^ 2 = (P - y, P - y)
+\newline = (\sum_{k = 0}^n a_k \phi_k - y, \sum_{k = 0}^n a_k \phi_k - y) 
+\newline = \sum_{k = 0}^na_k^2(\phi_k, \phi_k) - 2 \sum_{k = 0}^na_k(\phi_k, y) + (y, y)
+\newline = (y, y) - \sum_{k = 0}^na_k(\phi_k, y)\)</span><br />
+[注]代换过程中利用了<span class="arithmatex">\(a_k = \frac{(\phi_k, y)}{(\phi_k, \phi_k)}\)</span>。  </p>
+<h5 id="_46">二、切比雪夫多项式近似——近似目标与问题转化思想</h5>
+<p>1.研究目标：寻找一个<span class="arithmatex">\(n\)</span>阶多项式<span class="arithmatex">\(P_n\)</span>，以<strong>最小化误差函数的无穷范数</strong><span class="arithmatex">\(||P_n - f||_\infty\)</span>。（即：<strong>最小化某区间上</strong>近似函数误差的<strong>最大值</strong>，属于<code>min-max</code>问题）<br />
+2.【定义1】偏离点  (<code>deviation point</code>)<br />
+若<span class="arithmatex">\(P(x_0) - f(x_0) = \pm ||P - f||_{\infty}\)</span>，则称<span class="arithmatex">\(x_0\)</span>是一个<strong>偏离点</strong>。<br />
+3.<strong>近似多项式的一些特征</strong><br />
+（1）唯一性：若<span class="arithmatex">\(f\)</span><strong>不是</strong><span class="arithmatex">\(n\)</span>阶多项式，则存在<strong>唯一</strong>的多项式<span class="arithmatex">\(P_n(x)\)</span>，使得<span class="arithmatex">\(||P_n - f||_{\infty}\)</span>最小化。<br />
+（2）<strong>近似多项式、正负偏离点</strong>的<strong>存在性</strong>：<span class="arithmatex">\(P_n(x)\)</span>必定存在，并且<strong>必定同时存在正、负偏离点</strong>。<br />
+（3）<strong>近似问题的转化形式</strong>：寻找插值点<span class="arithmatex">\(\{x_0, \cdots, x_n\}\)</span>，构造插值多项式<span class="arithmatex">\(P_n(x)\)</span>，使得<strong>插值余项绝对值最小化</strong>：<br />
+<span class="arithmatex">\(|P_n(x) - f(x)| = |R_n(x)| = |\frac{f^{(n + 1)}(\xi)}{(n + 1)!}\Pi_{i = 0}^{n}(x - x_i)|\)</span>  <br />
+4.【定理2】切比雪夫定理（主要刻画了<strong>正负交替的偏离点</strong>与<strong>拉格朗日插值余项最小化</strong>之间的关系）<br />
+多项式<span class="arithmatex">\(P_n(x)\)</span><strong>最小化拉格朗日插值余项</strong><span class="arithmatex">\(||P_n(x) - f||_{\infty}\)</span>，当且仅当：<span class="arithmatex">\(P_n(x)\)</span>有<strong>至少<span class="arithmatex">\(n + 2\)</span>个交替的正负偏离点</strong>，即存在一系列点<span class="arithmatex">\(a \le t_1 \lt t_2 \lt \cdots \lt t_{n + 2} \le b\)</span>，使得：<br />
+<span class="arithmatex">\(P_n(t_k) - f(t_k) = \pm (-1)^{k}||P_n - f||_{\infty}\)</span><br />
+[理解]<br />
+<span class="arithmatex">\(P_n\)</span>有至少<span class="arithmatex">\(n+2\)</span>个交替的正负偏离点，必定与函数<span class="arithmatex">\(f\)</span>有<strong>至少<span class="arithmatex">\(n+1\)</span>个交点</strong>，从而可以<strong>构造<span class="arithmatex">\(n\)</span>阶插值多项式</strong>。<br />
+5.<strong>近似函数构造目标的转化</strong><br />
+（1）<strong>原始构造目标</strong>：最小化<strong>误差函数的无穷范数</strong><span class="arithmatex">\(||P_n - f||_\infty\)</span>。  <br />
+（2）<strong>等价构造目标</strong>：直接令<strong>拉格朗日余项的绝对值</strong><span class="arithmatex">\(R_n(x)\)</span>最小化。<br />
+（3）<strong>插值区间归一化</strong>与<strong>多项式降阶</strong><br />
+①<strong>插值区间归一化</strong><br />
+对于<strong>任意闭区间<span class="arithmatex">\([a, b]\)</span>上</strong>的多项式函数近似问题，作变量代换<span class="arithmatex">\(x = \frac{1}{2}[(b - a)x' + (a + b)]\)</span><br />
+故<span class="arithmatex">\(x \in [a, b]\)</span>经变量代换，转化到<span class="arithmatex">\(x' \in [-1, 1]\)</span>，从而对于任意区间，可以尝试在<strong>特定区间</strong><span class="arithmatex">\([-1, 1]\)</span>上寻求一种<strong>统一的形式和方法</strong>，对插值多项式进行求解。<br />
+②<strong>区间归一化后的插值近似目标</strong><br />
+·寻找<span class="arithmatex">\(n - 1\)</span>阶多项式<span class="arithmatex">\(P_{n - 1}(x)\)</span>，使得<span class="arithmatex">\(||x^n - P_{n - 1}(x)||\)</span>在<span class="arithmatex">\([-1, 1]\)</span>上最小化。
+③分析余项形式并选取最小化对象<br />
+·<span class="arithmatex">\(\forall x \in [-1, 1], \exists \xi(x) \in (-1, 1),\)</span>使得：<br />
+<span class="arithmatex">\(f(x) - P(x) = \frac{f^{(n + 1)}(\xi (x))}{(n + 1)!}(x - x_0) (x - x_1) \cdots (x - x_n)\)</span><br />
+·观察上式，<span class="arithmatex">\(f^{(n + 1)}(\xi (x))\)</span>一般不易控制，故<strong>实际的最小化目标</strong>是：<br />
+<span class="arithmatex">\(w_n(x) = (x - x_0)(x - x_1) \cdots(x - x_n)\)</span><br />
+④问题的等价转化<br />
+·观察<span class="arithmatex">\(w_n(x) = (x - x_1)(x - x_2
+) \cdots(x - x_n)\)</span>的形式，注意到<span class="arithmatex">\(w_n(x) = x^n - P_{n - 1}(x)\)</span>，因此问题形式可以转化为：<br />
+寻找<span class="arithmatex">\(n - 1\)</span>阶插值多项式<span class="arithmatex">\(P_{n - 1}\)</span>，使得<span class="arithmatex">\(||x^n - P_{n - 1}(x)||_{\infty}\)</span>在区间<span class="arithmatex">\([-1, 1]\)</span>上最小化。<br />
+[注]<br />
+①根据切比雪夫定理，<span class="arithmatex">\(P_{n - 1}(x)\)</span>跟<span class="arithmatex">\(x^n\)</span>的最大偏差最小化，当且仅当<span class="arithmatex">\(P_{n - 1}\)</span>和<span class="arithmatex">\(x^n\)</span>有<span class="arithmatex">\(n + 1\)</span>个正负交替的偏离点。<br />
+②即：<span class="arithmatex">\(w_n(x)\)</span>与<span class="arithmatex">\(x^n\)</span>的偏差在<span class="arithmatex">\(n+1\)</span>个点交替取得最大、最小值，且绝对值相等。  </p>
+<h5 id="_47">三、切比雪夫多项式</h5>
+<p>1.多项式的构建过程<br />
+（1）考虑<span class="arithmatex">\(cos(n \theta)\)</span>在区间<span class="arithmatex">\([0, \pi]\)</span>上的<span class="arithmatex">\(n + 1\)</span>个极值点，在点<span class="arithmatex">\(\theta_k = \frac{k}{n}\pi\)</span>处，函数<span class="arithmatex">\(cos(n \theta)\)</span><strong>交替取得极大、极小值</strong>。<br />
+（2）根据三角函数相关定理，存在系数<span class="arithmatex">\(a_0, \cdots, a_k\)</span>，将<span class="arithmatex">\(cos(n\theta)\)</span>分解为关于<span class="arithmatex">\(cos\theta\)</span>的高次多项式，即：<br />
+<span class="arithmatex">\(cos(n \theta) = \sum_{k = 0}^{n}a_k(cos\theta)^k\)</span><br />
+（3）注意到切比雪夫多项式近似在<span class="arithmatex">\(x \in [-1, 1]\)</span>进行，作变量代换<span class="arithmatex">\(x = cos(\theta)\)</span>，即获得切比雪夫插值多项式：<br />
+<span class="arithmatex">\(T_n(x) = cos(n \theta) = cos(n\cdot arccos(x)) = \sum_{k = 0}^na_k(cos\theta)^k\)</span>。<br />
+2.【定义3】切比雪夫多项式<br />
+<span class="arithmatex">\(T_n(x) = cos(n \theta) = cos(n \cdot arccos(x))\)</span><br />
+[理解]<br />
+（1）<span class="arithmatex">\(T_n(x)\)</span>在<strong>偏离点</strong>的取值为<span class="arithmatex">\(\pm 1\)</span>，偏离点为<span class="arithmatex">\(x_k = cos(\frac{k}{n}\pi)\)</span>。<br />
+（2）<span class="arithmatex">\(n\)</span>阶切比雪夫多项式<span class="arithmatex">\(T_n(x)\)</span>有<span class="arithmatex">\(n\)</span>个零点<span class="arithmatex">\(x_k = cos(\frac{2k - 1}{2n}\pi)\)</span>。<br />
+3.切比雪夫多项式的<strong>递归定义</strong><br />
+<span class="arithmatex">\(T_0(x) = 1\)</span><br />
+<span class="arithmatex">\(T_1(x) = x\)</span><br />
+<span class="arithmatex">\(T_{n + 1}(x) = 2xT_n(x) - T_{n - 1}(x)\)</span><br />
+[理解]<br />
+<span class="arithmatex">\(T_n(x)\)</span>是一个<span class="arithmatex">\(n\)</span>阶多项式，其最高次项的系数是<span class="arithmatex">\(\frac{1}{2^{n - 1}}\)</span>。<br />
+4.<strong>切比雪夫多项式组</strong>关于哪些误差权重函数正交<br />
+（1）切比雪夫多项式组<span class="arithmatex">\(\{T_0(x), T_1(x), \cdots \}\)</span>，在<span class="arithmatex">\([-1, 1]\)</span>上关于误差权重函数<span class="arithmatex">\(w(x) = \frac{1}{\sqrt{1 - x ^ 2}}\)</span>是正交的。<br />
+（2）<span class="arithmatex">\((T_n, T_m) = \int_{-1}^{1}\frac{T_n(x)T_m(x)}{\sqrt{1 - x^2}}\)</span><br />
+·两两正交：若<span class="arithmatex">\(n \ne m\)</span>，则函数内积为<span class="arithmatex">\(0\)</span>。<br />
+·<span class="arithmatex">\(n = m = 0\)</span>时，函数自身内积为<span class="arithmatex">\(\pi\)</span>。<br />
+·<span class="arithmatex">\(n = m \ne 0\)</span>时，函数自身内积为<span class="arithmatex">\(\frac{\pi}{2}\)</span>。<br />
+5.【例2】针对<span class="arithmatex">\(f(x) = e^x, x \in [0, 1]\)</span>，寻找最佳的插值多项式函数近似，使得绝对误差不超过<span class="arithmatex">\(0.5 \times 10 ^{-4}\)</span>。<br />
+【解】<br />
+（1）<strong>变量代换</strong> 
+作变量代换<span class="arithmatex">\(x = \frac{a + b}{2} + \frac{b - a}{2}t = \frac{1}{2}(t + 1)\)</span>，从而转化为<span class="arithmatex">\(t \in [-1, 1]\)</span>的切比雪夫插值问题。<br />
+（2）<strong>确定切比雪夫多项式的阶数</strong><br />
+①首先根据拉格朗日余项，确定插值多项式的最低阶数：<br />
+<span class="arithmatex">\(R_n(x) \le \frac{e}{(n + 1)!}\frac{1}{2^{2n + 1}} \le 0.5 \times 10^{-4} \Rightarrow n \ge 4\)</span>。<br />
+[注]<br />
+·<span class="arithmatex">\(x \in [-1, 1]\)</span>，并且各<span class="arithmatex">\(x_i, i = 0, \cdots, n\)</span>分别是<span class="arithmatex">\(n + 1\)</span>阶切比雪夫多项式的零点时，有：<span class="arithmatex">\(w_n(x)_{max} = [\Pi_{i = 0}^n(x - x_i)]_{max} = \frac{1}{2^{n}}\)</span><br />
+·<span class="arithmatex">\(x = \frac{1}{2}(t + 1)\)</span>，①中剩下的<span class="arithmatex">\(\frac{1}{2^{n + 1}}\)</span>是变量代换<span class="arithmatex">\(t \rightarrow x\)</span>带来的误差传递系数。<br />
+②注意：<span class="arithmatex">\(4\)</span>阶插值需要<strong>原函数上的<span class="arithmatex">\(5\)</span>个采样点</strong>，它们恰好对应于<strong>切比雪夫多项式的<span class="arithmatex">\(5\)</span>个零点</strong>，即<span class="arithmatex">\(\theta_k = cos(\frac{2k - 1}{10}x), k = 1, 2, \cdots, 5\)</span>。<br />
+③作变量代换：由<span class="arithmatex">\(x = \frac{1}{2}(t + 1), t = cos\theta\)</span>，得到<span class="arithmatex">\(x_{k - 1} = \frac{1}{2}(cos(\theta_k) + 1) = \frac{1}{2}(cos\frac{2k - 1}{10} + 1)\)</span><br />
+[理解]<br />
+切比雪夫多项式通过确定插值点的坐标，对<span class="arithmatex">\(\Pi_{i = 0}^{n}(x - x_i)\)</span>实现最小化。  </p>
+<h5 id="_48">四、幂级数降阶</h5>
+<p>1.基本目标<br />
+给定高阶多项式<span class="arithmatex">\(P_n(x) \approx f(x)\)</span>，希望<strong>降低多项式<span class="arithmatex">\(P_n(x)\)</span>的阶数</strong>，同时保证<strong>精度损失最小化</strong>。<br />
+2.降低一阶时的情形<br />
+（1）考虑<span class="arithmatex">\(P_n(x)\)</span>降阶为<span class="arithmatex">\(P_{n - 1}(x)\)</span>，利用<strong>三角不等式</strong>，有<strong>误差上界</strong>：<br />
+<span class="arithmatex">\(max_{x \in [-1, 1]}|f(x) - P_{n - 1}(x)| \le max_{x \in [-1, 1]}|f(x) - P_n(x)| + max_{x \in [-1, 1]}|Q_n(x)|\)</span><br />
+[理解]<br />
+①经由<strong>三角不等式放缩</strong>后，<span class="arithmatex">\(n - 1\)</span>阶多项式的插值近似误差可近似认为由<strong>两部分</strong>组成：一是<span class="arithmatex">\(n\)</span>阶多项式<strong>已有的插值近似误差</strong><span class="arithmatex">\(max_{x \in [-1, 1]}|f(x) - P_n(x)|\)</span>，二是<strong>降阶带来的新增误差</strong><span class="arithmatex">\(max_{x \in [-1, 1]}|Q_n(x)|\)</span>。<br />
+②因此：作降阶处理时，最小化<strong>降阶带来的额外误差</strong>，即最小化<span class="arithmatex">\(n\)</span>阶多项式<span class="arithmatex">\(Q_n(x)\)</span>在区间<span class="arithmatex">\([-1, 1]\)</span>上的最大绝对值<span class="arithmatex">\(max_{x \in [-1, 1]}|Q_n(x)|\)</span>。<br />
+（2）注意到：在区间<span class="arithmatex">\([-1, 1]\)</span>上，切比雪夫多项式的<span class="arithmatex">\(max_{x \in [-1, 1]}|Q_n(x)|\)</span>最小，因此<strong>采用切比雪夫多项式进行近似、降阶</strong>是合理的。<br />
+[注]<br />
+需作<strong>变量代换</strong>：<span class="arithmatex">\([a, b] \rightarrow [-1, 1] \rightarrow [a, b]\)</span><br />
+3.【例3】<br />
+已知函数<span class="arithmatex">\(f(x) = e^x\)</span>在<span class="arithmatex">\([-1, 1]\)</span>上的泰勒多项式为：<br />
+<span class="arithmatex">\(P_4 = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \frac{x^4}{24}\)</span><br />
+该函数的一个截断误差上界为：<br />
+<span class="arithmatex">\(|R_4(x)| \le \frac{e}{5!}|x^5| \approx 0.023\)</span><br />
+将近似多项式降为<span class="arithmatex">\(2\)</span>阶。<br />
+【解】 
+<img alt="" src="assets//NA10//2.jpg" />
+【注】<br />
+（1）上述<span class="arithmatex">\(T_i(x)\)</span>即前述按照递归定义获得的切比雪夫多项式，等价定义为<span class="arithmatex">\(T_i(x) = cos(n\cdot arccos(x))\)</span>。<br />
+（2）<span class="arithmatex">\(|P_i(x) - P_{i - 1}(x)| = |a_i\tilde{T}_i(x)|\)</span><br />
+其中，<span class="arithmatex">\(a_i\)</span>为多项式<span class="arithmatex">\(P_i\)</span>中<span class="arithmatex">\(x^i\)</span>的系数，<span class="arithmatex">\(\tilde{T}_i(x)\)</span>是<strong>首一</strong>切比雪夫多项式。  </p>
+<h5 id="_49">四、数值微分</h5>
+<p>1.基本目标：对于点<span class="arithmatex">\(x_0\)</span>，近似计算其导数<span class="arithmatex">\(f'(x_0)\)</span>。<br />
+2.导数定义<br />
+<span class="arithmatex">\(f'(x_0) = lim_{h \rightarrow 0}\frac{f(x_0 + h) - f(x_0)}{h}\)</span><br />
+3.使用前向差分、后向差分近似计算导数<br />
+（1）使用一阶前向差分近似计算导数：<span class="arithmatex">\(f'(x_0) \approx \frac{f(x_0 + h) - f(x_0)}{h}\)</span><br />
+（2）使用一阶后向差分近似计算导数：<span class="arithmatex">\(f'(x_0) \approx \frac{f(x_0) - f(x_0 - h)}{h}\)</span><br />
+4.拉格朗日插值法——两点情形
+（1）两点插值多项式：<span class="arithmatex">\(f(x) = \frac{f(x_0)[x - (x_0 + h)]}{x_0 - (x_0 + h)} + \frac{f(x_0 + h)[x - x_0]}{(x_0 + h) - x_0} + \frac{(x - x_0)[x - (x_0 + h)]}{2}f''(\xi_x)\)</span><br />
+（2）对两点插值多项式求导，获得导数的近似表达式：  <br />
+<span class="arithmatex">\(f'(x) = \frac{f(x_0 + h) - f(x_0)}{h} + \frac{2(x - x_0) - h}{2}f''(\xi_x) + \frac{(x - x_0)(x - x_0 - h)}{2}\cdot \frac{d}{dx}[f''(\xi_x)]\)</span><br />
+（3）误差项<br />
+·导数表达式：<span class="arithmatex">\(f'(x) = \frac{f(x_0 + h) - f(x_0)}{h} - \frac{h}{2}f''(\xi)\)</span><br />
+·误差项：<span class="arithmatex">\(O(h) = \frac{h}{2}f''(\xi)\)</span><br />
+·根据误差项形式，两点拉格朗日插值法对导数的近似达到一阶精度<span class="arithmatex">\(O(h)\)</span>。<br />
+5.拉格朗日插值法——一般情形<br />
+（1）拉格朗日插值多项式<br />
+<span class="arithmatex">\(f(x) = \sum_{k = 0}f(x_k)L_k(x) + \frac{(x - x_0)\cdots(x - x_n)}{(n + 1)！}f^{(n + 1)}(\xi_x)\)</span><br />
+（2）拉格朗日插值多项式求导获得导数近似公式<br />
+<span class="arithmatex">\(f'(x_j) = \sum_{k = 0}^nf(x_k)L'(x_k) + \frac{f^{(n + 1)}(\xi_j)}{(n + 1)!}\Pi_{k = 0, k \ne j}^n(x_j - x_k)\)</span><br />
+[理解]数值微分是不稳定的。一方面，更多点能使精确度增加；但另一方面，随着<strong>点数增多</strong>，函数估值、取整误差逐渐增大。  </p>
+<p>【例3】给定三个等距点<span class="arithmatex">\(x_0, x_0 + h, x_0 + 2h\)</span>，求最佳的三点公式，使导数计算误差最小。<br />
+【解】<br />
+·<span class="arithmatex">\(n + 1\)</span>点公式的一般形式为：<span class="arithmatex">\(f'(x) \approx \sum_{k = 0}^nf(x_k)L_k'(x)\)</span><br />
+·令<span class="arithmatex">\(x = x_0\)</span>，以及<span class="arithmatex">\(x_1 = x_0 + h, x_2 = x_0 + 2h\)</span>，可获得由<span class="arithmatex">\(f(x_0), f(x_0 + h), f(x_0 + 2h)\)</span>表达的<span class="arithmatex">\(f'(x_0)\)</span>三点公式；其余两点导数类似。  </p>
+<p>【例4】使用泰勒展开进行二阶导数近似<br />
+给定点<span class="arithmatex">\(x_0 - h, x_0, x_0 + h\)</span>，求<span class="arithmatex">\(f''(x_0)\)</span>。<br />
+【解】
+<img alt="" src="assets\NA10\3.jpg" />
+[理解]<br />
+近似计算<strong>高阶导数</strong>时，<strong>泰勒展开</strong>更为<strong>常用</strong>。  </p>
+<h5 id="_50">三、数值积分</h5>
+<p>1.基本目标<br />
+近似计算<span class="arithmatex">\(I = \int_a^bf(x)dx\)</span>。<br />
+2.基本想法<br />
+转换为对<strong>拉格朗日插值多项式</strong>的<strong>积分</strong>。<br />
+3.计算与误差<br />
+（1）积分计算<br />
+<span class="arithmatex">\(\int_a^bf(x)dx \approx \sum_{k = 0}^nf(x_k)A_k\)</span><br />
+其中：<span class="arithmatex">\(A_k = \int_a^b \Pi_{j \ne k} \frac{x - x_j}{x_k - x_j}dx\)</span><br />
+（2）误差项<br />
+<span class="arithmatex">\(R[f] = \int_a^b\frac{f^{(n + 1)(\xi_x)}}{(n + 1)!}\Pi_{k = 0}^n(x - x_k)dx\)</span><br />
+4.【定义4】<strong>数值积分方法的精度阶数</strong><br />
+称使得公式对<span class="arithmatex">\(x^k, k = 0, 1, \cdots, n\)</span>精确的<strong>最大</strong>正整数<span class="arithmatex">\(n\)</span>为数值积分方法的<strong>精度阶数</strong>。<br />
+5.线性插值积分多项式的精度阶数<br />
+（1）考虑<span class="arithmatex">\([a, b]\)</span>上的线性插值：<span class="arithmatex">\(P_1(x) = \frac{x - b}{a - b}f(a) + \frac{x - a}{b - a}f(b)\)</span><br />
+（2）预先计算：<span class="arithmatex">\(A_1 = A_2 = \frac{b - a}{2}\)</span><br />
+故<span class="arithmatex">\(\int_a^nf(x)dx \approx \frac{b - a}{2}[f(a) + f(b)]\)</span><br />
+[理解]实际上是利用<strong>梯形面积</strong>，近似计算积分，故该公式又称梯形公式。  <br />
+（3）梯形公式的精度阶数：<span class="arithmatex">\(1\)</span>阶。 <br />
+6.<span class="arithmatex">\(n\)</span>个<strong>等距点</strong>的<strong>积分近似</strong><br />
+（1）积分计算公式<br />
+·<span class="arithmatex">\(A_i = \int_{x_0}^{x_n}\Pi_{j \neq i}\frac{(x - x_j)}{(x_i - x_j)}dx \newline = \int_{0}^n\Pi_{i \neq j}\frac{(t - j)h}{(i - j)h}hdt \newline = 
+\frac{(b - a)(-1)^{n - i}}{ni!(n - i)!}\int_0^n\Pi_{i \neq j}(t - j)dt\)</span><br />
+（2）<code>Cotes</code>系数：<span class="arithmatex">\(\frac{(-1)^{n - i}}{ni!(n - i)!}\int_0^n\Pi_{i \neq j}(t - j)dt\)</span><br />
+·由于<code>Cotes</code>系数与<span class="arithmatex">\(a, b, f(x)\)</span>均无关，故可查表直接获得。  </p>
+<h4 id="_51">数值分析 第十一讲</h4>
+<h5 id="_52">一、复合数值积分</h5>
+<p>1.<strong>基本思想</strong><br />
+（1）高阶多项式具有<strong>振荡</strong>的性质，因此<strong>对高阶多项式作积分</strong>，带来的<strong>误差可能仍然较大</strong>。<br />
+（2）分段样条对<span class="arithmatex">\(f(x)\)</span>进行了<strong>低阶的分段近似</strong>，因此可以通过<strong>分段使用低阶的<code>Newton-Cotes</code>公式</strong>，对数值积分进行<strong>精度较高的近似</strong>。<br />
+2.<strong>复合梯形公式</strong><br />
+（1）<strong>区间划分</strong><br />
+<span class="arithmatex">\(h = \frac{b - a}{n}, x_k = a + kh\)</span><br />
+（2）各<strong>区间</strong>对应的<strong>梯形公式</strong><br />
+<span class="arithmatex">\(\int_{x_{k - 1}}^{x_k}f(x)dx \approx \frac{x_k - x_{k - 1}}{2}[f(x_{k - 1}) + f(x_k)], k = 1, 2, \cdots, n\)</span><br />
+（3）<strong>区间<span class="arithmatex">\([a, b]\)</span>上的积分公式</strong><br />
+<span class="arithmatex">\(T_n = \int_a^bf(x)dx \approx \sum_{k = 1}^n\frac{h}{2}[f(x_k - 1) + f(x_k)] 
+\newline = \frac{h}{2}[f(a) + 2 \sum_{k = 1}^{n - 1}f(x_k) + f(b)]\)</span> <br />
+（4）<strong>误差分析</strong><br />
+<span class="arithmatex">\(R[f] = \sum_{k = 1}^n[-\frac{h^3}{12}f''(\xi_k)] = \frac{h^2}{12}(b - a)\frac{\sum_{k = 1}^nf''(\xi_k)}{n} \newline
+ = -\frac{h^2}{12}(b - a)f''(\xi), \xi\in(a, b)\)</span><br />
+[注]：对各点<strong>二阶导取均值</strong>，用<span class="arithmatex">\(f''(\xi)\)</span>作替换。<br />
+3.复合<code>Simpson</code>公式 <br />
+（1）近似积分公式：<span class="arithmatex">\(S_n = \frac{h}{6}[f(a) + 4 \sum_{k = 0}^{n - 1}f(x_{k + \frac{1}{2}}) + 2\sum_{k = 0}^{n - 2}f(x_{k + 1}) + f(b)]\)</span><br />
+（2）误差项：<span class="arithmatex">\(R[f] = -\frac{b - a}{180}(\frac{h}{2})^4f^{(4)}(\xi)\)</span><br />
+（3）简化的公式形式：令<span class="arithmatex">\(n' = 2n, h' = \frac{h}{2}\)</span>，有：<span class="arithmatex">\(S_n = \frac{h'}{3}[f(a) + 4 \sum_{k = 2m + 1}f(x_k) + 2 \sum_{k = 2m}f(x_k) + f(b)]\)</span><br />
+4.【定理1】复合数值积分法的稳定性<br />
+<strong>复合数值积分方法</strong>都是<strong>稳定</strong>的。<br />
+[例1]复合<code>Simpson</code>公式的误差<br />
+<span class="arithmatex">\(e(h) = \frac{h}{3}[\epsilon_0 + 4 \sum_{k = 2m + 1}\epsilon_k + 2 \sum_{k = 2m}\epsilon_k + \epsilon_n]\)</span><br />
+若<span class="arithmatex">\(|\epsilon_i| \lt \epsilon\)</span>，则：<br />
+<span class="arithmatex">\(e(h) \lt \frac{h}{3}[\epsilon + 4(\frac{n}{2}) \epsilon + 2 (\frac{n}{2} - 1)\epsilon] = nh\epsilon = (b - a)\epsilon\)</span>
+故<code>Simpson</code>公式误差上界不随<span class="arithmatex">\(n\)</span>的增加而发生变化，是稳定的。<br />
+[例2]利用复合梯形公式、复合<code>Simpson</code>公式，分别计算<span class="arithmatex">\(\int_0^1 \frac{4}{1 + x^2}dx\)</span> <br />
+（代入<code>Simpson</code>公式即可）  </p>
+<h5 id="romberg">二、<code>Romberg</code>积分法</h5>
+<p>设<span class="arithmatex">\(T_n\)</span>表示在区间<span class="arithmatex">\([a, b]\)</span>上，划分出<span class="arithmatex">\(n\)</span>个等距区间，使用梯形公式所得的近似积分数值。<br />
+1.基本思想<br />
+（1）<strong>梯形积分公式误差</strong><br />
+<span class="arithmatex">\(R_n[f] = -\frac{h^2}{12}(b - a)f''(\xi)\)</span><br />
+（2）若将<strong>积分区间一分为二</strong>，则<strong>误差</strong>变为<strong>原来的<span class="arithmatex">\(\frac{1}{4}\)</span></strong>，即：<br />
+<span class="arithmatex">\(\frac{I - T_{2n}}{I - T_n} \approx  \frac{1}{4}\)</span><br />
+（3）根据上式，<strong>解得积分表达式<span class="arithmatex">\(I\)</span></strong>：<br />
+<span class="arithmatex">\(I \approx \frac{4T_{2n} - T_n}{4 - 1} = \frac{4}{3}T_{2n} - \frac{1}{3}T_n = S_n\)</span><br />
+2.<code>Romberg</code>序列 <br />
+·<span class="arithmatex">\(S_n = \frac{4T_{2n} - T_n}{4 - 1}\)</span><br />
+·<span class="arithmatex">\(\frac{4^2S_{2n} - S_n}{4^2 - 1} = C_n\)</span><br />
+·<span class="arithmatex">\(\frac{4^3C_{2n} - C_n}{4^3 - 1} = R_n\)</span>（<code>Romberg</code>序列）  </p>
+<h5 id="richardson">三、<code>Richardson</code>外部插值积分法</h5>
+<p>1.基本思想<br />
+（1）通过<strong>低阶公式</strong>，获得<strong>高精度的积分结果</strong>。<br />
+（2）<strong>误差的缩小</strong><br />
+·设对于某个<span class="arithmatex">\(h \ne 0\)</span>，利用<span class="arithmatex">\(T_0(h)\)</span>近似未知的<span class="arithmatex">\(I\)</span>，且<strong>截断误差</strong>的形式如下：<br />
+<span class="arithmatex">\(T_0(h) - I = \alpha_1h + \alpha_2h^2 + \alpha_3h^3 + \cdots\)</span><br />
+则误差与<span class="arithmatex">\(h\)</span>的大小关系密切，是<span class="arithmatex">\(h\)</span>的函数。<br />
+·下列方法可以将误差精度从<span class="arithmatex">\(O(h)\)</span>提升为<span class="arithmatex">\(O(h^2)\)</span>：<br />
+<span class="arithmatex">\(\frac{2T_0(\frac{h}{2}) - T_0(h)}{2 - 1} - I = -\frac{1}{2}\alpha_2h^2 - \frac{3}{4}\alpha_3h^3 - \cdots\)</span><br />
+2.<code>Richardson</code>外部插值积分法定义<br />
+（1）<strong>基本公式</strong><br />
+<span class="arithmatex">\(T_1(h) = \frac{2T_0(\frac{h}{2}) - T_0(h)}{2 - 1} = I + \beta_1h^2 + \beta_2h^3\)</span><br />
+（2）<strong>升阶与递推</strong><br />
+<span class="arithmatex">\(T_2(h) = \frac{2^2T_1(\frac{h}{2}) - T_1(h)}{2^2 - 1} = I + \gamma_1h^3 + \gamma_2h^4 + \cdots\)</span> </p>
+<h5 id="_53">四、自适应积分方法</h5>
+<p>1.基本思想：<strong>预测误差大小，自动调整积分步长</strong>。<br />
+2.【例3】基于复合<code>Simpson</code>公式自适应积分法<br />
+·考虑<span class="arithmatex">\(S(a, b) = \frac{h}{3}[f(a) + 4f(a + h) + f(b)], h = \frac{b - a}{2}\)</span>，此时有：
+<span class="arithmatex">\(\int_a^bf(x)dx = S(a, b) - \frac{h^5}{90}f^{(4)}(\xi)\)</span><br />
+·令<span class="arithmatex">\(S(a, \frac{a + b}{2}) = \frac{h}{6}[f(a) + 4f(a + \frac{h}{2}) + f(a + h)]\)</span>，<span class="arithmatex">\(S(\frac{a + b}{2}, b) = \frac{h}{6}[f(a + h) + 4f(a + \frac{3h}{2}) + f(b)]\)</span><br />
+·此时：<span class="arithmatex">\(\int_a^bf(x)dx = S(a, \frac{a + b}{2}) + S(\frac{a + b}{2}, b) - \frac{1}{16}\cdot \frac{h^5}{90}f^{(4)}(\eta)\)</span><br />
+·联立两种区间划分下的<span class="arithmatex">\(\int_a^bf(x)dx\)</span>表达式，并假设<span class="arithmatex">\(f^{(4)}(\eta) \approx f^{(4)}(\xi)\)</span>，可得：<br />
+<span class="arithmatex">\(|\int_a^{b}f(x)dx - S(a, \frac{a + b}{2}) - S(\frac{a + b}{2}, b)| \approx \frac{1}{15}|S(a, b) - S(a, \frac{a + b}{2}) - S(\frac{a + b}{2}, b)|\)</span><br />
+·结论：如果用<span class="arithmatex">\(S(a, \frac{a + b}{2}) + S(\frac{a + b}{2}, b)\)</span>对<span class="arithmatex">\(\int_a^bf(x)dx\)</span>作近似，则误差近似为直接用<span class="arithmatex">\(S(a, b)\)</span>的<span class="arithmatex">\(\frac{1}{15}\)</span>。<br />
+·该方法可以近似地分析<strong>不同步长下</strong>近似积分公式之间的<strong>误差倍数关系</strong>，并确定<strong>合适的积分步长</strong>。</p>
+<h5 id="_54">一、常微分方程基本定理</h5>
+<p>1.【定理1】<strong><code>Lipschitz</code>条件<span class="arithmatex">\(\Rightarrow\)</span>常微分方程唯一解</strong><br />
+若<span class="arithmatex">\(D = \{(t, y) | a \le t \le b, -\infty \lt y \lt \infty\}\)</span>，<span class="arithmatex">\(f\)</span>在区间<span class="arithmatex">\(D\)</span>上<strong>连续</strong>，且<strong>满足<span class="arithmatex">\(D\)</span>上的<code>Lipschitz</code>条件</strong>，则常微分方程：
+<span class="arithmatex">\(y'(t) = f(t, y), a \le t \le b, y(a) = \alpha\)</span><br />
+对于<span class="arithmatex">\(a \le t \le b\)</span>，<strong>有且仅有唯一解</strong><span class="arithmatex">\(y(t)\)</span>。<br />
+【理解】<br />
+（1）集合<span class="arithmatex">\(D\)</span>对于<span class="arithmatex">\(t\)</span>限定在一个<strong>有界区间</strong>，对于<span class="arithmatex">\(y\)</span><strong>没有大小的限制</strong>。<br />
+（2）定理本质：<strong><code>Lipschitz</code>条件<span class="arithmatex">\(\Rightarrow\)</span>常微分方程唯一解</strong>。<br />
+2.【定义1】<strong>良态问题</strong><br />
+若常微分方程初值问题<span class="arithmatex">\(y'(t) = f(t, y), a \le t \le b, y(a) = \alpha\)</span>满足以下条件：<br />
+（1）该问题有且仅有<strong>唯一解</strong>。<br />
+（2）对<span class="arithmatex">\(\forall \epsilon \lt 0\)</span>，存在仅与<span class="arithmatex">\(\epsilon\)</span>相关的正常数<span class="arithmatex">\(k(\epsilon)\)</span>，使得<span class="arithmatex">\(\forall |\epsilon_0| \lt \epsilon\)</span>，以及<span class="arithmatex">\([a, b]\)</span>上的有界连续扰动函数<span class="arithmatex">\(\delta(t), |\delta(t)| \lt \epsilon\)</span>，都有：
+<strong>添加扰动的常微分方程</strong>
+<span class="arithmatex">\(z'(t) = f(t, z) + \delta(t), a \le t \le b, z(a) = \alpha + \epsilon_0\)</span>
+<strong>都有唯一解</strong><span class="arithmatex">\(z(t)\)</span>，且<span class="arithmatex">\(|z(t) - y(t)| \lt \epsilon k(\epsilon)\)</span>。<br />
+则称：该常微分方程初值问题为<strong>良态问题</strong>。<br />
+【理解】<br />
+（1）“良态”强调的是，<strong>解对原问题变化量的敏感性有限</strong>。<br />
+（2）良态问题是对具有唯一解的常微分方程初值问题的强化，它不仅要求有唯一解，而且要求在<strong>原问题受有限扰动</strong>的情况下，<strong>解的扰动也是相应有限的</strong>，有唯一解是良态问题的大前提。<br />
+（3）第二个约束条件的含义是：只要任意连续的扰动函数有绝对值上界<span class="arithmatex">\(\epsilon\)</span>，则不仅<strong>新问题的解仍然具有唯一性</strong>，而且<strong>新问题解相对于原问题解的偏离程度也是有限的</strong>。<br />
+3.【定理2】<strong><code>Lipschitz</code>条件<span class="arithmatex">\(\Rightarrow\)</span>良态问题</strong><br />
+若<span class="arithmatex">\(D = \{(t, y) | a \le t \le b, -\infty \lt y \lt \infty\}\)</span>，<span class="arithmatex">\(f\)</span>在区间<span class="arithmatex">\(D\)</span>上<strong>连续</strong>，且<strong>满足<span class="arithmatex">\(D\)</span>上的<code>Lipschitz</code>条件</strong>，则常微分方程初值问题：
+<span class="arithmatex">\(y'(t) = f(t, y), a \le t \le b, y(a) = \alpha\)</span><br />
+是<strong>良态问题</strong>。  </p>
+<h5 id="_55">二、常微分方程初值问题——欧拉方法</h5>
+<p>1.计算目的与前提条件<br />
+（1）计算目的：对于<span class="arithmatex">\([a, b]\)</span>区间上<strong>有限个等距点/网格点</strong><span class="arithmatex">\(t_i\)</span>，计算<span class="arithmatex">\(y(t_i)\)</span>的近似值。<br />
+（2）前提条件：<strong>良态问题</strong>。<br />
+2.原理与思想<br />
+（1）一阶<code>Taylor</code>近似：<span class="arithmatex">\(y(t_{i + 1}) = y(t_i) + hy'(t_i)\)</span>。<br />
+（2）<strong>前向迭代计算</strong>：<span class="arithmatex">\(w_{i + 1} = w_i + hf(t_i, w_i)\)</span>。<br />
+3.【定理3】<strong><code>Lipschitz</code>条件 + 二阶导数有界</strong><span class="arithmatex">\(\Rightarrow\)</span><strong>欧拉法的一个误差上界</strong><br />
+若常微分方程初值问题<span class="arithmatex">\(y'(t) = f(t, y), a \le t \le b, y(a) = \alpha\)</span>满足以下条件：<br />
+（1）<strong><code>Lipschitz</code>条件</strong>。<br />
+（2）<strong><span class="arithmatex">\(|y''(t)| \le M\)</span></strong><br />
+设<span class="arithmatex">\(w_1, \cdots, w_n\)</span>为<strong>欧拉法在等距点获得的近似解</strong>，<span class="arithmatex">\(y_1, \cdots, y_n\)</span>为<strong>等距点处<span class="arithmatex">\(y(t)\)</span>的真实函数值</strong>，则有：<br />
+<span class="arithmatex">\(|y_i - w_i| \le \frac{hM}{2L}[e^{L(t_i - a)} - 1]\)</span><br />
+【注】无需了解<span class="arithmatex">\(y(t)\)</span>的确切形式，可直接计算<span class="arithmatex">\(y''(t)\)</span>，计算过程如下：
+<span class="arithmatex">\(y''(t) = \frac{\partial}{\partial t}y'(t) = \frac{\partial}{\partial t}f(t, y(t)) \newline 
+= \frac{\partial}{\partial t}f(t, y(t)) + [\frac{\partial}{\partial y}f(t, y(t))] \cdot f(t, y(t))\)</span><br />
+4.【定义2】欧拉方法的<strong>截断误差</strong><br />
+（1）<strong>初始截断误差</strong>：<span class="arithmatex">\(w_0 = \alpha + \delta_0\)</span><br />
+（2）迭代计算新增截断误差（即局部截断误差，假设<span class="arithmatex">\(w_{i}\)</span>精确）：<span class="arithmatex">\(w_{i + 1} = w_i + hf(t_i, w_i) + \delta_{i + 1}\)</span>，此处用<span class="arithmatex">\(w_i + hf(t_i, w_i)\)</span>近似计算<span class="arithmatex">\(w_{i + 1}\)</span>，截断误差为<span class="arithmatex">\(\delta_{i + 1}\)</span>。  <br />
+5.【定理3】<strong>欧拉方法</strong>对于<strong>一般初值问题</strong>的<strong>误差上界</strong><br />
+设<span class="arithmatex">\(y(t)\)</span>是常微分方程<span class="arithmatex">\(y'(t) = f(t, y), a \le t \le b, y(a) = \alpha\)</span>的唯一解，<span class="arithmatex">\(w_0, \cdots, w_n\)</span>是由欧拉方法获得的近似值，若<span class="arithmatex">\(|\delta_i| \lt \delta\)</span>，则：<br />
+<span class="arithmatex">\(|y_i - w_i| \le \frac{1}{L}(\frac{hM}{2} + \frac{\delta}{h})[e^{L(t_i - a)} - 1] + |\delta_0|e^{L(t_i - a)}\)</span>  </p>
+<h5 id="_56">三、常微分方程初值问题——高阶泰勒方法</h5>
+<p>1.【定义3】<strong>差分方法的局部截断误差</strong><br />
+差分方法<span class="arithmatex">\(w_0 = \alpha, w_{i + 1} = w_i + h\phi(t_i, w_i)\)</span>的<strong>局部截断误差</strong>为：<br />
+<span class="arithmatex">\(\tau _{i + 1}(h) = \frac{y_{i + 1} - (y_i + h \phi(t_i, y_i))}{h} = \frac{y_{i + 1} - y_i}{h} - \phi(t_i, y_i)\)</span><br />
+【注】<br />
+（1）局部截断误差的定义有一个假设<span class="arithmatex">\(w_i = y_i\)</span>，即<strong>上一步获取的近似函数值</strong>是<strong>绝对精确</strong>的。<br />
+（2）实际上，假设<span class="arithmatex">\(w_i\)</span>精确，则局部截断误差恰等于<span class="arithmatex">\(\frac{y_{i + 1} - w_{i + 1}}{h}\)</span>。<br />
+2.欧拉方法的局部截断误差<br />
+<span class="arithmatex">\(\tau_{i + 1} = \frac{y_{i + 1} - w_{i + 1}}{h} = \frac{(y_i + h y'(t_i) + \frac{h^2}{2}y''(\xi_i)) - (y_i + hf(t_i, y_i))}{h} 
+\newline = \frac{h}{2}y''(\xi_i) = O(h)\)</span><br />
+【注】<br />
+（1）实质上，欧拉方法就是<strong>使用<span class="arithmatex">\(n = 1\)</span>的泰勒展开公式</strong>，对<span class="arithmatex">\(y(t)\)</span>在等距点的数值作近似计算。<br />
+（2）<strong>前向欧拉方法</strong>具有<span class="arithmatex">\(1\)</span>阶精度。<br />
+3.高阶泰勒方法<br />
+·<span class="arithmatex">\(y_{i + 1} = y_i + hf(t_i, y_i) + \frac{h^2}{2}f'(t_i, y_i) + \cdots + \frac{h^n}{n!}f^{(n - 1)}(t_i, y_i) + \frac{h^{n + 1}}{(n + 1)!}f^{(n)}(\xi_i, y(\xi_i))\)</span><br />
+·余项：<span class="arithmatex">\(R = \frac{h^{n + 1}}{(n + 1)!}f^{(n)}(\xi_i, y(\xi_i))\)</span><br />
+·局部截断误差：<span class="arithmatex">\(\tau_{i + 1} = \frac{h^{n}}{(n + 1)!}f^{(n)}(\xi_i, y(\xi_i)) = O(h^n)\)</span><br />
+4.【例1】<span class="arithmatex">\(3\)</span>阶泰勒方法<br />
+令<span class="arithmatex">\(n = 10\)</span>，使用<span class="arithmatex">\(3\)</span>阶泰勒方法对常微分方程<span class="arithmatex">\(y' = y - t^2 + 1，0\le t \le 2, y(0) = 0.5\)</span>作近似计算。<br />
+【解】<br />
+（1）求导<br />
+<span class="arithmatex">\(f(t, y(t)) = y(t) - t^2 + 1\)</span><br />
+<span class="arithmatex">\(f'(t, y(t)) = y'(t) - 2t = y(t) - t^2 + 1 - 2t\)</span><br />
+<span class="arithmatex">\(f''(t, y(t)) = y'(t) - 2t - 2 = y(t) - t^2 - 2t - 1\)</span><br />
+（2）<strong>前向差分系数</strong><br />
+<span class="arithmatex">\(T^{(3)}(t_i, w_i) = f(t_i, w_i) + \frac{h}{2}f'(t_i, w_i) + \frac{h^2}{6}f''(t_i, w_i) 
+\newline = (1 + \frac{h}{2} + \frac{h^2}{6})(y(t) - t^2 + 1) - (1 + \frac{h}{3})ht_i - \frac{h^2}{3}\)</span><br />
+（3）<span class="arithmatex">\(3\)</span>阶泰勒公式<br />
+<span class="arithmatex">\(w_{i + 1} = w_i + h \cdot T^{(3)}(t_i, w_i) = w_i + h[(1 + \frac{h}{2} + \frac{h^2}{6})(w_i - t^2 + 1) - (1 + \frac{h}{3})ht_i - \frac{h^2}{3}]\)</span><br />
+5.高阶泰勒方法的<strong>不稳定性</strong><br />
+·注意到<span class="arithmatex">\(w_i\)</span>的系数为<span class="arithmatex">\(1 + h + \frac{h^2}{2} + \frac{h^3}{6} \gt 1\)</span>，故误差会按照指数函数逐步放大，方法不稳定。  </p>
+<h5 id="_57">四、高斯积分公式</h5>
+<p>1.回顾：<code>Newton-Cotes</code>公式的基本想法是，使用等距节点函数值，对积分进行近似计算。<br />
+2.基本思想：高斯积分公式通过用最优方式选取区间<span class="arithmatex">\([a, b]\)</span>内的节点，并求相应的系数，以最小化近似误差。<br />
+<span class="arithmatex">\(\int _a^bf(x)dx = \sum_{i = 1}^nc_if(x_i)\)</span><br />
+3.【定义4】最大类多项式<br />
+对于区间<span class="arithmatex">\([a, b]\)</span>，通过选择节点<span class="arithmatex">\(x_1, \cdots, x_n\)</span>，及其系数<span class="arithmatex">\(c_1, \cdots,c_n\)</span>，使得对区间内任意<strong>不超过<span class="arithmatex">\(2n - 1\)</span>阶的多项式</strong>，<strong>近似积分</strong>结果都是<strong>精确</strong>的，这样的多项式称为最大类多项式。<br />
+【注】<span class="arithmatex">\(f(x)\)</span>对不超过<span class="arithmatex">\(2n - 1\)</span>阶的多项式，近似计算的积分都是精确的<span class="arithmatex">\(\Leftrightarrow f(x)\)</span>对<span class="arithmatex">\(1, x, \cdots, x^{2n - 1}\)</span>计算积分，结果都是精确的。<br />
+4.【定义5】<code>Legendre</code>多项式<br />
+<span class="arithmatex">\(n\)</span>阶<code>Legendre</code>多项式<span class="arithmatex">\(P_n(x)\)</span>满足以下两个条件：<br />
+（1）<span class="arithmatex">\(P_n(x)\)</span>是首一多项式，即<span class="arithmatex">\(x^n\)</span>系数为<span class="arithmatex">\(1\)</span>。<br />
+（2）对<strong>任意多项式阶数小于<span class="arithmatex">\(n\)</span>的多项式</strong><span class="arithmatex">\(P(x)\)</span>，<span class="arithmatex">\(P_n(x)\)</span>在<strong>区间</strong><span class="arithmatex">\([-1, 1]\)</span>上与之<strong>正交</strong>，即：<br />
+<span class="arithmatex">\(\int_{-1}^1P_n(x)P(x)dx = 0\)</span><br />
+此时，称<span class="arithmatex">\(P_n(x)\)</span>的各个<strong>零点</strong>为<strong>高斯点</strong>。<br />
+5.【定理4】<span class="arithmatex">\(n\)</span>阶<code>Legendre</code>多项式对不超过<span class="arithmatex">\(2n - 1\)</span>阶多项式积分的精确近似<br />
+设<span class="arithmatex">\(x_1, \cdots, x_n\)</span>是<span class="arithmatex">\(n\)</span>阶<code>Legendre</code>多项式<span class="arithmatex">\(P_n(x)\)</span>的根，相应的系数定义为：<br />
+<span class="arithmatex">\(c_i = \int_{-1}^1\Pi_{j = 1, j \neq i}^n\frac{x - x_j}{x_i - x_j}dx = \int_{-1}^1L_i(x)dx\)</span><br />
+则对任意不超过<span class="arithmatex">\(2n - 1\)</span>阶的多项式<span class="arithmatex">\(P(x)\)</span>，都有：<br />
+<span class="arithmatex">\(\int^{1}_{-1}P(x)dx = \sum_{i = 1}^nc_iP(x_i)\)</span><br />
+[注]<br />
+（1）<code>Legendre</code>多项式的根和系数表：见教材<code>P198</code>。<br />
+（2）若积分区间<span class="arithmatex">\([a, b] \ne [-1, 1]\)</span>，需作变量代换：<br />
+<span class="arithmatex">\(x = \frac{a + b}{2} + \frac{(b - a)}{2}t\)</span></p>
+<h4 id="_58">数值分析 第十三讲</h4>
+<h5 id="_59">一、其他欧拉方法</h5>
+<p>1.<strong>隐式欧拉方法</strong><br />
+（1）<strong>导数近似</strong>
+<span class="arithmatex">\(y'(t_0) \approx \frac{y(t_0) - y(t_0 - h)}{h}\)</span><br />
+（2）<strong>迭代计算公式</strong><br />
+<span class="arithmatex">\(y(t_1) \approx y(t_0) + hy'(t_1) = \alpha + hf(t_1, y(t_1))\)</span><br />
+【注】<br />
+①<span class="arithmatex">\(y(t_1)\)</span>是<strong>未知</strong>的，故该公式是<strong>隐式</strong>的，需通过<strong>解方程</strong>得出。<br />
+②<span class="arithmatex">\(y(t_1)\)</span>是函数<span class="arithmatex">\(\alpha + hf(t_1, y(t_1))\)</span>的<strong>不动点</strong>，可利用<strong>不动点迭代</strong>相关方法进行迭代求解。<br />
+（3）局部截断误差<br />
+<span class="arithmatex">\(\tau_{i + 1} = \frac{y_{i + 1} - w_{i + 1}}{h} = -\frac{h}{2}y''(\xi_i) = O(h)\)</span><br />
+【注】<br />
+隐式欧拉法具有<strong>无条件稳定</strong>的特点。  </p>
+<p>2.<strong>梯形方法</strong><br />
+（1）迭代计算公式<br />
+<span class="arithmatex">\(w_{i + 1} = w_i + \frac{h}{2}[f(t_i, w_i) + f(t_{i + 1}, w_{i + 1})]\)</span><br />
+（2）局部截断误差：<span class="arithmatex">\(O(h^2)\)</span><br />
+【注】<br />
+实质上，梯形方法是<strong>显式欧拉方法、隐式欧拉方法</strong>的结合，正好将二者系数互为相反数的一阶局部截断误差项消去，使其<strong>局部截断误差达到<span class="arithmatex">\(O(h^2)\)</span></strong>。  </p>
+<p>3.<strong>两步方法</strong><br />
+（1）导数近似计算<br />
+<span class="arithmatex">\(y'(t_0) = \frac{1}{2h}[y(t_0 + h) - y(t_0 - h)] - \frac{h^2}{6}y^{(3)}(\xi_1)\)</span><br />
+（2）迭代公式<br />
+<span class="arithmatex">\(w_{i + 2} \approx w_i + 2hf(t_{i + 1}, w_{i + 1})\)</span> <br />
+（3）局部截断误差：<span class="arithmatex">\(O(h^2)\)</span><br />
+【注】<br />
+本方法需要两个初始解。   </p>
+<p>4.各类方法对比<br />
+（1）显式欧拉方法：简单；精确度低，有条件稳定。<br />
+（2）隐式欧拉方法：无条件稳定；低阶精度，时间开销较大。<br />
+（3）梯形方法：精确度更高；时间开销大。<br />
+（4）两步方法：显式计算，精确度更高；需要一个额外的初始点。  </p>
+<h5 id="runge-kutta">二、<code>Runge-Kutta</code>方法</h5>
+<p>1.方法特点<br />
+（1）<strong>单步运算</strong>。<br />
+（2）<strong>局部截断误差阶数更高</strong>。<br />
+（3）<strong>无需</strong>对<span class="arithmatex">\(f(t, y(t))\)</span>的<strong>导数</strong>进行估值。  </p>
+<p>2.基本思想<br />
+（1）单步方法的几何意义：从<span class="arithmatex">\((t_i, w_i)\)</span>依据某<strong>斜率</strong>延伸一条<strong>线段</strong>，到达<span class="arithmatex">\((t_{i + 1}, w_{i + 1})\)</span>。<br />
+（2）<code>Runge-Kutta</code>方法：通过<strong>寻找更佳的斜率</strong>，提高结果的精确度。  </p>
+<p>3.公式形式及其来源<br />
+（1）修改版本的欧拉方法：<br />
+<span class="arithmatex">\(w_{i + 1} = w_i + h[\frac{1}{2}K_1 + \frac{1}{2}K_2]\)</span><br />
+<span class="arithmatex">\(K_1 = f(t_i, w_i)\)</span><br />
+<span class="arithmatex">\(K_2 = f(t_i + h, w_i + hk_1)\)</span><br />
+·斜率不一定应该是<span class="arithmatex">\(K_1, K_2\)</span>的均值。<br />
+·步长不必为<span class="arithmatex">\(h\)</span>。<br />
+（2）形式的一般化<br />
+<span class="arithmatex">\(w_{i + 1} = w_i + h[\lambda_1K_1 + \lambda_2K_2]\)</span><br />
+<span class="arithmatex">\(K_1 = f(t_i, w_i)\)</span><br />
+<span class="arithmatex">\(K_2 = f(t_i + ph, w_i + phK_1)\)</span><br />
+（3）目标<br />
+希望确定<span class="arithmatex">\(\lambda_1, \lambda_2, p\)</span>的值，以使得方法<strong>达到<span class="arithmatex">\(2\)</span>阶局部截断误差</strong>。  </p>
+<p>4.方法步骤<br />
+（1）第一步：<strong>对<span class="arithmatex">\(K_2\)</span>作泰勒展开并化简</strong><br />
+·写出<span class="arithmatex">\(K_2\)</span>关于<span class="arithmatex">\((t_i, y_i)\)</span>处的泰勒展开式：<br />
+<span class="arithmatex">\(K_2 = f(t_i + ph, y_i + phK_1) \newline
+=f(t_i, y_i) + phf_t(t_i, y_i) + phK_1f_y(t_i, y_i) + O(h^2)\)</span><br />
+·求二阶导数<span class="arithmatex">\(y''(t)\)</span>：<br />
+<span class="arithmatex">\(y''(t) = \frac{d}{dt}f(t, y) = f_t(t, y) + f_y(t, y)\frac{dy}{dt} \newline= f_t(t, y) + f_y(t, y)f(t, y)\newline = f_t(t, y) + f_y(t, y)K_1\)</span><br />
+·故<span class="arithmatex">\(K_2\)</span>可作如下化简：<br />
+<span class="arithmatex">\(K_2 = y'(t_i) + phy''(t_i) + O(h^2)\)</span><br />
+（2）第二步：将<span class="arithmatex">\(K_2\)</span>代入迭代计算公式<br />
+<span class="arithmatex">\(w_{i + 1} = y_i + h[\lambda_1y'(t_i) + \lambda_2(y'(t_i) + phy''(t_i) + O(h^2))]\newline = y_i + (\lambda_1 + \lambda_2)hy'(t_i) +  \lambda_2 ph^2y''(t_i) + O(h^3)\)</span><br />
+（3）第三步：寻找<span class="arithmatex">\(\lambda_1, \lambda_2, p\)</span>，使得：<br />
+<span class="arithmatex">\(\tau_{i + 1} = \frac{y_{i + 1} - w_{i + 1}}{h} = O(h^2)\)</span>  </p>
+<p>5.参数<span class="arithmatex">\(\lambda_1, \lambda_2, p\)</span>的确定<br />
+<span class="arithmatex">\(\lambda_1 + \lambda_2 = 1\)</span><br />
+<span class="arithmatex">\(\lambda_2p = \frac{1}{2}\)</span><br />
+【注】<br />
+修改欧拉方法是<code>Runge-Kutta</code>方法在<span class="arithmatex">\(p = 1, \lambda_1 = \lambda_2 = \frac{1}{2}\)</span>时的一个特例。  </p>
+<p>6.<strong>更高阶精度的<code>Runge-Kutta</code>方法</strong><br />
+<span class="arithmatex">\(w_{i + 1} = y_i + h[\lambda_1K_1 + \lambda_2K_2 + \cdots + \lambda_mK_m]\)</span><br />
+<span class="arithmatex">\(K_1 = f(t_i, w_i)\)</span><br />
+<span class="arithmatex">\(K_2 = f(t_i + \alpha_2h, w_i + \beta_{21}hK_1)\)</span><br />
+<span class="arithmatex">\(K_3 = f(t_i + \alpha_3h, w_i + \beta_{31}hK_1 + \beta_{32}hK_2)\)</span><br />
+<span class="arithmatex">\(\cdots\)</span><br />
+<span class="arithmatex">\(K_m = f(t_i + \alpha_mh, w_i + \beta_{m1}hK_1 + \beta_{m2}hK_2 + \cdots + \beta_{m, m-1}hK_{m - 1})\)</span>  </p>
+<p>7.<strong>最常见的<span class="arithmatex">\(4\)</span>阶<code>Runge-Kutta</code>方法</strong><br />
+<span class="arithmatex">\(w_{i + 1} = w_i + \frac{h}{6}(K_1 + 2K_2 + 2K_3 + K_4)\)</span><br />
+<span class="arithmatex">\(K_1 = f(t_i, w_i)\)</span><br />
+<span class="arithmatex">\(K_2 = f(t_i + \frac{h}{2}, w_i + \frac{h}{2}K_1)\)</span><br />
+<span class="arithmatex">\(K_3 = f(t_i + \frac{h}{2}, w_i + \frac{h}{2}K_2)\)</span><br />
+<span class="arithmatex">\(K_4 = f(t_i + h, w_i + hK_3)\)</span><br />
+8.光滑性要求与步长选取<br />
+（1）<code>Runge-Kutta</code>方法对函数光滑程度的要求<br />
+由于<code>Runge-Kutta</code>方法<strong>基于泰勒展开</strong>，故<strong>需要函数<span class="arithmatex">\(y\)</span>足够光滑</strong>，以使用高阶方法获得较为精确的结果。<br />
+（2）<strong>步长和阶数的关系</strong><br />
+一般对<strong>较小的步长</strong>使用<strong>低阶方法</strong>，对<strong>较大的步长</strong>使用<strong>高阶方法</strong>。  </p>
+<h5 id="_60">三、多步方法</h5>
+<p>1.基本思想<br />
+通过<strong>多个网格点</strong>处<strong>函数值<span class="arithmatex">\(y\)</span>和导数值<span class="arithmatex">\(y'\)</span>的线性组合</strong>，对<span class="arithmatex">\(y_{t + 1}\)</span>作更好的近似。  </p>
+<p>2.迭代公式与显隐式方法分类<br />
+（1）迭代公式
+<span class="arithmatex">\(w_{i + 1} = a_{m - 1}w_i + a_{m - 2}w_{i - 1} + \cdots + a_0w_{i + 1 - m} + h[b_mf_{i + 1} + b_{m - 1}f_i + \cdots + b_0f_{i + 1 - m}]\)</span><br />
+（2）方法分类<br />
+·<span class="arithmatex">\(b_m \neq 0\)</span>，<strong>隐式</strong>方法。<br />
+·<span class="arithmatex">\(b_m = 0\)</span>，<strong>显式</strong>方法。  </p>
+<p>3.<code>Adams-Bashforth</code>显式<span class="arithmatex">\(m\)</span>步方法<br />
+（1）基本思想<br />
+使用<strong>牛顿向后差分公式</strong>，通过<span class="arithmatex">\((t_i, f_i), \cdots, (t_{i + 1 - m}, f_{i + 1 - m})\)</span>对函数<span class="arithmatex">\(f\)</span>作多点插值。<br />
+（2）积分公式<br />
+<span class="arithmatex">\(\int_{t_i}^{t_{i + 1}}f(t, y(t))dt = h\int_{0}^{1}P_{m - 1}(t_i + sh)ds + h\int_0^1R_{m - 1}(t_i + sh)ds\)</span><br />
+（3）方法目的<br />
+获得<span class="arithmatex">\(P_{m - 1}\)</span>的<strong>精确形式</strong>。<br />
+（4）迭代计算公式<br />
+<span class="arithmatex">\(w_{i + 1} = w_i + h\int_0^1P_{m - 1}(t_i + sh)ds\)</span>  </p>
+<p>4.【定义1】多步方法的局部截断误差<br />
+<span class="arithmatex">\(\tau_{i + 1}(h) = \frac{y_{i + 1} - (a_{m - 1}y_i + \cdots + a_0y_{i + 1 - m})}{h} - [b_mf_{i + 1} + \cdots + b_0f_{i + 1 - m}]\)</span>  </p>
+<p>5.【例1】推导<code>Adam-Bashforth</code><strong>二步显式方法</strong>对应的公式。  </p>
+<p>【解】<br />
+·两步方法使用牛顿向后差分公式，利用点<span class="arithmatex">\((t_i, f_i), (t_{i - 1}, f_{i - 1})\)</span>对<span class="arithmatex">\(f\)</span>进行插值近似。<br />
+·根据牛顿向后差分公式，近似多项式的形式为：<span class="arithmatex">\(P_1(t_i + sh) = f_1 + s\nabla f_i = f_i + s(f_i - f_{i - 1})\)</span>
+·对<span class="arithmatex">\(w_{i + 1}\)</span>和<span class="arithmatex">\(w_i\)</span>建立积分关系，其中<span class="arithmatex">\(s  = \frac{1}{2}\)</span>，针对的是区间中点的积分：<br />
+<span class="arithmatex">\(w_{i + 1} = w_i + h\int_0^1[f_i + s(f_i - f_{i - 1})]ds = w_i + \frac{h}{2}(3f_i - f_{i - 1})\)</span><br />
+·截断误差：<br />
+<span class="arithmatex">\(\tau_{i + 1} = \frac{y(t_{i + 1}) - w_{i + 1}}{h} = \int_0^1R_1(t_i + sh)ds\newline
+ = \int_0^1\frac{d^2f(\xi_i, y(\xi_i))}{dt^2}\frac{1}{2!}sh(s + 1)hds = \frac{5}{12}h^2y'''(\tilde{\xi}_i)\)</span><br />
+[注]<br />
+（1）参数可查表获得。<br />
+（2）计算比<code>Runge-Kutta</code>方法简单，原因是可以<strong>充分利用之前步骤已经迭代计算出的结果</strong>。    </p>
+<p>6.<code>Adams-Bashforth</code>四步显式方法<br />
+<span class="arithmatex">\(w_{i + 1} = w_i + \frac{h}{24}(55f_i - 59f_{i - 1} + 37f_{i - 2} - 9f_{i - 3})\)</span>  </p>
+<p>7.<code>Adams-Moulton</code>隐式<code>m</code>步方法<br />
+（1）基本思想：通过点<span class="arithmatex">\((t_{i + 1}, f_{i + 1}), (t_i, f_i), \cdots, (t_{i + 1 - m}, f_{i + 1 - m})\)</span>，对函数<span class="arithmatex">\(f\)</span>进行近似，获得<span class="arithmatex">\(P_m(t)\)</span>。<br />
+（2）<code>Adams-Moulton</code>三步方法<br />
+<span class="arithmatex">\(w_{i + 1} = w_i + \frac{h}{24}(9f_{i + 1} + 19f_i - 5f_{i - 1} + f_{i - 2})\)</span>  </p>
+<p>8.<code>Adams</code>预测-纠正系统<br />
+（1）第一步：根据<code>Runge-Kutta</code>方法，计算出前<span class="arithmatex">\(m\)</span>个初始值。<br />
+（2）第二步：使用<code>Adams-Bashforth</code>显式方法进行预测。<br />
+（3）第三步：使用<code>Adams-Moulton</code>隐式方法进行纠正。<br />
+【注】<br />
+（1）上述三个步骤涉及的公式的<strong>局部截断误差</strong>，应该具有<strong>相同的阶数</strong>。<br />
+（2）常用系统：用<span class="arithmatex">\(4\)</span>阶<code>Runge-Kutta</code>方法<strong>获取初始值</strong>，然后用<span class="arithmatex">\(4\)</span>阶<code>Adams-Bashforth</code>方法作为<strong>预测器</strong>，最后运行一轮<code>Adams-Moulton</code>方法作为<strong>纠正器</strong>。  </p>
+<h5 id="_61">四、多步方法——总结与深入研究</h5>
+<p>1.利用<strong>泰勒展开</strong>获得<span class="arithmatex">\(m\)</span>步迭代公式<br />
+（1）迭代公式形式<br />
+<span class="arithmatex">\(w_{i + 1} = a_{m - 1}w_i + \cdots + a_0 w_{i + 1 - m} + h[b_mf_{i + 1} + b_{m - 1}f_i + \cdots + b_0f_{i + 1 - m}]\)</span><br />
+（2）关于<span class="arithmatex">\(t_i\)</span>点，对<span class="arithmatex">\(y_{i - 1}, \cdots, y_{i + 1 - m}\)</span>以及<span class="arithmatex">\(f_{i + 1}, f_{i - 1}, \cdots, f_{i + 1 - m}\)</span>作泰勒展开。<br />
+（3）由<span class="arithmatex">\(h^k\)</span>的系数，获得参数<span class="arithmatex">\(a_0, \cdots, a_{m - 1}\)</span>及<span class="arithmatex">\(b_0, \cdots, b_m\)</span>。  </p>
+<p>2.【例2】推导下列四阶多步公式：
+<span class="arithmatex">\(w_{i + 1} = a_2 w_i + a_1w_{i - 1} + a_0 w_{i - 2} + h[b_3f_i + b_2f_{i - 1} + b_1 f_{i - 2} + b_0f_{i - 3}]\)</span>  </p>
+<p>【解】<br />
+（1）对各<strong>精确函数值、导数值</strong>作<strong>泰勒展开</strong><br />
+·假设<span class="arithmatex">\(w_i = y_i\)</span>，获得了<strong>上一点的精确函数值</strong>，则局部截断误差：<br />
+<span class="arithmatex">\(\tau_{i + 1} = \frac{y_{i + 1} - w_{i + 1}}{h} = O(h^4)\)</span><br />
+·在<strong>点<span class="arithmatex">\(t_i\)</span></strong>处，对<span class="arithmatex">\(y_{i - 1}\)</span>作<strong>泰勒展开</strong>如下：<br />
+<span class="arithmatex">\(y_{i - 1} = y_i - hy'_i + \frac{h^2}{2}y''_i - \frac{1}{6}y'''_i + \frac{1}{24}h^4y^{(4)}_i + O(h^5)\)</span><br />
+·在点<span class="arithmatex">\(t_i\)</span>处，<strong>以<span class="arithmatex">\(f_i = y_i'\)</span>为标准</strong>，展开<span class="arithmatex">\(f_{i - 1}\)</span>：
+<span class="arithmatex">\(f_{i - 1} = y_i' - hy_i'' + \frac{1}{2}h^2y'''_i - \frac{1}{6}h^3y_i^{(4)} + O(h^4)\)</span><br />
+·同理，可展开<span class="arithmatex">\(y_{i - 2}, f_{i - 2}, f_{i - 3}\)</span>等。<br />
+（2）系数求解<br />
+·若令<span class="arithmatex">\(a_0 = a_1 = 0\)</span>，则为<code>Adams-Bashforth</code>显式方法。<br />
+·若令<span class="arithmatex">\(f_{i - 1}\)</span>替换为<span class="arithmatex">\(f_{i + 1}\)</span>，<span class="arithmatex">\(a_0 = a_1 = 0\)</span>，则为<code>Adams-Moulton</code>隐式方法。<br />
+·若将<span class="arithmatex">\(f_{i - 3}\)</span>替换为<span class="arithmatex">\(w_{i - 3}\)</span>，则可获得另一类<span class="arithmatex">\(4\)</span>阶局部截断误差的多步公式。  </p>
+<h5 id="_62">五、高阶方程与微分方程组</h5>
+<p>1.<strong><span class="arithmatex">\(m\)</span>个函数耦合而成</strong>的<span class="arithmatex">\(1\)</span>阶<strong>常微分方程组</strong><br />
+（1）方程组
+<span class="arithmatex">\(u_1'(t) = f_1(t, u_1(t), \cdots, u_m(t))\)</span><br />
+<span class="arithmatex">\(\cdots\)</span><br />
+<span class="arithmatex">\(u'_m(t) = f_m(t, u_1(t), \cdots, u_m(t))\)</span>
+（2）<strong>初值条件</strong><br />
+<span class="arithmatex">\(u_i(a) = \alpha_i, i = 1, 2, \cdots, m\)</span><br />
+（3）向量化表达
+设<span class="arithmatex">\(\vec{y} = [u_1, \cdots, u_m]^T, \vec{f} = [f_1, \cdots, f_m]^T, \vec{\alpha} = [\alpha_1, \cdots, \alpha_m]^T\)</span>，则：<br />
+<span class="arithmatex">\(\vec{y}'(t) = \vec{f}(t, \vec{y})\)</span><br />
+<span class="arithmatex">\(\vec{y}(a) = \vec{\alpha}\)</span><br />
+（4）解法<br />
+使用<strong>非线性方程组的求解方法</strong>求解。 <br />
+[注]<span class="arithmatex">\(\vec{y}'(t)\)</span>由<span class="arithmatex">\(\vec{y}(t)\)</span>对每个分量分别求导得到。   </p>
+<p>2.<strong>高阶微分方程</strong><br />
+（1）方程组
+<span class="arithmatex">\(y^{(m)}(t) = f(t, y, y', \cdots, y^{(m - 1)})\)</span><br />
+<span class="arithmatex">\(y(a) = \alpha_1, \cdots, y^{(m - 1)}(a) = \alpha_m\)</span><br />
+（2）解法<br />
+·将<strong>高阶微分方程</strong>转化为<strong>一阶微分方程组</strong>。<br />
+·令<span class="arithmatex">\(u_1(t) = y(t), u_2(t) = y'(t), \cdots, u_m(t) = y^{(m - 1)}(t)\)</span>，则有：<br />
+<span class="arithmatex">\(u'_1 = y' = u_2\)</span><br />
+<span class="arithmatex">\(u_2' = y'' = u_3\)</span>
+<span class="arithmatex">\(\cdots\)</span><br />
+<span class="arithmatex">\(u_{m - 1}' = y^{(m - 1)} = u_m\)</span><br />
+<span class="arithmatex">\(u_m' = y^{(m)} = f(x, u_1, \cdots, u_m)\)</span>  </p>
+<p>3.【例3】令<span class="arithmatex">\(h = 0.1\)</span>，使用修改欧拉方法，解下列二阶微分方程。<br />
+<span class="arithmatex">\(y''-2y' + y = te^t - 1.5t + 1, 0 \le t \le 0.2\)</span><br />
+<span class="arithmatex">\(y(0) = 0, y'(0) = -0.5\)</span><br />
+【解】<br />
+（1）写出方程组的形式：<br />
+<span class="arithmatex">\(u_1'(t) = u_2(t)\)</span>
+<span class="arithmatex">\(u_2'(t) = te^t - 1.5t + 1 - u_1(t) + 2u_2(t)\)</span><br />
+<span class="arithmatex">\(u_1(0) = 0, u_2(0) = -0.5\)</span><br />
+（2）<strong>修改欧拉方法</strong>回顾：<br />
+<span class="arithmatex">\(w_{i+1} = w_i + h[\frac{1}{2}K_1 + \frac{1}{2}K_2]\)</span><br />
+<span class="arithmatex">\(K_1 = f(t_i, w_i)\)</span><br />
+<span class="arithmatex">\(K_2 = f(t_i + h, w_i + hK_1)\)</span><br />
+（3）利用修改欧拉方法求解微分方程<br />
+<span class="arithmatex">\(\vec{K}_1(0) = \vec{f}(0, \vec{u}(0)) = \begin{bmatrix} u_1'(0) \\ u_2'(0)\end{bmatrix} =  \begin{bmatrix}-0.5 \\ 0.0\end{bmatrix}\)</span><br />
+由于<span class="arithmatex">\(h = 0.1\)</span>，故：
+<span class="arithmatex">\(\vec{K}_2(0) = \vec{f}(0.1, \begin{bmatrix} -0.05 \\ -0.5\end{bmatrix}) = \begin{bmatrix} -0.5 \\ 0.0105\end{bmatrix}\)</span><br />
+故：
+<span class="arithmatex">\(\vec{u}(0.1) = \begin{bmatrix} -0.0500 \\ -0.4995\end{bmatrix}\)</span></p>
+<h4 id="_63">数值分析 第十四讲</h4>
+<h5 id="_64">一、基本定义</h5>
+<p>1.【定义1】单步方法的<strong>一致性</strong><br />
+设单步方法的局部截断误差为<span class="arithmatex">\(\tau_i(h)\)</span>。若满足：<span class="arithmatex">\(\lim _{h \rightarrow 0} \max_{1 \le i \le n}|\tau_i(h)| = 0\)</span>，则称该单步方法和微分方程是<strong>一致</strong>的。<br />
+[理解]<br />
+若迭代步长<span class="arithmatex">\(\rightarrow 0\)</span>，则最大的局部截断误差也应<span class="arithmatex">\(\rightarrow 0\)</span>。<br />
+2.【定义2】方法的收敛性<br />
+若某方法满足：<span class="arithmatex">\(\lim_{h \rightarrow 0} \max_{1 \le i \le n}|w_i - y_i| = 0\)</span>，则称该方法关于相应常微分方程是收敛的。<br />
+3.【定义3】方法的稳定性<br />
+若初始条件的微小扰动，对方法的近似只能带来足够小的变化，则称该方法是稳定的。<br />
+4.【例1】各类欧拉方法关于一个<code>IVP</code>问题的稳定性<br />
+<img alt="" src="../assets/NA14/1.JPG" /></p>
+<h6 id="ivp">二、<code>IVP</code>问题稳定性</h6>
+<p>1.测试方程<br />
+（1）令<span class="arithmatex">\(y' = \lambda, y(0) = \alpha, Re(\lambda) &lt; 0\)</span>（注：<span class="arithmatex">\(Re(\lambda)\)</span>表示<span class="arithmatex">\(\lambda\)</span>的实部），并假设只有初始点存在取整误差。<br />
+（2）给定步长<span class="arithmatex">\(h\)</span>，若初始误差会不断减小，则该方法关于<span class="arithmatex">\(H = \lambda h\)</span>是绝对稳定的。<br />
+（3）上述<span class="arithmatex">\(H\)</span>的集合形成了绝对稳定区域。<br />
+（4）若方法<span class="arithmatex">\(A\)</span>的绝对稳定区域大于方法<span class="arithmatex">\(B\)</span>的绝对稳定区域，则称方法<span class="arithmatex">\(A\)</span>比方法<span class="arithmatex">\(B\)</span>更稳定。<br />
+<img alt="" src="../assets/NA14/2.JPG" /></p>
+<p>2.【例2】显式欧拉方法<br />
+代入<span class="arithmatex">\(y' = \lambda y\)</span>
+<span class="arithmatex">\(w_{i + 1} = w_i + h\lambda w_i = w_i(1 + H) = \alpha(1 + H)^{i + 1}\)</span><br />
+初始值有舍入误差：<span class="arithmatex">\(alpha^* = \alpha + \epsilon\)</span><br />
+故<span class="arithmatex">\(w_{i + 1}^* = \alpha^*(1 + H)^{i + 1}\)</span><br />
+从而第<span class="arithmatex">\(i + 1\)</span>步误差<span class="arithmatex">\(\epsilon_{i + 1} = (1 + H)^{i + 1}\epsilon\)</span><br />
+<img alt="" src="../assets/NA14/3.JPG" /></p>
+<p>3.【例3】隐式欧拉方法<br />
+<span class="arithmatex">\(w_{i + 1} = w_i + hf_{i + 1} = w_i + h\lambda w_{i + 1} = \frac{1}{1 - H}w_i\)</span><br />
+从而<span class="arithmatex">\(\epsilon_{i + 1} = (\frac{1}{1 - H})^{i + 1}\epsilon\)</span><br />
+只需<span class="arithmatex">\(|1 - H| &gt; 1\)</span>，即可保证无条件稳定。<br />
+<img alt="" src="../assets/NA14/4.JPG" />
+4.【例4】二阶<code>Runge-Kutta</code>隐式方法<br />
+<span class="arithmatex">\(w_{i + 1} = w_i + hK_1\)</span><br />
+<span class="arithmatex">\(K_1 = f(t_i + \frac{h}{2}, w_i + \frac{h}{2}K_1)\)</span><br />
+判断其稳定性。<br />
+【解】<br />
+<span class="arithmatex">\(K_1 = \frac{\lambda w_i}{1 - \frac{\lambda h}{2}}\)</span> <br />
+故<span class="arithmatex">\(w_{ i + 1} = \frac{2 + H}{2 - H}w_i\)</span><br />
+令<span class="arithmatex">\(\frac{2 + H}{2 - H} &lt; 1\)</span>，则无条件稳定。<br />
+<img alt="" src="../assets/NA14/5.JPG" /></p>
+<p>5.【例5】<span class="arithmatex">\(1\)</span>到<span class="arithmatex">\(4\)</span>阶<code>Runge-Kutta</code>显式方法的稳定性<br />
+<img alt="" src="../assets/NA14/6.JPG" /></p>
+<p>7.<code>IVP</code>方程组的稳定性<br />
+·根据测试方程<span class="arithmatex">\(y' = \lambda y\)</span>，求显式欧拉方法稳定时<span class="arithmatex">\(H = \lambda h\)</span>的取值范围。<br />
+·求<span class="arithmatex">\(u_1, u_2\)</span>系数矩阵的特征值<span class="arithmatex">\(\Rightarrow\)</span>利用<span class="arithmatex">\(H = \lambda h\)</span>的无条件稳定范围，确定迭代步长。  </p>
+<h5 id="_65">三、特征多项式与根条件</h5>
+<p>[注]见教材<code>P293</code><br />
+1.【定义4】多步方法的特征多项式<br />
+设多步方法迭代涉及的差分方程如下：<br />
+<span class="arithmatex">\(w_{i + 1} = a_{m - 1}w_i + a_{m - 2}w_{i - 1} + \cdots + a_0w_{i + 1 - m} + hF(t_i, h, w_{i + 1}, w_i, \cdots, w_{i + 1 - m})\)</span><br />
+则该方法特征多项式为：<br />
+<span class="arithmatex">\(P(\lambda) = \lambda^m - a_{m - 1}\lambda^{m - 1} + \cdots + a_1 \lambda - a_0\)</span><br />
+[注]离<span class="arithmatex">\(m\)</span>越近的系数，对应的<span class="arithmatex">\(\lambda\)</span>阶数越高。<br />
+2.【定义5】根条件<br />
+设多步方法特征方程<span class="arithmatex">\(P(\lambda) = \lambda^m - a_{m - 1}\lambda^{m - 1} + \cdots + a_1 \lambda - a_0 = 0\)</span>的根为<span class="arithmatex">\(\lambda_1, \cdots, \lambda_m\)</span>。若：<br />
+（1）<span class="arithmatex">\(|\lambda_i |\le 1, i = 1, 2, \cdots, m\)</span>。<br />
+（2）所有<strong>绝对值等于<span class="arithmatex">\(1\)</span>的根</strong>都是<strong>单根</strong>。<br />
+则称该差分方法满足<strong>根条件</strong>。<br />
+3.【定义6】<strong>强稳定、弱稳定与不稳定</strong><br />
+（1）若方法<strong>满足根条件</strong>，并且<span class="arithmatex">\(\lambda = 1\)</span>是特征方程<strong>唯一的绝对值为<span class="arithmatex">\(1\)</span>的根</strong>，则该方法是<strong>强稳定</strong>的。<br />
+（2）若方法<strong>满足根条件</strong>，且<strong>特征方程有不止一个绝对值为<span class="arithmatex">\(1\)</span>的根</strong>，则称该方法是<strong>弱稳定</strong>的。<br />
+（3）若方法<strong>不满足根条件</strong>，则称该方法是<strong>不稳定</strong>的。  </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>
