@@ -1546,7 +1546,7 @@
 3.色差(<code>chromatic aberration</code>)：透镜无法将各种波长的色光都聚焦在同一点上的现象，由镜头散射现象造成。  </p>
 <h5 id="_8">四、投影</h5>
 <p>1.针孔相机模型<br />
-（1）投影公式：<span class="arithmatex">\(-\frac{x}{f} = \frac{X}{Z}\rArr x = -f\frac{X}{Z} + c_x\)</span>，其中<span class="arithmatex">\(c_x\)</span>表示漂移。    <br />
+（1）投影公式：<span class="arithmatex">\(-\frac{x}{f} = \frac{X}{Z}\Rightarrow x = -f\frac{X}{Z} + c_x\)</span>，其中<span class="arithmatex">\(c_x\)</span>表示漂移。    <br />
 （2）<span class="arithmatex">\(x, y\)</span>两个方向的投影公式<br />
 <span class="arithmatex">\(x_{screen} = f_x\frac{Y}{Z} + c_x\)</span><br />
 <span class="arithmatex">\(y_{screen} = f_y\frac{X}{Z} + c_y\)</span><br />
@@ -1560,10 +1560,10 @@
 3.【考点】齐次坐标与投影公式<br />
 （1）非齐次坐标与齐次坐标之间的转换<br />
 [例1]将下列非齐次坐标转换到齐次坐标。<br />
-①非齐次坐标<span class="arithmatex">\((x, y)\lrArr\)</span>齐次坐标<span class="arithmatex">\([x, y, 1]^T\)</span><br />
-②非齐次坐标<span class="arithmatex">\((x, y, z)\lrArr\)</span>齐次坐标<span class="arithmatex">\([x, y, z, 1]^T\)</span><br />
-③非齐次坐标<span class="arithmatex">\((\frac{x}{w}, \frac{y}{w})\lrArr\)</span>齐次坐标<span class="arithmatex">\([x, y, w]^T\)</span><br />
-④非齐次坐标<span class="arithmatex">\((\frac{x}{w}, \frac{y}{w}, \frac{z}{w})\lrArr\)</span>齐次坐标<span class="arithmatex">\([x, y, z, w]^T\)</span><br />
+①非齐次坐标<span class="arithmatex">\((x, y)\Leftrightarrow\)</span>齐次坐标<span class="arithmatex">\([x, y, 1]^T\)</span><br />
+②非齐次坐标<span class="arithmatex">\((x, y, z)\Leftrightarrow\)</span>齐次坐标<span class="arithmatex">\([x, y, z, 1]^T\)</span><br />
+③非齐次坐标<span class="arithmatex">\((\frac{x}{w}, \frac{y}{w})\Leftrightarrow\)</span>齐次坐标<span class="arithmatex">\([x, y, w]^T\)</span><br />
+④非齐次坐标<span class="arithmatex">\((\frac{x}{w}, \frac{y}{w}, \frac{z}{w})\Leftrightarrow\)</span>齐次坐标<span class="arithmatex">\([x, y, z, w]^T\)</span><br />
 （2）投影公式：<span class="arithmatex">\(q = MQ\)</span><br />
 ·<span class="arithmatex">\(q = \begin{bmatrix}x\\y\\w\end{bmatrix}, M = \begin{bmatrix}f_x \ 0 \ c_x \\ 0 \ f_y \ c_y \\ 0 \ \ 0 \ \ 1\end{bmatrix}, Q = \begin{bmatrix}X \\ Y \\ Z\end{bmatrix}\)</span><br />
 ·转换矩阵<span class="arithmatex">\(M\)</span>包含了相机内参<span class="arithmatex">\((f_x, f_y, c_x, c_y)\)</span>。  </p>
@@ -1618,7 +1618,7 @@ cos\theta \ sin\theta \ 0 \\
 <h5 id="_11">七、成像过程总结</h5>
 <p>1.先利用外参矩阵，对物体进行平移、旋转变换：<span class="arithmatex">\(Q_{cam} = M_{ext}Q_{obj}\)</span><br />
 2.再利用内参矩阵，对平移、旋转后的物体进行投影，得到图像：<span class="arithmatex">\(Q_{image} = M_{int}Q_{cam}\)</span><br />
-3.成像过程涉及的坐标系：三维物体坐标系（<span class="arithmatex">\(\rarr\)</span>三维世界坐标系）<span class="arithmatex">\(\rarr\)</span>三维相机坐标系<span class="arithmatex">\(\rarr\)</span>二维图像平面坐标系<span class="arithmatex">\(\rarr\)</span>二维像素坐标系<br />
+3.成像过程涉及的坐标系：三维物体坐标系（<span class="arithmatex">\(\rightarrow\)</span>三维世界坐标系）<span class="arithmatex">\(\rightarrow\)</span>三维相机坐标系<span class="arithmatex">\(\rightarrow\)</span>二维图像平面坐标系<span class="arithmatex">\(\rightarrow\)</span>二维像素坐标系<br />
 [注]二维图像平面坐标系是理想模型，二维像素坐标系不是理想模型。<br />
 4.总结<br />
 <img alt="" src="../assets/CV/9.JPG" /><br />
@@ -1679,7 +1679,7 @@ cos\theta \ sin\theta \ 0 \\
 ·<span class="arithmatex">\(2NK \ge 6K + 4\)</span>，其中<span class="arithmatex">\(N\)</span>为角点个数，<span class="arithmatex">\(K\)</span>为视野个数。<br />
 ·使用更多的角点、视野，可以增强结果的健壮性。<br />
 4.应用——形成鸟瞰图  <br />
-·计算单应性矩阵<span class="arithmatex">\(\larr\)</span>通过对倾斜俯视图的视角变换，形成垂直俯视的鸟瞰图。  </p>
+·计算单应性矩阵<span class="arithmatex">\(\rightarrow\)</span>通过对倾斜俯视图的视角变换，形成垂直俯视的鸟瞰图。  </p>
 <h4 id="_16">专题四——双目视觉</h4>
 <h5 id="stereo-imaging">一、立体成像(<code>stereo imaging</code>)</h5>
 <p>1.立体<br />
@@ -1731,7 +1731,7 @@ cos\theta \ sin\theta \ 0 \\
 ·给定一张图中一点，则它在另一张图中的匹配点必定处于相应的极线上。<br />
 ·一张图的某些像素点在另一张图的对应像素点（<code>correspondence</code>）的搜索只需在行中进行，而不需要进行二维搜索，从而将搜索空间从二维降低到一维。<br />
 4.计算视差(<code>disparity</code>)<br />
-（1）步骤：特征点寻找<span class="arithmatex">\(\rarr\)</span>特征点匹配<br />
+（1）步骤：特征点寻找<span class="arithmatex">\(\rightarrow\)</span>特征点匹配<br />
 （2）若在极线上，针对左图的每一个像素点，对右图相应极线上没一点计算最小匹配开销，该方法效果差。<br />
 （3）改进方法：窗口匹配。<br />
 5.<code>correspondence</code>匹配方法<br />
@@ -1764,7 +1764,7 @@ cos\theta \ sin\theta \ 0 \\
 <img alt="" src="../assets/CV/19.JPG" />  </p>
 <h5 id="icp-iterative-closest-point">五、迭代最近点(<code>ICP, Iterative Closest Point</code>)算法</h5>
 <p>1.问题描述<br />
-·单个摄像机构造的结构光系统只能获得一个方向上的三维数据，如果希望得到大于<span class="arithmatex">\(180\degree\)</span>范围的三维数据，就需要采用多个投影仪-摄像机组合。<br />
+·单个摄像机构造的结构光系统只能获得一个方向上的三维数据，如果希望得到大于<span class="arithmatex">\(180\deg\)</span>范围的三维数据，就需要采用多个投影仪-摄像机组合。<br />
 ·此时，需要研究如何把多个扫描结果拼接在一起，以形成对扫描对象的完整描述。<br />
 2.迭代最近点(<code>ICP, Iterative Closest Point</code>)方法<br />
 （1）建立两个扫描结果之间点的对应关系。<br />
