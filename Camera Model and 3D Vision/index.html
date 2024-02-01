@@ -1,0 +1,1835 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="大观散人">
+      
+      
+        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/Camera%20Model%20and%203D%20Vision/">
+      
+      
+        <link rel="prev" href="../OS-Notes/">
+      
+      
+        <link rel="next" href="../CV-Notes/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>专题汇编——相机模型与立体视觉 - 大观散人的博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=仿宋:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"仿宋";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="大观散人的博客" class="md-header__button md-logo" aria-label="大观散人的博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            大观散人的博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              专题汇编——相机模型与立体视觉
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ZJUZhangJiefu/ZJUZhangJiefu.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZJUZhangJiefu.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../OS-Notes/" class="md-tabs__link">
+          
+  
+  计算机专业课
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../Attention%20Is%20All%20You%20Need/" class="md-tabs__link">
+          
+  
+  深度学习经典论文
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="大观散人的博客" class="md-nav__button md-logo" aria-label="大观散人的博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    大观散人的博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ZJUZhangJiefu/ZJUZhangJiefu.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZJUZhangJiefu.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    计算机专业课
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            计算机专业课
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    操作系统
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            操作系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OS-Notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    期末开卷笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机视觉
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            计算机视觉
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    专题汇编——相机模型与立体视觉
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    专题汇编——相机模型与立体视觉
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      专题——相机模型与立体视觉
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="专题——相机模型与立体视觉">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      专题一——运动估计
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="专题一——运动估计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、基本概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、光流问题
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      专题二——单目视觉与相机模型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="专题二——单目视觉与相机模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、单目投影
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、相机模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#depth-of-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、景深(Depth of Field)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-of-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、视场(Field of View)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、投影
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、透镜的畸变
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、齐次坐标与投影公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      七、成像过程总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      专题三——相机标定
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="专题三——相机标定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、基本概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、相机标定问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、相机标定方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      专题四——双目视觉
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="专题四——双目视觉">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stereo-imaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、立体成像(stereo imaging)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triangulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、三角化(triangulation)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#epipolar-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、极线几何(epipolar geometry)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、双目视觉的应用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      专题五——结构光成像技术
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="专题五——结构光成像技术">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、基本概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、结构光成像原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、结构光的编码
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、结构光成像技术的优缺点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icp-iterative-closest-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、迭代最近点(ICP, Iterative Closest Point)算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、拓展
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CV-Notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    复习提纲全解
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数值分析
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            数值分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NA-Notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数值分析笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    应用运筹学基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            应用运筹学基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AOR-Notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    期末笔记合订本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    深度学习经典论文
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            深度学习经典论文
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Transformer系列
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Transformer系列
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Attention%20Is%20All%20You%20Need/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Attention Is All You Need
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      专题——相机模型与立体视觉
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="专题——相机模型与立体视觉">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      专题一——运动估计
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="专题一——运动估计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、基本概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、光流问题
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      专题二——单目视觉与相机模型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="专题二——单目视觉与相机模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、单目投影
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、相机模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#depth-of-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、景深(Depth of Field)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-of-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、视场(Field of View)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、投影
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、透镜的畸变
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、齐次坐标与投影公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      七、成像过程总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      专题三——相机标定
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="专题三——相机标定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、基本概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、相机标定问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、相机标定方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      专题四——双目视觉
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="专题四——双目视觉">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stereo-imaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、立体成像(stereo imaging)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triangulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、三角化(triangulation)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#epipolar-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、极线几何(epipolar geometry)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、双目视觉的应用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      专题五——结构光成像技术
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="专题五——结构光成像技术">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、基本概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、结构光成像原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、结构光的编码
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、结构光成像技术的优缺点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icp-iterative-closest-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、迭代最近点(ICP, Iterative Closest Point)算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、拓展
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>专题汇编——相机模型与立体视觉</h1>
+
+<h3 id="_1">专题——相机模型与立体视觉</h3>
+<h4 id="_2">专题一——运动估计</h4>
+<h5 id="_3">一、基本概念</h5>
+<p>1.运动估计的意义<br />
+·追踪物体的行为<br />
+·矫正相机抖动，增加稳定性<br />
+·图像对齐<br />
+·三维形状重建<br />
+·实现特殊效果<br />
+2.运动估计的方法<br />
+·进行运动估计，即解决<code>correspondence</code>问题，即给定图像<span class="arithmatex">\(H\)</span>中的一个像素点，寻找图像<span class="arithmatex">\(I\)</span>中的对应像素，形成匹配。<br />
+3.【考点】运动估计的三个假设<br />
+（1）亮度恒常性(<code>brightness constancy</code>)：同一个物点，在不同帧上的亮度应相同，即<span class="arithmatex">\(I(x + u, y + v, t + 1) = H(x, y, t)\)</span>。<br />
+（2）空间一致性(<code>spatial coherence</code>)：属于同一表面的邻近点应具有较为相似的运动。<br />
+（3）微小运动(<code>small motion</code>)：相邻两帧之间的运动较小。  </p>
+<h5 id="_4">二、光流问题</h5>
+<p>1.已知条件<br />
+相邻时刻点的两张图像<span class="arithmatex">\(H(x, y, t)\)</span>和<span class="arithmatex">\(I(x, y, t + 1)\)</span><br />
+2.运动估计——光流方程<span class="arithmatex">\(I_x u + I_y v = -I_t\)</span>推导<br />
+·由微小运动条件：
+<span class="arithmatex">\(I(x + u, y + v) = I(x, y) + \frac{\partial I}{\partial x}u + \frac{\partial I}{\partial y}v + O(u^2) + O(v^2)\)</span><br />
+·舍弃高阶项，得到：<br />
+<span class="arithmatex">\(I(x + u, y + v) \approx I(x, y) + \frac{\partial I}{\partial x}u + \frac{\partial I}{\partial y}v\)</span><br />
+·由亮度恒常性：<span class="arithmatex">\(0 = I(x + u, y + v) - H(x, y) \approx I(x, y) + I_x u + I_yv - H(x, y) = I_t + \nabla I \cdot[\frac{\partial I}{\partial x}, \frac{\partial I}{\partial y}]\)</span><br />
+即：<span class="arithmatex">\(I_xu + I_yv = -I_t\)</span>  </p>
+<h4 id="_5">专题二——单目视觉与相机模型</h4>
+<h5 id="_6">一、单目投影</h5>
+<p>1.单目投影的任意性<br />
+2.单目投影带来的信息损失：角度、距离（长度）<br />
+3.<code>Muller-Lyer</code>错觉  </p>
+<h5 id="_7">二、相机模型</h5>
+<p>1.结构：镜片、光栅、胶卷、取景框。<br />
+2.建立真实相机——小孔成像（<code>pinhole camera</code>）<br />
+（1）光线直接到达胶片，由于光线散射，没有聚焦，因此没有画面，全为白色。<br />
+（2）小孔成像：第一个相机<br />
+·添加挡板，挡板中有小孔。光线经过挡板，投射在胶片上，则光线模糊的问题得以缓解，成倒立的实像。<br />
+<img alt="" src="../assets/CV/1.JPG" /><br />
+·挡板到胶片的距离称为焦距(<code>focal length</code>)。<br />
+·光圈孔径(<code>aperture</code>，即挡板中小孔的直径)对成像的清晰度有影响。光圈孔径太大，成像不清晰；光圈孔径太小，光线入射不足，并且有衍射问题发生。<br />
+（3）镜片<br />
+·作用：折射平行光线，使之聚焦于一点，克服光线不足造成的问题；镜片厚度决定焦距，焦距决定最佳成像平面的位置。<br />
+<img alt="" src="../assets/CV/2.JPG" /><br />
+（4）薄透镜公式<br />
+<span class="arithmatex">\(\frac{1}{d_o} + \frac{1}{d_i} = \frac{1}{f}\)</span>  </p>
+<h5 id="depth-of-field">二、景深(<code>Depth of Field</code>)</h5>
+<p>1.定义：摄像机镜头能够获取清晰图像时，被拍摄物体到摄像机镜头的最近距离、最远距离之间的距离范围。<br />
+<img alt="" src="../assets/CV/3.JPG" /><br />
+2.景深的决定因素：焦距、光圈大小。<br />
+3.【考点】光圈大小对景深的影响<br />
+<img alt="" src="../assets/CV/4.JPG" /><br />
+（1）结论：光圈越小，景深越大。<br />
+（2）原理解释——容许弥散圆(<code>permission circle of confusion</code>)<br />
+·弥散圆定义：物点成像时，由于成像平面与焦点不重合，导致该点的成像光束不能会聚于一点，而是在像平面上形成一个扩散的圆形投影。<br />
+·容许弥散圆：半径小于某个临界值，不对成像清晰度带来明显影响的弥散圆称为容许弥散圆。<br />
+·物体前后移动相同的距离，若光圈越小，则弥散圆半径的变化量越小。因此，在弥散圆半径达到容许临界值时，更小的光圈对应的景深更大。<br />
+[注]光圈较小，会导致入射光不足，需要补充曝光。<br />
+4.焦距对景深的影响：焦距越大，景深越小。  </p>
+<h5 id="field-of-view">三、视场(<code>Field of View</code>)</h5>
+<p>1.【考点】焦距(<code>Focal Length</code>)对视场的影响<br />
+<img alt="" src="../assets/CV/5.JPG" /><br />
+（1）结论：焦距越大，视场越小。<br />
+（2）原理解释<br />
+·视角<span class="arithmatex">\(\phi = tan^{-1}\frac{d}{2f}\)</span>，在<span class="arithmatex">\(d\)</span>固定时，焦距越大，视角越小，视场越小。<br />
+2.光的弥散<br />
+（1）弥散圆定义：物点成像时，由于成像平面与焦点不重合，导致该点的成像光束不能会聚于一点，而是在像平面上形成一个扩散的圆形投影。<br />
+（2）容许弥散圆：半径小于某个临界值，不对成像清晰度带来明显影响的弥散圆称为容许弥散圆。<br />
+3.色差(<code>chromatic aberration</code>)：透镜无法将各种波长的色光都聚焦在同一点上的现象，由镜头散射现象造成。  </p>
+<h5 id="_8">四、投影</h5>
+<p>1.针孔相机模型<br />
+（1）投影公式：<span class="arithmatex">\(-\frac{x}{f} = \frac{X}{Z}\rArr x = -f\frac{X}{Z} + c_x\)</span>，其中<span class="arithmatex">\(c_x\)</span>表示漂移。    <br />
+（2）<span class="arithmatex">\(x, y\)</span>两个方向的投影公式<br />
+<span class="arithmatex">\(x_{screen} = f_x\frac{Y}{Z} + c_x\)</span><br />
+<span class="arithmatex">\(y_{screen} = f_y\frac{X}{Z} + c_y\)</span><br />
+【理解】<br />
+①对焦距<span class="arithmatex">\(f\)</span>在<span class="arithmatex">\(x, y\)</span>方向上分别表示。<br />
+②<span class="arithmatex">\(f_x, f_y\)</span>以像素点为单位，转换如下：<br />
+<span class="arithmatex">\(f_x = Fs_x, f_y = Fs_y\)</span><br />
+其中<span class="arithmatex">\(F\)</span>是焦距，<span class="arithmatex">\(s_x, s_y\)</span>分别表示在<span class="arithmatex">\(x,y\)</span>方向上的像素点个数，单位是<span class="arithmatex">\(pixel/mm\)</span>。<br />
+（3）相机内参：由漂移、以像素为单位的焦距构成，即<span class="arithmatex">\((f_x, f_y, x, y)\)</span>。<br />
+2.成像与原物的尺寸放缩关系：令<span class="arithmatex">\(x = \frac{X}{Z}, y = \frac{Y}{Z}\)</span>，则有<span class="arithmatex">\(x_{screen} = f_xx + c_x, y_{screen} = f_yy + c_y\)</span>。<br />
+3.【考点】齐次坐标与投影公式<br />
+（1）非齐次坐标与齐次坐标之间的转换<br />
+[例1]将下列非齐次坐标转换到齐次坐标。<br />
+①非齐次坐标<span class="arithmatex">\((x, y)\lrArr\)</span>齐次坐标<span class="arithmatex">\([x, y, 1]^T\)</span><br />
+②非齐次坐标<span class="arithmatex">\((x, y, z)\lrArr\)</span>齐次坐标<span class="arithmatex">\([x, y, z, 1]^T\)</span><br />
+③非齐次坐标<span class="arithmatex">\((\frac{x}{w}, \frac{y}{w})\lrArr\)</span>齐次坐标<span class="arithmatex">\([x, y, w]^T\)</span><br />
+④非齐次坐标<span class="arithmatex">\((\frac{x}{w}, \frac{y}{w}, \frac{z}{w})\lrArr\)</span>齐次坐标<span class="arithmatex">\([x, y, z, w]^T\)</span><br />
+（2）投影公式：<span class="arithmatex">\(q = MQ\)</span><br />
+·<span class="arithmatex">\(q = \begin{bmatrix}x\\y\\w\end{bmatrix}, M = \begin{bmatrix}f_x \ 0 \ c_x \\ 0 \ f_y \ c_y \\ 0 \ \ 0 \ \ 1\end{bmatrix}, Q = \begin{bmatrix}X \\ Y \\ Z\end{bmatrix}\)</span><br />
+·转换矩阵<span class="arithmatex">\(M\)</span>包含了相机内参<span class="arithmatex">\((f_x, f_y, c_x, c_y)\)</span>。  </p>
+<h5 id="_9">五、透镜的畸变</h5>
+<p>1.透镜的径向畸变<br />
+（1）分类：枕形畸变（<code>pin-cushion distortion</code>，向内挤压）、桶形畸变（<code>Barrel</code>，向外突出）<br />
+（2）穿过棱镜边缘的光线，产生的径向畸变最为明显。<br />
+（3）径向畸变的去除<br />
+<span class="arithmatex">\(x_{corrected} = x(1 + k_1r^2 + k_2r^4 + k_3r^6)\)</span><br />
+<span class="arithmatex">\(y_{corrected} = y(1 + k_1r^2 + k_2r^4 + k_3r^6)\)</span><br />
+其中，<span class="arithmatex">\(r\)</span>表示当前像素点到成像平面中心的距离。  <br />
+2.透镜的切向畸变
+（1）原因：装配时的误差，导致成像平面(<code>CCD</code>)与透镜不平行。<br />
+（2）切向畸变的去除<br />
+<span class="arithmatex">\(x_{corrected} = x + [2p_1y + p_2(r^2 + 2x^2)]\)</span><br />
+<span class="arithmatex">\(y_{corrected} = y + [p_1(r^2 + 2y^2) + 2p_2x]\)</span><br />
+3.畸变参数<br />
+<span class="arithmatex">\((k_1, k_2, k_3, p_1, p_2)\)</span>，前三者出现于径向畸变校正公式，后两者出现于切向畸变校正公式。  </p>
+<h5 id="_10">六、齐次坐标与投影公式</h5>
+<p>1.投影公式<br />
+<img alt="" src="../assets/CV/7.JPG" /> <br />
+<span class="arithmatex">\(q = MQ\)</span><br />
+<span class="arithmatex">\(q = \begin{bmatrix}x\\y\\w\end{bmatrix}, M = \begin{bmatrix}f_x \ 0 \ c_x \\ 0 \ f_y \ c_y \\ 0 \ \ 0 \ \ 1\end{bmatrix}, Q = \begin{bmatrix}X \\ Y \\ Z\end{bmatrix}\)</span><br />
+<img alt="" src="../assets/CV/8.JPG" /><br />
+2.三维空间旋转公式<br />
+（1）非齐次旋转公式<br />
+用<span class="arithmatex">\(R = R_z(\theta)R_y(\phi) R_x(\psi)\)</span>表示对<span class="arithmatex">\(x, y, z\)</span>三个方向进行旋转，并叠加后产生的结果。<br />
+<span class="arithmatex">\(R_x(\psi) = \begin{bmatrix}1 \ \ \ \ \ \ \ 0 \ \ \  \ \ \ \ 0 \\
+0 \ cos\psi \ sin\psi \\
+0 \ -sin\psi \ cos\psi \end{bmatrix}\)</span><br />
+<span class="arithmatex">\(R_y(\phi) = \begin{bmatrix}cos\phi \ 0\ -sin\phi \\
+0 \ \ \ \ \ \ \ \ 1 \  \ \ \  \ \ \ \ 0 \\
+-sin\psi \ 0 \ cos\phi \end{bmatrix}\)</span><br />
+<span class="arithmatex">\(R_z(\theta) = \begin{bmatrix}
+cos\theta \ sin\theta \ 0 \\
+-sin\theta \ cos\theta \ 0 \\  
+0 \ \ \ \ \ \ \ 0 \ \ \  \ \ \ \ 1 \\\end{bmatrix}\)</span><br />
+（2）齐次旋转公式<br />
+令<span class="arithmatex">\(t_{3 \times 1} = (t_x, t_y, t_z)^T\)</span>表示位移，则：<br />
+<span class="arithmatex">\(P' = \begin{bmatrix} R_{3 \times 3} \ t_{3 \times 1}\\ 0 \ 0 \ 0 \ 1\end{bmatrix}\)</span><br />
+3.物体及其成像的旋转<br />
+（1）位移<span class="arithmatex">\(T = O_w - C_w\)</span>，其中<span class="arithmatex">\(O_w\)</span>表示物体坐标系的原点，<span class="arithmatex">\(C_w\)</span>表示相机坐标系的原点；用<span class="arithmatex">\(Q_w, Q_{cam}\)</span>分别表示物体在物体坐标系、相机坐标系中的位置坐标。  <br />
+（2）先平移，再旋转，从物体坐标系到相机坐标系的坐标变换公式为：<br />
+<span class="arithmatex">\(Q_{cam} = R(O_w - C_w)\)</span><br />
+代入<span class="arithmatex">\(C_w = O_w - T\)</span>，有：<br />
+<span class="arithmatex">\(Q_{cam} = R(Q_w - O_w + T)\)</span><br />
+其中，<span class="arithmatex">\(Q_w - O_w = Q_{obj}\)</span>是物体在物体坐标系中的坐标。<br />
+<span class="arithmatex">\(Q_{obj} = R^tQ_{cam} - T\)</span><br />
+其中，<span class="arithmatex">\(R^t = R^{-1}\)</span>。<br />
+4.相机的外参<br />
+<span class="arithmatex">\((\theta , \phi, \psi, t_x, t_y, t_z)\)</span>，分别表示三个方向的旋转角度、三个方向的位移，随着环境的变化而变化。  </p>
+<h5 id="_11">七、成像过程总结</h5>
+<p>1.先利用外参矩阵，对物体进行平移、旋转变换：<span class="arithmatex">\(Q_{cam} = M_{ext}Q_{obj}\)</span><br />
+2.再利用内参矩阵，对平移、旋转后的物体进行投影，得到图像：<span class="arithmatex">\(Q_{image} = M_{int}Q_{cam}\)</span><br />
+3.成像过程涉及的坐标系：三维物体坐标系（<span class="arithmatex">\(\rarr\)</span>三维世界坐标系）<span class="arithmatex">\(\rarr\)</span>三维相机坐标系<span class="arithmatex">\(\rarr\)</span>二维图像平面坐标系<span class="arithmatex">\(\rarr\)</span>二维像素坐标系<br />
+[注]二维图像平面坐标系是理想模型，二维像素坐标系不是理想模型。<br />
+4.总结<br />
+<img alt="" src="../assets/CV/9.JPG" /><br />
+[注]注意到<code>projection</code>矩阵，它对应的是三维空间齐次坐标到二维空间齐次坐标的转换。  </p>
+<h4 id="_12">专题三——相机标定</h4>
+<h5 id="_13">一、基本概念</h5>
+<p>1.相机标定的定义：计算像素点和空间中光线的关系。<br />
+2.相机标定的作用：<br />
+（1）重构世界模型（<code>Virtual Earth Project</code>）<br />
+（2）与世界进行交互（机器人）  </p>
+<h5 id="_14">二、相机标定问题</h5>
+<p>1.相机标定问题<br />
+给定<span class="arithmatex">\(N\)</span>对由环境点、图像点组成的点对，恢复相机的参数（畸变参数<span class="arithmatex">\((k_1, k_2, k_3, p_1, p_2)\)</span>、内参<span class="arithmatex">\((f_x, f_y, c_x, c_y)\)</span>、外参<span class="arithmatex">\((\theta , \phi, \psi, t_x, t_y, t_z)\)</span>）<br />
+2.相机标定方法一——自定标<br />
+（1）基本思想<br />
+·无需使用标定物体<br />
+·只需让相机在静态场景中移动，利用场景的刚性恢复内参。<br />
+·风景、成像图片之间的联系足以恢复内参、外参。<br />
+（2）特点<br />
+灵活，但不可靠。由于需要估计很多参数，自定标方法不总能产生可靠的结果。<br />
+3.相机标定方法二——基于三维参照物的定标<br />
+<img alt="" src="../assets/CV/10.JPG" /><br />
+（1）基本思想<br />
+·使用相机观察一个参照物，该参照物在三维空间中的坐标是已知的。<br />
+·参照物一般包含两个或三个互相垂直的平面。<br />
+（2）优缺点<br />
+·优点：高效完成。<br />
+·缺点：参照物制作、环境布置等要求较高。<br />
+4.相机标定方法三——基于单应性(<code>Homography</code>)的平面标定<br />
+（1）特点：灵活、健壮、低成本。<br />
+（2）基本思想：只需相机对平面<code>pattern</code>至少在<code>2</code>个不同方向拍照，即可完成定标。  </p>
+<h5 id="_15">三、相机标定方法</h5>
+<p>1.相机标定流程<br />
+·寻找图像角点。<br />
+·根据图像角点、实际角点坐标，建立图像坐标和真实世界坐标的方程组。<br />
+·解方程组，获得对内参、外参和畸变参数的估计。<br />
+2.利用棋盘格进行标定<br />
+<img alt="" src="../assets/CV/11.JPG" /><br />
+3.<code>Homography</code><br />
+（1）定义<br />
+·三维物体点坐标<span class="arithmatex">\(\tilde{Q}\)</span>、图像中的点坐标<span class="arithmatex">\(\tilde{q}\)</span>的转换关系为：<span class="arithmatex">\(\tilde{q} = sM_{int}M_{ext}\tilde{Q}\)</span>，表示依次对<span class="arithmatex">\(\tilde{Q}\)</span>进行外参变换、内参变换和缩放变换。<br />
+·由于定标物体是平板，因此<span class="arithmatex">\(\tilde{Q} = [X, Y, 0, 1]^T\)</span><br />
+·从而<span class="arithmatex">\(\tilde{q} = sM_{int}[r_1 \ r_2 \ r_3 \ \vec{t}]\begin{bmatrix}X \\ Y \\ 0 \\ 1 \end{bmatrix} = sM_{int}[r_1 \ r_2 \  \vec{t}]\begin{bmatrix}X \\ Y \\ 1 \end{bmatrix}\)</span><br />
+（2）<code>Homography</code>对原平面坐标、目标平面坐标的联系<br />
+·坐标转换：<span class="arithmatex">\(p_{dst} = Hp_{src}, p_{src} = H^{-1}p_{dst}\)</span><br />
+·齐次坐标：<br />
+<span class="arithmatex">\(p_{dst} = [x_{dst} \ y_{dst} \ 1]^T, p_{src} = [x_{src} \ y_{src} \ 1]\)</span><br />
+（3）矩阵<span class="arithmatex">\(H\)</span>的系数求解<br />
+·由于单应性矩阵<span class="arithmatex">\(H\)</span>满足<span class="arithmatex">\(H_{33} = 1\)</span>，故自由度为<span class="arithmatex">\(8\)</span>。<br />
+·由于每个点可以分别在<span class="arithmatex">\(x, y\)</span>方向提供一个等式，因此最少只需<span class="arithmatex">\(4\)</span>个点，即可算出<span class="arithmatex">\(H\)</span>矩阵。<br />
+（4）畸变参数（二维几何）计算<br />
+·<span class="arithmatex">\(3\)</span>个点可以获得<span class="arithmatex">\(6\)</span>个约束条件，足以估计<span class="arithmatex">\(5\)</span>个参数的值。<br />
+·利用更多点进行估计，可以获得更为精确的结果。<br />
+（5）内参+外参（三维几何）计算<br />
+·受到单应性矩阵<span class="arithmatex">\(H\)</span>的自由度限制，一个视野至多只能算出<span class="arithmatex">\(8\)</span>个参数。<br />
+·因此，需要更多的不同视野，以计算内参、外参。<br />
+·视野发生变化，则外参会发生变化，增加<span class="arithmatex">\(6\)</span>个外参未知数。<br />
+·<span class="arithmatex">\(2NK \ge 6K + 4\)</span>，其中<span class="arithmatex">\(N\)</span>为角点个数，<span class="arithmatex">\(K\)</span>为视野个数。<br />
+·使用更多的角点、视野，可以增强结果的健壮性。<br />
+4.应用——形成鸟瞰图  <br />
+·计算单应性矩阵<span class="arithmatex">\(\larr\)</span>通过对倾斜俯视图的视角变换，形成垂直俯视的鸟瞰图。  </p>
+<h4 id="_16">专题四——双目视觉</h4>
+<h5 id="stereo-imaging">一、立体成像(<code>stereo imaging</code>)</h5>
+<p>1.立体<br />
+（1）立体：通过视觉感知(<code>opsis</code>)获得的实体感(<code>solidity</code>)，根据对真实世界的两个略有不同的投影，获得对深度的感知。  <br />
+（2）计算机：使用两个摄像头实现立体视觉。<br />
+2.深度信息的恢复<br />
+<img alt="" src="../assets/CV/12.JPG" /><br />
+·根据两张图片、三角化方法，可以恢复深度信息。<br />
+3.立体成像的作用<br />
+（1）对于自动化领域十分重要，应用有机器人、遥感等。<br />
+（2）物体重构在增强现实等领域较为流行。<br />
+4.立体视觉实现的四个步骤<br />
+（1）去除畸变(<code>Undistortion</code>)<br />
+（2）校准(<code>Rectification</code>)：通过调整相机拍到的画面，使得两个相机的图像实现行对齐(<code>row-aligned</code>)。<br />
+（3）对应(<code>Correspondence</code>)：建立两幅图像的像素点对应关系，计算视差(<code>disparity</code>)。<br />
+（4）反投影(<code>reprojection</code>)与三角化(<code>triangulation</code>)，获得<code>depth map</code>。<br />
+·三角化：假设有两个相机（焦距相同、图像无畸变、光轴平行、距离已知），则某一个三维空间中的点在两张图片上都有位置，可以利用相似原理，计算两张图片的深度信息。  </p>
+<h5 id="triangulation">二、三角化(<code>triangulation</code>)</h5>
+<p>1.关于两个相机的假设<br />
+·焦距相同<br />
+·图像去畸变<br />
+·行对齐<br />
+·两个相机光学中心简单的距离已得到测量<br />
+2.已知条件：点在三维空间中的坐标和在二维图像上的坐标。<br />
+3.三角化 <br />
+<img alt="" src="../assets/CV/13.JPG" /><br />
+（1）参数的含义<br />
+<span class="arithmatex">\(d = x^l - x^r\)</span>表示同一点<span class="arithmatex">\(P\)</span>在两个相机的成像平面分别成像所得像点的视差(<code>disparity</code>)。<br />
+（2）公式推导与理解<br />
+·根据相似性原理：<span class="arithmatex">\(\frac{Z - f}{T - (x^l - x^r)} = \frac{T}{Z}\)</span><br />
+从而得到物体到相机成像平面的深度值<span class="arithmatex">\(Z = \frac{fT}{x^l - x^r}\)</span><br />
+·理解：点<span class="arithmatex">\(P\)</span>离成像平面越远，视差越大，导致<span class="arithmatex">\(Z = \frac{fT}{x^l - x^r}\)</span>的数值变小，对深度的分辨率越低。<br />
+·提高两个相机的距离<span class="arithmatex">\(T\)</span>，可以提高对深度的分辨率。  </p>
+<h5 id="epipolar-geometry">三、极线几何(<code>epipolar geometry</code>)</h5>
+<p>1.基本概念<br />
+<img alt="" src="../assets/CV/14.JPG" /><br />
+·空间中物体点<span class="arithmatex">\(x\)</span>和两个成像中心<span class="arithmatex">\(C, C'\)</span>形成的平面<span class="arithmatex">\(\pi\)</span>，称为极平面。<br />
+·两个成像中心的连线称为基线。<br />
+·基线越长，深度分辨率越高、越精准。<br />
+·极平面与两个成像平面分别形成一条交线。<br />
+2.特点<br />
+两个相机拍摄同一个场景时，场景的某一行必定在两个成像平面上存在行与行之间的一一对应关系。<br />
+3.极点与极线的定义<br />
+<img alt="" src="../assets/CV/15.JPG" /><br />
+（1）极点：基线(<code>baseline</code>)与两个成像平面的交点<span class="arithmatex">\(e, e'\)</span>，称为极点。<br />
+（2）极平面：包含基线(<code>baseline</code>)的平面称为极平面。  <br />
+（3）极线：极平面与成像平面的交线，称为极线。<br />
+（4）目的<br />
+·给定一张图中一点，则它在另一张图中的匹配点必定处于相应的极线上。<br />
+·一张图的某些像素点在另一张图的对应像素点（<code>correspondence</code>）的搜索只需在行中进行，而不需要进行二维搜索，从而将搜索空间从二维降低到一维。<br />
+4.计算视差(<code>disparity</code>)<br />
+（1）步骤：特征点寻找<span class="arithmatex">\(\rarr\)</span>特征点匹配<br />
+（2）若在极线上，针对左图的每一个像素点，对右图相应极线上没一点计算最小匹配开销，该方法效果差。<br />
+（3）改进方法：窗口匹配。<br />
+5.<code>correspondence</code>匹配方法<br />
+（1）局部匹配：块匹配、基于梯度的优化、特征匹配。<br />
+（2）全局匹配：动态规划、本征曲线、图分割、非线性扩散、置信度转播、非对应性方法等。  </p>
+<h5 id="_17">四、双目视觉的应用</h5>
+<p>1.3D眼镜：红蓝眼镜、偏振眼镜，利用两只眼镜看到的景象不一样的事实。<br />
+2.距离成像技术(<code>Range Imaging</code>)<br />
+·直接测量场景中每点到相机的距离，并使用二维数组记录。<br />
+·分类：结构光系统、<code>TOF(Time of Fly System)</code>技术。  </p>
+<h4 id="_18">专题五——结构光成像技术</h4>
+<h5 id="_19">一、基本概念</h5>
+<p>1.组成部分：投影仪、相机、深度恢复系统。<br />
+2.结构光成像基本思想：投影仪对光离散化并打到物体上，形成明暗变化的光带/散点。拍照后，深度恢复系统利用图像的明暗变化，恢复图像的三维信息。  </p>
+<h5 id="_20">二、结构光成像原理</h5>
+<p>1.问题描述<br />
+<img alt="" src="../assets/CV/16.JPG" /><br />
+已知成像坐标<span class="arithmatex">\((x', y')\)</span>、投影角度<span class="arithmatex">\(\theta\)</span>、投影仪与镜头的距离<span class="arithmatex">\(b\)</span>、相机焦距<span class="arithmatex">\(f\)</span>，求：物体的真实三维坐标<span class="arithmatex">\((x, y, z)\)</span>。<br />
+2.真实三维坐标求解<br />
+<img alt="" src="../assets/CV/17.JPG" /><br />
+过扫描对象向<span class="arithmatex">\(x\)</span>轴作垂线，利用相似三角形原理（大三角形由投影仪、扫描对象、相机组成），有：<br />
+<span class="arithmatex">\([x \ y \ z] = \frac{b}{fcot\theta -x'}[x' \ y' \ f]\)</span>  </p>
+<h5 id="_21">三、结构光的编码</h5>
+<p>1.基本思想：逐点扫描速度太慢，希望使用基于条带的编码，以加速操作。<br />
+2.位码：对光带进行二进制编号，从低位向高位数，第<span class="arithmatex">\(n\)</span>位为<span class="arithmatex">\(1\)</span>的光带统称为位码为<span class="arithmatex">\(n\)</span>的光带。<br />
+<img alt="" src="../assets/CV/18.JPG" />  </p>
+<h5 id="_22">四、结构光成像技术的优缺点</h5>
+<p>1.优点：成本低，速度快。<br />
+2.缺点：成像粗糙，需要后续处理。<br />
+<img alt="" src="../assets/CV/19.JPG" />  </p>
+<h5 id="icp-iterative-closest-point">五、迭代最近点(<code>ICP, Iterative Closest Point</code>)算法</h5>
+<p>1.问题描述<br />
+·单个摄像机构造的结构光系统只能获得一个方向上的三维数据，如果希望得到大于<span class="arithmatex">\(180\degree\)</span>范围的三维数据，就需要采用多个投影仪-摄像机组合。<br />
+·此时，需要研究如何把多个扫描结果拼接在一起，以形成对扫描对象的完整描述。<br />
+2.迭代最近点(<code>ICP, Iterative Closest Point</code>)方法<br />
+（1）建立两个扫描结果之间点的对应关系。<br />
+（2）通过迭代，获得一个仿射变换函数，以描述第（1）步中对应点之间的变换关系。<br />
+（3）对扫描结果上的所有点，应用（2）中得到的仿射变换函数。<br />
+（4）选取两个扫描结果中距离最近的点作为对应点，计算对应点的距离。如果距离大于设定阈值，则继续执行（2）（3）；否则结束。  </p>
+<h5 id="_23">六、拓展</h5>
+<p>1.<code>Time of Fly</code>系统：利用光速恒定、激光定向性能非常好的性质，通过一个装置向扫描对象的任意一点发射激光，同时接受来自该点的反射，记录两者之间的时间差，即可算出激光器与目标点的距离，从而完成测距，获得三维数据。<br />
+2.<code>Cyberware</code>：激光测距，使用<code>Time of Fly</code>的原理。<br />
+3.<code>Shape from X</code>：通过视频或图像，间接对场景进行三维重建。  </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "header.autohide"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>
