@@ -906,6 +906,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#gnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      十、与GNN相关的技术
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1182,6 +1191,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#gnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      十、与GNN相关的技术
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1394,12 +1412,60 @@
 ·求和函数对于平均性能有轻微的提升。<br />
 ·三种聚合函数下，模型最高性能相当。<br />
 5.消息传递类型与模型性能<br />
+<img alt="" src="../assets/DL/40.JPG" /><br />
 ·越多的图属性参加消息传递，模型的平均性能越好。<br />
 ·结点表示看上去比边表示重要。<br />
 6.进一步提升模型性能的改进方向<br />
 ·更精致的图算法<br />
 ·图本身（如何进行图的构建，使用额外架构或关系以进行充分利用）<br />
 ·举例：为了使分子图的特征更丰富，可以在结点间添加额外的空间关系，添加化学键以外的边，或者添加子图之间的显式可学习关系。  </p>
+<h4 id="gnn">十、与<code>GNN</code>相关的技术</h4>
+<p>1.其他类型的图<br />
+（1）多边图<br />
+·一对结点间可以连接多条边，分别用于模拟结点间的不同关联。<br />
+·<code>GNN</code>修改：对于每一种边的类型，分别使用不同类型的消息传递方式。<br />
+（2）<code>nested/hypernode graph</code><br />
+·用于表示层次信息。<br />
+·<code>GNN</code>修改：分别学习不同级别的表示。<br />
+（3）<code>hypergraph</code><br />
+·一条边可以用于连接多个顶点。<br />
+·<code>GNN</code>修改：识别结点的<code>community</code>，添加<code>hyper-edge</code>以连接<code>community</code>中的所有结点。<br />
+<img alt="" src="../assets/DL/41.JPG" /><br />
+2.图中的采样与批量化(<code>batching</code>)<br />
+（1）参数更新的挑战<br />
+·由于图中结点、边数是可变的，因此<code>batchsize</code>不是常数，如何使用随机梯度下降法（要求常数<code>batchsize</code>）进行参数更新是一个挑战。<br />
+（2）图批量化基本思想<br />
+·采样获得子图，保持大图的重要性质。<br />
+·图采样操作高度依赖于上下文，涉及图中边和顶点的选取。<br />
+（3）采样方法——保留邻域结构<br />
+·随机采样固定数量的结点，形成结点集合<span class="arithmatex">\(V\)</span>，之后添加与结点集合距离不超过<span class="arithmatex">\(k\)</span>的结点以及相应的边。<br />
+·每个邻域可以视为一个独立的图，<code>GNN</code>可以在这些子图上训练。<br />
+·损失可以进行掩码处理，仅考虑结点集合<span class="arithmatex">\(V\)</span>，原因是<span class="arithmatex">\(V\)</span>邻域中每个结点的邻域信息都不完整。<br />
+（4）采样方法——随机游走<br />
+<img alt="" src="../assets/DL/42.JPG" /><br />
+·随机选取单一结点<span class="arithmatex">\(v\)</span>，扩展其邻域<span class="arithmatex">\(N\)</span>，使得邻域中结点到<span class="arithmatex">\(v\)</span>的距离不超过<span class="arithmatex">\(k\)</span>。<br />
+·从邻域<span class="arithmatex">\(N\)</span>中选取一个结点，针对该结点进行距离不超过<span class="arithmatex">\(k\)</span>的邻域扩展。<br />
+·一直重复上述操作，直到获得足够数量的结点、边或子图。<br />
+3.归纳偏置(<code>Inductive Bias</code>)<br />
+·保持图的对称性（排列不变性）<br />
+4.汇聚操作比较<br />
+·没有总是最好的汇聚操作。<br />
+<img alt="" src="../assets/DL/42.JPG" /><br />
+5.<code>GCN(Graph Convolutional Network)</code>对子图函数的近似<br />
+·<code>GCN</code>可以认为是有<span class="arithmatex">\(N\)</span>个子图，对每个子图进行<code>embedding</code>计算。<br />
+6.边与图对偶<br />
+·结点与边的互相转化（对偶）可以用于<code>GCN</code>，即<code>Dual-Primal Graph Convolutional Networks</code>。<br />
+7.图卷积作为矩阵乘法 + 矩阵乘法与图中游走的关系<br />
+·图中进行卷积/随机游走，等价于使用图的邻接矩阵进行矩阵乘法。<br />
+8.图注意力网络<br />
+<img alt="" src="../assets/DL/44.JPG" /><br />
+·图像卷积权重与位置相关，但图中不具有位置信息，因此权重不应该对位置敏感。<br />
+·可以在图神经网络中使用注意力机制。<br />
+9.图的可解释性<br />
+<img alt="" src="../assets/DL/45.JPG" /><br />
+10.图的拓扑结构建模算法<br />
+·直接模拟邻接矩阵，类似于图像中的自动编码器。<br />
+·顺序化建图。  </p>
 
 
 
