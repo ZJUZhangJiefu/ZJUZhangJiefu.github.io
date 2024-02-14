@@ -10,7 +10,7 @@
         <meta name="author" content="大观散人">
       
       
-        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/Detection%20Transformer/">
+        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/GAN/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>Detection Transformer - 大观散人的博客</title>
+        <title>Generative Adversarial Nets - 大观散人的博客</title>
       
     
     
@@ -71,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#generative-adversarial-nets" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -103,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Detection Transformer
+              Generative Adversarial Nets
             
           </span>
         </div>
@@ -1067,6 +1072,43 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abstract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-related-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Related Work
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1084,19 +1126,48 @@
   
 
 
-  <h1>Detection Transformer</h1>
-
-<table><tr><td bgcolor= #E0FFF#>
-<font face="仿宋">
-<font size=4>
-
-### `End-to-End Object Detection with Transformers`  
-[标题理解]  
-1.目标检测与端到端方法  
-·大部分目标检测方法至少需要后处理操作（非极大值抑制，`Non-maximum Suppression`）  
-·各类方法会生成许多预测框，`NMS`的作用是去除冗余预测框。  
-·由于并非所有硬件都支持`NMS`，目标检测模型的训练和部署较为困难。  
-2.`Transformer`目标检测思想
+<h1 id="generative-adversarial-nets"><code>Generative Adversarial Nets</code></h1>
+<h2 id="abstract"><code>Abstract</code></h2>
+<p>1.<strong>工作</strong>  <br />
+作者提出一种通过<strong>对抗</strong>过程<strong>评估生成模型</strong>的<strong>框架</strong>，该过程<strong>同时</strong>训练两个模型：<br />
+（1）<strong>生成</strong>模型<span class="arithmatex">\(G\)</span>，用于<strong>捕捉数据分布</strong>。<br />
+（2）<strong>辨别</strong>模型<span class="arithmatex">\(D\)</span>，估计<strong>某个样本从训练数据而非生成模型</strong><span class="arithmatex">\(G\)</span>中产生的<strong>概率</strong>。  </p>
+<ul>
+<li><span class="arithmatex">\(G\)</span>的训练目的是<strong>最大化判别模型<span class="arithmatex">\(D\)</span>犯错误的概率</strong>；该框架对应的是一个<strong>最小-最大二人博弈(<code>minimax two-player game</code>)</strong>。</li>
+<li>在任意函数<span class="arithmatex">\(G\)</span>和<span class="arithmatex">\(D\)</span>的空间中，存在<strong>唯一解</strong>，满足<span class="arithmatex">\(G\)</span><strong>恰好揭示了训练数据的分布</strong>，以及<span class="arithmatex">\(D\)</span>在各点取值<strong>均为</strong><span class="arithmatex">\(\frac{1}{2}\)</span>。  </li>
+<li>若<span class="arithmatex">\(G\)</span>和<span class="arithmatex">\(D\)</span>是<strong>多层感知机</strong>，则整个系统可通过<strong>反向传播</strong>进行训练。  </li>
+<li>在训练、样本生成过程中，<strong>无需任何<code>Markov</code>链，或者展开的近似推理网络</strong>。  </li>
+</ul>
+<p>2.<strong>实验效果</strong><br />
+- 通过对生成样本进行的定性、定量评估，揭示了框架的<strong>潜力</strong>。  </p>
+<h2 id="1-introduction"><code>1 Introduction</code></h2>
+<p>1.深度学习——判别模型与生成模型概述<br />
+- 深度学习的作用是发现<strong>丰富、有层次的模型</strong>，以对不同类型<code>AI</code>应用数据的<strong>概率分布</strong>进行表示，例如：自然图像、包含语音的音频波形、自然语言语料库中的符号等。<br />
+- 至今，深度学习最惊人的成功包括了<strong>判别模型</strong>，该模型通常将<strong>高维、丰富的感觉输入</strong>(<code>rich sensory input</code>)映射到一个<strong>类型标签</strong>。这些惊人的成功主要基于<strong>反向传播、<code>dropout</code>算法</strong>，使用<strong>分段线性单元</strong>(<code>piecewise linear units</code>)，该单元具有<strong>表现特别优越的梯度</strong>。<br />
+- 深度生成模型的影响相对较弱，原因是进行<strong>最大似然估计</strong>时，<strong>对概率分布进行近似计算的困难</strong>(<code>the difficulty of approximating many intractable probabilistic computations that arise in maximum likelihood estimation and related strategies</code>)，以及在<strong>生成</strong>上下文(<code>generative context</code>)中<strong>充分利用分段线性单元的优势的困难</strong>。<br />
+- 本文提出一种<strong>新的生成估计过程</strong>，<strong>解决</strong>了上述困难。  </p>
+<p>2.对抗网络框架思路<br />
+- <strong>生成</strong>模型：与<strong>判别</strong>模型形成<strong>对立</strong>。<br />
+- <strong>判别</strong>模型：判断一个<strong>样本</strong>究竟来自<strong>模型分布</strong>还是<strong>数据分布</strong>。<br />
+- <strong>生成模型</strong>可被视为一组<strong>生产、使用假币的骗子</strong>。<br />
+- <strong>判别模型</strong>可被视为<strong>警察</strong>，作用是<strong>尽量检测出假币</strong>。<br />
+- 在博弈竞争中，<strong>双方分别改进各自的方法</strong>，直到<strong>假币与真币无法区分</strong>。  </p>
+<p>3.对抗网络框架结构<br />
+- 对抗网络框架，对于多种模型和优化算法而言，可以导出特定的训练算法。<br />
+- 本文探索的一种<strong>特例</strong>（记作“对抗网络”(<code>adversarial nets</code>)）：<strong>生成模型</strong>将<strong>噪声</strong>传入<strong>多层感知机</strong>以<strong>生成样本</strong>，<strong>判别模型</strong>也是一个<strong>多层感知机</strong>。<br />
+- <strong>生成、判别模型训练</strong>时，仅使用高度成功的<strong>反向传播和<code>dropout</code>算法</strong>，<strong>生成模型产生样本</strong>时<strong>只需前向传播</strong>。<br />
+- 无需近似推断或<code>Markov</code>链。  </p>
+<h2 id="2-related-work"><code>2 Related Work</code></h2>
+<p>1.深度生成模型<br />
+- 多数深度生成模型主要关注<strong>概率分布函数的参数规范</strong>(<code>parametric specification of a probability distribution function</code>)，能通过<strong>对数似然最大化</strong>进行<strong>训练</strong>。<br />
+- 在各类模型中，最成功的模型是<strong>深度<code>Boltzmann</code>机器</strong>。此类模型<strong>似然函数计算困难</strong>，需要对似然梯度进行大量的近似。<br />
+- 上述困难促进了“<strong>生成机器</strong>”(<code>generative machines</code>)的发展，此类模型<strong>并不对似然进行显式表示</strong>，但<strong>能从期望获得的分布中生成样本</strong>。<br />
+- <strong>深度随机网络</strong>是“生成机器”的一个示例，它可以通过<strong>精确的反向传播</strong>进行训练，而<strong>不</strong>是像<code>Boltzmann</code>机器那样，需要<strong>大量的近似计算</strong>。<br />
+- 本工作通过<strong>消除<code>Markov</code>链</strong>，<strong>扩展</strong>了“生成机器”的概念。  </p>
+<p>2.对抗网络原理<br />
+- 本文通过下列观察进行导数反向传播：<br />
+<span class="arithmatex">\(lim_{\sigma\rightarrow 0}\nabla_{\mathbf{x}}\mathbb{E}_{\epsilon \sim \mathscr{N}(0, \sigma^2I)}f(\mathbf{x} + \epsilon) = \nabla_{\mathbf{x}}f(\mathbf{x})\)</span><br />
+上述式子表示：对于含噪声<span class="arithmatex">\(\epsilon \sim \mathscr{N}(0, \sigma^2I), \sigma \rightarrow 0\)</span>输入的概率分布函数<span class="arithmatex">\(f(\mathbf{x} + \epsilon)\)</span>的求导，等价于直接对<span class="arithmatex">\(f(\mathbf{x})\)</span>进行求导。  </p>
 
 
 

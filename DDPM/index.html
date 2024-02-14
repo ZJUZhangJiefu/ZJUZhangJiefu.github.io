@@ -10,9 +10,13 @@
         <meta name="author" content="大观散人">
       
       
-        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/Detection%20Transformer/">
+        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/DDPM/">
       
       
+        <link rel="prev" href="../Attention%20Is%20All%20You%20Need/">
+      
+      
+        <link rel="next" href="../Descending%20Through%20A%20Crowded%20Valley/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +24,7 @@
     
     
       
-        <title>Detection Transformer - 大观散人的博客</title>
+        <title>去噪扩散概率模型 - 大观散人的博客</title>
       
     
     
@@ -71,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -103,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Detection Transformer
+              去噪扩散概率模型
             
           </span>
         </div>
@@ -246,16 +255,20 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/" class="md-tabs__link">
           
   
@@ -677,8 +690,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -687,12 +702,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -706,7 +721,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             深度学习专题
@@ -849,19 +864,21 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
@@ -875,7 +892,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             扩散模型
@@ -886,10 +903,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../DDPM/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    去噪扩散概率模型
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -898,6 +933,51 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、生成模型与扩散模型基本思想
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、去噪扩散概率模型基本思想
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、去噪扩散概率模型数学原理
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1068,6 +1148,41 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、生成模型与扩散模型基本思想
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、去噪扩散概率模型基本思想
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、去噪扩散概率模型数学原理
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1084,19 +1199,11 @@
   
 
 
-  <h1>Detection Transformer</h1>
+  <h1>去噪扩散概率模型</h1>
 
-<table><tr><td bgcolor= #E0FFF#>
-<font face="仿宋">
-<font size=4>
-
-### `End-to-End Object Detection with Transformers`  
-[标题理解]  
-1.目标检测与端到端方法  
-·大部分目标检测方法至少需要后处理操作（非极大值抑制，`Non-maximum Suppression`）  
-·各类方法会生成许多预测框，`NMS`的作用是去除冗余预测框。  
-·由于并非所有硬件都支持`NMS`，目标检测模型的训练和部署较为困难。  
-2.`Transformer`目标检测思想
+<h4 id="_1">一、生成模型与扩散模型基本思想</h4>
+<h4 id="_2">二、去噪扩散概率模型基本思想</h4>
+<h4 id="_3">三、去噪扩散概率模型数学原理</h4>
 
 
 
