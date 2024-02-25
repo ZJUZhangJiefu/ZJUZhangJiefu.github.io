@@ -1492,7 +1492,76 @@
 <li>对于词典<span class="arithmatex">\(V\)</span>上给定的概率分布<span class="arithmatex">\(P\)</span>，<code>top-k</code>采样定义为<span class="arithmatex">\(P_{topk} = topk(P, k)\)</span>，其中<span class="arithmatex">\(topl(P, k)\)</span>操作符从概率分布<span class="arithmatex">\(P\)</span>中选出前<span class="arithmatex">\(k\)</span>个元素，返回一个跟<span class="arithmatex">\(P\)</span>形状相同，只有<span class="arithmatex">\(k\)</span>个非零元的向量。  </li>
 </ul>
 </li>
-<li><code>G2GT</code>模型架构</li>
+<li><code>G2GT</code>模型架构  </li>
+<li>概述  <ul>
+<li>编码器  </li>
+<li>采用<code>Graphormer</code>，将输入图<span class="arithmatex">\(G = (V, E)\)</span>（<span class="arithmatex">\(V = \{v_1, \cdots, v_n\}, n = |V|\)</span>）编码为高维表示<span class="arithmatex">\(z = (z_1, \cdots, z_n)\)</span>。  </li>
+<li>解码器  </li>
+<li>逐元素生成输出图序列<span class="arithmatex">\((y_1, \cdots, y_m)\)</span>。  </li>
+<li>对于每个新的生成步骤，模型根据最新的生成图状态，计算中心性和空间信息。  </li>
+<li>模型根据当前生成图的状态，计算下一个输出元素。  </li>
+</ul>
+</li>
+<li><code>Graphormer</code>编码器  <ul>
+<li>通过三种简单但高效的方法，将图结构信息注入模型。  </li>
+<li>第一个带有全局感受野的<code>GNN</code>模型，性能超过消息传递神经网络、图卷积神经网络(<code>GCN</code>)。  </li>
+</ul>
+</li>
+<li>解码器  <ul>
+<li>简介</li>
+<li>使用了<code>G2GT</code>解码器的几个重要设计  </li>
+<li>新型的图序列  </li>
+<li>归纳注意偏置(<code>inductive attention bias</code>)，与掩膜注意模块(<code>masked attention module</code>)相匹配。  </li>
+<li>图表示  </li>
+<li>给定输入分子的表示向量<span class="arithmatex">\(z\)</span>，解码器按照自回归方式推理输出图序列(<code>output graph sequence</code>)。  </li>
+<li>输出图序列  <ul>
+<li>分子由无向图<span class="arithmatex">\(G = (V, E)\)</span>进行表示。 </li>
+<li>给定一个固定的原子序列<span class="arithmatex">\(\pi\)</span>，图<span class="arithmatex">\(G\)</span>可由带权邻接矩阵(<code>weighted adjacency matrix</code>)<span class="arithmatex">\(A \in \mathbb{R}^{n \times n}\)</span>进行唯一确定。  </li>
+<li>边权根据化学键类型进行确定。  </li>
+<li><span class="arithmatex">\(e_{(i, i + 1)} = 1\)</span>，表示顶点<span class="arithmatex">\(i, i + 1\)</span>间存在单键。  </li>
+<li><span class="arithmatex">\(e_{(i, i + 1)} = 2\)</span>，表示顶点<span class="arithmatex">\(i, i + 1\)</span>间存在双键。  </li>
+<li>通过将带权邻接矩阵<span class="arithmatex">\(A\)</span>分解为行，可获得图序列<span class="arithmatex">\(Y = \{v_1, v_2, e_{2, 2 - 1}, \cdots, v_n, e_{n, n - 1}, \cdots, e_{n, 1}\}\)</span>。  </li>
+<li>为压缩序列长度，将尾部的空边进行省略，将非尾部的空边简记为<span class="arithmatex">\(gapN\)</span>。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>损失函数  <ul>
+<li>每个生成步骤都是一个分类问题，模型对图序列中的词元进行预测。  </li>
+<li>总类别数：原子个数<span class="arithmatex">\(\times\)</span>手性类型数<span class="arithmatex">\(+\)</span>化学键个数  </li>
+<li>模型将真实输出和预测输出进行比较，计算损失。  </li>
+</ul>
+</li>
+<li>解码器中的中心性编码  <ul>
+<li>直接加到编码器输出的问题  </li>
+<li>信息泄露，即生成当前输出时，预知未来输出信息。  </li>
+<li>随着新结点的连接，一个结点的中心性可能增加。  </li>
+<li>做法：将中心性信息作为注意力偏置(<code>attention bias</code>)注入模型。  </li>
+<li>对任意图<span class="arithmatex">\(G\)</span>，预先计算中心性矩阵<span class="arithmatex">\(E \in \mathbb{R}^{y \times y \times d}\)</span>。  <ul>
+<li><span class="arithmatex">\(y\)</span>：图序列长度、总的生成步骤数目。  </li>
+<li><span class="arithmatex">\(d\)</span>：多端注意力的端头(<code>head</code>)数目。  </li>
+<li>将非结点词元的中心性定义为<span class="arithmatex">\(0\)</span>。  </li>
+<li>矩阵<span class="arithmatex">\(E\)</span>的第<span class="arithmatex">\((i, j)\)</span>个元素为<span class="arithmatex">\(d\)</span>维向量，记作<span class="arithmatex">\(e_{i, j}\)</span>。  </li>
+<li><span class="arithmatex">\(g_i^{j}\)</span>：表示第<span class="arithmatex">\(j\)</span>时间步，图序列的第<span class="arithmatex">\(i\)</span>个元素。  </li>
+<li><span class="arithmatex">\(b\)</span>：可学习的嵌入表示，由生成词元<span class="arithmatex">\(g_{i}^{j}\)</span>进行索引。  </li>
+<li><span class="arithmatex">\(deg(g_i^j)\)</span>：生成词元的度数。  </li>
+<li>若<span class="arithmatex">\(g_i^j\)</span>是结点：<span class="arithmatex">\(e_{i, j} = b_{deg(g_i^j)}\)</span>  </li>
+<li>若<span class="arithmatex">\(g_i^j\)</span>不是结点：<span class="arithmatex">\(e_{i, j} = 0\)</span>  </li>
+</ul>
+</li>
+<li>设<span class="arithmatex">\(A_{i, j}\)</span>是查询-键乘积矩阵<span class="arithmatex">\(A\)</span>的第<span class="arithmatex">\((i, j)\)</span>元素，则将中心性信息作为注意力偏置的自注意力公式为：<br />
+<span class="arithmatex">\(A_{i, j} = \frac{(z_iW_q)(z_jW_k)^T}{\sqrt{d}} = e_{i, j}\)</span>  </li>
+</ul>
+</li>
+<li>拉普拉斯位置编码  <ul>
+<li>思想与作用  </li>
+<li>传统方法将图表示为序列。  </li>
+<li>仅序列本身无法完全捕捉图中的结构信息。  </li>
+<li>使用拉普拉斯特征函数，进行位置编码。  </li>
+<li>注入模型的方式  </li>
+<li>与中心性编码相似，将拉普拉斯位置编码作为注意力偏置以注入模型。  </li>
+</ul>
+</li>
 </ul>
 
 
