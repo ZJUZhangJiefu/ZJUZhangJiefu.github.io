@@ -1337,15 +1337,17 @@
 <li>为了解决这一挑战，本文提出一种新颖的图到图(<code>graph-to-graph</code>)变换模型<code>G2GT</code>。  <ul>
 <li>模型使用标准<code>transformer</code>架构，运用图编码器和解码器。  </li>
 <li>本文展示了自训练（一种使用无标签分子数据的数据增广手段）在改善模型性能上的有效性。  </li>
-<li>为了进一步提高多样性，本文提出一种弱集成(<code>weak ensemble</code>)方法。</li>
+<li>为了进一步提高多样性，本文提出一种弱集成(<code>weak ensemble</code>)方法。<ul>
 <li>该方法受到了反应类型标签和集成学习的启发。  </li>
 <li>结合集束搜索(<code>beam search</code>)、核采样(<code>nucleus sampling</code>)和<code>top-k</code>采样方法，以提高推理结果的多样性。  </li>
 <li>使用简单的排序算法，以追踪最终的<code>top-10</code>结果。  </li>
 </ul>
 </li>
+</ul>
+</li>
 <li>本文在<code>USPTO-50K</code>、<code>USPTO-Full</code>两个数据集上均获得了新的<code>SOTA</code>结果。  <ul>
-<li><code>USPTO-50K</code>：<code>top-1</code>精确度为<span class="arithmatex">\(54%\)</span>。  </li>
-<li><code>USPTO-Full</code>：<code>top-1</code>精确度为<span class="arithmatex">\(49.3%\)</span>，<code>top-10</code>结果具有竞争力。  </li>
+<li><code>USPTO-50K</code>：<code>top-1</code>精确度为<span class="arithmatex">\(54\%\)</span>。  </li>
+<li><code>USPTO-Full</code>：<code>top-1</code>精确度为<span class="arithmatex">\(49.3\%\)</span>，<code>top-10</code>结果具有竞争力。  </li>
 </ul>
 </li>
 <li><code>G2GT</code>模型可以泛化到其他所有图到图变换任务。  </li>
@@ -1356,33 +1358,45 @@
 <li>逆合成预测是有机化学及其相关学科的一个关键挑战。  <ul>
 <li>该任务涉及合理地识别出一个用于合成产物分子的反应物集合。  </li>
 <li>近年，多种多样的逆合成计算工具(<code>computational synthesis tools</code>)被用于促进新型分子逆合成路线的设计。  </li>
-<li>方法分类  </li>
+<li>方法分类  <ul>
 <li>基于模板(<code>template-based</code>)的方法  </li>
 <li>无模板(<code>template-free</code>)方法  </li>
 <li>半模板(<code>semi-template</code>)方法  </li>
 </ul>
 </li>
+</ul>
+</li>
 <li>基于模板的方法  <ul>
 <li>是一种基于规则的方法。  </li>
-<li>目标分子被应用于所有已知的反应模板。  </li>
+<li>目标分子被应用于所有已知的反应模板。  <ul>
 <li>反应模板：即图转换规则。  </li>
-<li>若产物分子的子图与模板的产物图相匹配，则称模板适用于产物分子，模板可能被转化到反应物集合中。  </li>
+</ul>
+</li>
+<li>若产物分子的子图与模板的产物图相匹配，则称模板适用于产物分子，模板可能被转化到反应物集合中。  <ul>
 <li>该方法依赖于专家知识，无法同数量不断增加的化学反应与时俱进。  </li>
-<li>其余方法使用机器学习手段，从反应数据集自动提取反应模板。  </li>
+</ul>
+</li>
+<li>其余方法使用机器学习手段，从反应数据集自动提取反应模板。  <ul>
 <li>该方法需要原子映射信息（一种从反应物原子映射到产物原子的方案），原子映射是至今尚未解决的问题。  </li>
 <li>依赖于反应物模板库、专家规则，以实现其功能。  </li>
 </ul>
 </li>
+</ul>
+</li>
 <li>半模板(<code>semi-template</code>)方法  <ul>
-<li>将逆合成过程分解为两个子任务  </li>
+<li>将逆合成过程分解为两个子任务  <ul>
 <li>（1）预测产物的反应中心  </li>
 <li>（2）基于反应中心，将产物分解为合成子(<code>synthon</code>)，然后将合成子(<code>synthon</code>)转化为一个完整的分子。  </li>
-<li>方法的局限性  </li>
+</ul>
+</li>
+<li>方法的局限性  <ul>
 <li>依赖于高质量的原子映射反应数据集(<code>atom mapping reaction dataset</code>)，以提取反应中心。  </li>
 <li>训练集受限于小的反应子集(<code>small subsets of reactions</code>)，无法扩展到真实世界应用。  </li>
 </ul>
 </li>
-<li>无模板方法  </li>
+</ul>
+</li>
+<li>无模板方法  <ul>
 <li>将单步逆合成预测任务，转化为序列到序列(<code>Seq2Seq</code>)翻译任务。  <ul>
 <li>反应物的<code>SMILES</code>是“源语言”，产物的<code>SMILES</code>是“目标语言”。  </li>
 </ul>
@@ -1394,7 +1408,9 @@
 <li><code>AT</code>对其他方法形成挑战，原因是原子映射信息的缺失。  </li>
 </ul>
 </li>
-<li>本文工作  </li>
+</ul>
+</li>
+<li>本文工作  <ul>
 <li>受无模板方法的成功、近期图神经网络的发展及其在分子图表示学习(<code>molecular graph representation learning</code>)的<code>SOTA</code>结果的启发，本文将逆合成任务视为一个图到图问题，并提出图到图<code>transformer</code>(<code>G2GT, Graph2Graph Transformer</code>)模型。  </li>
 <li><code>G2GT</code>模型的组成  <ul>
 <li><code>Graphormer</code>，由<a href="https://arxiv.org/abs/2106.05234#:~:text=Yet%2C%20it%20has%20not%20achieved%20competitive%20performance%20on,Transformers%20could%20perform%20well%20for%20graph%20representation%20learning."><code>Ying et al.</code></a>提出。  </li>
@@ -1407,7 +1423,9 @@
 <li>与<code>SMILES</code>不同，图模型不受原子手续的影响。  </li>
 </ul>
 </li>
-<li>本文贡献总结  </li>
+</ul>
+</li>
+<li>本文贡献总结  <ul>
 <li>对于单步逆合成任务，提出新型的图到图模型。  <ul>
 <li>模型继承了无模板方法的好处。  </li>
 <li>模型将序列表示替换为图表示。  </li>
@@ -1420,33 +1438,43 @@
 </li>
 <li>在<code>USPTO-50k</code>和<code>USPTO-Full</code>数据集上均取得新的<code>SOTA</code>结果，并在<code>Reaxys</code>数据集上证明了模型的健壮性和泛化能力。  </li>
 </ul>
+</li>
+</ul>
 <h5 id="the-g2gt-framework"><code>The G2GT Framework</code></h5>
 <ul>
-<li><code>Preliminaries</code>（正文）  </li>
+<li><code>Preliminaries</code>（正文）  <ul>
 <li><code>Transformer</code>架构  <ul>
 <li>由论文<code>Attention is All You Need</code>提出。  </li>
 <li>一种神经网络架构，最初用于<code>NLP</code>任务，如机器翻译、语言建模等。  </li>
 <li>主要用于语言翻译、文本总结和情感分析等<code>NLP</code>任务。  </li>
-<li>基于自注意力机制，允许模型选择性地关注输入的某些部分。  </li>
+<li>基于自注意力机制，允许模型选择性地关注输入的某些部分。  <ul>
 <li>自注意力机制同时运用于编码器、解码器。  </li>
 <li>编码器中，注意力机制用于计算输入数据的表示，这种表示考虑了整个输入序列。  </li>
 <li>解码器中，注意力机制用于计算输出数据的表示，同时考虑输入序列，以及之前已经生成的输出结果。  </li>
 </ul>
 </li>
+</ul>
+</li>
 <li><code>Graphormer</code>架构  <ul>
-<li>基于标准的<code>Transformer</code>架构，针对图表示学习任务进行了特定的调整。  </li>
+<li>基于标准的<code>Transformer</code>架构，针对图表示学习任务进行了特定的调整。  <ul>
 <li>传统<code>Transformer</code>架构中，输入数据被转化为词元(<code>token</code>)序列，从而可被模型处理。  </li>
 <li>图没有自然顺序(<code>natural order</code>)，使用传统的<code>Transformer</code>模型进行图表示学习是困难的。  </li>
-<li>作者将<code>Transformer</code>运用于图表示学习的的关键思想</li>
+</ul>
+</li>
+<li>作者将<code>Transformer</code>运用于图表示学习的的关键思想<ul>
 <li>高效编码图中的结构信息。  </li>
+</ul>
+</li>
 <li>提出了几种简单、高效的结构编码方法，以帮助<code>Graphormer</code>更好地表示图结构数据。  </li>
 <li>上述方法使得<code>Graphormer</code>可以高效捕捉途中的结构信息。  </li>
 </ul>
 </li>
-<li><code>Preliminaries</code>（附录）  </li>
+</ul>
+</li>
+<li><code>Preliminaries</code>（附录）  <ul>
 <li><code>Transformer</code>  <ul>
-<li>自注意力模块  </li>
-<li><span class="arithmatex">\(Z = [z_1^T, \cdots, z_n^T]^T \in \mathbb{R}^{n \times d}\)</span>，表示自注意力模块的输入。 <ul>
+<li>自注意力模块  <ul>
+<li><span class="arithmatex">\(Z = [z_1^T, \cdots, z_n^T]^T \in \mathbb{R}^{n \times d}\)</span>，表示自注意力模块的输入。 </li>
 <li><span class="arithmatex">\(z_i\)</span>：位置<span class="arithmatex">\(i\)</span>的隐藏表示。   </li>
 <li><span class="arithmatex">\(d\)</span>：隐藏维度数目。  </li>
 </ul>
@@ -1459,11 +1487,13 @@
 </ul>
 </li>
 <li><code>Graphormer</code>  <ul>
-<li>学习图表示的三种编码  </li>
+<li>学习图表示的三种编码  <ul>
 <li>空间编码  </li>
 <li>边编码  </li>
 <li>中心性编码  </li>
-<li>空间编码  </li>
+</ul>
+</li>
+<li>空间编码  <ul>
 <li>图中节点并非按序排列，而是可以存在于一个高维空间，由边进行连接。  <ul>
 <li>若两结点<span class="arithmatex">\(v_i, v_j\)</span>相连，<code>Graphormer</code>，将两结点间的最短距离记为<span class="arithmatex">\(\phi(v_i, v_j)\)</span>。  </li>
 <li><span class="arithmatex">\(A_{(i, j)}\)</span>表示查询-键乘积矩阵(<code>query key product matrix</code>)<span class="arithmatex">\(A\)</span>的第<span class="arithmatex">\((i, j)\)</span>个元素。  </li>
@@ -1471,35 +1501,49 @@
 <li><span class="arithmatex">\(c_{i, j}\)</span>为偏置项。     </li>
 </ul>
 </li>
-<li>边编码  </li>
+</ul>
+</li>
+<li>边编码  <ul>
 <li>对于每一个结点对<span class="arithmatex">\((v_i, v_j)\)</span>：  <ul>
 <li>识别<span class="arithmatex">\(v_i\)</span>到<span class="arithmatex">\(v_j\)</span>的最短路径<span class="arithmatex">\(SP_{ij} = (e_1, e_2, \cdots, e_n)\)</span>  </li>
 <li>计算边特征的点积的平均值  </li>
 <li>沿最短路径计算可学习的嵌入表示  </li>
 </ul>
 </li>
-<li>中心性编码  </li>
+</ul>
+</li>
+<li>中心性编码  <ul>
 <li>使用度中心性(<code>degree centrality</code>)作为<code>Transformer</code>网络的加性输入。  </li>
 <li><code>softmax</code>注意力通过使用中心性编码，可以从查询和键中捕捉结点重要性的信号。  </li>
 <li><span class="arithmatex">\(z_i^{(0)} = x_i + d_{deg(v_i)}\)</span>，其中<span class="arithmatex">\(d\)</span>表示图中结点的度数，反应了分子中原子的连通性。  </li>
+</ul>
+</li>
 <li>结果：<code>Graphormer</code>通过注意力机制，既能捕捉语义关联，又能捕捉结点的重要性信息。  </li>
 </ul>
 </li>
 <li>模型细节——<code>Top-K</code>采样  <ul>
 <li>给定大小为<span class="arithmatex">\(V\)</span>的离散词典，以及词典<span class="arithmatex">\(V\)</span>上的概率分布<span class="arithmatex">\(P\)</span>，在生成过程的每个时间步，模型计算出<code>top-k</code>的概率，其中<span class="arithmatex">\(k\)</span>为超参数。  </li>
 <li>上述概率用向量<span class="arithmatex">\(P_{topk}\)</span>表示，<code>top-k</code>词汇以外的其余词汇对应概率均为<span class="arithmatex">\(0\)</span>。  </li>
-<li><code>top-k</code>采样  </li>
+<li><code>top-k</code>采样  <ul>
 <li>对于词典<span class="arithmatex">\(V\)</span>上给定的概率分布<span class="arithmatex">\(P\)</span>，<code>top-k</code>采样定义为<span class="arithmatex">\(P_{topk} = topk(P, k)\)</span>，其中<span class="arithmatex">\(topl(P, k)\)</span>操作符从概率分布<span class="arithmatex">\(P\)</span>中选出前<span class="arithmatex">\(k\)</span>个元素，返回一个跟<span class="arithmatex">\(P\)</span>形状相同，只有<span class="arithmatex">\(k\)</span>个非零元的向量。  </li>
 </ul>
 </li>
-<li><code>G2GT</code>模型架构  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>G2GT</code>模型架构  <ul>
 <li>概述  <ul>
-<li>编码器  </li>
+<li>编码器  <ul>
 <li>采用<code>Graphormer</code>，将输入图<span class="arithmatex">\(G = (V, E)\)</span>（<span class="arithmatex">\(V = \{v_1, \cdots, v_n\}, n = |V|\)</span>）编码为高维表示<span class="arithmatex">\(z = (z_1, \cdots, z_n)\)</span>。  </li>
-<li>解码器  </li>
+</ul>
+</li>
+<li>解码器  <ul>
 <li>逐元素生成输出图序列<span class="arithmatex">\((y_1, \cdots, y_m)\)</span>。  </li>
 <li>对于每个新的生成步骤，模型根据最新的生成图状态，计算中心性和空间信息。  </li>
 <li>模型根据当前生成图的状态，计算下一个输出元素。  </li>
+</ul>
+</li>
 </ul>
 </li>
 <li><code>Graphormer</code>编码器  <ul>
@@ -1508,20 +1552,26 @@
 </ul>
 </li>
 <li>解码器  <ul>
-<li>简介</li>
+<li>简介<ul>
 <li>使用了<code>G2GT</code>解码器的几个重要设计  </li>
 <li>新型的图序列  </li>
 <li>归纳注意偏置(<code>inductive attention bias</code>)，与掩膜注意模块(<code>masked attention module</code>)相匹配。  </li>
-<li>图表示  </li>
+</ul>
+</li>
+<li>图表示  <ul>
 <li>给定输入分子的表示向量<span class="arithmatex">\(z\)</span>，解码器按照自回归方式推理输出图序列(<code>output graph sequence</code>)。  </li>
 <li>输出图序列  <ul>
 <li>分子由无向图<span class="arithmatex">\(G = (V, E)\)</span>进行表示。 </li>
 <li>给定一个固定的原子序列<span class="arithmatex">\(\pi\)</span>，图<span class="arithmatex">\(G\)</span>可由带权邻接矩阵(<code>weighted adjacency matrix</code>)<span class="arithmatex">\(A \in \mathbb{R}^{n \times n}\)</span>进行唯一确定。  </li>
-<li>边权根据化学键类型进行确定。  </li>
+<li>边权根据化学键类型进行确定。  <ul>
 <li><span class="arithmatex">\(e_{(i, i + 1)} = 1\)</span>，表示顶点<span class="arithmatex">\(i, i + 1\)</span>间存在单键。  </li>
 <li><span class="arithmatex">\(e_{(i, i + 1)} = 2\)</span>，表示顶点<span class="arithmatex">\(i, i + 1\)</span>间存在双键。  </li>
+</ul>
+</li>
 <li>通过将带权邻接矩阵<span class="arithmatex">\(A\)</span>分解为行，可获得图序列<span class="arithmatex">\(Y = \{v_1, v_2, e_{2, 2 - 1}, \cdots, v_n, e_{n, n - 1}, \cdots, e_{n, 1}\}\)</span>。  </li>
 <li>为压缩序列长度，将尾部的空边进行省略，将非尾部的空边简记为<span class="arithmatex">\(gapN\)</span>。  </li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1529,14 +1579,16 @@
 <li>损失函数  <ul>
 <li>每个生成步骤都是一个分类问题，模型对图序列中的词元进行预测。  </li>
 <li>总类别数：原子个数<span class="arithmatex">\(\times\)</span>手性类型数<span class="arithmatex">\(+\)</span>化学键个数  </li>
-<li>模型将真实输出和预测输出进行比较，计算损失。  </li>
+<li>将真实输出和预测输出进行比较，计算损失。  </li>
 </ul>
 </li>
 <li>解码器中的中心性编码  <ul>
-<li>直接加到编码器输出的问题  </li>
+<li>直接加到编码器输出的问题  <ul>
 <li>信息泄露，即生成当前输出时，预知未来输出信息。  </li>
 <li>随着新结点的连接，一个结点的中心性可能增加。  </li>
-<li>做法：将中心性信息作为注意力偏置(<code>attention bias</code>)注入模型。  </li>
+</ul>
+</li>
+<li>做法：将中心性信息作为注意力偏置(<code>attention bias</code>)注入模型。  <ul>
 <li>对任意图<span class="arithmatex">\(G\)</span>，预先计算中心性矩阵<span class="arithmatex">\(E \in \mathbb{R}^{y \times y \times d}\)</span>。  <ul>
 <li><span class="arithmatex">\(y\)</span>：图序列长度、总的生成步骤数目。  </li>
 <li><span class="arithmatex">\(d\)</span>：多端注意力的端头(<code>head</code>)数目。  </li>
@@ -1549,17 +1601,25 @@
 <li>若<span class="arithmatex">\(g_i^j\)</span>不是结点：<span class="arithmatex">\(e_{i, j} = 0\)</span>  </li>
 </ul>
 </li>
+</ul>
+</li>
 <li>设<span class="arithmatex">\(A_{i, j}\)</span>是查询-键乘积矩阵<span class="arithmatex">\(A\)</span>的第<span class="arithmatex">\((i, j)\)</span>元素，则将中心性信息作为注意力偏置的自注意力公式为：<br />
 <span class="arithmatex">\(A_{i, j} = \frac{(z_iW_q)(z_jW_k)^T}{\sqrt{d}} = e_{i, j}\)</span>  </li>
 </ul>
 </li>
 <li>拉普拉斯位置编码  <ul>
-<li>思想与作用  </li>
+<li>思想与作用  <ul>
 <li>传统方法将图表示为序列。  </li>
 <li>仅序列本身无法完全捕捉图中的结构信息。  </li>
 <li>使用拉普拉斯特征函数，进行位置编码。  </li>
-<li>注入模型的方式  </li>
+</ul>
+</li>
+<li>注入模型的方式  <ul>
 <li>与中心性编码相似，将拉普拉斯位置编码作为注意力偏置以注入模型。  </li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
