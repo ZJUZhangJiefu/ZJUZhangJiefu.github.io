@@ -10,8 +10,10 @@
         <meta name="author" content="大观散人">
       
       
-        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/GAN/">
+        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/G2GT/">
       
+      
+        <link rel="prev" href="../DSDP/">
       
       
       
@@ -20,7 +22,7 @@
     
     
       
-        <title>Generative Adversarial Nets - 大观散人的博客</title>
+        <title>G2GT - Retrosynthesis Prediction with Graph-to-Graph Attention Neural Network and Self-Training - 大观散人的博客</title>
       
     
     
@@ -72,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#generative-adversarial-nets" class="md-skip">
+        <a href="#abstract" class="md-skip">
           跳转至
         </a>
       
@@ -108,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Generative Adversarial Nets
+              G2GT - Retrosynthesis Prediction with Graph-to-Graph Attention Neural Network and Self-Training
             
           </span>
         </div>
@@ -251,16 +253,20 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/" class="md-tabs__link">
           
   
@@ -748,8 +754,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -758,12 +766,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -777,7 +785,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             深度学习专题
@@ -1118,19 +1126,21 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" checked>
         
           
           <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
@@ -1144,7 +1154,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_6">
             <span class="md-nav__icon md-icon"></span>
             逆合成预测
@@ -1155,10 +1165,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../G2GT/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    G2GT - Retrosynthesis Prediction with Graph-to-Graph Attention Neural Network and Self-Training
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1167,6 +1195,51 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abstract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-g2gt-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      The G2GT Framework
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1204,8 +1277,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1223,18 +1294,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-introduction" class="md-nav__link">
+  <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      1 Introduction
+      Introduction
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-related-work" class="md-nav__link">
+  <a href="#the-g2gt-framework" class="md-nav__link">
     <span class="md-ellipsis">
-      2 Related Work
+      The G2GT Framework
     </span>
   </a>
   
@@ -1258,48 +1329,171 @@
   
 
 
-<h1 id="generative-adversarial-nets"><code>Generative Adversarial Nets</code></h1>
-<h2 id="abstract"><code>Abstract</code></h2>
-<p>1.<strong>工作</strong>  <br />
-作者提出一种通过<strong>对抗</strong>过程<strong>评估生成模型</strong>的<strong>框架</strong>，该过程<strong>同时</strong>训练两个模型：<br />
-（1）<strong>生成</strong>模型<span class="arithmatex">\(G\)</span>，用于<strong>捕捉数据分布</strong>。<br />
-（2）<strong>辨别</strong>模型<span class="arithmatex">\(D\)</span>，估计<strong>某个样本从训练数据而非生成模型</strong><span class="arithmatex">\(G\)</span>中产生的<strong>概率</strong>。  </p>
+  <h1>G2GT - Retrosynthesis Prediction with Graph-to-Graph Attention Neural Network and Self-Training</h1>
+
+<h5 id="abstract"><code>Abstract</code></h5>
 <ul>
-<li><span class="arithmatex">\(G\)</span>的训练目的是<strong>最大化判别模型<span class="arithmatex">\(D\)</span>犯错误的概率</strong>；该框架对应的是一个<strong>最小-最大二人博弈(<code>minimax two-player game</code>)</strong>。</li>
-<li>在任意函数<span class="arithmatex">\(G\)</span>和<span class="arithmatex">\(D\)</span>的空间中，存在<strong>唯一解</strong>，满足<span class="arithmatex">\(G\)</span><strong>恰好揭示了训练数据的分布</strong>，以及<span class="arithmatex">\(D\)</span>在各点取值<strong>均为</strong><span class="arithmatex">\(\frac{1}{2}\)</span>。  </li>
-<li>若<span class="arithmatex">\(G\)</span>和<span class="arithmatex">\(D\)</span>是<strong>多层感知机</strong>，则整个系统可通过<strong>反向传播</strong>进行训练。  </li>
-<li>在训练、样本生成过程中，<strong>无需任何<code>Markov</code>链，或者展开的近似推理网络</strong>。  </li>
+<li>逆合成预测，即识别可以用于合成目标分子的反应物分子，是有机化学机器相关领域的一个基础性挑战。  </li>
+<li>为了解决这一挑战，本文提出一种新颖的图到图(<code>graph-to-graph</code>)变换模型<code>G2GT</code>。  <ul>
+<li>模型使用标准<code>transformer</code>架构，运用图编码器和解码器。  </li>
+<li>本文展示了自训练（一种使用无标签分子数据的数据增广手段）在改善模型性能上的有效性。  </li>
+<li>为了进一步提高多样性，本文提出一种弱集成(<code>weak ensemble</code>)方法。</li>
+<li>该方法受到了反应类型标签和集成学习的启发。  </li>
+<li>结合集束搜索(<code>beam search</code>)、核采样(<code>nucleus sampling</code>)和<code>top-k</code>采样方法，以提高推理结果的多样性。  </li>
+<li>使用简单的排序算法，以追踪最终的<code>top-10</code>结果。  </li>
 </ul>
-<p>2.<strong>实验效果</strong><br />
-- 通过对生成样本进行的定性、定量评估，揭示了框架的<strong>潜力</strong>。  </p>
-<h2 id="1-introduction"><code>1 Introduction</code></h2>
-<p>1.深度学习——判别模型与生成模型概述<br />
-- 深度学习的作用是发现<strong>丰富、有层次的模型</strong>，以对不同类型<code>AI</code>应用数据的<strong>概率分布</strong>进行表示，例如：自然图像、包含语音的音频波形、自然语言语料库中的符号等。<br />
-- 至今，深度学习最惊人的成功包括了<strong>判别模型</strong>，该模型通常将<strong>高维、丰富的感觉输入</strong>(<code>rich sensory input</code>)映射到一个<strong>类型标签</strong>。这些惊人的成功主要基于<strong>反向传播、<code>dropout</code>算法</strong>，使用<strong>分段线性单元</strong>(<code>piecewise linear units</code>)，该单元具有<strong>表现特别优越的梯度</strong>。<br />
-- 深度生成模型的影响相对较弱，原因是进行<strong>最大似然估计</strong>时，<strong>对概率分布进行近似计算的困难</strong>(<code>the difficulty of approximating many intractable probabilistic computations that arise in maximum likelihood estimation and related strategies</code>)，以及在<strong>生成</strong>上下文(<code>generative context</code>)中<strong>充分利用分段线性单元的优势的困难</strong>。<br />
-- 本文提出一种<strong>新的生成估计过程</strong>，<strong>解决</strong>了上述困难。  </p>
-<p>2.对抗网络框架思路<br />
-- <strong>生成</strong>模型：与<strong>判别</strong>模型形成<strong>对立</strong>。<br />
-- <strong>判别</strong>模型：判断一个<strong>样本</strong>究竟来自<strong>模型分布</strong>还是<strong>数据分布</strong>。<br />
-- <strong>生成模型</strong>可被视为一组<strong>生产、使用假币的骗子</strong>。<br />
-- <strong>判别模型</strong>可被视为<strong>警察</strong>，作用是<strong>尽量检测出假币</strong>。<br />
-- 在博弈竞争中，<strong>双方分别改进各自的方法</strong>，直到<strong>假币与真币无法区分</strong>。  </p>
-<p>3.对抗网络框架结构<br />
-- 对抗网络框架，对于多种模型和优化算法而言，可以导出特定的训练算法。<br />
-- 本文探索的一种<strong>特例</strong>（记作“对抗网络”(<code>adversarial nets</code>)）：<strong>生成模型</strong>将<strong>噪声</strong>传入<strong>多层感知机</strong>以<strong>生成样本</strong>，<strong>判别模型</strong>也是一个<strong>多层感知机</strong>。<br />
-- <strong>生成、判别模型训练</strong>时，仅使用高度成功的<strong>反向传播和<code>dropout</code>算法</strong>，<strong>生成模型产生样本</strong>时<strong>只需前向传播</strong>。<br />
-- 无需近似推断或<code>Markov</code>链。  </p>
-<h2 id="2-related-work"><code>2 Related Work</code></h2>
-<p>1.深度生成模型<br />
-- 多数深度生成模型主要关注<strong>概率分布函数的参数规范</strong>(<code>parametric specification of a probability distribution function</code>)，能通过<strong>对数似然最大化</strong>进行<strong>训练</strong>。<br />
-- 在各类模型中，最成功的模型是<strong>深度<code>Boltzmann</code>机器</strong>。此类模型<strong>似然函数计算困难</strong>，需要对似然梯度进行大量的近似。<br />
-- 上述困难促进了“<strong>生成机器</strong>”(<code>generative machines</code>)的发展，此类模型<strong>并不对似然进行显式表示</strong>，但<strong>能从期望获得的分布中生成样本</strong>。<br />
-- <strong>深度随机网络</strong>是“生成机器”的一个示例，它可以通过<strong>精确的反向传播</strong>进行训练，而<strong>不</strong>是像<code>Boltzmann</code>机器那样，需要<strong>大量的近似计算</strong>。<br />
-- 本工作通过<strong>消除<code>Markov</code>链</strong>，<strong>扩展</strong>了“生成机器”的概念。  </p>
-<p>2.对抗网络原理<br />
-- 本文通过下列观察进行导数反向传播：<br />
-<span class="arithmatex">\(lim_{\sigma\rightarrow 0}\nabla_{\mathbf{x}}\mathbb{E}_{\epsilon \sim \mathscr{N}(0, \sigma^2I)}f(\mathbf{x} + \epsilon) = \nabla_{\mathbf{x}}f(\mathbf{x})\)</span><br />
-上述式子表示：对于含噪声<span class="arithmatex">\(\epsilon \sim \mathscr{N}(0, \sigma^2I), \sigma \rightarrow 0\)</span>输入的概率分布函数<span class="arithmatex">\(f(\mathbf{x} + \epsilon)\)</span>的求导，等价于直接对<span class="arithmatex">\(f(\mathbf{x})\)</span>进行求导。  </p>
+</li>
+<li>本文在<code>USPTO-50K</code>、<code>USPTO-Full</code>两个数据集上均获得了新的<code>SOTA</code>结果。  <ul>
+<li><code>USPTO-50K</code>：<code>top-1</code>精确度为<span class="arithmatex">\(54%\)</span>。  </li>
+<li><code>USPTO-Full</code>：<code>top-1</code>精确度为<span class="arithmatex">\(49.3%\)</span>，<code>top-10</code>结果具有竞争力。  </li>
+</ul>
+</li>
+<li><code>G2GT</code>模型可以泛化到其他所有图到图变换任务。  </li>
+<li>数据、代码：<a href="https://github.com/Anonnoname/G2GT_2">链接</a>  </li>
+</ul>
+<h5 id="introduction"><code>Introduction</code></h5>
+<ul>
+<li>逆合成预测是有机化学及其相关学科的一个关键挑战。  <ul>
+<li>该任务涉及合理地识别出一个用于合成产物分子的反应物集合。  </li>
+<li>近年，多种多样的逆合成计算工具(<code>computational synthesis tools</code>)被用于促进新型分子逆合成路线的设计。  </li>
+<li>方法分类  </li>
+<li>基于模板(<code>template-based</code>)的方法  </li>
+<li>无模板(<code>template-free</code>)方法  </li>
+<li>半模板(<code>semi-template</code>)方法  </li>
+</ul>
+</li>
+<li>基于模板的方法  <ul>
+<li>是一种基于规则的方法。  </li>
+<li>目标分子被应用于所有已知的反应模板。  </li>
+<li>反应模板：即图转换规则。  </li>
+<li>若产物分子的子图与模板的产物图相匹配，则称模板适用于产物分子，模板可能被转化到反应物集合中。  </li>
+<li>该方法依赖于专家知识，无法同数量不断增加的化学反应与时俱进。  </li>
+<li>其余方法使用机器学习手段，从反应数据集自动提取反应模板。  </li>
+<li>该方法需要原子映射信息（一种从反应物原子映射到产物原子的方案），原子映射是至今尚未解决的问题。  </li>
+<li>依赖于反应物模板库、专家规则，以实现其功能。  </li>
+</ul>
+</li>
+<li>半模板(<code>semi-template</code>)方法  <ul>
+<li>将逆合成过程分解为两个子任务  </li>
+<li>（1）预测产物的反应中心  </li>
+<li>（2）基于反应中心，将产物分解为合成子(<code>synthon</code>)，然后将合成子(<code>synthon</code>)转化为一个完整的分子。  </li>
+<li>方法的局限性  </li>
+<li>依赖于高质量的原子映射反应数据集(<code>atom mapping reaction dataset</code>)，以提取反应中心。  </li>
+<li>训练集受限于小的反应子集(<code>small subsets of reactions</code>)，无法扩展到真实世界应用。  </li>
+</ul>
+</li>
+<li>无模板方法  </li>
+<li>将单步逆合成预测任务，转化为序列到序列(<code>Seq2Seq</code>)翻译任务。  <ul>
+<li>反应物的<code>SMILES</code>是“源语言”，产物的<code>SMILES</code>是“目标语言”。  </li>
+</ul>
+</li>
+<li>无模板方法可以使用所有的已知反应数据，并生成尚未发现的反应模式。  </li>
+<li>发展<ul>
+<li><a href="https://doi.org/10.1021/acscentsci.7b00303?urlappend=%3Fref%3DPDF&amp;jav=VoR&amp;rel=cite-as"><code>Liu et al.</code></a>首先采用无模板框架，通过长短时记忆(<code>LSTM</code>)网络，获得了与无模板方法相当的性能。  </li>
+<li>增强<code>transformer</code>(<code>AT, Augmented Transformer</code>)使用<code>transformer</code>和<code>SMILES</code>数据增强手段，在<code>USPTO-50k</code>和<code>USPTO-Full</code>数据集均取得了<code>SOTA</code>结果。  </li>
+<li><code>AT</code>对其他方法形成挑战，原因是原子映射信息的缺失。  </li>
+</ul>
+</li>
+<li>本文工作  </li>
+<li>受无模板方法的成功、近期图神经网络的发展及其在分子图表示学习(<code>molecular graph representation learning</code>)的<code>SOTA</code>结果的启发，本文将逆合成任务视为一个图到图问题，并提出图到图<code>transformer</code>(<code>G2GT, Graph2Graph Transformer</code>)模型。  </li>
+<li><code>G2GT</code>模型的组成  <ul>
+<li><code>Graphormer</code>，由<a href="https://arxiv.org/abs/2106.05234#:~:text=Yet%2C%20it%20has%20not%20achieved%20competitive%20performance%20on,Transformers%20could%20perform%20well%20for%20graph%20representation%20learning."><code>Ying et al.</code></a>提出。  </li>
+<li>图特征编码器  </li>
+<li>一种新型的图解码器  </li>
+</ul>
+</li>
+<li>使用图表示的原因  <ul>
+<li>将分子表示为图，是一种自然的表示方法，其中原子作为节点，化学键作为边，从而易于使用<code>GNN</code>模型。  </li>
+<li>与<code>SMILES</code>不同，图模型不受原子手续的影响。  </li>
+</ul>
+</li>
+<li>本文贡献总结  </li>
+<li>对于单步逆合成任务，提出新型的图到图模型。  <ul>
+<li>模型继承了无模板方法的好处。  </li>
+<li>模型将序列表示替换为图表示。  </li>
+<li>编码器和解码器基于标准<code>transformer</code>架构进行构建，以获得全局感受野、并行计算的能力。  </li>
+</ul>
+</li>
+<li>提出使用自学习(<code>self-training</code>)作为一种数据增强手段，结合采样、集束搜索和频率排序，以追踪<code>top-10</code>结果；提出了一种新型的弱集成方法，以增加结果的多样性。  <ul>
+<li>本文通过消融实验，证明了上述技巧大幅度提升了模型的性能。  </li>
+</ul>
+</li>
+<li>在<code>USPTO-50k</code>和<code>USPTO-Full</code>数据集上均取得新的<code>SOTA</code>结果，并在<code>Reaxys</code>数据集上证明了模型的健壮性和泛化能力。  </li>
+</ul>
+<h5 id="the-g2gt-framework"><code>The G2GT Framework</code></h5>
+<ul>
+<li><code>Preliminaries</code>（正文）  </li>
+<li><code>Transformer</code>架构  <ul>
+<li>由论文<code>Attention is All You Need</code>提出。  </li>
+<li>一种神经网络架构，最初用于<code>NLP</code>任务，如机器翻译、语言建模等。  </li>
+<li>主要用于语言翻译、文本总结和情感分析等<code>NLP</code>任务。  </li>
+<li>基于自注意力机制，允许模型选择性地关注输入的某些部分。  </li>
+<li>自注意力机制同时运用于编码器、解码器。  </li>
+<li>编码器中，注意力机制用于计算输入数据的表示，这种表示考虑了整个输入序列。  </li>
+<li>解码器中，注意力机制用于计算输出数据的表示，同时考虑输入序列，以及之前已经生成的输出结果。  </li>
+</ul>
+</li>
+<li><code>Graphormer</code>架构  <ul>
+<li>基于标准的<code>Transformer</code>架构，针对图表示学习任务进行了特定的调整。  </li>
+<li>传统<code>Transformer</code>架构中，输入数据被转化为词元(<code>token</code>)序列，从而可被模型处理。  </li>
+<li>图没有自然顺序(<code>natural order</code>)，使用传统的<code>Transformer</code>模型进行图表示学习是困难的。  </li>
+<li>作者将<code>Transformer</code>运用于图表示学习的的关键思想</li>
+<li>高效编码图中的结构信息。  </li>
+<li>提出了几种简单、高效的结构编码方法，以帮助<code>Graphormer</code>更好地表示图结构数据。  </li>
+<li>上述方法使得<code>Graphormer</code>可以高效捕捉途中的结构信息。  </li>
+</ul>
+</li>
+<li><code>Preliminaries</code>（附录）  </li>
+<li><code>Transformer</code>  <ul>
+<li>自注意力模块  </li>
+<li><span class="arithmatex">\(Z = [z_1^T, \cdots, z_n^T]^T \in \mathbb{R}^{n \times d}\)</span>，表示自注意力模块的输入。 <ul>
+<li><span class="arithmatex">\(z_i\)</span>：位置<span class="arithmatex">\(i\)</span>的隐藏表示。   </li>
+<li><span class="arithmatex">\(d\)</span>：隐藏维度数目。  </li>
+</ul>
+</li>
+<li>通过对<span class="arithmatex">\(Z\)</span>进行线性投影，可获得三种学习到的表示：查询(<code>query</code>)、键(<code>key</code>)、值(<code>value</code>)。  </li>
+<li>注意力函数：<span class="arithmatex">\(Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d_k}})V\)</span>  <ul>
+<li><span class="arithmatex">\(Q\)</span>和<span class="arithmatex">\(K\)</span>的点积可以捕捉其相似度，对重要的关系进行表示。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Graphormer</code>  <ul>
+<li>学习图表示的三种编码  </li>
+<li>空间编码  </li>
+<li>边编码  </li>
+<li>中心性编码  </li>
+<li>空间编码  </li>
+<li>图中节点并非按序排列，而是可以存在于一个高维空间，由边进行连接。  <ul>
+<li>若两结点<span class="arithmatex">\(v_i, v_j\)</span>相连，<code>Graphormer</code>，将两结点间的最短距离记为<span class="arithmatex">\(\phi(v_i, v_j)\)</span>。  </li>
+<li><span class="arithmatex">\(A_{(i, j)}\)</span>表示查询-键乘积矩阵(<code>query key product matrix</code>)<span class="arithmatex">\(A\)</span>的第<span class="arithmatex">\((i, j)\)</span>个元素。  </li>
+<li>可学习标量<span class="arithmatex">\(b_{\phi(v_i, v_j)}\)</span>的获得：<span class="arithmatex">\(A_{ij} = \frac{(z_iW_q)(z_jW_k)^T}{\sqrt{d}} + b_{\phi(v_i, v_j)} + c_{i, j}\)</span>  </li>
+<li><span class="arithmatex">\(c_{i, j}\)</span>为偏置项。     </li>
+</ul>
+</li>
+<li>边编码  </li>
+<li>对于每一个结点对<span class="arithmatex">\((v_i, v_j)\)</span>：  <ul>
+<li>识别<span class="arithmatex">\(v_i\)</span>到<span class="arithmatex">\(v_j\)</span>的最短路径<span class="arithmatex">\(SP_{ij} = (e_1, e_2, \cdots, e_n)\)</span>  </li>
+<li>计算边特征的点积的平均值  </li>
+<li>沿最短路径计算可学习的嵌入表示  </li>
+</ul>
+</li>
+<li>中心性编码  </li>
+<li>使用度中心性(<code>degree centrality</code>)作为<code>Transformer</code>网络的加性输入。  </li>
+<li><code>softmax</code>注意力通过使用中心性编码，可以从查询和键中捕捉结点重要性的信号。  </li>
+<li><span class="arithmatex">\(z_i^{(0)} = x_i + d_{deg(v_i)}\)</span>，其中<span class="arithmatex">\(d\)</span>表示图中结点的度数，反应了分子中原子的连通性。  </li>
+<li>结果：<code>Graphormer</code>通过注意力机制，既能捕捉语义关联，又能捕捉结点的重要性信息。  </li>
+</ul>
+</li>
+<li>模型细节——<code>Top-K</code>采样  <ul>
+<li>给定大小为<span class="arithmatex">\(V\)</span>的离散词典，以及词典<span class="arithmatex">\(V\)</span>上的概率分布<span class="arithmatex">\(P\)</span>，在生成过程的每个时间步，模型计算出<code>top-k</code>的概率，其中<span class="arithmatex">\(k\)</span>为超参数。  </li>
+<li>上述概率用向量<span class="arithmatex">\(P_{topk}\)</span>表示，<code>top-k</code>词汇以外的其余词汇对应概率均为<span class="arithmatex">\(0\)</span>。  </li>
+<li><code>top-k</code>采样  </li>
+<li>对于词典<span class="arithmatex">\(V\)</span>上给定的概率分布<span class="arithmatex">\(P\)</span>，<code>top-k</code>采样定义为<span class="arithmatex">\(P_{topk} = topk(P, k)\)</span>，其中<span class="arithmatex">\(topl(P, k)\)</span>操作符从概率分布<span class="arithmatex">\(P\)</span>中选出前<span class="arithmatex">\(k\)</span>个元素，返回一个跟<span class="arithmatex">\(P\)</span>形状相同，只有<span class="arithmatex">\(k\)</span>个非零元的向量。  </li>
+</ul>
+</li>
+<li><code>G2GT</code>模型架构</li>
+</ul>
 
 
 
