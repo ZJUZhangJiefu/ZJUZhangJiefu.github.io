@@ -1236,6 +1236,42 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#data-augmentation-and-decoding-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Augmentation and Decoding Strategy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experimental-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experimental Evaluation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-and-limitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion and Limitation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Work
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1306,6 +1342,42 @@
   <a href="#the-g2gt-framework" class="md-nav__link">
     <span class="md-ellipsis">
       The G2GT Framework
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-augmentation-and-decoding-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Augmentation and Decoding Strategy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experimental-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experimental Evaluation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-and-limitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion and Limitation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Work
     </span>
   </a>
   
@@ -1616,12 +1688,129 @@
 </li>
 <li>注入模型的方式  <ul>
 <li>与中心性编码相似，将拉普拉斯位置编码作为注意力偏置以注入模型。  </li>
+<li>通过合并(<code>concatenate</code>)<span class="arithmatex">\(m\)</span>个最小的特征值及其特征向量，构建规模为<span class="arithmatex">\(2 \times m\)</span>的嵌入表示矩阵。  </li>
+<li>超参数<span class="arithmatex">\(m\)</span>表示特征向量的数量上限。若<span class="arithmatex">\(m\)</span>大于图中结点数，则使用掩膜填充。    </li>
+<li>对于上述嵌入表示矩阵，使用一个线性层，获取规模为<span class="arithmatex">\(k\)</span>的新的嵌入表示，其中<span class="arithmatex">\(k = d\)</span>，为多头注意力中“头”(<code>head</code>)的数量。  </li>
+<li>最终，通过加性聚合方法，序列被转化为<span class="arithmatex">\(k\)</span>维的结点嵌入表示。  </li>
+</ul>
+</li>
+<li>公式  <ul>
+<li><span class="arithmatex">\(L \in \mathbb{R}^{n \times n \times d}\)</span>表示拉普拉斯编码矩阵，<span class="arithmatex">\(l_{i, j}\)</span>为矩阵<span class="arithmatex">\(L\)</span>的第<span class="arithmatex">\((i, j)\)</span>个元素，<span class="arithmatex">\(lpe\)</span>表示基于结点的(<code>node-wise</code>)拉普拉斯位置编码。  </li>
+<li>若<span class="arithmatex">\(g_i^j\)</span>是结点，则<span class="arithmatex">\(l_{i,j} = lpe_{g_i^j}\)</span>。  </li>
+<li>若<span class="arithmatex">\(g_i^j\)</span>不是结点，则<span class="arithmatex">\(l_{i,j} = 0\)</span>。  </li>
+<li>修改后的自注意力公式（同时将拉普拉斯位置编码、中心性编码作为注意力偏置）：<br />
+<span class="arithmatex">\(A_{i, j} = \frac{(z_iW_q)(z_jW_k)^T}{\sqrt{d}} = e_{i, j} + l_{i, j}\)</span>  </li>
+</ul>
+</li>
+<li>方法的好处  <ul>
+<li>解决了之前的图表示方法的限制。  <ul>
+<li>通过特征向量正则化，与特征值大小相匹配。  </li>
+<li>将特征向量的数目作为变量。  </li>
+<li>为了提高符号模糊不变性(<code>sign ambiguity invariance</code>)，模型在训练过程中，随机翻转预计算的特征向量的符号。  </li>
+<li>按照不同频率使用正弦、余弦编码，作为位置编码。  </li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+<h5 id="data-augmentation-and-decoding-strategy"><code>Data Augmentation and Decoding Strategy</code></h5>
+<ul>
+<li>自训练  <ul>
+<li>由于模型的图排列不变性(<code>graph permutation invariance</code>)，无法使用<code>SMILES</code>数据增强方法。 </li>
+<li>作为替代，模型使用自训练方法（类似于<code>AlphaFold</code>），以增强模型的泛化能力。  <ul>
+<li>首先使用训练集训练一个模型。  </li>
+<li>然后，使用该模型预测外部分子集合(<code>external molecule set</code>)上的化学反应。  </li>
+<li>选择高置信度的化学反应，加入训练集，再次训练模型。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>结果的多样性  <ul>
+<li>简述 <ul>
+<li>在逆合成预测中，结果多样性是一个重要的考量。  </li>
+<li>一个产物可能经由不同的反应，由不同的反应物集合进行合成。  </li>
+<li>反应物离去基团(<code>reactant leaving groups</code>)也是逆合成多样性的一种体现。  </li>
+<li>作者结合下列手段，提高预测的多样性。  </li>
+</ul>
+</li>
+<li>集束搜索、<code>Top-p</code>和<code>Top-k</code>采样  <ul>
+<li>在推理过程中，使用<code>top-p</code>采样（核采样）和<code>top-k</code>采样，作为解码方法。  </li>
+<li><code>top-p</code>采样<ul>
+<li><code>top-p</code>采样从最小可获取集合(<code>smallest accessible set</code>)中选择词元，该集合的累积概率高于概率<span class="arithmatex">\(p\)</span>。  </li>
+<li>词元集合的规模可能随着下一词元概率分布的变化而发生动态变化。  </li>
+<li>给定分布<span class="arithmatex">\(P(x|x_{1:i - 1})\)</span>，定义<code>top-p</code>词元集合<span class="arithmatex">\(V(P)\subset V\)</span>作为最小词元集合，该集合满足：
+<span class="arithmatex">\(\sum_{x \in V(P)} P(x|x_{x_{1:x - 1}}) \geq p\)</span>  </li>
+</ul>
+</li>
+<li><code>top-k</code>采样  <ul>
+<li>在生成过程的每一个时间步，仅考虑<code>top-k</code>最可能的词元，而非所有可能的词元。  </li>
+<li>大幅度减少模型需要探索的可能，提高了采样过程的效率。  </li>
+</ul>
+</li>
+<li>使用温度调整概率，用高温使得分布更为平滑，以提高结果的多样性。  </li>
+<li>频率排序  <ul>
+<li>为了输出<code>top-n</code>的结果，可以采样<span class="arithmatex">\(m\)</span>次，其中<span class="arithmatex">\(m \geq n\)</span>。  </li>
+<li>获得<span class="arithmatex">\(m\)</span>个样本后，使用词元出现的频率作为排序索引，以追踪<code>top-n</code>的结果。  </li>
+<li>想法：预测反应物的出现频率，反应了在模型中的置信度。  </li>
+<li>计算出现频率时，将集束搜索的解码结果视为补充样本。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>弱集成(<code>Weak Ensemble</code>)  <ul>
+<li>目的：进一步提升预测反应物的多样性。  </li>
+<li>工作：探索训练集的反应物类别分布对于预测反应物的影响。  </li>
+<li>针对的问题：一个产物分子可能有不同的合理反应物，但由于训练集中不同反应类别的特定分布，模型可能倾向于预测特定的反应类别。  </li>
+<li>受集成学习启发的新型方法  <ul>
+<li>随机分割训练集为<span class="arithmatex">\(n\)</span>个集合，为分子图添加特殊节点，存储产物分子输入的标签序号(<code>tag ID</code>)信息。  </li>
+<li>联合训练所有集合，作用是将模型暴露于不同的反应类别分布，减少对特定反应类别的偏向性(<code>bias</code>)。  </li>
+<li>在推理阶段，将不同的<code>tag ID</code>赋予一个产物分子，从同一产物不同<code>tag ID</code>形成的变种进行的变种。  </li>
+<li>上述方法的作用：对于同一产物分子，模型可以生成不同的、合理的反应物，以提高预测结果的多样性。  </li>
+</ul>
+</li>
+<li>作用：本文消融实验证明，弱集成方法能提高<code>top-10</code>精确度。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="experimental-evaluation"><code>Experimental Evaluation</code></h5>
+<h5 id="conclusion-and-limitation"><code>Conclusion and Limitation</code></h5>
+<ul>
+<li>总结  <ul>
+<li>本文基于<code>Transformer</code>模型，首次实现了一个支持并行预测所有时间步的图解码器结构，并成功将其应用于单步逆合成问题。  </li>
+<li>此外，将自训练引入反应预测，以增加训练样本的数目。  </li>
+<li>作者提出了各种各样的技巧，以进一步提高多样性表现，并证明了无模板、基于图的方法的优越性，以及它们在真实世界的适用性。  </li>
+<li><code>G2GT</code>框架取得的<code>SOTA</code>结果  <ul>
+<li>在<code>USPTO-50k</code>数据集上，取得了<span class="arithmatex">\(54.1\%\)</span>的<code>top-1</code>精度。  </li>
+<li>将<code>USPTO-Full</code>的<code>top-1</code>精度提高了<span class="arithmatex">\(3\%\)</span>，提高至<span class="arithmatex">\(49.3%\)</span>，同时保持了一个具有竞争力的<code>top-10</code>精度。  </li>
+<li>在<code>USPTO-Full</code>数据集上的改进尤其有意义，原因是数据集规模更大，更具挑战性，更接近真实世界数据。  <ul>
+<li>该数据集没有可靠的原子映射信息，没有先验的反应类别信息，没有模板可以匹配数据集中所有反应。  </li>
+<li>此外，数据集中的反应仅依赖于模板是无法完全预测的。    </li>
+</ul>
+</li>
+<li>因此，作者提出的方法可能在真实世界使用中表现更佳。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>局限性  <ul>
+<li>尽管本文提出的方法在<code>top-1</code>精度方面超越了以往的工作，作者认为该方法的<code>top-10</code>精度是不足的。  </li>
+<li>此外，<code>G2GT</code>在大分子上的应用是首先的，原因是自注意力模块的平方时间复杂度，以及<code>LPE</code>（拉普拉斯位置编码）对内存的占用。  </li>
+<li>这一假说需要通过进一步研究得到证实。   </li>
+</ul>
+</li>
+</ul>
+<h5 id="future-work"><code>Future Work</code></h5>
+<ul>
+<li>不论分子的其余部分如何，同一个官能团(<code>functional group</code>)总是经历相同或相似的化学反应。  </li>
+<li>因此，有理由相信一个能够预测化学反应结果的模型也可以对官能团进行特征描述(<code>characterize</code>)。  </li>
+<li>在化学反应以外，官能团本质上带有分子的物理和化学性质。  </li>
+<li>因此，本实验可以视为分子表示的一个预训练任务，本实验获得了一些分子性质预测任务的初步(<code>preliminary</code>)结果。  </li>
 </ul>
 
 
