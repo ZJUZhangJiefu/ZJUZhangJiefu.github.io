@@ -1405,24 +1405,24 @@
 
 <h5 id="abstract"><code>Abstract</code></h5>
 <ul>
-<li>逆合成预测，即识别可以用于合成目标分子的反应物分子，是有机化学机器相关领域的一个基础性挑战。  </li>
+<li>逆合成预测，即<strong>识别可以用于合成目标分子的反应物分子</strong>，是有机化学机器相关领域的一个基础性挑战。  </li>
 <li>为了解决这一挑战，本文提出一种新颖的图到图(<code>graph-to-graph</code>)变换模型<code>G2GT</code>。  <ul>
-<li>模型使用标准<code>transformer</code>架构，运用图编码器和解码器。  </li>
-<li>本文展示了自训练（一种使用无标签分子数据的数据增广手段）在改善模型性能上的有效性。  </li>
-<li>为了进一步提高多样性，本文提出一种弱集成(<code>weak ensemble</code>)方法。<ul>
-<li>该方法受到了反应类型标签和集成学习的启发。  </li>
-<li>结合集束搜索(<code>beam search</code>)、核采样(<code>nucleus sampling</code>)和<code>top-k</code>采样方法，以提高推理结果的多样性。  </li>
+<li>模型使用<strong>标准<code>transformer</code>架构</strong>，运用<strong>图编码器和解码器</strong>。  </li>
+<li>本文展示了<strong>自训练</strong>（一种使用<strong>无标签数据增广手段</strong>）在改善模型性能上的有效性。  </li>
+<li>为了进一步提高多样性，本文提出一种<strong>弱集成</strong>(<code>weak ensemble</code>)方法。<ul>
+<li>该方法受到了<strong>反应类型标签</strong>和<strong>集成学习</strong>的启发。  </li>
+<li>结合集束搜索(<code>beam search</code>)、核采样(<code>nucleus sampling</code>)和<code>top-k</code>采样方法，以提高<strong>推理结果的多样性</strong>。  </li>
 <li>使用简单的排序算法，以追踪最终的<code>top-10</code>结果。  </li>
 </ul>
 </li>
 </ul>
 </li>
-<li>本文在<code>USPTO-50K</code>、<code>USPTO-Full</code>两个数据集上均获得了新的<code>SOTA</code>结果。  <ul>
+<li>本文在<code>USPTO-50K</code>、<code>USPTO-Full</code>两个数据集上均获得了<strong>新的<code>SOTA</code>结果</strong>。  <ul>
 <li><code>USPTO-50K</code>：<code>top-1</code>精确度为<span class="arithmatex">\(54\%\)</span>。  </li>
 <li><code>USPTO-Full</code>：<code>top-1</code>精确度为<span class="arithmatex">\(49.3\%\)</span>，<code>top-10</code>结果具有竞争力。  </li>
 </ul>
 </li>
-<li><code>G2GT</code>模型可以泛化到其他所有图到图变换任务。  </li>
+<li><code>G2GT</code>模型可以<strong>泛化到其他所有图到图变换任务</strong>。  </li>
 <li>数据、代码：<a href="https://github.com/Anonnoname/G2GT_2">链接</a>  </li>
 </ul>
 <h5 id="introduction"><code>Introduction</code></h5>
@@ -1431,84 +1431,84 @@
 <li>该任务涉及合理地识别出一个用于合成产物分子的反应物集合。  </li>
 <li>近年，多种多样的逆合成计算工具(<code>computational synthesis tools</code>)被用于促进新型分子逆合成路线的设计。  </li>
 <li>方法分类  <ul>
-<li>基于模板(<code>template-based</code>)的方法  </li>
-<li>无模板(<code>template-free</code>)方法  </li>
-<li>半模板(<code>semi-template</code>)方法  </li>
+<li><strong>基于模板</strong>(<code>template-based</code>)的方法  </li>
+<li><strong>无模板</strong>(<code>template-free</code>)方法  </li>
+<li><strong>半模板</strong>(<code>semi-template</code>)方法  </li>
 </ul>
 </li>
 </ul>
 </li>
 <li>基于模板的方法  <ul>
-<li>是一种基于规则的方法。  </li>
-<li>目标分子被应用于所有已知的反应模板。  <ul>
-<li>反应模板：即图转换规则。  </li>
+<li>是一种基于<strong>规则</strong>的方法。  </li>
+<li>目标分子被应用于<strong>所有已知的反应模板</strong>。  <ul>
+<li><strong>反应模板</strong>：即<strong>图转换</strong>规则。  </li>
 </ul>
 </li>
-<li>若产物分子的子图与模板的产物图相匹配，则称模板适用于产物分子，模板可能被转化到反应物集合中。  <ul>
-<li>该方法依赖于专家知识，无法同数量不断增加的化学反应与时俱进。  </li>
+<li>若<strong>产物分子的子图</strong>与<strong>模板的产物图</strong>相<strong>匹配</strong>，则称<strong>模板适用于产物分子</strong>，模板可能被转化到反应物集合中。  <ul>
+<li>该方法<strong>依赖于专家知识</strong>，无法同数量不断增加的化学反应与时俱进。  </li>
 </ul>
 </li>
-<li>其余方法使用机器学习手段，从反应数据集自动提取反应模板。  <ul>
-<li>该方法需要原子映射信息（一种从反应物原子映射到产物原子的方案），原子映射是至今尚未解决的问题。  </li>
-<li>依赖于反应物模板库、专家规则，以实现其功能。  </li>
+<li>其余方法使用<strong>机器学习手段，从反应数据集自动提取反应模板</strong>。  <ul>
+<li>该方法需要<strong>原子映射</strong>信息（一种从<strong>反应物原子映射到产物原子</strong>的方案），原子映射是<strong>至今尚未解决</strong>的问题。  </li>
+<li>依赖于<strong>反应物模板库、专家规则</strong>，以实现其功能。  </li>
 </ul>
 </li>
 </ul>
 </li>
-<li>半模板(<code>semi-template</code>)方法  <ul>
-<li>将逆合成过程分解为两个子任务  <ul>
-<li>（1）预测产物的反应中心  </li>
-<li>（2）基于反应中心，将产物分解为合成子(<code>synthon</code>)，然后将合成子(<code>synthon</code>)转化为一个完整的分子。  </li>
+<li><strong>半模板</strong>(<code>semi-template</code>)方法  <ul>
+<li>将逆合成过程分解为<strong>两个子任务</strong>  <ul>
+<li>（1）<strong>预测产物的反应中心</strong>  </li>
+<li>（2）基于<strong>反应中心</strong>，将产物分解为<strong>合成子</strong>(<code>synthon</code>)，然后将<strong>合成子</strong>(<code>synthon</code>)转化为一个<strong>完整的分子</strong>。  </li>
 </ul>
 </li>
 <li>方法的局限性  <ul>
-<li>依赖于高质量的原子映射反应数据集(<code>atom mapping reaction dataset</code>)，以提取反应中心。  </li>
-<li>训练集受限于小的反应子集(<code>small subsets of reactions</code>)，无法扩展到真实世界应用。  </li>
+<li>依赖于<strong>高质量的原子映射反应数据集</strong>(<code>atom mapping reaction dataset</code>)，以<strong>提取反应中心</strong>。  </li>
+<li><strong>训练集受限于小的反应子集</strong>(<code>small subsets of reactions</code>)，无法扩展到真实世界应用。  </li>
 </ul>
 </li>
 </ul>
 </li>
-<li>无模板方法  <ul>
-<li>将单步逆合成预测任务，转化为序列到序列(<code>Seq2Seq</code>)翻译任务。  <ul>
-<li>反应物的<code>SMILES</code>是“源语言”，产物的<code>SMILES</code>是“目标语言”。  </li>
+<li><strong>无模板</strong>方法  <ul>
+<li>将<strong>单步逆合成预测</strong>任务，转化为<strong>序列到序列</strong>(<code>Seq2Seq</code>)<strong>翻译</strong>任务。  <ul>
+<li><strong>反应物的<code>SMILES</code>是“源语言”，产物的<code>SMILES</code>是“目标语言”</strong>。  </li>
 </ul>
 </li>
-<li>无模板方法可以使用所有的已知反应数据，并生成尚未发现的反应模式。  </li>
+<li>无模板方法可以使用<strong>所有的已知反应数据</strong>，并<strong>生成尚未发现的反应模式</strong>。  </li>
 <li>发展<ul>
-<li><a href="https://doi.org/10.1021/acscentsci.7b00303?urlappend=%3Fref%3DPDF&amp;jav=VoR&amp;rel=cite-as"><code>Liu et al.</code></a>首先采用无模板框架，通过长短时记忆(<code>LSTM</code>)网络，获得了与无模板方法相当的性能。  </li>
-<li>增强<code>transformer</code>(<code>AT, Augmented Transformer</code>)使用<code>transformer</code>和<code>SMILES</code>数据增强手段，在<code>USPTO-50k</code>和<code>USPTO-Full</code>数据集均取得了<code>SOTA</code>结果。  </li>
+<li><a href="https://doi.org/10.1021/acscentsci.7b00303?urlappend=%3Fref%3DPDF&amp;jav=VoR&amp;rel=cite-as"><code>Liu et al.</code></a>首先采用无模板框架，通过<strong>长短时记忆(<code>LSTM</code>)网络</strong>，获得了与无模板方法相当的性能。  </li>
+<li>增强<code>transformer</code>(<code>AT, Augmented Transformer</code>)<strong>使用<code>transformer</code>和<code>SMILES</code>数据增强手段</strong>，在<code>USPTO-50k</code>和<code>USPTO-Full</code>数据集均取得了<code>SOTA</code>结果。  </li>
 <li><code>AT</code>对其他方法形成挑战，原因是原子映射信息的缺失。  </li>
 </ul>
 </li>
 </ul>
 </li>
 <li>本文工作  <ul>
-<li>受无模板方法的成功、近期图神经网络的发展及其在分子图表示学习(<code>molecular graph representation learning</code>)的<code>SOTA</code>结果的启发，本文将逆合成任务视为一个图到图问题，并提出图到图<code>transformer</code>(<code>G2GT, Graph2Graph Transformer</code>)模型。  </li>
-<li><code>G2GT</code>模型的组成  <ul>
+<li>受无模板方法的成功、近期图神经网络的发展及其在分子图表示学习(<code>molecular graph representation learning</code>)的<code>SOTA</code>结果的启发，本文<strong>将逆合成任务视为一个图到图问题</strong>，并提出<strong>图到图<code>transformer</code>(<code>G2GT, Graph2Graph Transformer</code>)模型</strong>。  </li>
+<li><code>G2GT</code>模型的<strong>组成</strong>  <ul>
 <li><code>Graphormer</code>，由<a href="https://arxiv.org/abs/2106.05234#:~:text=Yet%2C%20it%20has%20not%20achieved%20competitive%20performance%20on,Transformers%20could%20perform%20well%20for%20graph%20representation%20learning."><code>Ying et al.</code></a>提出。  </li>
-<li>图特征编码器  </li>
-<li>一种新型的图解码器  </li>
+<li><strong>图特征编码器</strong>  </li>
+<li>一种<strong>新型的图解码器</strong>  </li>
 </ul>
 </li>
 <li>使用图表示的原因  <ul>
-<li>将分子表示为图，是一种自然的表示方法，其中原子作为节点，化学键作为边，从而易于使用<code>GNN</code>模型。  </li>
-<li>与<code>SMILES</code>不同，图模型不受原子手续的影响。  </li>
+<li>将分子表示为图，是一种<strong>自然</strong>的表示方法，其中原子作为节点，化学键作为边，从而<strong>易于使用<code>GNN</code>模型</strong>。  </li>
+<li>与<code>SMILES</code>不同，图模型<strong>不受原子顺序的影响</strong>。  </li>
 </ul>
 </li>
 </ul>
 </li>
 <li>本文贡献总结  <ul>
-<li>对于单步逆合成任务，提出新型的图到图模型。  <ul>
-<li>模型继承了无模板方法的好处。  </li>
-<li>模型将序列表示替换为图表示。  </li>
-<li>编码器和解码器基于标准<code>transformer</code>架构进行构建，以获得全局感受野、并行计算的能力。  </li>
+<li>对于<strong>单步逆合成</strong>任务，提出新型的<strong>图到图</strong>模型。  <ul>
+<li>模型继承了<strong>无模板</strong>方法的好处。  </li>
+<li>模型将<strong>序列表示</strong>替换为<strong>图表示</strong>。  </li>
+<li>编码器和解码器基于<strong>标准<code>transformer</code>架构</strong>进行构建，以获得<strong>全局感受野、并行计算</strong>的能力。  </li>
 </ul>
 </li>
-<li>提出使用自学习(<code>self-training</code>)作为一种数据增强手段，结合采样、集束搜索和频率排序，以追踪<code>top-10</code>结果；提出了一种新型的弱集成方法，以增加结果的多样性。  <ul>
-<li>本文通过消融实验，证明了上述技巧大幅度提升了模型的性能。  </li>
+<li>提出使用<strong>自学习(<code>self-training</code>)作为一种数据增强手段</strong>，结合<strong>采样、集束搜索和频率排序</strong>，以追踪<code>top-10</code>结果；提出了一种<strong>新型的弱集成方法</strong>，以<strong>增加结果的多样性</strong>。  <ul>
+<li>本文通过<strong>消融实验</strong>，证明了上述技巧大幅度提升了模型的性能。  </li>
 </ul>
 </li>
-<li>在<code>USPTO-50k</code>和<code>USPTO-Full</code>数据集上均取得新的<code>SOTA</code>结果，并在<code>Reaxys</code>数据集上证明了模型的健壮性和泛化能力。  </li>
+<li>在<code>USPTO-50k</code>和<code>USPTO-Full</code>数据集上均取得<strong>新的<code>SOTA</code>结果</strong>，并在<code>Reaxys</code>数据集上证明了模型的<strong>健壮性和泛化能力</strong>。  </li>
 </ul>
 </li>
 </ul>
@@ -1604,7 +1604,8 @@
 </li>
 </ul>
 </li>
-<li><code>G2GT</code>模型架构  <ul>
+<li><code>G2GT</code>模型架构<br />
+<img alt="" src="../assets/DL/46.JPG" /><ul>
 <li>概述  <ul>
 <li>编码器  <ul>
 <li>采用<code>Graphormer</code>，将输入图<span class="arithmatex">\(G = (V, E)\)</span>（<span class="arithmatex">\(V = \{v_1, \cdots, v_n\}, n = |V|\)</span>）编码为高维表示<span class="arithmatex">\(z = (z_1, \cdots, z_n)\)</span>。  </li>
@@ -1630,7 +1631,8 @@
 <li>归纳注意偏置(<code>inductive attention bias</code>)，与掩膜注意模块(<code>masked attention module</code>)相匹配。  </li>
 </ul>
 </li>
-<li>图表示  <ul>
+<li>图表示<br />
+<img alt="" src="../assets/DL/48.JPG" /><ul>
 <li>给定输入分子的表示向量<span class="arithmatex">\(z\)</span>，解码器按照自回归方式推理输出图序列(<code>output graph sequence</code>)。  </li>
 <li>输出图序列  <ul>
 <li>分子由无向图<span class="arithmatex">\(G = (V, E)\)</span>进行表示。 </li>
@@ -1654,7 +1656,8 @@
 <li>将真实输出和预测输出进行比较，计算损失。  </li>
 </ul>
 </li>
-<li>解码器中的中心性编码  <ul>
+<li>解码器中的中心性编码<br />
+<img alt="" src="../assets/DL/47.JPG" /><ul>
 <li>直接加到编码器输出的问题  <ul>
 <li>信息泄露，即生成当前输出时，预知未来输出信息。  </li>
 <li>随着新结点的连接，一个结点的中心性可能增加。  </li>
@@ -1679,7 +1682,8 @@
 <span class="arithmatex">\(A_{i, j} = \frac{(z_iW_q)(z_jW_k)^T}{\sqrt{d}} = e_{i, j}\)</span>  </li>
 </ul>
 </li>
-<li>拉普拉斯位置编码  <ul>
+<li>拉普拉斯位置编码<br />
+<img alt="" src="../assets/DL/47.JPG" /><ul>
 <li>思想与作用  <ul>
 <li>传统方法将图表示为序列。  </li>
 <li>仅序列本身无法完全捕捉图中的结构信息。  </li>
@@ -1779,38 +1783,181 @@
 </li>
 </ul>
 <h5 id="experimental-evaluation"><code>Experimental Evaluation</code></h5>
+<ul>
+<li>实验设定  <ul>
+<li><code>G2GT</code>模型  <ul>
+<li><span class="arithmatex">\(L = 8 \times 2\)</span>  </li>
+<li><span class="arithmatex">\(d = 768\)</span>  </li>
+<li>注意力“头”的数目、注意力偏置的维度数目：<span class="arithmatex">\(24\)</span>  </li>
+<li>特征向量的最大数目：<span class="arithmatex">\(30\)</span>（由于<code>GPU</code>内存限制）  </li>
+<li><code>AdamW</code>优化器  <ul>
+<li><span class="arithmatex">\(\epsilon = 1 \times 10^{-8}\)</span>  </li>
+<li><span class="arithmatex">\(\beta_1 = 0.9, \beta_2 = 0.999\)</span>  </li>
+<li>峰值学习率为<span class="arithmatex">\(2.5 \times 10^{-4}\)</span>，最终学习率为<span class="arithmatex">\(1 \times 10^{-6}\)</span>，使用平方衰减学习率调度器。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>总训练步骤  <ul>
+<li><code>USPTO-50k</code>：总共训练<span class="arithmatex">\(120k\)</span>个<code>step</code>。  </li>
+<li><code>USPTO-Full</code>：总共训练<span class="arithmatex">\(120k\)</span>个<code>step</code>。  </li>
+</ul>
+</li>
+<li><code>batch size</code>设置  <ul>
+<li>设置为<code>10</code>（受<code>GPU</code>内存限制）  </li>
+<li>使用梯度累加方法，逐步提升<code>batch size</code>。  </li>
+</ul>
+</li>
+<li><code>top-p</code>与<code>top-k</code>采样的参数  <ul>
+<li><span class="arithmatex">\(k = 5, p = 0.75\)</span>  </li>
+<li>温度(<code>temprature</code>)：<span class="arithmatex">\(6.5\)</span>  </li>
+<li>每个分子的采样次数：<span class="arithmatex">\(400\)</span>  </li>
+</ul>
+</li>
+<li>弱集成方法  <ul>
+<li><code>USPTO-50k</code>：共<span class="arithmatex">\(20\)</span>个标签(<code>tag</code>)  </li>
+<li><code>USPTO-Full</code>：共<span class="arithmatex">\(50\)</span>个标签(<code>tag</code>)  </li>
+<li>按直觉选择上述标签数，原因是<code>USPTO-50k</code>的所有化学反应可被分为<span class="arithmatex">\(10\)</span>种反应类型。    </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>训练  <ul>
+<li><code>GPU</code>：<code>NVIDIA V100 32GB</code>  </li>
+<li><code>SMILES</code>：在推理过程中，过滤无效的<code>SMILES</code>，不计入<code>top-k</code>准确率。  </li>
+<li>训练时长  <ul>
+<li><code>USPTO-50k</code>：约<span class="arithmatex">\(20\)</span>小时  </li>
+<li><code>USPTO-Full</code>：约<span class="arithmatex">\(3\)</span>天  </li>
+</ul>
+</li>
+<li>下图为过滤前的有效率(<code>validity rate</code>)<br />
+<img alt="" src="../assets/DL/49.JPG" /></li>
+</ul>
+</li>
+<li>数据和软件  <ul>
+<li>数据集  <ul>
+<li><code>USPTO-50k</code>和<code>USPTO-Full</code>：用于与以往的工作进行比较。  </li>
+<li>从<code>Reaxys</code>数据库中提取的数据集（不公开）：与以往一个端到端的<code>Transformer</code>模型进行比较。  </li>
+</ul>
+</li>
+<li>数据和代码  <ul>
+<li><a href="https://github.com/Anonnoname/G2GT_2">链接</a>  </li>
+</ul>
+</li>
+<li><code>USPTO-50k</code>：按照<span class="arithmatex">\(40k, 5k, 5k\)</span>进行训练集、验证集、测试集分类。  </li>
+<li><code>USPTO-Full</code>  <ul>
+<li>原始版本  <ul>
+<li>多产物的化学反应被分解为多个单产物的化学反应  </li>
+<li>去除了重复的化学反应，以及映射不正确的化学反应。  </li>
+</ul>
+</li>
+<li>进一步过滤的版本（本文采用）  <ul>
+<li>消除不正确反映，如无产物，或者仅由单离子作为反应物的反应。  </li>
+<li>将训练、测试、验证集平均减少了<span class="arithmatex">\(4%\)</span>，规模为<code>769/96/96k</code>。   </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>Reaxys</code>：从<code>Reaxys</code>数据库中，随机采样<span class="arithmatex">\(5k\)</span>个干净的化学反应。  </li>
+</ul>
+</li>
+<li><code>Baseline</code>和评价标准  <ul>
+<li><code>Baseline</code>  <ul>
+<li>按照基于模板、半模板和无模板进行分类。  </li>
+<li>所有实验结果使用与原论文相同的参数设置而获得。  </li>
+</ul>
+</li>
+<li>评价标准  <ul>
+<li>预测正确，当且仅当化学反应的所有反应物都得到正确的预测。  </li>
+<li>使用流行的<code>top-k</code>精确度。  </li>
+<li>使用<code>RDKit</code>生成的标准<code>SMILES</code>，以与<code>ground truth</code>进行比较。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>主要实验结果<br />
+<img alt="" src="../assets/DL/50.JPG" />
+<img alt="" src="../assets/DL/51.JPG" /><ul>
+<li>本文在<code>USPTO-Full</code>数据集上取得了更为明显的改进，表明面临规模更大、噪声更多的数据，<code>G2GT</code>概括(<code>generalize</code>)底层数据的能力更好。  </li>
+<li>尽管使用了不同的方法，本实验与许多以往的研究都在<code>USPTO-50k</code>上取得约<span class="arithmatex">\(53\%\)</span>的<code>top-1</code>精确度。  <ul>
+<li>因此作者认为，<code>USPTO-50k</code>不再是逆合成问题的一个好的<code>benchmark</code>，原因是它并不能充分反映该领域的最新研究进展。  </li>
+<li>作者建议更多地关注<code>USPTO-Full</code>数据集。  </li>
+</ul>
+</li>
+<li>随着<code>top-k</code>增加，<code>G2GT</code>的优势逐渐消失。  </li>
+<li>若无数据增强和解码手段，则多样性问题会比较突出。   </li>
+</ul>
+</li>
+<li>在<code>USPTO-50k</code>数据集上进行的消融实验<br />
+<img alt="" src="../assets/DL/52.JPG" /> <ul>
+<li>本文提出许多用于提升模型性能的技巧，消融实验用于检验这些技巧对模型性能的影响。  </li>
+<li>结果表明自训练、频率排序和弱集成使<code>top-1</code>精度提升了<span class="arithmatex">\(6\%\)</span>，使<code>top-10</code>精度提升了<span class="arithmatex">\(13.2\%\)</span>。  </li>
+<li>自训练<ul>
+<li>自训练作为一种数据增强手段，有助于模型泛化到不同的<code>scaffold</code>，因此在小型数据集（如<code>USPTO-50k</code>）上训练时，是有益的。  </li>
+<li>自训练在<code>USPTO-Full</code>数据集上的性能改善相当小，原因是该数据集包含足够多的分子，以帮助模型进行泛化。  </li>
+</ul>
+</li>
+<li>采样和频率排序  <ul>
+<li>在推理阶段，作者使用采样、频率排序手段以增强结果的多样性。  </li>
+<li>与集束搜索不同，采样会产生一个具有多样性，但质量相对低一些的预测集合。  </li>
+<li>为了成功地追踪<code>top-k</code>互不相同的预测，作者使用频率排序。  </li>
+<li>该方法使<code>top-1</code>精度提升了<span class="arithmatex">\(1\%\)</span>，使<code>top-10</code>精度提升了<span class="arithmatex">\(7\%\)</span>。  </li>
+</ul>
+</li>
+<li>弱集成  <ul>
+<li>一致地提高了<code>top-k</code>精确度。  </li>
+<li>结合了<code>NLP</code>领域的<code>prompting</code>概念，即模型接受提示<span class="arithmatex">\(x\)</span>的输入，根据概率分布<span class="arithmatex">\(P(y|x)\)</span>输出<span class="arithmatex">\(y\)</span>，结合模型集成(<code>with the model ensemble</code>)，以训练集的分布偏置(<code>distribution bias</code>)。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>模型泛化能力的检验  <ul>
+<li>上述两实验中，信息泄露不可避免，原因是训练集、测试集都有相同的来源——<code>USPTO</code>。  </li>
+<li>因此，作者从<code>Reaxys</code>选择了<code>5</code>种常见反应类型、<code>4507</code>个反映，以进一步评估本文方法的泛化能力和健壮性。  </li>
+<li>有机合成专家分析了<span class="arithmatex">\(63\)</span>个随机选择的结果，调研模型性能。<br />
+<img alt="" src="../assets/DL/53.JPG" /> </li>
+<li>发现  <ul>
+<li>尽管对于某些反映类型（如：重排反应），精确匹配(<code>exact match</code>)精度较低，但专家评估证明大多数预测的反应物是有效的。  </li>
+<li>原因分析：作者认为，各反映类型在训练集中的占比导致了这一现象。  </li>
+<li>由于训练集中重排反应稀少，故模型对于此类产物，倾向于预测出一个非重排反应类型。  </li>
+<li>精确匹配精度(<code>exact match accuracy</code>)无法完全反应实际的预测有效性，但它能在一定程度上反映训练集的反应类型分布。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h5 id="conclusion-and-limitation"><code>Conclusion and Limitation</code></h5>
 <ul>
 <li>总结  <ul>
-<li>本文基于<code>Transformer</code>模型，首次实现了一个支持并行预测所有时间步的图解码器结构，并成功将其应用于单步逆合成问题。  </li>
-<li>此外，将自训练引入反应预测，以增加训练样本的数目。  </li>
-<li>作者提出了各种各样的技巧，以进一步提高多样性表现，并证明了无模板、基于图的方法的优越性，以及它们在真实世界的适用性。  </li>
+<li>本文基于<code>Transformer</code>模型，首次实现了一个<strong>支持并行预测所有时间步的图解码器结构</strong>，并成功将其应用于<strong>单步逆合成</strong>问题。  </li>
+<li>此外，将<strong>自训练</strong>引入反应预测，以<strong>增加训练样本的数目</strong>。  </li>
+<li>作者提出了各种各样的<strong>技巧</strong>，以进一步提高<strong>多样性</strong>，并证明了<strong>无模板、基于图的方法的优越性</strong>，以及它们<strong>在真实世界的适用性</strong>。  </li>
 <li><code>G2GT</code>框架取得的<code>SOTA</code>结果  <ul>
 <li>在<code>USPTO-50k</code>数据集上，取得了<span class="arithmatex">\(54.1\%\)</span>的<code>top-1</code>精度。  </li>
 <li>将<code>USPTO-Full</code>的<code>top-1</code>精度提高了<span class="arithmatex">\(3\%\)</span>，提高至<span class="arithmatex">\(49.3%\)</span>，同时保持了一个具有竞争力的<code>top-10</code>精度。  </li>
-<li>在<code>USPTO-Full</code>数据集上的改进尤其有意义，原因是数据集规模更大，更具挑战性，更接近真实世界数据。  <ul>
-<li>该数据集没有可靠的原子映射信息，没有先验的反应类别信息，没有模板可以匹配数据集中所有反应。  </li>
-<li>此外，数据集中的反应仅依赖于模板是无法完全预测的。    </li>
+<li>在<code>USPTO-Full</code>数据集上的改进尤其有意义，原因是<strong>数据集规模更大，更具挑战性，更接近真实世界数据</strong>。  <ul>
+<li>该数据集<strong>没有可靠的原子映射信息，没有先验的反应类别信息，没有模板可以匹配数据集中所有反应</strong>。  </li>
+<li>此外，数据集中的反应<strong>仅依赖于模板</strong>是<strong>无法完全预测</strong>的。    </li>
 </ul>
 </li>
-<li>因此，作者提出的方法可能在真实世界使用中表现更佳。  </li>
+<li>因此，作者提出的方法<strong>可能在真实世界使用中表现更佳</strong>。  </li>
 </ul>
 </li>
 </ul>
 </li>
 <li>局限性  <ul>
-<li>尽管本文提出的方法在<code>top-1</code>精度方面超越了以往的工作，作者认为该方法的<code>top-10</code>精度是不足的。  </li>
-<li>此外，<code>G2GT</code>在大分子上的应用是首先的，原因是自注意力模块的平方时间复杂度，以及<code>LPE</code>（拉普拉斯位置编码）对内存的占用。  </li>
+<li>尽管本文提出的方法在<code>top-1</code>精度方面超越了以往的工作，作者认为<strong>该方法的<code>top-10</code>精度是不足的</strong>。  </li>
+<li>此外，<code>G2GT</code>在<strong>大分子</strong>上的应用是<strong>受限</strong>的，原因是<strong>自注意力模块的平方时间复杂度</strong>，以及<code>LPE</code>（<strong>拉普拉斯位置编码</strong>）对<strong>内存的占用</strong>。  </li>
 <li>这一假说需要通过进一步研究得到证实。   </li>
 </ul>
 </li>
 </ul>
 <h5 id="future-work"><code>Future Work</code></h5>
 <ul>
-<li>不论分子的其余部分如何，同一个官能团(<code>functional group</code>)总是经历相同或相似的化学反应。  </li>
-<li>因此，有理由相信一个能够预测化学反应结果的模型也可以对官能团进行特征描述(<code>characterize</code>)。  </li>
-<li>在化学反应以外，官能团本质上带有分子的物理和化学性质。  </li>
-<li>因此，本实验可以视为分子表示的一个预训练任务，本实验获得了一些分子性质预测任务的初步(<code>preliminary</code>)结果。  </li>
+<li>不论分子的其余部分如何，<strong>同一个官能团</strong>(<code>functional group</code>)总是经历<strong>相同或相似的化学反应</strong>。  </li>
+<li>因此，有理由相信一个<strong>能够预测化学反应结果的模型</strong>也可以<strong>对官能团进行特征描述(<code>characterize</code>)</strong>。  </li>
+<li>在化学反应以外，<strong>官能团本质上带有分子的物理和化学性质</strong>。  </li>
+<li>因此，<strong>逆合成预测</strong>可以视为<strong>分子表示的一个预训练任务</strong>，本实验获得了一些<strong>分子性质预测任务的初步(<code>preliminary</code>)结果</strong>。  </li>
 </ul>
 
 
