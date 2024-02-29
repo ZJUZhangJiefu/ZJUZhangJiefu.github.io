@@ -10,9 +10,13 @@
         <meta name="author" content="大观散人">
       
       
-        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/Compiler%20Principle/">
+        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/DGM/">
       
       
+        <link rel="prev" href="../CP/">
+      
+      
+        <link rel="next" href="../A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +24,7 @@
     
     
       
-        <title>Compiler Principle - 大观散人的博客</title>
+        <title>深度生成模型 - 大观散人的博客</title>
       
     
     
@@ -108,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Compiler Principle
+              深度生成模型
             
           </span>
         </div>
@@ -251,17 +255,21 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../DGM/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   深度学习专题
@@ -748,8 +756,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -758,12 +768,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -777,7 +787,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             深度学习专题
@@ -788,19 +798,21 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -814,7 +826,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             深度生成模型
@@ -825,10 +837,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../DGM/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    深度生成模型
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -837,6 +867,180 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      第二章 自回归模型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第二章 自回归模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 简介
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、深度生成模型的关键——乘法法则与加法法则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、高维随机变量的分布建模
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 由神经网络参数化的自回归模型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 由神经网络参数化的自回归模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、有限记忆
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、基于循环神经网络的长距离记忆
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、基于卷积神经网络的长距离记忆
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、自回归模型实现
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      第三章 流模型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第三章 流模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 连续随机变量的流模型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 连续随机变量的流模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、简介
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、深度生成网络中的变量替换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#realnvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、构建RealNVP的组件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1280,60 +1484,36 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      第一章 编译器
+      第二章 自回归模型
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="第一章 编译器">
+    <nav class="md-nav" aria-label="第二章 自回归模型">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
+  <a href="#21" class="md-nav__link">
     <span class="md-ellipsis">
-      1.1 编译器概述
+      2.1 简介
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1.1 编译器概述">
+    <nav class="md-nav" aria-label="2.1 简介">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      一、编译器基本概念
+      一、深度生成模型的关键——乘法法则与加法法则
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.2 编译器结构
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1.2 编译器结构">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      一、编译器的高层结构
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      二、小结
+      二、高维随机变量的分布建模
     </span>
   </a>
   
@@ -1345,19 +1525,28 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#13" class="md-nav__link">
+  <a href="#22" class="md-nav__link">
     <span class="md-ellipsis">
-      1.3 编译器举例
+      2.2 由神经网络参数化的自回归模型
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1.3 编译器举例">
+    <nav class="md-nav" aria-label="2.2 由神经网络参数化的自回归模型">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、有限记忆
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      一、问题简介
+      二、基于循环神经网络的长距离记忆
     </span>
   </a>
   
@@ -1366,7 +1555,73 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      二、编译
+      三、基于卷积神经网络的长距离记忆
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、自回归模型实现
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      第三章 流模型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第三章 流模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 连续随机变量的流模型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 连续随机变量的流模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、简介
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、深度生成网络中的变量替换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#realnvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、构建RealNVP的组件
     </span>
   </a>
   
@@ -1400,73 +1655,162 @@
   
 
 
-  <h1>Compiler Principle</h1>
+  <h1>深度生成模型</h1>
 
-<h3 id="_1">第一章 编译器</h3>
-<h4 id="11">1.1 编译器概述</h4>
-<h5 id="_2">一、编译器基本概念</h5>
-<p>1.编译器：一个<strong>程序</strong>，核心功能是把<strong>源代码</strong>翻译成<strong>目标代码</strong>。<br />
-<strong>源代码</strong>：高级程序设计语言。<br />
-·<strong>目标代码</strong>：某处理器架构的硬件指令，或另一种源代码。<br />
+<!-- <table><tr><td bgcolor= #E0FFF#>
+<font face="仿宋">
+<font size=3> -->
+
+<h3 id="_1">第二章 自回归模型</h3>
+<h4 id="21">2.1 简介</h4>
+<h5 id="_2">一、深度生成模型的关键——乘法法则与加法法则</h5>
+<p>1.【定义1】乘法法则<br />
+引入随机变量<span class="arithmatex">\(x, y\)</span>，设其联合分布为<span class="arithmatex">\(p(x, y)\)</span>，乘积法则：<br />
+<span class="arithmatex">\(p(x, y) = p(x|y)p(y) = p(y|x)p(x)\)</span><br />
+【理解】<br />
+①乘法法则将联合分布表述为一个边缘分布与一个条件分布的乘积。<br />
+②乘法法则提供了联合分布的两种分布方式。<br />
+2.【定义2】加法法则<br />
+<span class="arithmatex">\(p(x) =\sum_{y}p(x, y)\)</span>（离散形式）<br />
+<span class="arithmatex">\(p(x) = \int_{-\infty}^{\infty}p(x, y)dy\)</span>（连续形式）<br />
+【理解】<br />
+给定变量的联合分布，若需计算关于一个变量的边缘分布，则必须对另一个变量作积分/求和。  </p>
+<h5 id="_3">二、高维随机变量的分布建模</h5>
+<p>1.问题描述<br />
+给定高维随机变量<span class="arithmatex">\(\mathbf{x} \in {\chi}^D\)</span>，其中<span class="arithmatex">\(\chi = \{0, 1, \cdots, 255\}\)</span>，或<span class="arithmatex">\(\chi = \mathbb{R}\)</span>，目的是对<span class="arithmatex">\(p(\mathbf{x})\)</span>建模。<br />
+2.使用乘积法则分解联合分布<br />
+<span class="arithmatex">\(p(\mathbf{x}) = p(x_1) \Pi_{d = 2}^{D}p(x_{d}|\mathbf{x}_{&lt;d})\)</span><br />
+其中：<span class="arithmatex">\(\mathbf{x}_{&lt;d} = [x_1, x_2, \cdots, x_{d - 1}]^T\)</span>。<br />
+3.乘积法则的问题<br />
+·为所有的条件分布<span class="arithmatex">\(p(x_{d}|\mathbf{x}_{&lt;d})\)</span>单独建模不可行，否则会获得<span class="arithmatex">\(D\)</span>个单独的模型，且每个模型的复杂度均会随着条件变化而增加。  </p>
+<h4 id="22">2.2 由神经网络参数化的自回归模型</h4>
+<p>自回归模型的目的：为解决<span class="arithmatex">\(D\)</span>个单独模型的复杂度，在一定假设下，为各个条件分布引入一个单独、共享的模型。  </p>
+<h5 id="_4">一、有限记忆</h5>
+<p>1.基本思想：假设每个变量最多只依赖于不超过两个变量，这两个变量仅依赖于不超过两个前序变量。<br />
+2.公式：<span class="arithmatex">\(p(\mathbf{x}) = p(x_1)p(x_2|x_1)\Pi_{d = 3}^{D}p(x_d|x_{d - 1}, x_{d - 2})\)</span>。<br />
+3.神经网络建模<br />
+·使用小型<code>MLP</code>，输入<span class="arithmatex">\(x_{d - 1}, x_{d - 2}\)</span>，预测<span class="arithmatex">\(x_{d}\)</span>的分布。<br />
+·模型输出<span class="arithmatex">\(x_{d}, \theta_{d}\)</span>的类别分布概率值。<br />
+·<code>MLP</code>结构：<span class="arithmatex">\([x_{d - 1}, x_{d - 2}]\rightarrow Linear(2, M) \rightarrow RELU \rightarrow Linear(M, 256) \rightarrow Softmax \rightarrow \theta_{d}\)</span><br />
+·<span class="arithmatex">\(M\)</span>为隐藏单位的数目。<br />
+【理解】<br />
+①使用单独、共享的<code>MLP</code>预测<span class="arithmatex">\(\theta_{d}\)</span>的概率，非线性模型，需训练的权重相对较少，参数化更为容易。<br />
+②不足：有限记忆。<br />
+③实际问题中，往往不清楚先验中，条件概率需使用多少个变量，并且要理解数据的复杂模式，关键在于学习长距离统计信息。  </p>
+<h5 id="_5">二、基于循环神经网络的长距离记忆</h5>
+<p>1.目的：解决<code>MLP</code>建模的短距离记忆问题。<br />
+2.公式：<span class="arithmatex">\(p({x}_{d}|\mathbf{x}_{&lt;d}) = p(x_{d}|RNN(x_{d - 1}, h_{d - 1}))\)</span>，其中<span class="arithmatex">\(h_{d} = RNN(x_{d - 1}, h_{d - 1}\)</span>。<br />
+【理解】<br />
+<span class="arithmatex">\(h_{d}\)</span>是隐藏语境，起记忆作用，能实现长距离依赖关系。<br />
+3.循环神经网络的问题<br />
+·序列化计算，速度慢。<br />
+·若设置不合适，如权重矩阵的特征值大于或小于<span class="arithmatex">\(1\)</span>，则循环神经网络会产生梯度爆炸或梯度消失问题，从而无法学习长距离依赖关系。<br />
+4.循环神经网络的训练方式<br />
+·梯度裁剪(<code>Gradient Clipping</code>)<br />
+·梯度正则化(<code>Gradient Regularization</code>)<br />
+·正交权重(<code>Orthogonal Weight</code>)  </p>
+<h5 id="_6">三、基于卷积神经网络的长距离记忆</h5>
+<p>1.作用：替代<code>RNN</code>，为长距离依赖关系建模，叠加一维卷积层以处理序列数据。<br />
+2.<code>CNN</code>的优点<br />
+·卷积内核共享，参数化过程高效。<br />
+·处理过程并行，极大地提高运算速度。<br />
+·叠加更多卷积层，有效卷积核大小随着网络深度增大。<br />
+3.因果卷积<br />
+·卷积层仅依赖于至今的最后<span class="arithmatex">\(k\)</span>个输入。<br />
+·<span class="arithmatex">\(A\)</span>型因果卷积：不包含当下的输入。<br />
+·<span class="arithmatex">\(B\)</span>型因果卷积：包含当下的输入。<br />
+·第一卷积层必须使用<span class="arithmatex">\(A\)</span>型输入，原因是最终输出的概率值<span class="arithmatex">\(\theta_{d}\)</span>不依赖于<span class="arithmatex">\(x_{d}\)</span>。<br />
+4.空洞卷积<br />
+·设置卷积空洞，以防止卷积核过于庞大。<br />
+5.一维因果卷积实现  </p>
+<pre><code class="language-python">class CausalConv1d(nn.Module):
+    def __init__(self, in_channels, out_channels, dilation, kernel_size, A=False, **kwargs):
+        super(CausalConv1d, self).__init__(**kwargs)
+        self.in_channels = in_channels
+        self.out_channels = out_channels
+        self.dilation = dilation
+        self.kernel_size = kernel_size
+        self.A = A # causal convolution type (A: Doesn't contain the current input)
+        self.padding = (kernel_size - 1) * dilation + A * 1 # 
+        self.conv1d = nn.Conv1d(in_channels, out_channels, kernel_size, dilation=dilation)
+
+    def forward(self, x: torch.Tensor):
+        x = F.pad(input=x, pad=(self.padding, 0)) 
+        # when padding 1d data, the pad parameter means: (pad_left, pad_right)  
+        conv1d_out = self.conv1d(x)
+        # determine whether to delete the last element, according to the type of causal conv
+        if self.A:
+            return conv1d_out[:, :, :-1]
+        else:
+            return conv1d_out
+</code></pre>
+<p>6.因果卷积(<code>CausalConv</code>)实验结果与评价<br />
+（1）优点<br />
+·一维因果卷积比起<code>RNN</code>更适合对序列数据进行建模，取得更好的结果，比<code>RNN</code>更能有效学习长距离依赖关系。<br />
+·无需担心梯度爆炸、梯度消失问题。<br />
+·因果卷积被广泛认为是参数化自回归模型的完美方法，在音频处理的<code>WaveNet</code>、图像处理的<code>PixelCNN</code>等模型上均得到了运用。<br />
+（2）缺点——抽样<br />
+·对新的目标进行抽样时，需要对所有位置进行迭代，迭代计算概率和样本值。  </p>
+<h5 id="_7">四、自回归模型实现</h5>
+<p>1.图像概率分布建模公式<br />
+<span class="arithmatex">\(p(x_{d}|\mathbf{x}_{\le d}) = Categorial(x_{d}|\theta_{d}(\mathbf{x}_{\le d})) = \Pi_{i = 1}^{L}(\theta_{d, l})^{I_{x_d = l}}\)</span><br />
+·<span class="arithmatex">\(\theta_{d}(\mathbf{x}_{\le d})\)</span>：基于一维因果卷积，使用<code>Softmax</code>作为最后一层所得的输出结果。<span class="arithmatex">\(\sum_{l = 1}^L\theta_{d, l} = 1\)</span>。<br />
+2.模型架构<br />
+·多个一维因果卷积层叠加。<br />
+·中间使用非线性激活函数。<br />
+·第一层设置为<span class="arithmatex">\(A\)</span>型<code>CausalConv1D</code>，以使用<span class="arithmatex">\(x_{d}\)</span>预测<span class="arithmatex">\(\theta_{d}\)</span>。<br />
+3.目标函数<br />
+·由于自回归模型是基于似然的模型，故对于<span class="arithmatex">\(N\)</span>个独立同分布的数据点<span class="arithmatex">\(D = {x_1, \cdots, x_N}\)</span>，目的是取最大化的对数。<br />
+·公式推导：<br />
+<span class="arithmatex">\(ln p(D)  \newline= ln\Pi_{n}p(x_n)  \newline= \sum_{n}lnp(x_n)  \newline= \sum_{n}ln\Pi_{d}p(x_{n, d} | \mathbf{x}_{n, \leq d}) \newline= \sum_{n}\sum_{d}lnp(x_{n, d} | \mathbf{x}_{n, \leq d}) \newline= \sum_{n}(\sum_{d}ln Categorial(x_{d}|\theta_{d}(\mathbf{x}_{\le d}))) \newline = \sum_{n}(\sum_{d}(\sum_{l = 1}^{L}[x_{d} = l]ln\theta_{d} (x_{\leq d})))\)</span>  </p>
+<h3 id="_8">第三章 流模型</h3>
+<h4 id="31">3.1 连续随机变量的流模型</h4>
+<h5 id="_9">一、简介</h5>
+<p>1.自回归方式回顾<br />
+（1）作用<br />
+·直接为<span class="arithmatex">\(\mathbf{x}\)</span>的分布进行建模。<br />
+（2）优势<br />
+·可以学习长距离统计信息，从而估计密度分布的能力很强。<br />
+（3）缺点<br />
+·使用自回归进行参数化，抽样过程缓慢。<br />
+·缺少隐式表征层，无法了解和利用内部的数据特征，很难应用于压缩、度量学习等应用场景。<br />
+2.流模型思想举例<br />
 【例1】<br />
-<code>Cfront</code>把<code>C++</code>翻译为<code>C</code>语言，也是一种编译器。<br />
-2.<strong>程序的执行</strong><br />
-·<strong>源代码-&gt;编译器（静态计算）-&gt;目标程序-&gt;计算机（动态计算）-&gt;计算结果</strong><br />
-·编译的基本要求：源代码和目标程序<strong>语义相同</strong>。<br />
-3.编译器和解释器<br />
-（1）相同点<br />
-·解释器也是处理程序的一种<strong>程序</strong>。<br />
-（2）不同点<br />
-·编译器(<code>compiler</code>)：将源程序翻译为可执行程序，离线方式进行翻译。<br />
-·解释器(<code>intepreter</code>)：输入源程序，直接输出计算结果，在线方式进行翻译。<br />
-4.第一个编译器——<code>Fortran</code>语言编译器<br />
-·<code>1954-1957, John Backus</code><br />
-·理论发展：形式语言、自动机技术、文法、语法制导的翻译<br />
-·实践发展：算法、数据结构<br />
-·编译器架构发展<br />
-5.学习方法<br />
-·理论与实践高度结合<br />
-·理论：深入掌握各种算法和数据结构 <br />
-·实践：提高解决实际问题的能力  </p>
-<h4 id="12">1.2 编译器结构</h4>
-<h5 id="_3">一、编译器的高层结构</h5>
-<p>1.编译器结构简介——模块化的高层结构<br />
-（1）前端与后端<br />
-·输入-&gt;前端-&gt;后端-&gt;输入<br />
-·前端：处理与输入相关的内容，如源程序语言种类、源程序语法规则等。<br />
-·后端：关注目标机器指令集及其约束，以及前端语法结构如何映射到目标机器指令集。<br />
-（2）前端的组成部分<br />
-·词法分析<br />
-·语法分析<br />
-（3）后端的组成部分<br />
-·指令生成<br />
-·指令优化<br />
-2.编译器的“流水线”结构<br />
-·编译器可看成多个阶段构成的“流水线”结构。<br />
-3.一种没有优化的编译器结构<br />
-·字符序列-&gt;<strong>词法分析</strong>-&gt;记号序列-&gt;<strong>语法分析</strong>-&gt;抽象语法树-&gt;<strong>语义分析</strong>-&gt;中间代码-&gt;<strong>代码生成</strong>-&gt;目标代码<br />
-·四个阶段分别具有自己的符号表。<br />
-4.一种更复杂的编译器架构<br />
-·源代码-&gt;<strong>词法分析</strong>-&gt;记号-&gt;<strong>语法分析</strong>-&gt;动作-&gt;<strong>语法树构造</strong>—&gt;抽象语法树-&gt;<strong>语义分析</strong>-&gt;中间树-&gt;<strong>翻译</strong>-&gt;中间树-&gt;<strong>正规化</strong>-&gt;中间树-&gt;<strong>指令选择</strong>-&gt;抽象汇编-&gt;<strong>控制流分析</strong>-&gt;控制流图-&gt;<strong>寄存器分析</strong>-&gt;寄存器指派-&gt;<strong>代码生成</strong>-&gt;汇编代码-&gt;<strong>汇编器</strong>-&gt;可冲定位目标代码-&gt;<strong>连接器</strong>-&gt;机器代码  </p>
-<h5 id="_4">二、小结</h5>
-<p>1.编译器由多个阶段组成，各阶段分别处理不同问题。<br />
-2.编译器设计的重要问题：如何合理划分组织各个阶段，使得接口清晰，编译器容易实现、维护。  </p>
-<h4 id="13">1.3 编译器举例</h4>
-<h5 id="_5">一、问题简介</h5>
-<p>1.源语言：加法表达式语言<code>Sum</code><br />
-·两种语法形式：整形数字<code>n</code>、加法<code>a + b</code>。<br />
-2.目标机器：栈式计算机<code>Stack</code><br />
-·一个操作数栈<br />
-·两条指令：压栈指令<code>push n</code>、加法指令<code>add</code>。  </p>
-<h5 id="_6">二、编译</h5>
-<p>1.编译任务：将程序<code>1 + 2 + 3</code>编译到栈式计算机。<br />
-2.编译器的阶段<br />
-（1）阶段一：词法、语法分析<br />
-（2）阶段二：语法树构建<br />
-（3）阶段三：代码生成<br />
-·后序遍历语法树，根据遇到的符号进行指令生成。<br />
-·遍历到整数<code>n</code>，生成压栈指令<code>push n</code>；遍历到符号<code>+</code>，生成加法指令<code>add</code>。<br />
-·<code>add</code>指令包含<code>4</code>个步骤：弹栈<code>2</code>次、作加法、结果压栈。  </p>
+给定随机变量<span class="arithmatex">\(z \in \mathbb{R}\)</span>，其中<span class="arithmatex">\(\pi(z) = \mathscr{N}(z|0, 1)\)</span>。考虑新的随机变量：<span class="arithmatex">\(x = 0.75 + 1\)</span>，问：<span class="arithmatex">\(x, p(x)\)</span>的分布是什么？<br />
+【解】<br />
+在<span class="arithmatex">\(f\)</span>可逆（双射）的前提下，可使用变量替换方程：<span class="arithmatex">\(p(x) = \pi(z = f^{-1}(x))|\frac{\partial f^{-1}(x)}{\partial x}|\)</span><br />
+本例中，<span class="arithmatex">\(f^{-1}(x) = \frac{x - 1}{0.75}\)</span><br />
+故<span class="arithmatex">\(p(x) = \pi (z = f^{-1}(x))|\frac{\partial f^{-1}(x)}{\partial x}| \newline = \frac{1}{\sqrt{2\pi \cdot 0.75^2}}e^{\frac{-(x - 1)^2}{0.75^2}}\)</span><br />
+即：<span class="arithmatex">\(p(x) = N(x|1, 0.75)\)</span><br />
+【注】<br />
+项<span class="arithmatex">\(|\frac{\partial f^{-1}(x)}{\partial x}|\)</span>负责在变换<span class="arithmatex">\(f\)</span>后对分布<span class="arithmatex">\(\pi (z)\)</span>进行归一化，抵消了<span class="arithmatex">\(f\)</span>造成的可能的体积改变。<br />
+3.高维连续随机变量的替换方程<br />
+<span class="arithmatex">\(p(\mathbf{x}) = \pi(z = f^{-1}(\mathbf{x}))|\mathbf{J}_f(x)|^{-1}\)</span><br />
+其中：<span class="arithmatex">\(\mathbf{J}_f(x)\)</span>表示函数<span class="arithmatex">\(f\)</span>的雅可比(<code>Jacobi</code>)矩阵。  </p>
+<h5 id="_10">二、深度生成网络中的变量替换</h5>
+<p>1.基本思想<br />
+·通过利用变量替换，为复杂、高维度的图像、音频或其他数据源的分布建模。<br />
+2.数学表达<br />
+·从一个已知分布（常用高斯分布）<span class="arithmatex">\(\pi (z_0) = \mathscr{N}(x|0, \mathbf{I})\)</span>出发，运用一系列可逆变换<span class="arithmatex">\(f_1, \cdots, f_K\)</span>（设其复合变换为<span class="arithmatex">\(f\)</span>），以获得灵活的数据分布：<br />
+<span class="arithmatex">\(p(x) = \pi(z_0 = f^{-1}(x))\Pi_{i = 1}^{K}|\mathbf{J}_{f_i}(z_{i - 1})|^{-1}\)</span><br />
+·分布<span class="arithmatex">\(p(x)\)</span>的对数：<br />
+<span class="arithmatex">\(lnp(x) = ln\mathscr{N}(z_0 = f^{-1}(x)|0, I) - \sum_{i = 1}^{K}ln|\mathbf{J}_{f_i}(z_{i - 1})|\)</span><br />
+【理解】<br />
+·第一部分：<span class="arithmatex">\(0\)</span>与<span class="arithmatex">\(f^{-1}(x)\)</span>之间的平均平方误差加上常数。<br />
+·第二部分：确保分布被正确地归一化，惩罚体积变化，可视为可逆变换<span class="arithmatex">\(f_i\)</span>的一种正则化。<br />
+3.使用神经网络对可逆变换建模<br />
+·变换是可逆的，因此需选取可逆的神经网络，以对变换进行建模。<br />
+·对于任意的可逆变换序列，<span class="arithmatex">\(\sum_{i = 1}^{K}ln|\mathbf{J}_{f_i}(z_{i - 1})|\)</span>在计算上难以处理。<br />
+·神经网络的性质：可逆，且雅可比行列式的对数相对容易计算。<br />
+4.（归一化）流模型<br />
+·由神经网络构建的一类可逆、且具有易处理的雅可比行列式的模型的统称。<br />
+5.流模型举例<br />
+·平面归一化流<br />
+·<code>Sylvester</code>归一化流<br />
+·残差流<br />
+·可逆<code>DenseNets</code><br />
+·实值非体积不变(<code>RealNVP, Real-Valued Non-Volume Presercing</code>)流  </p>
+<h5 id="realnvp">二、构建<code>RealNVP</code>的组件</h5>
 
 
 

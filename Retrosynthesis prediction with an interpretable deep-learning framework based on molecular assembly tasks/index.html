@@ -10,7 +10,7 @@
         <meta name="author" content="大观散人">
       
       
-        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/Compiler%20Principle/">
+        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/Retrosynthesis%20prediction%20with%20an%20interpretable%20deep-learning%20framework%20based%20on%20molecular%20assembly%20tasks/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>Compiler Principle - 大观散人的博客</title>
+        <title>Retrosynthesis prediction with an interpretable deep learning framework based on molecular assembly tasks - 大观散人的博客</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#abstract" class="md-skip">
           跳转至
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Compiler Principle
+              Retrosynthesis prediction with an interpretable deep learning framework based on molecular assembly tasks
             
           </span>
         </div>
@@ -1278,107 +1278,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#abstract" class="md-nav__link">
     <span class="md-ellipsis">
-      第一章 编译器
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="第一章 编译器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.1 编译器概述
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1.1 编译器概述">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      一、编译器基本概念
+      Abstract
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      1.2 编译器结构
+      Introduction
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="1.2 编译器结构">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      一、编译器的高层结构
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      二、小结
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.3 编译器举例
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1.3 编译器举例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      一、问题简介
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      二、编译
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1400,73 +1313,65 @@
   
 
 
-  <h1>Compiler Principle</h1>
+  <h1>Retrosynthesis prediction with an interpretable deep learning framework based on molecular assembly tasks</h1>
 
-<h3 id="_1">第一章 编译器</h3>
-<h4 id="11">1.1 编译器概述</h4>
-<h5 id="_2">一、编译器基本概念</h5>
-<p>1.编译器：一个<strong>程序</strong>，核心功能是把<strong>源代码</strong>翻译成<strong>目标代码</strong>。<br />
-<strong>源代码</strong>：高级程序设计语言。<br />
-·<strong>目标代码</strong>：某处理器架构的硬件指令，或另一种源代码。<br />
-【例1】<br />
-<code>Cfront</code>把<code>C++</code>翻译为<code>C</code>语言，也是一种编译器。<br />
-2.<strong>程序的执行</strong><br />
-·<strong>源代码-&gt;编译器（静态计算）-&gt;目标程序-&gt;计算机（动态计算）-&gt;计算结果</strong><br />
-·编译的基本要求：源代码和目标程序<strong>语义相同</strong>。<br />
-3.编译器和解释器<br />
-（1）相同点<br />
-·解释器也是处理程序的一种<strong>程序</strong>。<br />
-（2）不同点<br />
-·编译器(<code>compiler</code>)：将源程序翻译为可执行程序，离线方式进行翻译。<br />
-·解释器(<code>intepreter</code>)：输入源程序，直接输出计算结果，在线方式进行翻译。<br />
-4.第一个编译器——<code>Fortran</code>语言编译器<br />
-·<code>1954-1957, John Backus</code><br />
-·理论发展：形式语言、自动机技术、文法、语法制导的翻译<br />
-·实践发展：算法、数据结构<br />
-·编译器架构发展<br />
-5.学习方法<br />
-·理论与实践高度结合<br />
-·理论：深入掌握各种算法和数据结构 <br />
-·实践：提高解决实际问题的能力  </p>
-<h4 id="12">1.2 编译器结构</h4>
-<h5 id="_3">一、编译器的高层结构</h5>
-<p>1.编译器结构简介——模块化的高层结构<br />
-（1）前端与后端<br />
-·输入-&gt;前端-&gt;后端-&gt;输入<br />
-·前端：处理与输入相关的内容，如源程序语言种类、源程序语法规则等。<br />
-·后端：关注目标机器指令集及其约束，以及前端语法结构如何映射到目标机器指令集。<br />
-（2）前端的组成部分<br />
-·词法分析<br />
-·语法分析<br />
-（3）后端的组成部分<br />
-·指令生成<br />
-·指令优化<br />
-2.编译器的“流水线”结构<br />
-·编译器可看成多个阶段构成的“流水线”结构。<br />
-3.一种没有优化的编译器结构<br />
-·字符序列-&gt;<strong>词法分析</strong>-&gt;记号序列-&gt;<strong>语法分析</strong>-&gt;抽象语法树-&gt;<strong>语义分析</strong>-&gt;中间代码-&gt;<strong>代码生成</strong>-&gt;目标代码<br />
-·四个阶段分别具有自己的符号表。<br />
-4.一种更复杂的编译器架构<br />
-·源代码-&gt;<strong>词法分析</strong>-&gt;记号-&gt;<strong>语法分析</strong>-&gt;动作-&gt;<strong>语法树构造</strong>—&gt;抽象语法树-&gt;<strong>语义分析</strong>-&gt;中间树-&gt;<strong>翻译</strong>-&gt;中间树-&gt;<strong>正规化</strong>-&gt;中间树-&gt;<strong>指令选择</strong>-&gt;抽象汇编-&gt;<strong>控制流分析</strong>-&gt;控制流图-&gt;<strong>寄存器分析</strong>-&gt;寄存器指派-&gt;<strong>代码生成</strong>-&gt;汇编代码-&gt;<strong>汇编器</strong>-&gt;可冲定位目标代码-&gt;<strong>连接器</strong>-&gt;机器代码  </p>
-<h5 id="_4">二、小结</h5>
-<p>1.编译器由多个阶段组成，各阶段分别处理不同问题。<br />
-2.编译器设计的重要问题：如何合理划分组织各个阶段，使得接口清晰，编译器容易实现、维护。  </p>
-<h4 id="13">1.3 编译器举例</h4>
-<h5 id="_5">一、问题简介</h5>
-<p>1.源语言：加法表达式语言<code>Sum</code><br />
-·两种语法形式：整形数字<code>n</code>、加法<code>a + b</code>。<br />
-2.目标机器：栈式计算机<code>Stack</code><br />
-·一个操作数栈<br />
-·两条指令：压栈指令<code>push n</code>、加法指令<code>add</code>。  </p>
-<h5 id="_6">二、编译</h5>
-<p>1.编译任务：将程序<code>1 + 2 + 3</code>编译到栈式计算机。<br />
-2.编译器的阶段<br />
-（1）阶段一：词法、语法分析<br />
-（2）阶段二：语法树构建<br />
-（3）阶段三：代码生成<br />
-·后序遍历语法树，根据遇到的符号进行指令生成。<br />
-·遍历到整数<code>n</code>，生成压栈指令<code>push n</code>；遍历到符号<code>+</code>，生成加法指令<code>add</code>。<br />
-·<code>add</code>指令包含<code>4</code>个步骤：弹栈<code>2</code>次、作加法、结果压栈。  </p>
+<h5 id="abstract"><code>Abstract</code></h5>
+<ul>
+<li>使用人工智能手段进行自动逆合成，加快了有机化学的研究。  </li>
+<li>然而，许多现有的深度学习方法难以解释，像“黑盒”一样，几乎没有可理解性(<code>insight</code>)。  </li>
+<li>本文提出<code>RetroExplainer</code>，将逆合成任务视为一个分子组装过程，包含几个由深度学习引导的逆合成动作。  </li>
+<li>为了保证模型的健壮性，本文提出三个单元  <ul>
+<li>多重感知(<code>multi-sense</code>)、多尺度(<code>multi-scale</code>)的<code>Graph Transformer</code>  </li>
+<li>对结构有意识的(<code>structure-aware</code>)对比学习(<code>contrastive learning</code>)  </li>
+<li>动态适应的多任务学习  </li>
+</ul>
+</li>
+<li>实验结果  <ul>
+<li>在<code>12</code>个大规模<code>benchmark</code>数据集上的结果，展示了<code>RetroExplainer</code>的效用，它的性能超过了现有<code>SOTA</code>单步逆合成方法。  </li>
+<li>此外，分子组装过程让模型具有好的可解释性，允许透明决策以及定量归因(<code>quantitative attribution</code>)。  </li>
+<li>扩展到多步逆合成规划任务时，<code>RetroExplainer</code>识别出<span class="arithmatex">\(101\)</span>条合成途径(<code>pathway</code>)，其中<span class="arithmatex">\(86.9%\)</span>的单步反应均对应于已经报道的实际反应。  </li>
+</ul>
+</li>
+<li>因此，<code>ExtroExplainer</code>有望为制药发展中进行可靠、高吞吐量和高质量的有机合成提供宝贵的见解。  </li>
+</ul>
+<h5 id="introduction"><code>Introduction</code></h5>
+<ul>
+<li>逆合成任务  <ul>
+<li>逆合成的目的是识别一组合适的反应物，用于有效地合成目标分子，它在计算机辅助的合成规划中是基础的、必不可少的。  </li>
+<li>逆合成分析被<code>Corey</code>正式提出(<code>formalize</code>)，并使用<code>OCSS, Organic Chemical Simulation of Synthesis</code>程序解决。  </li>
+<li>后来，受到大规模的反应实验数据和大幅增长的计算性能的驱动，各种各样的基于机器学习（尤其是深度学习）的模型被提出，并实现不断优化的性能。  </li>
+</ul>
+</li>
+<li>逆合成方法简述  <ul>
+<li>基于模板(<code>template-based</code>)的方法<ul>
+<li>在数据驱动逆合成任务的早期阶段，研究人员专注于研发基于模板的逆合成方法，方法依赖于反应模板，以将产物转化为反应物。  </li>
+<li>在上述方法中，分子指纹(<code>molecular fingerprints</code>)和多层感知机常常被用于编码产物分子，并推荐可靠的模板。  </li>
+<li>例如，<code>Segler et al.</code>使用连通性扩展的分子指纹(<code>ECFPs, Extended-Connectivity Fingerprints</code>)，而<code>Chen et al.</code>采用一个类似于单步逆合成预测器的方法，用于神经网络引导的多步逆合成规划。  </li>
+<li>然而，构建反应模板的过程目前依赖于手工编码，或复杂的子图同构(<code>subgraph isomorphism</code>)，使得在广阔的化学空间中探索潜在的反应模板十分困难。  </li>
+</ul>
+</li>
+<li>半模板(<code>semi-template</code>)、无模板(<code>template-free</code>)方法  <ul>
+<li>为了解决上述问题，无模板、半模板方法作为有希望的替代者而出现，使用分子指纹以获得分子级别的表征。  </li>
+<li><code>Chen et al.</code>引入了<code>FF-EBM, FeedForward EBM</code>方法，与无模板方法相得益彰(<code>complemented by template-free models</code>)。  </li>
+<li>在分子指纹之外，现有的无模板、板模板方法可以分为两类：  <ul>
+<li>基于序列的方法  </li>
+<li>基于图的方法  </li>
+</ul>
+</li>
+<li>两类方法主要在分子表征的策略上有所区别：对于基于序列的方法，分子尝尝被表示为线性化的字符串；对于基于图的方法，分子被表示为分子图结构。  </li>
+</ul>
+</li>
+<li>基于序列的方法  <ul>
+<li>使用序列化的激发表示产物分子(例如<code>SMILES, Simplified Molecular-Input Line-Entry System</code>)。  </li>
+<li><code>Liu et al.</code>引入了<code>Seq2Seq</code>模型，包含双向长短时记忆编码器和解码器，用于逆合成翻译。  </li>
+<li>随着神经网络机器翻译模型的发展，基于序列的方法的性能逐渐得到提升。  </li>
+<li><code>Karpov et al.</code>调整<code>Transformer</code>架构，使用修改的学习率调度，以及快照学习(<code>snapshot learning</code>)，用于逆合成分析。  </li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
 
 
