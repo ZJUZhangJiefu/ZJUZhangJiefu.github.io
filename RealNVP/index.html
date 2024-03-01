@@ -975,6 +975,66 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3 Model Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-change-of-variable-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Change of Variable Formula
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-coupling-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Coupling Layers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-masked-convolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 Masked Convolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-combining-coupling-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 Combining Coupling Layers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-multi-scale-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6 Multi-Scale Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1463,6 +1523,66 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3 Model Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-change-of-variable-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Change of Variable Formula
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-coupling-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Coupling Layers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-masked-convolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 Masked Convolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-combining-coupling-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 Combining Coupling Layers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-multi-scale-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6 Multi-Scale Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1557,23 +1677,117 @@
 <li>生成对抗网络(<code>GAN, Generative Adversarial Networks</code>)  <ul>
 <li>生成对抗网络可以通过完全避免最大似然原则，训练任何可微分生成网络。  </li>
 <li>替代做法是，生成网络和判别器网络结合，判别器网络的任务是区别生成样本和真实数据。  </li>
-<li>不同于使用不可计算的对数似然，判别器网络按照对抗方式提供训练信号。  </li>
-<li>成功训练的<code>GAN</code>模型可以始终如一地(<code>consistently</code>)生成变化急剧(<code>sharp</code>)并且看起来真实的样本。  </li>
-<li>然而，衡量生成样本多样性的一些指标至今不可计算。  </li>
+<li>不同于使用难以处理(<code>untractable</code>)的对数似然，判别器网络按照对抗方式提供训练信号。  </li>
+<li>成功训练的<code>GAN</code>模型可以始终如一地(<code>consistently</code>)生成清晰(<code>sharp</code>)并且看起来真实的样本。  </li>
+<li>然而，衡量生成样本多样性的一些指标至今难以处理。  </li>
 <li>此外，训练过程的不稳定性，要求小心的超参数调整，以避免发散的表现。  </li>
 </ul>
 </li>
 <li>本文解决方法    <ul>
 <li>训练生成器网络<span class="arithmatex">\(g\)</span>，将隐变量<span class="arithmatex">\(z \sim p_Z\)</span>映射到样本<span class="arithmatex">\(x \sim p_X\)</span>理论上不需要像<code>GAN</code>一样判别器网络，也不需要像变分自动编码器一样进行近似推理。  </li>
 <li>事实上，若<span class="arithmatex">\(g\)</span>是双射的，则模型可以通过变量替换公式(<code>change of variable formula</code>)，通过最大似然进行训练：<br />
-<span class="arithmatex">\(p_{X}(x) = p_{Z}(z)|det(\frac{\partial g(z)}{\partial Z^{T}})|^{-1}\)</span></li>
+<span class="arithmatex">\(p_{X}(x) = p_{Z}(z)|det(\frac{\partial g(z)}{\partial Z^{T}})|^{-1} \cdots (1)\)</span></li>
 <li>上述公式已经在一些论文中受到讨论，包括独立成分分析(<code>ICA, Independent Components Analysis</code>)的最大似然形式、高斯化(<code>gaussianization</code>)以及深度密度模型(<code>deep density models</code>)。  </li>
-<li>正如非线性<code>ICA</code>解得到存在性证明所表明，自回归模型可以被视为最大似然非线性<code>ICA</code>的可计算实例，在这种情况下，残差(<code>residual</code>)对应于独立成分(<code>independent components</code>)。  </li>
+<li>正如非线性<code>ICA</code>解得到存在性证明所表明，自回归模型可以被视为最大似然非线性<code>ICA</code>的易于处理(<code>tractable</code>)的实例，在这种情况下，残差(<code>residual</code>)对应于独立成分(<code>independent components</code>)。  </li>
 <li>然而，直接应用变量替换公式，会产生计算昂贵、<code>poorly conditioned</code>的模型，因此这种类型的大规模模型尚未得到广泛应用。  </li>
 </ul>
 </li>
 </ul>
 <h4 id="3-model-definition"><code>3 Model Definition</code></h4>
+<ul>
+<li>在论文中，作者解决的是在高维连续空间中，通过最大似然学习高度非线性模型的问题。  </li>
+<li>为了优化对数似然，作者引入了一类灵活性更高的架构，该架构使用变量替换公式，允许在连续数据上计算对数似然。  </li>
+<li>基于作者的前述工作，作者定义了一类强大的双射函数，这些函数能允许精确、易于处理的密度估计，以及精确、易于处理的推理。  </li>
+<li>此外，由此产生的代价函数不依赖于固定的重构成本形式（如：平方误差），因此能生成更为清晰的样本。  </li>
+<li>并且，这种灵活性有助于充分利用近期在批正则化(<code>batch normalization</code>)和残差神经网络方面的进展，以定义一个非常深的、带有多个抽象层次的多尺度架构。  </li>
+</ul>
+<h5 id="31-change-of-variable-formula"><code>3.1 Change of Variable Formula</code></h5>
+<p><img alt="" src="../assets/DL/54.JPG" />
+- 隐变量分布<span class="arithmatex">\(Z\rightarrow\)</span>数据分布<span class="arithmatex">\(X\)</span>
+    - 给定一个观测到的数据变量<span class="arithmatex">\(x \in X\)</span>，一个关于隐变量<span class="arithmatex">\(z \in Z\)</span>的简单先验概率概率分布<span class="arithmatex">\(p_{Z}\)</span>，以及一个从<span class="arithmatex">\(X\)</span>到<span class="arithmatex">\(Z\)</span>的双射函数<span class="arithmatex">\(f: x \rightarrow Z\)</span>（反函数：<span class="arithmatex">\(g = f^{-1}\)</span>），变量替换公式通过下列公式，定义了在<span class="arithmatex">\(X\)</span>上的一个模型分布：<br />
+<span class="arithmatex">\(p_{X}(x) = p_{Z}(f(x))|det(\frac{\partial f(x)}{\partial x^T})| \cdots (2)\)</span><br />
+<span class="arithmatex">\(log(p_{X}(x)) = log(p_{Z}(f(x))) + log(|det(\frac{\partial f(x)}{\partial x^T})|)\cdots (3)\)</span><br />
+其中：<span class="arithmatex">\(\frac{\partial f(x)}{\partial x^T}\)</span>是<span class="arithmatex">\(x\)</span>上函数<span class="arithmatex">\(f\)</span>的<code>Jocabi</code>矩阵。<br />
+- 精确采样<br />
+    - 由此产生分布上的精确采样，可以通过使用逆变换采样法则(<code>inverse transform sampling rule</code>)进行生成。<br />
+    - 在隐空间中分布<span class="arithmatex">\(p_{Z}\)</span>上抽取一个样本，则该样本的逆像(<code>inverse image</code>)<span class="arithmatex">\(x = f^{-1}(z) = g(z)\)</span>在原始空间中生成了一个样本。<br />
+    - 计算点<span class="arithmatex">\(x\)</span>的密度，可以通过计算像<span class="arithmatex">\(f(x)\)</span>，乘以相关联的<code>Jacobi</code>行列式<span class="arithmatex">\(det(\frac{\partial f(x)}{\partial x^T})\)</span>完成。<br />
+    - 精确和高效的推理，使得模型的精确和快速评估(<code>evaluation</code>)成为可能。  </p>
+<h5 id="32-coupling-layers"><code>3.2 Coupling Layers</code></h5>
+<ul>
+<li>计算具有高维定义域(<code>domain</code>)、陪域(<code>codomain</code>，可能存在值的域)的函数的<code>Jacobi</code>行列式，以及计算大型矩阵的行列式，总体上的计算开销是十分昂贵的。  </li>
+<li>一些工作证明，通过函数<span class="arithmatex">\(f\)</span>的仔细设计，一个易于处理、极其灵活的双射模型可以通过学习得到。由于计算变换的<code>Jacobian</code>行列式对于高效训练极其重要，本文利用了一个简单的观察，即三角矩阵的行列式可被高效计算，即其对角元的乘积。  </li>
+<li>作者将通过一系列简单双射函数的堆叠，建立一个灵活、易于处理的双射函数。  <ul>
+<li>在每一个简单双射函数中，输入向量的一部分通过一个易于求逆，但按照复杂方式依赖于输入向量另一部分的函数进行更新。  </li>
+<li>作者将每一个这样的简单双射函数成为一个仿射耦合层(<code>affine coupling layer</code>)。  </li>
+<li>给定一个<span class="arithmatex">\(D\)</span>维输入<span class="arithmatex">\(x\)</span>，以及<span class="arithmatex">\(d \leq D\)</span>，一个仿射层的输出<span class="arithmatex">\(y\)</span>符合以下公式：<br />
+<span class="arithmatex">\(y_{1:d} = x_{1:d}\cdots (4)\)</span> <br />
+<span class="arithmatex">\(y_{d + 1: D} = x_{d + 1: D} \odot exp(s(x_{1:d})) + t(x_{1:d})\)</span><br />
+其中：<span class="arithmatex">\(s\)</span>和<span class="arithmatex">\(t\)</span>分别表示缩放和平移，均为<span class="arithmatex">\(R^d \rightarrow\)</span> R^{D - d}的函数；<span class="arithmatex">\(\odot\)</span>表示<code>Hadamard</code>积（逐元素乘积）。<br />
+<img alt="" src="../assets/DL/55.JPG" />  </li>
+</ul>
+</li>
+</ul>
+<h5 id="33-properties"><code>3.3 Properties</code></h5>
+<ul>
+<li>
+<p>行列式计算、函数灵活性</p>
+<ul>
+<li>
+<p>上述变换的<code>Jacobi</code>矩阵为：<br />
+<span class="arithmatex">\(\frac{\partial y}{\partial x^T} = \begin{bmatrix} \mathbb{I}_{d \times d} \ \mathbf{0}_{d \times{D - d}} \\ 
+\frac{\partial \mathbf{y}_{d + 1:D}}{\partial \mathbf{x}^T_{1:d}} \ diag(e^{s(\mathbf{x}_{1:d})})\end{bmatrix}\)</span><br />
+其中：<span class="arithmatex">\(diag(e^{s(\mathbf{x}_{1:d})})\)</span>表示对角矩阵，其对角元与向量<span class="arithmatex">\(e^{s(\mathbf{x}_{1:d})}\)</span>的元素一一对应。  </p>
+</li>
+<li>
+<p>注意到上述<code>Jacobi</code>矩阵是三角矩阵，可以高效计算其行列式，即：<span class="arithmatex">\(e^{\sum_{j}s(x_{1:d})_{j}}\)</span>。  </p>
+</li>
+<li>
+<p>由于计算耦合层的行列式，不包括计算<span class="arithmatex">\(s\)</span>或<span class="arithmatex">\(t\)</span>的行列式，因此函数<span class="arithmatex">\(s\)</span>和<span class="arithmatex">\(t\)</span>可以任意复杂，作者将用深度卷积神经网络实现它们。  </p>
+</li>
+<li>
+<p>注意，<span class="arithmatex">\(s\)</span>和<span class="arithmatex">\(t\)</span>的隐藏层可以拥有比它们的输入、输出层更多的特征。  </p>
+</li>
+<li>耦合层的可逆属性  </li>
+<li>耦合层在定义概率模型方面的另一个有趣性质是它们的可逆性。  </li>
+<li>事实上，计算逆变换并不比前向传播更复杂，意味着模型的采样可以和推理一样高效。  </li>
+<li>再次注意，计算耦合层的逆变换时，无需计算<span class="arithmatex">\(s\)</span>或<span class="arithmatex">\(t\)</span>的逆变换，因此函数<span class="arithmatex">\(s\)</span>和<span class="arithmatex">\(t\)</span>可以是任意复杂、不易求逆的函数。  </li>
+</ul>
+<h5 id="34-masked-convolution"><code>3.4 Masked Convolution</code></h5>
+<p><img alt="" src="../assets/DL/57.JPG" /><br />
+输入向量的分划（即：将<span class="arithmatex">\(x_{1:D}\in \mathbb{R}^D\)</span>分为<span class="arithmatex">\(x_{1:d}, x_{d + 1:D}\)</span>），可以通过使用二进制掩码<span class="arithmatex">\(b\)</span>实现，使用下列<span class="arithmatex">\(y\)</span>的函数形式：<br />
+<span class="arithmatex">\(y = b \odot x + (1 - b) \odot (x \odot exp(s(b \odot x)) + t(b \odot x))\)</span><br />
+- 作者使用两种分划，以利用图像的局部关联性。<br />
+- 空间棋盘模式(<code>spatial checkerboard patterns</code>)<br />
+- 逐通道掩码(<code>channel-wise masking</code>)
+- 空间棋盘模式：当空间坐标的和为奇数时，掩码值为<span class="arithmatex">\(1\)</span>；否则值为<span class="arithmatex">\(0\)</span>。<br />
+- 逐通道掩码<span class="arithmatex">\(b\)</span>：对于通道维度的前一半，数值为<span class="arithmatex">\(1\)</span>，对于后一半维度，值为<span class="arithmatex">\(0\)</span>。<br />
+- 对于上述模型，<span class="arithmatex">\(s(\cdot), t(\cdot)\)</span>均为整流卷积网络(<code>rectified convolutional networks</code>)。  </p>
+<h5 id="35-combining-coupling-layers"><code>3.5 Combining Coupling Layers</code></h5>
+<ul>
+<li>尽管耦合层是强大的，但是它们的前向变换使得输入的某些部分保持不变。  </li>
+<li>上述困难可以通过以交替方式对耦合层进行组合而解决，使得一个耦合层中不变的组成部分在下一个耦合层中得到变换。<br />
+<img alt="" src="../assets/DL/56.JPG" />  </li>
+<li>由此产生的函数的<code>Jacobi</code>行列式仍然易于处理，基于下列事实：<br />
+<span class="arithmatex">\(\frac{\partial (f_b \odot f_a)}{\partial x_a^T}(x_a) = \frac{\partial f_a}{\partial x_a^T}(x_a) \cdot \frac{\partial f_b}{\partial x_b^T}(x_b = f_a(x_a)) \cdots (10)\)</span><br />
+<span class="arithmatex">\(det(A \cdot B) = det(A)det(B)\)</span><br />
+类似地，上述函数的反函数（逆变换）可以容易地由下式计算：<br />
+<span class="arithmatex">\((f_b\odot f_a)^{-1} = f_a^{-1}\odot f_b^{-1}\)</span>  </li>
+</ul>
+<h5 id="36-multi-scale-architecture"><code>3.6 Multi-Scale Architecture</code></h5>
+<p><img alt="" src="../assets/DL/57.JPG" /><br />
+- 作者使用挤压操作(<code>squeezing operation</code>)，实现了一个多尺度的架构：
+- 对于每个通道，它将图像分为形状<span class="arithmatex">\(2 \times 2 \times c\)</span>的子块，然后将它们变形为<span class="arithmatex">\(1 \times 1 \times 4c\)</span>形状的子块。
+- 挤压操作将<span class="arithmatex">\(s \times s \times c\)</span>的张量转化为<span class="arithmatex">\(\frac{s}{2} \times {s}{2} \times 4c\)</span>的张量，高效地使用空间大小换取通道数量。<br />
+- 在每个尺度，作者将下列几种操作组合为一个序列：<br />
+- 首先应用<span class="arithmatex">\(3\)</span>个带有交替棋盘掩码的耦合层。<br />
+- 然后执行挤压操作。<br />
+- 最后，再应用<span class="arithmatex">\(3\)</span>个带有交替逐通道掩码(<code>alternating channel-wise masking</code>)的耦合层。<br />
+- 选择逐通道掩码，使得产生的分划对于前面的棋盘掩码而言并非冗余。<br />
+- 对于最后一个尺度，只使用<span class="arithmatex">\(4\)</span>个带有交替棋盘掩码的耦合层。<br />
+- 将一个<span class="arithmatex">\(D\)</span>维</p>
+</li>
+</ul>
 
 
 

@@ -1036,6 +1036,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#realnvp_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、RealNVP代码
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1711,6 +1720,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#realnvp_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、RealNVP代码
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1908,7 +1926,7 @@
 <span class="arithmatex">\(\mathbf{y}_b = exp(s(\mathbf{x})_a)\odot\mathbf{x}_{b} + t(\mathbf{x}_{a})\)</span><br />
 其中：<span class="arithmatex">\(\odot\)</span>表示<code>Hadamard</code>乘积（两矩阵逐元素相乘），<span class="arithmatex">\(t, s\)</span>分别表示转移(<code>transition</code>)和缩放(<code>scaling</code>)。<br />
 （3）变换对应的<code>Jacobi</code>矩阵<br />
-<span class="arithmatex">\(\mathbf{J} = \begin{bmatrix} I_{d \times d} \ \mathbf{0}_{d \times{D - d}} \\ 
+<span class="arithmatex">\(\mathbf{J} = \begin{bmatrix} \mathbb{I}_{d \times d} \ \mathbf{0}_{d \times{D - d}} \\ 
 \frac{\partial \mathbf{y}_b}{\partial \mathbf{x}_{a}} \ diag(e^{s(\mathbf{x}_a)})\end{bmatrix}\)</span><br />
 从而有：<span class="arithmatex">\(det(\mathbf{J}) = \Pi_{j = 1}^{D - d}exp(s(\mathbf{x}_{a}))_j = exp(\sum_{j = 1}^{D - d}s(\mathbf{x}_{a})_j)\)</span><br />
 （4）总结<br />
@@ -1934,6 +1952,7 @@
 2.对数高斯分布计算<br />
 ·<span class="arithmatex">\(ln\mathscr{N}(z_0 = f^{-1}(x)|0, I) = -const - \frac{1}{2}||f^{-1}(x)||^2\)</span><br />
 其中，<span class="arithmatex">\(const = \frac{D}{2}\)</span>为标准高斯函数的归一化常量，<span class="arithmatex">\(\frac{1}{2}||f^{-1}(x)||^2 = MSE(0, f^{-1}(x))\)</span>。  </p>
+<h5 id="realnvp_2">五、<code>RealNVP</code>代码</h5>
 
 
 
