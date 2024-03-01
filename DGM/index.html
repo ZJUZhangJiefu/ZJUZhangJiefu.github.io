@@ -1021,7 +1021,16 @@
           <li class="md-nav__item">
   <a href="#realnvp" class="md-nav__link">
     <span class="md-ellipsis">
-      二、构建RealNVP的组件
+      三、构建RealNVP的组件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#realnvp_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、流模型(RealNVP)实践
     </span>
   </a>
   
@@ -1687,7 +1696,16 @@
           <li class="md-nav__item">
   <a href="#realnvp" class="md-nav__link">
     <span class="md-ellipsis">
-      二、构建RealNVP的组件
+      三、构建RealNVP的组件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#realnvp_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、流模型(RealNVP)实践
     </span>
   </a>
   
@@ -1867,7 +1885,7 @@
 3.使用神经网络对可逆变换建模<br />
 ·变换是可逆的，因此需选取可逆的神经网络，以对变换进行建模。<br />
 ·对于任意的可逆变换序列，<span class="arithmatex">\(\sum_{i = 1}^{K}ln|\mathbf{J}_{f_i}(z_{i - 1})|\)</span>在计算上难以处理。<br />
-·神经网络的性质：可逆，且雅可比行列式的对数相对容易计算。<br />
+·神经网络的性质：<strong>可逆，且雅可比行列式的对数相对容易计算</strong>。<br />
 4.（归一化）流模型<br />
 ·由神经网络构建的一类可逆、且具有易处理的雅可比行列式的模型的统称。<br />
 5.流模型举例<br />
@@ -1876,7 +1894,46 @@
 ·残差流<br />
 ·可逆<code>DenseNets</code><br />
 ·实值非体积不变(<code>RealNVP, Real-Valued Non-Volume Presercing</code>)流  </p>
-<h5 id="realnvp">二、构建<code>RealNVP</code>的组件</h5>
+<h5 id="realnvp">三、构建<code>RealNVP</code>的组件</h5>
+<p>[注]先阅读完整<code>RealNVP</code>论文有助于理解以下原理与代码。<br />
+·<a href="https://arxiv.org/pdf/1605.08803.pdf">原论文链接</a><br />
+·<a href="https://zjuzhangjiefu.github.io/RealNVP/">论文阅读笔记链接</a>
+模型设计目标：对于输入<span class="arithmatex">\(\mathbb{x}\)</span>，应构造可逆，且<code>Jacobi</code>行列式相对容易计算的转换函数<span class="arithmatex">\(f\)</span>。<br />
+1.耦合层(<code>Coupling Layer</code>)<br />
+（1）向量分割<br />
+<span class="arithmatex">\(\mathbf{x} = [\mathbf{x}_{a}, \mathbf{x}_{b}]\)</span><br />
+其中：<span class="arithmatex">\(\mathbf{x}_a = \mathbf{x}_{1:d}, \mathbf{x}_b = \mathbf{x}_{d + 1:D}\)</span>。<br />
+（2）变换定义<br />
+<span class="arithmatex">\(\mathbf{y}_a = \mathbf{x}_a\)</span><br />
+<span class="arithmatex">\(\mathbf{y}_b = exp(s(\mathbf{x})_a)\odot\mathbf{x}_{b} + t(\mathbf{x}_{a})\)</span><br />
+其中：<span class="arithmatex">\(\odot\)</span>表示<code>Hadamard</code>乘积（两矩阵逐元素相乘），<span class="arithmatex">\(t, s\)</span>分别表示转移(<code>transition</code>)和缩放(<code>scaling</code>)。<br />
+（3）变换对应的<code>Jacobi</code>矩阵<br />
+<span class="arithmatex">\(\mathbf{J} = \begin{bmatrix} I_{d \times d} \ \mathbf{0}_{d \times{D - d}} \\ 
+\frac{\partial \mathbf{y}_b}{\partial \mathbf{x}_{a}} \ diag(e^{s(\mathbf{x}_a)})\end{bmatrix}\)</span><br />
+从而有：<span class="arithmatex">\(det(\mathbf{J}) = \Pi_{j = 1}^{D - d}exp(s(\mathbf{x}_{a}))_j = exp(\sum_{j = 1}^{D - d}s(\mathbf{x}_{a})_j)\)</span><br />
+（4）总结<br />
+·耦合层是一个强大、灵活的转换，并且具有易于处理的<code>Jacobi</code>行列式。<br />
+·上述变换只处理了一半输入，因此需进行适当的附加转换，调换<span class="arithmatex">\(\mathbf{y}_a, \mathbf{y}_b\)</span>的顺序，与耦合层一起使用。<br />
+2.置换层(<code>Permutation Layer</code>)<br />
+·作用：将<span class="arithmatex">\(\mathbf{y} = [\mathbf{y}_{a}, \mathbf{y}_b]\)</span>置换为<span class="arithmatex">\(\mathbf{y} = [\mathbf{y}_{b}, \mathbf{y}_a]\)</span>。<br />
+·特点：置换体积不变，即<code>Jacobi</code>行列式恒为<span class="arithmatex">\(1\)</span>。<br />
+·应用：每个耦合层后均可应用置换层，以颠倒变换的顺序。<br />
+3.解量化<br />
+（1）向量的离散、连续性质<br />
+·流模型：假设<span class="arithmatex">\(\mathbf{x}\)</span>是实值随机变量形成的向量。<br />
+·实际运用：许多对象往往是离散的，如图像像素通常表示为<span class="arithmatex">\(\mathbf{x} \in \{0, 1, \cdots, 255\}\)</span>中的整数。<br />
+（2）均匀解量化(<code>Uniform Dequantization</code>)<br />
+·对于<span class="arithmatex">\(\forall \mathbf{y} \in {0, 1, \cdots, 255}^{D}\)</span>，添加均匀噪声<span class="arithmatex">\(\mathbf{u} \in [-0.5, 0.5]^D\)</span>，从而可对<span class="arithmatex">\(\mathbf{y} = \mathbf{x} + \mathbf{u}\)</span>应用密度估计。  </p>
+<h5 id="realnvp_1">四、流模型(<code>RealNVP</code>)实践</h5>
+<p>1.训练目标<br />
+·理论训练目标：<br />
+<span class="arithmatex">\(lnp(x) = ln\mathscr{N}(z_0 = f^{-1}(x)|0, I) - \sum_{i = 1}^{K}ln|\mathbf{J}_{f_i}(z_{i - 1})|\)</span>  <br />
+·由于各耦合层变换行列式为<span class="arithmatex">\(det(\mathbf{J}) = \Pi_{j = 1}^{D - d}exp(s(\mathbf{x}_{a}))_j = exp(\sum_{j = 1}^{D - d}s(\mathbf{x}_{a})_j)\)</span>，置换层行列式恒为<span class="arithmatex">\(1\)</span>，实际训练目标：<br />
+<span class="arithmatex">\(lnp(x) = ln\mathscr{N}(z_0 = f^{-1}(x)|0, I) - \sum_{i = 1}^{K}(\sum_{j = 1}^{D - d}s_k(\mathbf{x}_{a}^{k})_j)\)</span><br />
+其中：<span class="arithmatex">\(s_{k}\)</span>是第<span class="arithmatex">\(k\)</span>个耦合层的缩放网络，<span class="arithmatex">\(x_{a}^{k}\)</span>表示第<span class="arithmatex">\(k\)</span>个耦合层的输入。<br />
+2.对数高斯分布计算<br />
+·<span class="arithmatex">\(ln\mathscr{N}(z_0 = f^{-1}(x)|0, I) = -const - \frac{1}{2}||f^{-1}(x)||^2\)</span><br />
+其中，<span class="arithmatex">\(const = \frac{D}{2}\)</span>为标准高斯函数的归一化常量，<span class="arithmatex">\(\frac{1}{2}||f^{-1}(x)||^2 = MSE(0, f^{-1}(x))\)</span>。  </p>
 
 
 
