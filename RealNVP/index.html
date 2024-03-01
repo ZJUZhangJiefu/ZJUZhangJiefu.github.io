@@ -1770,9 +1770,9 @@
 <img alt="" src="../assets/DL/56.JPG" />  </li>
 <li>由此产生的函数的<code>Jacobi</code>行列式仍然易于处理，基于下列事实：<br />
 <span class="arithmatex">\(\frac{\partial (f_b \odot f_a)}{\partial x_a^T}(x_a) = \frac{\partial f_a}{\partial x_a^T}(x_a) \cdot \frac{\partial f_b}{\partial x_b^T}(x_b = f_a(x_a)) \cdots (10)\)</span><br />
-<span class="arithmatex">\(det(A \cdot B) = det(A)det(B)\)</span><br />
+<span class="arithmatex">\(det(A \cdot B) = det(A)det(B) \cdots (11)\)</span><br />
 类似地，上述函数的反函数（逆变换）可以容易地由下式计算：<br />
-<span class="arithmatex">\((f_b\odot f_a)^{-1} = f_a^{-1}\odot f_b^{-1}\)</span>  </li>
+<span class="arithmatex">\((f_b\odot f_a)^{-1} = f_a^{-1}\odot f_b^{-1} \cdots (12)\)</span>  </li>
 </ul>
 <h5 id="36-multi-scale-architecture"><code>3.6 Multi-Scale Architecture</code></h5>
 <p><img alt="" src="../assets/DL/57.JPG" /><br />
@@ -1785,7 +1785,16 @@
 - 最后，再应用<span class="arithmatex">\(3\)</span>个带有交替逐通道掩码(<code>alternating channel-wise masking</code>)的耦合层。<br />
 - 选择逐通道掩码，使得产生的分划对于前面的棋盘掩码而言并非冗余。<br />
 - 对于最后一个尺度，只使用<span class="arithmatex">\(4\)</span>个带有交替棋盘掩码的耦合层。<br />
-- 将一个<span class="arithmatex">\(D\)</span>维</p>
+- 将一个<span class="arithmatex">\(D\)</span>维向量传播给所有的耦合层，计算开销、内存开销和需要训练的参数量都是巨大的。基于上述原因，作者在固定的间隔(<code>regular interval</code>)分离(<code>factor out</code>)出一半的维度，并递归定义这一操作：<br />
+<span class="arithmatex">\(<span class="arithmatex">\(h^{(0)} = x \cdots (13)\)</span>\)</span><br />
+<span class="arithmatex">\(<span class="arithmatex">\((z^{(i + 1), }, h^{(i + 1)}) = f^{(i + 1)}(h^{(i)}) \cdots (14)\)</span>\)</span><br />
+<span class="arithmatex">\(<span class="arithmatex">\(z^{(L)} = f^{(L)}(h^{(L - 1)}) \cdots (15)\)</span>\)</span><br />
+<span class="arithmatex">\(<span class="arithmatex">\(z = (z^{(1)}, \cdots , z^{(L)})\cdots (16)\)</span>\)</span><br />
+- 在实验中，对于<span class="arithmatex">\(i \leq L\)</span>运用上述操作。<br />
+- 在计算函数<span class="arithmatex">\(f^{(i)}\)</span>时，耦合-挤压-耦合操作序列被应用于每个层次(等式<span class="arithmatex">\((14)\)</span>)。<br />
+- 在每个层次，随着空间分辨率的下降，函数<span class="arithmatex">\(s\)</span>和<span class="arithmatex">\(t\)</span>中隐藏层特征的数量翻倍。<br />
+- 所有从不同尺度提取的变量被合并(<code>concatenated</code>)，以获得最终变换的输出(等式<span class="arithmatex">\((16)\)</span>)。<br />
+- 因此，模型必须对较细(<code>finer</code>)尺度（早期层次）中提取的单元进行高斯化，然后再处理从较粗(<code>coarser</code>)尺度中提取的单元。</p>
 </li>
 </ul>
 
