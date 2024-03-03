@@ -10,7 +10,7 @@
         <meta name="author" content="大观散人">
       
       
-        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/Retrosynthesis%20prediction%20with%20an%20interpretable%20deep-learning%20framework%20based%20on%20molecular%20assembly%20tasks/">
+        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/BasicDGM/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>Retrosynthesis prediction with an interpretable deep learning framework based on molecular assembly tasks - 大观散人的博客</title>
+        <title>BasicDGM - 大观散人的博客</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#abstract" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Retrosynthesis prediction with an interpretable deep learning framework based on molecular assembly tasks
+              BasicDGM
             
           </span>
         </div>
@@ -1332,20 +1332,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#abstract" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Abstract
+      深度生成模型基础
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      专题三——流模型
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="专题三——流模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-realnvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 连续随机变量流模型——RealNVP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1367,65 +1382,12 @@
   
 
 
-  <h1>Retrosynthesis prediction with an interpretable deep learning framework based on molecular assembly tasks</h1>
+  <h1>BasicDGM</h1>
 
-<h5 id="abstract"><code>Abstract</code></h5>
-<ul>
-<li>使用人工智能手段进行自动逆合成，加快了有机化学的研究。  </li>
-<li>然而，许多现有的深度学习方法难以解释，像“黑盒”一样，几乎没有可理解性(<code>insight</code>)。  </li>
-<li>本文提出<code>RetroExplainer</code>，将逆合成任务视为一个分子组装过程，包含几个由深度学习引导的逆合成动作。  </li>
-<li>为了保证模型的健壮性，本文提出三个单元  <ul>
-<li>多重感知(<code>multi-sense</code>)、多尺度(<code>multi-scale</code>)的<code>Graph Transformer</code>  </li>
-<li>对结构有意识的(<code>structure-aware</code>)对比学习(<code>contrastive learning</code>)  </li>
-<li>动态适应的多任务学习  </li>
-</ul>
-</li>
-<li>实验结果  <ul>
-<li>在<code>12</code>个大规模<code>benchmark</code>数据集上的结果，展示了<code>RetroExplainer</code>的效用，它的性能超过了现有<code>SOTA</code>单步逆合成方法。  </li>
-<li>此外，分子组装过程让模型具有好的可解释性，允许透明决策以及定量归因(<code>quantitative attribution</code>)。  </li>
-<li>扩展到多步逆合成规划任务时，<code>RetroExplainer</code>识别出<span class="arithmatex">\(101\)</span>条合成途径(<code>pathway</code>)，其中<span class="arithmatex">\(86.9%\)</span>的单步反应均对应于已经报道的实际反应。  </li>
-</ul>
-</li>
-<li>因此，<code>ExtroExplainer</code>有望为制药发展中进行可靠、高吞吐量和高质量的有机合成提供宝贵的见解。  </li>
-</ul>
-<h5 id="introduction"><code>Introduction</code></h5>
-<ul>
-<li>逆合成任务  <ul>
-<li>逆合成的目的是识别一组合适的反应物，用于有效地合成目标分子，它在计算机辅助的合成规划中是基础的、必不可少的。  </li>
-<li>逆合成分析被<code>Corey</code>正式提出(<code>formalize</code>)，并使用<code>OCSS, Organic Chemical Simulation of Synthesis</code>程序解决。  </li>
-<li>后来，受到大规模的反应实验数据和大幅增长的计算性能的驱动，各种各样的基于机器学习（尤其是深度学习）的模型被提出，并实现不断优化的性能。  </li>
-</ul>
-</li>
-<li>逆合成方法简述  <ul>
-<li>基于模板(<code>template-based</code>)的方法<ul>
-<li>在数据驱动逆合成任务的早期阶段，研究人员专注于研发基于模板的逆合成方法，方法依赖于反应模板，以将产物转化为反应物。  </li>
-<li>在上述方法中，分子指纹(<code>molecular fingerprints</code>)和多层感知机常常被用于编码产物分子，并推荐可靠的模板。  </li>
-<li>例如，<code>Segler et al.</code>使用连通性扩展的分子指纹(<code>ECFPs, Extended-Connectivity Fingerprints</code>)，而<code>Chen et al.</code>采用一个类似于单步逆合成预测器的方法，用于神经网络引导的多步逆合成规划。  </li>
-<li>然而，构建反应模板的过程目前依赖于手工编码，或复杂的子图同构(<code>subgraph isomorphism</code>)，使得在广阔的化学空间中探索潜在的反应模板十分困难。  </li>
-</ul>
-</li>
-<li>半模板(<code>semi-template</code>)、无模板(<code>template-free</code>)方法  <ul>
-<li>为了解决上述问题，无模板、半模板方法作为有希望的替代者而出现，使用分子指纹以获得分子级别的表征。  </li>
-<li><code>Chen et al.</code>引入了<code>FF-EBM, FeedForward EBM</code>方法，与无模板方法相得益彰(<code>complemented by template-free models</code>)。  </li>
-<li>在分子指纹之外，现有的无模板、板模板方法可以分为两类：  <ul>
-<li>基于序列的方法  </li>
-<li>基于图的方法  </li>
-</ul>
-</li>
-<li>两类方法主要在分子表征的策略上有所区别：对于基于序列的方法，分子尝尝被表示为线性化的字符串；对于基于图的方法，分子被表示为分子图结构。  </li>
-</ul>
-</li>
-<li>基于序列的方法  <ul>
-<li>使用序列化的激发表示产物分子(例如<code>SMILES, Simplified Molecular-Input Line-Entry System</code>)。  </li>
-<li><code>Liu et al.</code>引入了<code>Seq2Seq</code>模型，包含双向长短时记忆编码器和解码器，用于逆合成翻译。  </li>
-<li>随着神经网络机器翻译模型的发展，基于序列的方法的性能逐渐得到提升。  </li>
-<li><code>Karpov et al.</code>调整<code>Transformer</code>架构，使用修改的学习率调度，以及快照学习(<code>snapshot learning</code>)，用于逆合成分析。  </li>
-<li></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<h3 id="_1">深度生成模型基础</h3>
+<p>参考书籍：<code>Deep Generative Modeling, Jakub M.Tomczak</code>  </p>
+<h3 id="_2">专题三——流模型</h3>
+<h4 id="31-realnvp">3.1 连续随机变量流模型——<code>RealNVP</code></h4>
 
 
 
