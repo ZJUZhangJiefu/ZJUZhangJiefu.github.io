@@ -1032,8 +1032,50 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.7 批归一化
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 Experiments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 Experiments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Procedure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-discussion-and-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 Discussion and Conclusion
+    </span>
+  </a>
   
 </li>
       
@@ -1580,8 +1622,50 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.7 批归一化
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 Experiments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 Experiments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Procedure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-discussion-and-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 Discussion and Conclusion
+    </span>
+  </a>
   
 </li>
       
@@ -1794,7 +1878,54 @@
 - 在计算函数<span class="arithmatex">\(f^{(i)}\)</span>时，耦合-挤压-耦合操作序列被应用于每个层次(等式<span class="arithmatex">\((14)\)</span>)。<br />
 - 在每个层次，随着空间分辨率的下降，函数<span class="arithmatex">\(s\)</span>和<span class="arithmatex">\(t\)</span>中隐藏层特征的数量翻倍。<br />
 - 所有从不同尺度提取的变量被合并(<code>concatenated</code>)，以获得最终变换的输出(等式<span class="arithmatex">\((16)\)</span>)。<br />
-- 因此，模型必须对较细(<code>finer</code>)尺度（早期层次）中提取的单元进行高斯化，然后再处理从较粗(<code>coarser</code>)尺度中提取的单元。</p>
+- 因此，模型必须对较细(<code>finer</code>)尺度（早期层次）中提取的单元进行高斯化，然后再处理从较粗(<code>coarser</code>)尺度中提取的单元。这使得中间层表征的定义，能够对应到更局部、细粒度的特征，如附录<code>D</code>所示。  <br />
+- 并且，早期层的高斯化和单元提取，有将损失函数分配到整个网络的实际优势，这一做法遵循了类似于使用中间分类器引导中间层的理念。这一做法也大幅度减少了模型的计算量和内存使用，允许我们训练更大的模型。  </p>
+<h5 id="37">3.7 批归一化</h5>
+<ul>
+<li>批归一化用于<span class="arithmatex">\(s, t\)</span>    </li>
+<li>为了进一步改善训练信号的传递，作者在<span class="arithmatex">\(s, t\)</span>中使用带批归一化和权重归一化的深度残差神经网络。如附录<code>E</code>描述，作者引入并使用了批归一化的一个新型变种，该变种基于最近最小批量的移动平均(<code>a running average over recent minibatches</code>)，因此在极小批量训练时更具健壮性。  </li>
+<li>批归一化用于耦合层输出  </li>
+<li>作者也将批归一化用于整个耦合层的输出。  </li>
+<li>由于批归一化对每个维度进行了线性缩放，因此其作用很容易纳入<code>Jacobi</code>矩阵的计算。  </li>
+<li>即：给定估计的批量统计特征<span class="arithmatex">\(\tilde{\mu}, \tilde{\sigma}^2\)</span>，缩放函数为：<br />
+<span class="arithmatex">\(x \rightarrow \frac{x - \tilde{\mu}}{\sqrt{\tilde{\sigma}^2 + \epsilon}}\)</span><br />
+其<code>Jacobian</code>行列式为：<br />
+<span class="arithmatex">\((\Pi_{i}(\tilde{\sigma}_i^2 + \epsilon))^{-\frac{1}{2}}\)</span>  </li>
+<li>上述批归一化的形式类似于深度强化学习中的奖励正则化(<code>reward normalization</code>)。  </li>
+<li>发现  </li>
+<li>作者发现，该技巧的使用不仅允许更多耦合层的堆叠，并缓解了通过基于梯度的方法训练一个带有缩放参数的条件分布时，常常遇到的不稳定问题。  </li>
+</ul>
+<h4 id="4-experiments"><code>4 Experiments</code></h4>
+<h5 id="41-procedure"><code>4.1 Procedure</code></h5>
+</li>
+</ul>
+<h4 id="5-discussion-and-conclusion"><code>5 Discussion and Conclusion</code></h4>
+<ul>
+<li>工作总结  <ul>
+<li>本论文中，作者定义了一类带有易于处理的雅可比行列式的可逆函数，允许精确的、易于处理的对数似然评估、推理和采样。  </li>
+<li>作者展示了此类生成模型实现了在采样质量和对数似然方面都具有竞争力的性能。  </li>
+<li>存在许多研究途径，以改进变换函数的形式，例如充分利用空洞卷积、残差网络架构的最新进展。  </li>
+</ul>
+</li>
+<li>模型特点  <ul>
+<li>本文提出了一种弥补自回归模型、变分自动编码器和生成对抗网络之间差距的技术。  </li>
+<li>类似于自回归模型，该模型允许训练过程中进行易于处理的、精确的对数似然计算。  </li>
+<li>该模型允许更为灵活的函数形式，类似于扁粉自动编码器的生成模型，允许从模型分布进行快速、精确的采样。  </li>
+<li>类似于<code>GAN</code>，与变分自动编码器不同，作者提出的技术不需要固定形式的重构开销，而是用更高层次的特征定义了重构开销，并生成了更为清晰的图片。  </li>
+<li>与变分自动编码器、<code>GAN</code>均不同，作者提出的技术能够学习一个具有丰富语义信息，并且维度和输入空间一样高的隐空间。这可能使该算法尤其适合半监督学习任务，作者也希望在未来工作中进行相关的研究。  </li>
+</ul>
+</li>
+<li><code>RealNVP</code>模型的条件化  <ul>
+<li><code>RealNVP</code>生成模型可以通过额外变量（如：类型标签）进行条件化，以创建一个结构化的输出算法。  </li>
+<li>更重要的是，由此产生的可逆变换类可以模块化地视为概率分布，因此可逆变换类也可被用于改善其余概率模型，如自回归模型、变分自动编码器等。  </li>
+<li>对于自动编码器，上述变换可以用于获得更灵活的重构开销，以及一个更灵活的随机推断分布(<code>stochastic inference distribution</code>)。  </li>
+<li>一般地，概率模型也能从本文应用的批归一化技术中受益。  </li>
+</ul>
+</li>
+<li><code>RealNVP</code>在其他方向的贡献  <ul>
+<li>强大、可训练的可逆函数的定义也可以有利于生成式无监督学习以外的其他方向。  </li>
+<li>例如在强化学习中，这些可逆函数有助于扩展连续<code>Q-</code>学习中易于处理<code>argmax</code>操作的函数集合，或者寻找局部线性高斯近似更为适用的表征。  </li>
+</ul>
 </li>
 </ul>
 
