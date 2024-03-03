@@ -1065,6 +1065,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#42-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Results
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1655,6 +1664,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#42-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Results
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1870,10 +1888,10 @@
 - 选择逐通道掩码，使得产生的分划对于前面的棋盘掩码而言并非冗余。<br />
 - 对于最后一个尺度，只使用<span class="arithmatex">\(4\)</span>个带有交替棋盘掩码的耦合层。<br />
 - 将一个<span class="arithmatex">\(D\)</span>维向量传播给所有的耦合层，计算开销、内存开销和需要训练的参数量都是巨大的。基于上述原因，作者在固定的间隔(<code>regular interval</code>)分离(<code>factor out</code>)出一半的维度，并递归定义这一操作：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(h^{(0)} = x \cdots (13)\)</span>\)</span><br />
-<span class="arithmatex">\(<span class="arithmatex">\((z^{(i + 1), }, h^{(i + 1)}) = f^{(i + 1)}(h^{(i)}) \cdots (14)\)</span>\)</span><br />
-<span class="arithmatex">\(<span class="arithmatex">\(z^{(L)} = f^{(L)}(h^{(L - 1)}) \cdots (15)\)</span>\)</span><br />
-<span class="arithmatex">\(<span class="arithmatex">\(z = (z^{(1)}, \cdots , z^{(L)})\cdots (16)\)</span>\)</span><br />
+<span class="arithmatex">\(h^{(0)} = x \cdots (13)\)</span><br />
+<span class="arithmatex">\((z^{(i + 1), }, h^{(i + 1)}) = f^{(i + 1)}(h^{(i)}) \cdots (14)\)</span><br />
+<span class="arithmatex">\(z^{(L)} = f^{(L)}(h^{(L - 1)}) \cdots (15)\)</span><br />
+<span class="arithmatex">\(z = (z^{(1)}, \cdots , z^{(L)})\cdots (16)\)</span><br />
 - 在实验中，对于<span class="arithmatex">\(i \leq L\)</span>运用上述操作。<br />
 - 在计算函数<span class="arithmatex">\(f^{(i)}\)</span>时，耦合-挤压-耦合操作序列被应用于每个层次(等式<span class="arithmatex">\((14)\)</span>)。<br />
 - 在每个层次，随着空间分辨率的下降，函数<span class="arithmatex">\(s\)</span>和<span class="arithmatex">\(t\)</span>中隐藏层特征的数量翻倍。<br />
@@ -1895,10 +1913,11 @@
 <li>发现  </li>
 <li>作者发现，该技巧的使用不仅允许更多耦合层的堆叠，并缓解了通过基于梯度的方法训练一个带有缩放参数的条件分布时，常常遇到的不稳定问题。  </li>
 </ul>
-<h4 id="4-experiments"><code>4 Experiments</code></h4>
-<h5 id="41-procedure"><code>4.1 Procedure</code></h5>
 </li>
 </ul>
+<h4 id="4-experiments"><code>4 Experiments</code></h4>
+<h5 id="41-procedure"><code>4.1 Procedure</code></h5>
+<h5 id="42-results"><code>4.2 Results</code></h5>
 <h4 id="5-discussion-and-conclusion"><code>5 Discussion and Conclusion</code></h4>
 <ul>
 <li>工作总结  <ul>
@@ -1924,7 +1943,7 @@
 </li>
 <li><code>RealNVP</code>在其他方向的贡献  <ul>
 <li>强大、可训练的可逆函数的定义也可以有利于生成式无监督学习以外的其他方向。  </li>
-<li>例如在强化学习中，这些可逆函数有助于扩展连续<code>Q-</code>学习中易于处理<code>argmax</code>操作的函数集合，或者寻找局部线性高斯近似更为适用的表征。  </li>
+<li>例如在强化学习中，这些可逆函数有助于扩展连续<code>Q</code>学习中易于处理<code>argmax</code>操作的函数集合，或者寻找局部线性高斯近似更为适用的表征。  </li>
 </ul>
 </li>
 </ul>
