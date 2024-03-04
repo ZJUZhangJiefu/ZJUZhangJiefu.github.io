@@ -895,7 +895,25 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      一、有穷自动机
+      一、确定型有穷自动机
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、非确定型有穷自动机
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、上下文无关文法
     </span>
   </a>
   
@@ -1469,6 +1487,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../O-GNN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    O-GNN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1676,7 +1715,25 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      一、有穷自动机
+      一、确定型有穷自动机
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、非确定型有穷自动机
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、上下文无关文法
     </span>
   </a>
   
@@ -1894,7 +1951,65 @@ return s;
 <p>1.最长匹配原则<br />
 2.规则优先级  </p>
 <h4 id="_8">第二讲 词法分析、语法分析</h4>
-<h5 id="_9">一、有穷自动机</h5>
+<h5 id="_9">一、确定型有穷自动机</h5>
+<p>1.基本概念  <br />
+(1)<strong>Regular expressions</strong>: Convenient for specifying lexical tokens.<br />
+(2)Needing a <strong>formalism</strong>: Implemented as a computer program, using finite automata (N.B. the singular of
+automata is automaton).<br />
+(3)A <strong>finite automaton</strong>: A finite set of states; edges lead from one state to another, and each edge is labeled with a symbol. One state is the start state, and certain of the states are distinguished as final states.<br />
+2.常见有穷自动机<br />
+下列自动机分别用于识别：<code>if</code>关键字、变量名(<code>ID</code>)、整数(<code>NUM</code>)、实数(<code>REAL</code>)、空白符(<code>white space</code>)、错误(<code>error</code>)。<br />
+<img alt="" src="../assets/CP/20.JPG" /><br />
+3.确定型有穷自动机<br />
+In a deterministic finite automaton (DFA), no two
+edges leaving from the same state are labeled with
+the same symbol. <br />
+A DFA accepts or rejects a string as follows. <br />
+(1)Starting in the start state, for each character in the input string the
+automaton follows exactly one edge to get to the next state. <br />
+(2)The edge must be labeled with the input character. <br />
+(3)After making n transitions for an n-character string, if the automaton is in a final state, then it accepts the string. <br />
+(4)If it is not in a final state, or if at some point there was no appropriately labeled edge to follow, it rejects. The language recognized by an automaton is the set of strings that it accepts.
+4.有穷自动机的合并<br />
+<img alt="" src="../assets/CP/21.JPG" /><br />
+5.歧义消除<br />
+（1）规则优先级(<code>rule priority</code>)<br />
+（2）最长匹配原则(<code>longest match</code>)<br />
+6.转移函数的实现——转移矩阵<br />
+·各状态作为行、列索引，形成转移表。<br />
+·表格元素表示：状态转移时读入的字符。<br />
+7.死状态(<code>dead state</code>)<br />
+·没有转移输出的非终止状态。<br />
+8.词法分析举例（对应于图<code>2.4</code>中的<code>DFA</code>）<br />
+<img alt="" src="../assets/CP/22.JPG" />  </p>
+<h5 id="_10">二、非确定型有穷自动机</h5>
+<p>1.正则表达式表达为<code>NFA</code><br />
+<img alt="" src="../assets/CP/23.JPG" /><br />
+<img alt="" src="../assets/CP/24.JPG" /><br />
+2.子集构造法(<code>subset construction</code>)——将<code>NFA</code>转化为<code>DFA</code><br />
+（1）<span class="arithmatex">\(\epsilon\)</span>转移：计算当前状态的<span class="arithmatex">\(\epsilon\)</span>闭包（即：经若干次<span class="arithmatex">\(\epsilon\)</span>移动可以到达的所有状态），将<span class="arithmatex">\(\epsilon\)</span>闭包作为一个新的状态。<br />
+<img alt="" src="../assets/CP/25.JPG" /><br />
+（2）字符<span class="arithmatex">\(i\)</span>的转移：计算读入<span class="arithmatex">\(i\)</span>（读<span class="arithmatex">\(i\)</span>前后可能分别经过若干次<span class="arithmatex">\(\epsilon\)</span>移动），可能到达的所有状态。<br />
+<img alt="" src="../assets/CP/26.JPG" /><br />
+3.<span class="arithmatex">\(\epsilon\)</span>-闭包的严格定义<br />
+(1)Let edge(s, c) be the set of all NFA states reachable by following a single edge with label c from state s.<br />
+(2)For a set of states S, closure(S) is the set of states that can be reached from a state in S without consuming any of the input, that is, by going only through ∊-edges. Mathematically, express the idea of going through <span class="arithmatex">\(\epsilon\)</span>-edges by saying that closure(S) is the smallest set T, such that：<br />
+<span class="arithmatex">\(T = S \cup (\cup_{s \in T}edge(s, \epsilon))\)</span><br />
+4.<code>DFA</code>对<code>NFA</code>的模拟流程<br />
+·假设<span class="arithmatex">\(d = \{s_i;s_k;s_l\}\)</span>是<code>NFA</code>中的状态<span class="arithmatex">\(s_i, s_k, s_l\)</span>。<br />
+·从<span class="arithmatex">\(d\)</span>开始，读入字符<span class="arithmatex">\(c\)</span>。<br />
+·到达一个由一组<code>NFA</code>状态组成的新<code>DFA</code>状态<span class="arithmatex">\(DFAedge(d, c)\)</span>。<br />
+·<span class="arithmatex">\(DFAedge(d, c) = closure(\cup_{s\in d}edge(s, \epsilon))\)</span><br />
+·举例<br />
+<img alt="" src="../assets/CP/27.JPG" /><br />
+5.等价状态的判别与删除<br />
+（1）等价状态的判别（不是必要条件）<br />
+·均为终止状态，或均为非终止状态。<br />
+·对于任意一个字符，输出的状态转移都是相同的。<br />
+（2）举例<br />
+·上图中，<code>10, 11, 13, 15</code>和<code>11, 12, 13</code>是等价状态。<br />
+<img alt="" src="assets\CP\28.JPG" />  </p>
+<h5 id="_11">三、上下文无关文法</h5>
 
 
 

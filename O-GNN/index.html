@@ -10,13 +10,13 @@
         <meta name="author" content="大观散人">
       
       
-        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/">
+        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/O-GNN/">
       
       
-        <link rel="prev" href="../RealNVP/">
+        <link rel="prev" href="../G2GT/">
       
       
-        <link rel="next" href="../Attention%20Is%20All%20You%20Need/">
+        <link rel="next" href="../BasicDGM/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>图神经网络导论 - 大观散人的博客</title>
+        <title>O-GNN - 大观散人的博客</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#abstract" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              图神经网络导论
+              O-GNN
             
           </span>
         </div>
@@ -938,21 +938,19 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -966,7 +964,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             GNN
@@ -977,28 +975,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    图神经网络导论
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1007,114 +987,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      一、文章架构
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      二、图
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      三、具有图结构的问题
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      四、神经网络与图的兼容性挑战
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      五、图神经网络
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      六、图中各部分之间的消息传递
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      七、学习边的表示
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      八、添加全局表示
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gnn-playground" class="md-nav__link">
-    <span class="md-ellipsis">
-      九、GNN Playground调参经验总结
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gnn" class="md-nav__link">
-    <span class="md-ellipsis">
-      十、与GNN相关的技术
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1396,19 +1268,21 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" checked>
         
           
           <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
@@ -1422,7 +1296,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_7">
             <span class="md-nav__icon md-icon"></span>
             逆合成预测
@@ -1454,10 +1328,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../O-GNN/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    O-GNN
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1466,6 +1358,135 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abstract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.环状化合物简介
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2gnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.GNN分子建模研究进展
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3o-gnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.O-GNN
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Method
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-notation-and-preliminaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Notation and Preliminaries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-theoretical-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Theoretical Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Experiments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-conclusion-and-future-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 Conclusion and Future Work
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1579,90 +1600,111 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#abstract" class="md-nav__link">
     <span class="md-ellipsis">
-      一、文章架构
+      Abstract
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#1-introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      二、图
+      1 Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.环状化合物简介
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2gnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.GNN分子建模研究进展
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3o-gnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.O-GNN
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Method
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-notation-and-preliminaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Notation and Preliminaries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-theoretical-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Theoretical Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Experiments
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#4-conclusion-and-future-work" class="md-nav__link">
     <span class="md-ellipsis">
-      三、具有图结构的问题
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      四、神经网络与图的兼容性挑战
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      五、图神经网络
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      六、图中各部分之间的消息传递
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      七、学习边的表示
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      八、添加全局表示
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gnn-playground" class="md-nav__link">
-    <span class="md-ellipsis">
-      九、GNN Playground调参经验总结
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gnn" class="md-nav__link">
-    <span class="md-ellipsis">
-      十、与GNN相关的技术
+      4 Conclusion and Future Work
     </span>
   </a>
   
@@ -1686,248 +1728,134 @@
   
 
 
-  <h1>图神经网络导论</h1>
+  <h1>O-GNN</h1>
 
-<p><a href="https://distill.pub/2021/gnn-intro/">博客链接</a><br />
-<img alt="" src="../assets/DL/8.JPG" /><br />
-·解读：上图中<code>Layer3</code>到<code>Layer0</code>层次依次升高，高层的某个结点依赖于一些低层结点计算而来。在网站上点击某结点，可查看该结点对低层结点的依赖关系。  </p>
-<h4 id="_1">一、文章架构</h4>
-<p>1.适合表示为图的数据类型。<br />
-2.图与其他数据类型的不同之处，以及使用图的一些专用的选择。<br />
-3.建立现代<code>GNN</code>，遍历模型的每个部分，从基本骨架实现到<code>SOTA</code>图神经网络。<br />
-4.提供<code>GNN playground</code>。  </p>
-<h4 id="_2">二、图</h4>
-<p>1.图的属性<br />
-<img alt="" src="../assets/DL/9.JPG" /><br />
-·结点属性：结点身份、邻居个数等。<br />
-·边属性及方向：边身份、边权重等。<br />
-·全局属性：结点数、最长路径等。<br />
-2.图的表示<br />
-<img alt="" src="../assets/DL/10.JPG" /><br />
-·结点属性嵌入表示<br />
-·边属性嵌入表示<br />
-·全局属性嵌入表示<br />
-3.图举例<br />
-（1）图片表示为图<br />
-<img alt="" src="../assets/DL/11.JPG" /><br />
-·每个像素点映射到图中一个结点，并按照行号和列号进行唯一确定。<br />
-·各像素结点及其<span class="arithmatex">\(8\)</span>-邻域结点以边相连。<br />
-·上图邻接矩阵的蓝色点表示两个像素结点有边相连。<br />
-（2）文本表示为图<br />
-<img alt="" src="../assets/DL/12.JPG" /><br />
-·各词元分别对应于图中一个结点，上一词元与下一词元之间存在有向边。  <br />
-（3）分子图<br />
-<img alt="" src="../assets/DL/13.JPG" /><br />
-<img alt="" src="../assets/DL/14.JPG" /><br />
-·原子表示为图中结点，化学键对应于图中各边。<br />
-（4）社交网络图<br />
-<img alt="" src="../assets/DL/15.JPG" /><br />
-（5）引用图<br />
-（6）常见图的规模<br />
-<img alt="" src="../assets/DL/16.JPG" />  </p>
-<h4 id="_3">三、具有图结构的问题</h4>
-<p>1.问题分类<br />
-·图级别(<code>graph-level</code>)：预测一整张图的某些性质。 
-·结点级别(<code>node-level</code>)：对于图中各个结点，分别预测它们的性质。<br />
-·边级别(<code>edge-level</code>)：预测图中边的存在性或边的某些性质。<br />
-2.图级别(<code>graph-level</code>)任务<br />
-<img alt="" src="../assets/DL/17.JPG" /><br />
-（1）目标<br />
-·预测整个图的性质。<br />
-（2）举例
-·给定一个分子图，预测它是否会跟配体进行对接。<br />
-·给定一个分子图，预测其气味。<br />
-（3）类比<br />
-·文本情感分析：给定一整个文本序列，分析文本情感类型。<br />
-·图像分类：给定一整张图像，分析其类别。<br />
-3.结点级别(<code>node-level</code>)任务<br />
-（1）目标<br />
-·预测图中各结点的性质。<br />
-（2）举例——<code>Zach’s Karate Club</code><br />
-<img alt="" src="../assets/DL/18.JPG" /><br />
-·教练、管理员之间的争执导致了空手道俱乐部的分裂。<br />
-·节点代表俱乐部成员。<br />
-·边代表这些成员在空手道之外的互动关系。<br />
-·预测问题：预测给定成员在争执之后会支持教练还是管理员。<br />
-·此时，成员的标签与成员结点到教练、管理员的距离高度相关。<br />
-（3）类比<br />
-·图像分割：尝试对图像中每个像素点进行标注。<br />
-·文本词性预测：给定一个与子，预测各个词汇的词性。<br />
-4.边级别(<code>edge-level</code>)任务<br />
-（1）目标<br />
-·预测图中各边的性质。<br />
-（2）举例——图像场景理解<br />
-<img alt="" src="../assets/DL/19.JPG" /><br />
-<img alt="" src="../assets/DL/20.JPG" /><br />
-·任务目标：识别场景中的物体，并预测各物体之间的关系。<br />
-·图像中的物体用结点表示，则物体关系预测可以转化为结点的邻接性，以及边的属性预测。  </p>
-<h4 id="_4">四、神经网络与图的兼容性挑战</h4>
-<p>1.图信息表示的挑战<br />
-（1）图中四种常见信息<br />
-·结点、边、全局信息和连通性。<br />
-（2）结点、边和全局信息易于表示<br />
-·表示方法：使用特征矩阵。<br />
-（3）连通性(<code>connectivity</code>)表示的挑战<br />
-①邻接矩阵表示法——最显然但存在问题的选择<br />
-·结点数量可能高达数百万，且边数是高度变化的，通常导致邻接矩阵极其稀疏。<br />
-·极其稀疏的邻接矩阵：空间效率低下。<br />
-·同样的连通性(<code>connectivity</code>)可由许多个邻接矩阵表示，不保证排列不变性（即输入表示同一<code>connectivity</code>的不同邻接矩阵，输出结果相同）<br />
-<img alt="" src="../assets/DL/21.JPG" /><br />
-<img alt="" src="../assets/DL/22.JPG" /><br />
-②邻接表——一种优雅、内存高效的稀疏矩阵表示方法<br />
-<img alt="" src="../assets/DL/23.JPG" /><br />
-·使用元组<span class="arithmatex">\((i, j)\)</span>表示结点<span class="arithmatex">\(n_i, n_j\)</span>的连通性<span class="arithmatex">\(e_k\)</span>。<br />
-·边数远远少于邻接矩阵的元素个数<span class="arithmatex">\(n_{nodes}^2\)</span>，避开图中不连通部分的存储与计算。<br />
-·图中每个属性分别使用一个向量进行表示。  </p>
-<h4 id="_5">五、图神经网络</h4>
-<p>1.图神经网络定义<br />
-·<code>GNN</code>是对图中所有属性（结点、边、全局信息）的变换，这种变换保持图对称性（排列不变性）。<br />
-2.消息传递神经网络<br />
-·<code>graph in, graph out</code>结构：对图中结点、边、全局属性的嵌入表示进行变换，不改变图的连通性。<br />
-3.最简单的图神经网络<br />
-（1）特点<br />
-·可以学习边、结点、全局属性的新的嵌入表示，但不使用图的连通性。<br />
-（2）结构<br />
-·对于图的每一个部分（结点、边、全局信息），分别使用多层<code>MLP</code>，学习其嵌入表示。<br />
-<img alt="" src="../assets/DL/24.JPG" /><br />
-4.通过汇聚信息(<code>Pooling Information</code>)进行预测<br />
-（1）举例——二分类<br />
-·任务目标：针对结点进行二元预测。<br />
-·解决方法：对于每一个结点的嵌入表示，分别应用同一个线性分类器。 
-<img alt="" src="../assets/DL/25.JPG" /> <br />
-（2）汇聚(<code>Pooling</code>)<br />
-<img alt="" src="../assets/DL/26.JPG" /> <br />
-①对结点分类的作用：<br />
-汇聚边信息，以用于结点预测。<br />
-②步骤<br />
-·将所有待汇聚的嵌入表示进行连接，形成矩阵。<br />
-·对嵌入表示进行聚合，通常使用求和操作。<br />
-·各结点分别使用自己的邻接边进行汇聚，不使用非邻接边。<br />
-<img alt="" src="../assets/DL/27.JPG" /> <br />
-<img alt="" src="../assets/DL/28.JPG" /> <br />
-<img alt="" src="../assets/DL/29.JPG" /> <br />
-<img alt="" src="../assets/DL/30.JPG" /> <br />
-（3）最简单<code>GNN</code>的问题<br />
-·尚未使用图的连通信息，独立处理各结点的嵌入表示，直到汇聚时才将它们连接在一起，导致图的结构信息（连通信息）利用不充分。  </p>
-<h4 id="_6">六、图中各部分之间的消息传递</h4>
-<p>1.基本思想<br />
-·在<code>GNN</code>层的内部使用汇聚技术，可以使得学到的嵌入表示对图的连通性有所感知。<br />
-2.消息传递<br />
-<img alt="" src="../assets/DL/31.JPG" /><br />
-（1）含义<br />
-邻接结点或边之间进行信息交换，互相影响更新后的嵌入表示。<br />
-（2）步骤<br />
-·对于图中每个结点，集合所有相邻结点的嵌入表示（消息）。<br />
-·通过聚合函数（如：求和函数），对所有消息进行聚合。<br />
-·汇聚信息通过更新函数，更新函数通常是一个经过训练的神经网络。<br />
-（3）理解<br />
-·图神经网络的消息传递机制和图像卷积操作有相似之处，作用都是对元素的邻域信息进行聚合与处理，以更新元素的值。<br />
-·图中的一个“元素”就是一个结点；图像中的一个元素就是一个像素点。<br />
-·图中结点的邻居个数可变，图像像素点的邻居个数不变。<br />
-<img alt="" src="../assets/DL/32.JPG" />  </p>
-<h4 id="_7">七、学习边的表示</h4>
-<p>1.基本思想<br />
-<img alt="" src="../assets/DL/33.JPG" /><br />
-·汇聚各邻接边的嵌入表示信息，以更新某结点的嵌入表示。<br />
-·由于边和结点的嵌入表示维度可能不同，因此需要将边的嵌入表示空间映射到结点的嵌入表示空间。<br />
-2.更新顺序<br />
-·模型需要利用边信息更新结点信息，以及利用结点信息更新边信息。<br />
-·先更新结点信息还是先更新边的信息是两个不同的选择。<br />
-3.<code>weave</code>层<br />
-<img alt="" src="../assets/DL/34.JPG" /><br />
-·结点到结点（线性）<br />
-·边到边（线性）<br />
-·结点到边（边层）<br />
-·边到结点（结点层）  </p>
-<h4 id="_8">八、添加全局表示</h4>
-<p>1.<code>GNN</code>的一个缺点<br />
-·远距离结点可能无法有效地进行信息传递。<br />
-·对于一个结点，若共有<span class="arithmatex">\(k\)</span>层，则消息至多传递<span class="arithmatex">\(k\)</span>步。<br />
-·若预测任务依赖于远距离的结点/结点组，则低效的消息传递可能导致模型性能较差。<br />
-2.解决方法<br />
-（1）虚拟边(<code>virtual edge</code>)<br />
-·任意两个结点可以直接进行消息传递。<br />
-·适用于小型图，如分子图；但对于大型图而言，会大幅度增加计算开销。<br />
-（2）主结点(<code>master node</code>)/环境向量(<code>context vector</code>)<br />
-·与所有结点、边进行连接。<br />
-·将边信息汇聚给结点时，主结点信息也会被汇聚；将结点信息汇聚给边时，主结点信息也会被汇聚。<br />
-<img alt="" src="../assets/DL/35.JPG" /><br />
-·作用：对图进行了更复杂、更丰富的表示。<br />
-3.理解<br />
-·邻接边信息、邻居结点信息和全局信息的汇聚，可以视为一种基于特征(<code>feature-wise</code>)的注意力机制。  </p>
-<h4 id="gnn-playground">九、<code>GNN Playground</code>调参经验总结</h4>
-<p>1.参数规模与模型表现<br />
-<img alt="" src="../assets/DL/36.JPG" /><br />
-·参数规模增大能带来模型性能的提升。<br />
-·<code>GNN</code>是一种高效的模型，较小规模的参数就有可能产生高性能。<br />
-2.嵌入维度与模型表现<br />
-<img alt="" src="../assets/DL/37.JPG" /><br />
-·提高嵌入维度，可以提高模型性能。<br />
-3.<code>GNN</code>层数与模型表现<br />
-<img alt="" src="../assets/DL/38.JPG" /><br />
-·随着层数增加，模型的平均性能有提升的趋势。<br />
-·最佳模型并未含有最多的层数。<br />
-·随着层数增加，模型性能的下界有所下降。<br />
-·解释：具有更多层数的<code>GNN</code>将会在更大范围内进行信息广播，可能导致结点的表示在连续迭代中被“稀释(<code>dilute</code>)”。<br />
-4.聚合函数类型与模型性能<br />
-<img alt="" src="../assets/DL/39.JPG" /><br />
-·求和函数对于平均性能有轻微的提升。<br />
-·三种聚合函数下，模型最高性能相当。<br />
-5.消息传递类型与模型性能<br />
-<img alt="" src="../assets/DL/40.JPG" /><br />
-·越多的图属性参加消息传递，模型的平均性能越好。<br />
-·结点表示看上去比边表示重要。<br />
-6.进一步提升模型性能的改进方向<br />
-·更精致的图算法<br />
-·图本身（如何进行图的构建，使用额外架构或关系以进行充分利用）<br />
-·举例：为了使分子图的特征更丰富，可以在结点间添加额外的空间关系，添加化学键以外的边，或者添加子图之间的显式可学习关系。  </p>
-<h4 id="gnn">十、与<code>GNN</code>相关的技术</h4>
-<p>1.其他类型的图<br />
-（1）多边图<br />
-·一对结点间可以连接多条边，分别用于模拟结点间的不同关联。<br />
-·<code>GNN</code>修改：对于每一种边的类型，分别使用不同类型的消息传递方式。<br />
-（2）<code>nested/hypernode graph</code><br />
-·用于表示层次信息。<br />
-·<code>GNN</code>修改：分别学习不同级别的表示。<br />
-（3）<code>hypergraph</code><br />
-·一条边可以用于连接多个顶点。<br />
-·<code>GNN</code>修改：识别结点的<code>community</code>，添加<code>hyper-edge</code>以连接<code>community</code>中的所有结点。<br />
-<img alt="" src="../assets/DL/41.JPG" /><br />
-2.图中的采样与批量化(<code>batching</code>)<br />
-（1）参数更新的挑战<br />
-·由于图中结点、边数是可变的，因此<code>batchsize</code>不是常数，如何使用随机梯度下降法（要求常数<code>batchsize</code>）进行参数更新是一个挑战。<br />
-（2）图批量化基本思想<br />
-·采样获得子图，保持大图的重要性质。<br />
-·图采样操作高度依赖于上下文，涉及图中边和顶点的选取。<br />
-（3）采样方法——保留邻域结构<br />
-·随机采样固定数量的结点，形成结点集合<span class="arithmatex">\(V\)</span>，之后添加与结点集合距离不超过<span class="arithmatex">\(k\)</span>的结点以及相应的边。<br />
-·每个邻域可以视为一个独立的图，<code>GNN</code>可以在这些子图上训练。<br />
-·损失可以进行掩码处理，仅考虑结点集合<span class="arithmatex">\(V\)</span>，原因是<span class="arithmatex">\(V\)</span>邻域中每个结点的邻域信息都不完整。<br />
-（4）采样方法——随机游走<br />
-<img alt="" src="../assets/DL/42.JPG" /><br />
-·随机选取单一结点<span class="arithmatex">\(v\)</span>，扩展其邻域<span class="arithmatex">\(N\)</span>，使得邻域中结点到<span class="arithmatex">\(v\)</span>的距离不超过<span class="arithmatex">\(k\)</span>。<br />
-·从邻域<span class="arithmatex">\(N\)</span>中选取一个结点，针对该结点进行距离不超过<span class="arithmatex">\(k\)</span>的邻域扩展。<br />
-·一直重复上述操作，直到获得足够数量的结点、边或子图。<br />
-3.归纳偏置(<code>Inductive Bias</code>)<br />
-·保持图的对称性（排列不变性）<br />
-4.汇聚操作比较<br />
-·没有总是最好的汇聚操作。<br />
-<img alt="" src="../assets/DL/42.JPG" /><br />
-5.<code>GCN(Graph Convolutional Network)</code>对子图函数的近似<br />
-·<code>GCN</code>可以认为是有<span class="arithmatex">\(N\)</span>个子图，对每个子图进行<code>embedding</code>计算。<br />
-6.边与图对偶<br />
-·结点与边的互相转化（对偶）可以用于<code>GCN</code>，即<code>Dual-Primal Graph Convolutional Networks</code>。<br />
-7.图卷积作为矩阵乘法 + 矩阵乘法与图中游走的关系<br />
-·图中进行卷积/随机游走，等价于使用图的邻接矩阵进行矩阵乘法。<br />
-8.图注意力网络<br />
-<img alt="" src="../assets/DL/44.JPG" /><br />
-·图像卷积权重与位置相关，但图中不具有位置信息，因此权重不应该对位置敏感。<br />
-·可以在图神经网络中使用注意力机制。<br />
-9.图的可解释性<br />
-<img alt="" src="../assets/DL/45.JPG" /><br />
-10.图的拓扑结构建模算法<br />
-·直接模拟邻接矩阵，类似于图像中的自动编码器。<br />
-·顺序化建图。  </p>
+<p>论文标题：<code>O-GNN：Incorporating Ring Priors into Molecular Modeling</code><br />
+发表期刊：<code>ICLR 2023</code><br />
+论文：<a href=""></a><br />
+代码：<a href="https://github.com/O-GNN/O-GNN">github</a>  </p>
+<h4 id="abstract"><code>Abstract</code></h4>
+<p>1.以往分子建模<code>GNN</code>模型的问题<br />
+- 不能显式考虑化合物(<code>compound</code>)中的环(<code>ring</code>)，限制了模型的表达能力。  </p>
+<p>2.本文工作——<code>O-GNN</code>摘要<br />
+- 提出<code>GNN</code>的一个环加强(<code>ring-enhanced</code>)的新变种（命名为<code>O-GNN</code>），在化合物的原子、化学键以外，对环信息进行了显式建模。<br />
+- 每个环分别由一个隐向量进行表征，参与原子和化学键的表征，并根据原子表征、化学键表征进行迭代更新。<br />
+- 理论分析证明：只需一个层，<code>O-GNN</code>即可区分位于不同环上的同构子图(<code>isomorphic subgraph</code>)；而传统<code>GNN</code>需要多个层进行区分。因此，<code>O-GNN</code>表达能力更强。  </p>
+<p>3.实验结果简述<br />
+- 在<code>11</code>个公开数据集上表现优秀。<br />
+- 在<code>PCQM4Mv1 benchmark</code>上，超越之前的<code>KDDCup</code>最佳解决方案，获得新的<code>SOTA</code>验证结果。<br />
+- 在<code>DrugBank</code>上的药物-药物相互作用预测任务上，取得新的<code>SOTA</code>结果。<br />
+- 在分子性质预测、逆合成预测任务上，超越不含环建模的<code>baseline</code>。  </p>
+<h4 id="1-introduction"><code>1 Introduction</code></h4>
+<h5 id="1">1.环状化合物简介</h5>
+<ul>
+<li>定义：至少包含一个环的化合物。  </li>
+<li>占比：在作者对<code>PubChem</code>的<code>109M</code>种化合物的统计中，<span class="arithmatex">\(90\%\)</span> 以上化合物至少含有一个环。  </li>
+</ul>
+<h5 id="2gnn">2.<code>GNN</code>分子建模研究进展</h5>
+<ul>
+<li><code>GNN</code>在药物作用中的重要性  <ul>
+<li><code>Stokes et al.(2020)</code>训练<code>GNN</code>以预测大肠杆菌(<code>Escherichia coli</code>)的生长抑制，并最终发现<code>SARS-CoV-2</code>的可能抗体。  </li>
+<li><code>GNN</code>广泛应用于药物性质预测(<code>Rong et al., 2020</code>)、药物-靶标相互作用建模(<code>Torng &amp; Altman, 2019</code>)、逆合成(<code>Chen &amp; Jung, 2021</code>)等。  </li>
+</ul>
+</li>
+<li>以往工作的问题  <ul>
+<li>上述工作均没有在<code>GNN</code>中显式建模环信息。  </li>
+<li>从应用者角度看，对于上述任务，由重要特征缺失。  </li>
+<li>从机器学习角度，<code>Loukas(2020)</code>指出宽度、深度乘积不够大时，现有的基于消息传递的<code>GNN</code>不能正确捕捉环信息。  </li>
+<li>因此，化合物中的环信息没有得到充分利用。  </li>
+</ul>
+</li>
+</ul>
+<h5 id="3o-gnn">3.<code>O-GNN</code></h5>
+<ul>
+<li>表征的更新   <ul>
+<li>每个层次时序化更新：边信息、结点信息和环信息。  </li>
+</ul>
+</li>
+<li>消息传递、非线性的引入  <ul>
+<li>消息传递：使用自注意力层。  </li>
+<li>非线性引入：使用前馈层。  </li>
+</ul>
+</li>
+<li>实验设计  <ul>
+<li>分子性质预测  <ul>
+<li>在<code>PCQM4Mv1</code>数据集上进行实验，预测HOMO-LUMO能隙：在验证集上超过<code>KDDCup</code>。  </li>
+<li>在<code>MoleculeNet</code>上的六个数据集进行实验：超过了无环<code>GNN</code>的性能。  </li>
+<li>在<code>FS-Mol</code>数据集上进行实验：证明建模环信息可以提升精确度。  </li>
+</ul>
+</li>
+<li>药物-药物相互作用预测  <ul>
+<li><code>DrugBank</code>基于前人设定进行测试，获得<code>SOTA</code>结果。  </li>
+</ul>
+</li>
+<li>逆合成  <ul>
+<li>将<code>O-GNN</code>用于<code>LocalRetro</code>，在<code>USPTO-50k</code>上获得显著的性能提升。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-method"><code>2 Method</code></h4>
+<h5 id="21-notation-and-preliminaries"><code>2.1 Notation and Preliminaries</code></h5>
+<ul>
+<li>符号约定<ul>
+<li>图<span class="arithmatex">\(G = (V, E)\)</span>, <span class="arithmatex">\(V\)</span>为顶点集，<span class="arithmatex">\(E\)</span>为边集，<span class="arithmatex">\(R\)</span>维环的集合。  </li>
+<li><span class="arithmatex">\(V = \{v_1, \cdots, v_{|V|}\}, E = \{e_{i,j}\}\)</span>表示顶点<span class="arithmatex">\(v_i,v_j\)</span>连成的边。  </li>
+<li>用<span class="arithmatex">\(i\)</span>简记顶点<span class="arithmatex">\(v_i\)</span>；用<span class="arithmatex">\((v_i, v_j)\)</span>表示边<span class="arithmatex">\(e_{ij}\)</span>。  </li>
+<li>顶点<span class="arithmatex">\(i\)</span>的邻域：<span class="arithmatex">\(N(i) = \{v_j|e_{ij}\in E\}\)</span>  </li>
+<li><span class="arithmatex">\(R = \{r_1, \cdots, r_n\}\)</span>，其中<span class="arithmatex">\(r_i\)</span>为单环。  </li>
+<li><span class="arithmatex">\(R(i), R(e_{ij})\)</span>分别表示：原子<span class="arithmatex">\(i\)</span>，边<span class="arithmatex">\(e_{ij}\)</span>所处的单环集合。  </li>
+<li>举例<br />
+<img alt="" src="../assets/DL/81.JPG" />  </li>
+</ul>
+</li>
+<li>原子表征更新公式     <ul>
+<li>公式：<span class="arithmatex">\(h_i' = Update(h_i, Aggregate(h_j|j \in N(i)))\)</span>  </li>
+<li><span class="arithmatex">\(h_i, h_i'\)</span>分别为原子<span class="arithmatex">\(i\)</span>更新前后的表征。  </li>
+</ul>
+</li>
+</ul>
+<h5 id="22-model"><code>2.2 Model</code></h5>
+<p><img alt="" src="../assets/DL/82.JPG" /><br />
+- 设<span class="arithmatex">\(L\)</span>为模型层数，<span class="arithmatex">\(U^{(l)}\)</span>为第<span class="arithmatex">\(l\)</span>层的复合物表征。<br />
+- 表征初始化<br />
+    - 结点表征的初始化：通过可学习的<code>embedding</code>层，初始化<span class="arithmatex">\(h_i^{(0)}\)</span>，表示原子的下列信息：<br />
+        - 原子类型<br />
+        - 手性<br />
+        - <code>degree number</code><br />
+        - 形式电荷<br />
+        - 杂化类型<br />
+        - 其余信息<br />
+    - 边表征的初始化：通过可学习的<code>embedding</code>层，初始化<span class="arithmatex">\(h_{ij}^{(0)}\)</span>，表示原子的化学键类型、立体异构、是否共轭。<br />
+    - 化合物表征的初始化：通过可学习<code>embedding</code>层。<br />
+    - 环表征的初始化：连接(<code>nonlinearity</code>)原子、边的<code>embedding</code>，并使用非线性层进行变换。<br />
+- 表征更新：对于结点、化学键、环和化合物的表征，进行时序化更新。<br />
+    - 边表征：由连接的原子、边所处的环，以及上一层的化合物表征进行更新：<br />
+<span class="arithmatex">\(h_{ij}^{(l)} = h_{ij}^{(l - 1)} + MLP(h_i^{(l - 1)}, h_j^{(l - 1)}), h_{ij}^{(l - 1)}, \frac{\sum}h_i^{(l - 1)}{r \in R(e_{ij})h_r^{(l - 1)}}{|R(e_{ij})|}, U^{(l - 1)} \cdots (2)\)</span> <br />
+    - 原子表征：使用注意力模型，自适应地将边表征聚合到中心原子。 <br />
+<span class="arithmatex">\(\bar{h}_{i}^{(l)} = \sum_{j \in N(i)} \alpha_{j}W_vconcat(h_{ij}^{(l - 1)}, h_j^{(l - 1)})\)</span><br />
+<span class="arithmatex">\(\alpha_j ∝ exp(a^TleakyReLU(W_qh_i^{(l - 1)} + W_kconcat(h_j^{(l - 1)}, h_{ij}^{(l)})))\cdots (3)\)</span><br />
+<span class="arithmatex">\(h_{i}^{(l)} = h_{i}^{(l - 1)} + MLP(h_i^{(l - 1)}) + MLP(h_i^{(k - 1)}, \bar{h}_i^{(l)}, \frac{1}{|R(v_i)|}\sum_{r \in R(v_i)}h_r^{(l - 1)}, U^{(l - 1)})\)</span><br />
+    等式(3)中：<span class="arithmatex">\(W\)</span>的参数通过学习得到，<code>concat</code>表示将输入向量连接为一个长向量。<br />
+    - 环表征：使用<code>MLP</code>更新  <br />
+<span class="arithmatex">\(h_{r}^{(l)} = h_{r}^{(l - 1)} + MLP(h_{r}^{(l)}, \sum_{v_i \in V(r)}h_i^{(l)}, \sum_{e_{ij} \in E(r)}h_{ij}^{(l)}, U^{(l - 1)})\)</span><br />
+    - 化合物表征：<br />
+<span class="arithmatex">\(U^{(l)} = U^{(l - 1)}+MLP(\frac{1}{|V|}\sum_{i = 1}^{|V|}h_i^{(l)}, \frac{1}{|E|}\sum_{i, j}^{}h_{ij}^{(l)}, \frac{1}{|R|}\sum_{r \in R}^{|V|}h_r^{(l)}, U^{(l - 1)})\)</span><br />
+- 输出层次<br />
+    - 图表征与图分类：在<span class="arithmatex">\(L\)</span>个<code>O-GNN</code>层的堆叠之后，通过简单的平均汇聚，即<span class="arithmatex">\(h_{G} = \frac{1}{|V|}\sum_{i = 1}^{|V|}h_i^{(L)}\)</span>，获得图表征，可用于图分类任务。<br />
+    - 结点分类：对于结点分类任务，可在<span class="arithmatex">\(h_{i}^{(L)}\)</span>处添加分类头。  </p>
+<h5 id="23-theoretical-analysis"><code>2.3 Theoretical Analysis</code></h5>
+<h4 id="3-experiments"><code>3 Experiments</code></h4>
+<h4 id="4-conclusion-and-future-work"><code>4 Conclusion and Future Work</code></h4>
+<ul>
+<li>未来工作  <ul>
+<li>结合预训练获得更强的<code>O-GNN</code>。  </li>
+<li>在训练数据量非常首先的情况下，进一步改善模型。  </li>
+<li>高效地识别更复杂架构，并将其融入表征。  </li>
+</ul>
+</li>
+</ul>
 
 
 
