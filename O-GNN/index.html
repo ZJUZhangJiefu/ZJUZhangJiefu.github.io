@@ -1799,7 +1799,9 @@
 <h4 id="2-method"><code>2 Method</code></h4>
 <h5 id="21-notation-and-preliminaries"><code>2.1 Notation and Preliminaries</code></h5>
 <ul>
-<li>符号约定<ul>
+<li>
+<p>符号约定</p>
+<ul>
 <li>图<span class="arithmatex">\(G = (V, E)\)</span>, <span class="arithmatex">\(V\)</span>为顶点集，<span class="arithmatex">\(E\)</span>为边集，<span class="arithmatex">\(R\)</span>维环的集合。  </li>
 <li><span class="arithmatex">\(V = \{v_1, \cdots, v_{|V|}\}, E = \{e_{i,j}\}\)</span>表示顶点<span class="arithmatex">\(v_i,v_j\)</span>连成的边。  </li>
 <li>用<span class="arithmatex">\(i\)</span>简记顶点<span class="arithmatex">\(v_i\)</span>；用<span class="arithmatex">\((v_i, v_j)\)</span>表示边<span class="arithmatex">\(e_{ij}\)</span>。  </li>
@@ -1810,41 +1812,53 @@
 <img alt="" src="../assets/DL/81.JPG" />  </li>
 </ul>
 </li>
-<li>原子表征更新公式     <ul>
+<li>
+<p>原子表征更新公式     </p>
+<ul>
 <li>公式：<span class="arithmatex">\(h_i' = Update(h_i, Aggregate(h_j|j \in N(i)))\)</span>  </li>
 <li><span class="arithmatex">\(h_i, h_i'\)</span>分别为原子<span class="arithmatex">\(i\)</span>更新前后的表征。  </li>
 </ul>
 </li>
 </ul>
 <h5 id="22-model"><code>2.2 Model</code></h5>
-<p><img alt="" src="../assets/DL/82.JPG" /><br />
-- 设<span class="arithmatex">\(L\)</span>为模型层数，<span class="arithmatex">\(U^{(l)}\)</span>为第<span class="arithmatex">\(l\)</span>层的复合物表征。<br />
-- 表征初始化<br />
-    - 结点表征的初始化：通过可学习的<code>embedding</code>层，初始化<span class="arithmatex">\(h_i^{(0)}\)</span>，表示原子的下列信息：<br />
-        - 原子类型<br />
-        - 手性<br />
-        - <code>degree number</code><br />
-        - 形式电荷<br />
-        - 杂化类型<br />
-        - 其余信息<br />
-    - 边表征的初始化：通过可学习的<code>embedding</code>层，初始化<span class="arithmatex">\(h_{ij}^{(0)}\)</span>，表示原子的化学键类型、立体异构、是否共轭。<br />
-    - 化合物表征的初始化：通过可学习<code>embedding</code>层。<br />
-    - 环表征的初始化：连接(<code>nonlinearity</code>)原子、边的<code>embedding</code>，并使用非线性层进行变换。<br />
-- 表征更新：对于结点、化学键、环和化合物的表征，进行时序化更新。<br />
-    - 边表征：由连接的原子、边所处的环，以及上一层的化合物表征进行更新：<br />
-<span class="arithmatex">\(h_{ij}^{(l)} = h_{ij}^{(l - 1)} + MLP(h_i^{(l - 1)}, h_j^{(l - 1)}), h_{ij}^{(l - 1)}, \frac{\sum}h_i^{(l - 1)}{r \in R(e_{ij})h_r^{(l - 1)}}{|R(e_{ij})|}, U^{(l - 1)} \cdots (2)\)</span> <br />
-    - 原子表征：使用注意力模型，自适应地将边表征聚合到中心原子。 <br />
+<p><img alt="" src="../assets/DL/82.JPG" />  </p>
+<ul>
+<li>设<span class="arithmatex">\(L\)</span>为模型层数，<span class="arithmatex">\(U^{(l)}\)</span>为第<span class="arithmatex">\(l\)</span>层的复合物表征。  </li>
+<li>表征初始化  <ul>
+<li>结点表征的初始化：通过可学习的<code>embedding</code>层，初始化<span class="arithmatex">\(h_i^{(0)}\)</span>，表示原子的下列信息：  <ul>
+<li>原子类型  </li>
+<li>手性  </li>
+<li><code>degree number</code>  </li>
+<li>形式电荷  </li>
+<li>杂化类型  </li>
+<li>其余信息  </li>
+</ul>
+</li>
+<li>边表征的初始化：通过可学习的<code>embedding</code>层，初始化<span class="arithmatex">\(h_{ij}^{(0)}\)</span>，表示原子的化学键类型、立体异构、是否共轭。  </li>
+<li>化合物表征的初始化：通过可学习<code>embedding</code>层。  </li>
+<li>环表征的初始化：连接(<code>nonlinearity</code>)原子、边的<code>embedding</code>，并使用非线性层进行变换。  </li>
+</ul>
+</li>
+<li>表征更新：对于结点、化学键、环和化合物的表征，进行时序化更新。  <ul>
+<li>边表征：由连接的原子、边所处的环，以及上一层的化合物表征进行更新：<br />
+<span class="arithmatex">\(h_{ij}^{(l)} = h_{ij}^{(l - 1)} + MLP(h_i^{(l - 1)}, h_j^{(l - 1)}), h_{ij}^{(l - 1)}, \frac{\sum}h_i^{(l - 1)}{r \in R(e_{ij})h_r^{(l - 1)}}{|R(e_{ij})|}, U^{(l - 1)} \cdots (2)\)</span>   </li>
+<li>原子表征：使用注意力模型，自适应地将边表征聚合到中心原子。 <br />
 <span class="arithmatex">\(\bar{h}_{i}^{(l)} = \sum_{j \in N(i)} \alpha_{j}W_vconcat(h_{ij}^{(l - 1)}, h_j^{(l - 1)})\)</span><br />
 <span class="arithmatex">\(\alpha_j ∝ exp(a^TleakyReLU(W_qh_i^{(l - 1)} + W_kconcat(h_j^{(l - 1)}, h_{ij}^{(l)})))\cdots (3)\)</span><br />
 <span class="arithmatex">\(h_{i}^{(l)} = h_{i}^{(l - 1)} + MLP(h_i^{(l - 1)}) + MLP(h_i^{(k - 1)}, \bar{h}_i^{(l)}, \frac{1}{|R(v_i)|}\sum_{r \in R(v_i)}h_r^{(l - 1)}, U^{(l - 1)})\)</span><br />
-    等式(3)中：<span class="arithmatex">\(W\)</span>的参数通过学习得到，<code>concat</code>表示将输入向量连接为一个长向量。<br />
-    - 环表征：使用<code>MLP</code>更新  <br />
-<span class="arithmatex">\(h_{r}^{(l)} = h_{r}^{(l - 1)} + MLP(h_{r}^{(l)}, \sum_{v_i \in V(r)}h_i^{(l)}, \sum_{e_{ij} \in E(r)}h_{ij}^{(l)}, U^{(l - 1)})\)</span><br />
-    - 化合物表征：<br />
-<span class="arithmatex">\(U^{(l)} = U^{(l - 1)}+MLP(\frac{1}{|V|}\sum_{i = 1}^{|V|}h_i^{(l)}, \frac{1}{|E|}\sum_{i, j}^{}h_{ij}^{(l)}, \frac{1}{|R|}\sum_{r \in R}^{|V|}h_r^{(l)}, U^{(l - 1)})\)</span><br />
-- 输出层次<br />
-    - 图表征与图分类：在<span class="arithmatex">\(L\)</span>个<code>O-GNN</code>层的堆叠之后，通过简单的平均汇聚，即<span class="arithmatex">\(h_{G} = \frac{1}{|V|}\sum_{i = 1}^{|V|}h_i^{(L)}\)</span>，获得图表征，可用于图分类任务。<br />
-    - 结点分类：对于结点分类任务，可在<span class="arithmatex">\(h_{i}^{(L)}\)</span>处添加分类头。  </p>
+等式(3)中：<span class="arithmatex">\(W\)</span>的参数通过学习得到，<code>concat</code>表示将输入向量连接为一个长向量。  </li>
+<li>环表征：使用<code>MLP</code>更新  <br />
+<span class="arithmatex">\(h_{r}^{(l)} = h_{r}^{(l - 1)} + MLP(h_{r}^{(l)}, \sum_{v_i \in V(r)}h_i^{(l)}, \sum_{e_{ij} \in E(r)}h_{ij}^{(l)}, U^{(l - 1)})\)</span>  </li>
+<li>化合物表征：<br />
+<span class="arithmatex">\(U^{(l)} = U^{(l - 1)}+MLP(\frac{1}{|V|}\sum_{i = 1}^{|V|}h_i^{(l)}, \frac{1}{|E|}\sum_{i, j}^{}h_{ij}^{(l)}, \frac{1}{|R|}\sum_{r \in R}^{|V|}h_r^{(l)}, U^{(l - 1)})\)</span>  </li>
+</ul>
+</li>
+<li>输出层次  <ul>
+<li>图表征与图分类：在<span class="arithmatex">\(L\)</span>个<code>O-GNN</code>层的堆叠之后，通过简单的平均汇聚，即<span class="arithmatex">\(h_{G} = \frac{1}{|V|}\sum_{i = 1}^{|V|}h_i^{(L)}\)</span>，获得图表征，可用于图分类任务。  </li>
+<li>结点分类：对于结点分类任务，可在<span class="arithmatex">\(h_{i}^{(L)}\)</span>处添加分类头。  </li>
+</ul>
+</li>
+</ul>
 <h5 id="23-theoretical-analysis"><code>2.3 Theoretical Analysis</code></h5>
 <h4 id="3-experiments"><code>3 Experiments</code></h4>
 <h4 id="4-conclusion-and-future-work"><code>4 Conclusion and Future Work</code></h4>
