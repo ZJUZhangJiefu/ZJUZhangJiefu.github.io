@@ -1428,6 +1428,42 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#c3-o-gnn-with-brics" class="md-nav__link">
+    <span class="md-ellipsis">
+      C.3 O-GNN with BRICS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c4-more-comparison-between-o-gnn-and-o-gnn-wo-rings" class="md-nav__link">
+    <span class="md-ellipsis">
+      C.4 More Comparison Between O-GNN and O-GNN w/o Rings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c5" class="md-nav__link">
+    <span class="md-ellipsis">
+      C.5 额外讨论
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-related-work-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      D Related Work Summary
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1778,6 +1814,42 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#c3-o-gnn-with-brics" class="md-nav__link">
+    <span class="md-ellipsis">
+      C.3 O-GNN with BRICS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c4-more-comparison-between-o-gnn-and-o-gnn-wo-rings" class="md-nav__link">
+    <span class="md-ellipsis">
+      C.4 More Comparison Between O-GNN and O-GNN w/o Rings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c5" class="md-nav__link">
+    <span class="md-ellipsis">
+      C.5 额外讨论
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-related-work-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      D Related Work Summary
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1939,6 +2011,18 @@
 </li>
 </ul>
 <h5 id="23-theoretical-analysis"><code>2.3 Theoretical Analysis</code></h5>
+<ul>
+<li>【定义1（<span class="arithmatex">\(k\)</span>-邻域节点）】<br />
+节点<span class="arithmatex">\(u\)</span>为结点<span class="arithmatex">\(v\)</span>的<span class="arithmatex">\(k\)</span>邻域节点，当且仅当<span class="arithmatex">\(u, v\)</span>之间存在一条长度不超过<span class="arithmatex">\(k\)</span>的路径。  </li>
+<li>【定义2（<span class="arithmatex">\(k\)</span>-邻域子图）】<br />
+由节点<span class="arithmatex">\(u\)</span>的所有<span class="arithmatex">\(k\)</span>邻域节点，及这些节点之间所有边，构成关于<span class="arithmatex">\(u\)</span>节点的<span class="arithmatex">\(k\)</span>邻域子图。  </li>
+<li>【定义3（等值图）】<br />
+若两个图的顶点集<span class="arithmatex">\(V_1, V_2\)</span>之间存在映射<span class="arithmatex">\(P:V_1 \rightarrow V_2\)</span>，使得：<br />
+（1）边的映射得以保持不变：<br />
+<span class="arithmatex">\(e(u, v) \in E_1 \Leftrightarrow e(P(u), P(v)) \in E_2\)</span><br />
+（2）边和结点的函数值得以保持不变：<br />
+<span class="arithmatex">\(f_1()u = f_2(P(u)), f_2(v)\)</span></li>
+</ul>
 <h4 id="3-experiments"><code>3 Experiments</code></h4>
 <ul>
 <li>实验任务  <ul>
@@ -1971,6 +2055,7 @@
 <img alt="" src="../assets/DL/85.JPG" />  </li>
 </ul>
 <h4 id="b-proofs-of-the-two-propositions"><code>B Proofs of the Two Propositions</code></h4>
+<p>（略，见原文附录部分）  </p>
 <h4 id="c-more-ablation-study"><code>C More Ablation Study</code></h4>
 <h5 id="c1-node-representation-pooling-vs-compound-representation"><code>C.1 Node Representation Pooling v.s. Compound Representation</code></h5>
 <ul>
@@ -1979,7 +2064,104 @@
 </ul>
 <h5 id="c2-attentively-aggregate-the-information-from-rings"><code>C.2 Attentively Aggregate the Information from Rings</code></h5>
 <ul>
-<li>使用</li>
+<li>另一个含注意力机制的环表征变种  <ul>
+<li>使用<code>MLP</code>更新环表征的数学公式：<br />
+<span class="arithmatex">\(h_r^{(l)} - h_r^{(l - 1)} + MLP(h_r^{(l - 1)}, \sum_{v_i \in V(r)}\alpha_{i}^{(l)}h_i^{(l)}, \sum_{e_{i, j} \in E(r)}\beta_{ij}^{(l)}h_{ij}^{(l)}, U^{(l - 1)})\cdots (9)\)</span>  </li>
+<li>使用注意力机制，更新结点、边表征：<br />
+<span class="arithmatex">\(\alpha_i^{(l)} ∝ exp(W_{ql}h_r^{(l - 1)} + W_{kl}h_i^{(l)})\)</span> 
+<span class="arithmatex">\(\beta_{ij}^{(l)} ∝ exp(W_{q2}h_r^{(l - 1)} + W_{k2}h_{ij}^{(l)}) \cdots (10)\)</span>  </li>
+</ul>
+</li>
+<li>实验结果：使用<code>MLP</code>更新环表征，虽然结构简单，但效果比注意力机制更好。<br />
+<img alt="" src="../assets/DL/87.JPG" />  </li>
+</ul>
+<h5 id="c3-o-gnn-with-brics"><code>C.3 O-GNN with BRICS</code></h5>
+<ul>
+<li>环表征可视为一种特殊的保守序列(<code>motif</code>)  </li>
+<li>使用<code>BRICS</code>模型将分子分解为不同的片段，并研究用<code>motif</code>表征替代环表征带来的影响。  </li>
+<li>实验结果：使用<code>BRICS motif</code>表征，效果不如环表征。<br />
+<img alt="" src="../assets/DL/88.JPG" />  </li>
+</ul>
+<h5 id="c4-more-comparison-between-o-gnn-and-o-gnn-wo-rings"><code>C.4 More Comparison Between O-GNN and O-GNN w/o Rings</code></h5>
+<ul>
+<li>研究产物分子环数不同时，是否带有环表征的<code>O-GNN</code>分别表现如何。  </li>
+<li>结果：随着环数的增加，带有环表征的<code>O-GNN</code>表现愈发优于不带环表征的<code>O-GNN</code>。<br />
+<img alt="" src="../assets/DL/89.JPG" />  </li>
+</ul>
+<h5 id="c5"><code>C.5 额外讨论</code></h5>
+<ul>
+<li>过度平滑问题  <ul>
+<li>实际上，过度平滑问题不一定会发生；只要模型被证明表达能力足够，并且训练方法正确，模型即可按照线性收敛率收敛到全局最大值，并获得较高的精确度。  </li>
+</ul>
+</li>
+<li><span class="arithmatex">\(k\)</span>邻域的建模  <ul>
+<li>若需要精确建模<span class="arithmatex">\(k\)</span>邻域（为保证表达能力，不进行参数共享），则需分别使用<span class="arithmatex">\(k\)</span>个网络，对于<span class="arithmatex">\(1\)</span>到<span class="arithmatex">\(k\)</span>个邻域的结点信息进行处理。  </li>
+<li>上述方法在<span class="arithmatex">\(k\)</span>较大时，参数显然大于参数量不依赖于<span class="arithmatex">\(k\)</span>值的<code>O-GNN</code>；且分子中环的最大规模从<span class="arithmatex">\(3\)</span>到<span class="arithmatex">\(53\)</span>不等，因此最优超参数<span class="arithmatex">\(k\)</span>难以确定。  </li>
+</ul>
+</li>
+<li>模型不变性限制  <ul>
+<li>原子、化学键、环均具有不变性。  </li>
+<li>特别地，原子的类型、关联电子数、邻居数目等均为不变性特征。  </li>
+<li>环表征通过原子、边表征获得，也具有不变性。  </li>
+<li>不具有不变性的特征（如：坐标）未被编码。  </li>
+</ul>
+</li>
+<li>收敛速度比较  <ul>
+<li>基于<code>PCQM4Mv1</code>数据集，比较<code>6/12</code>层含/不含环信息的<code>O-GNN</code>。  </li>
+<li>实验结果  <ul>
+<li>训练<code>6</code>层有环信息<code>O-GNN</code>共<code>175</code>个轮次，相当于训练<code>12</code>层无环信息的<code>O-GNN</code>共<code>275</code>个轮次。  </li>
+<li>训练<code>12</code>层有环信息<code>O-GNN</code>共<code>75</code>个轮次，相当于训练<code>12</code>层无环信息的<code>O-GNN</code>共<code>275</code>个轮次。  </li>
+</ul>
+</li>
+<li>结论：带环信息的<code>O-GNN</code>收敛速度更快。<br />
+<img alt="" src="../assets/DL/90.JPG" />  </li>
+</ul>
+</li>
+<li>基于不同参数量的比较  <ul>
+<li>尽管参数量保持一致，<code>O-GNN</code>的表现仍然胜过了不带环信息的<code>O-GNN</code>。<br />
+<img alt="" src="../assets/DL/91.JPG" />  </li>
+</ul>
+</li>
+<li>在<code>MoleculeNet</code>上的预训练<code>baseline</code>  <ul>
+<li>使用基于<code>scaffold</code>的数据分割方式。  </li>
+<li><code>O-GNN</code>没有在无标签的分子上进行预训练。  </li>
+<li>结果：从平均分数看，<code>O-GNN</code>和强大的<code>baseline</code>表现类似(<code>comparable</code>)，表明了方法的有效性。<br />
+<img alt="" src="../assets/DL/92.JPG" />  </li>
+</ul>
+</li>
+</ul>
+<h5 id="d-related-work-summary"><code>D Related Work Summary</code></h5>
+<ul>
+<li><code>GCN</code>  <ul>
+<li>通过邻接矩阵、度数矩阵，对邻域信息进行聚合。  </li>
+<li>通过线性变换、非线性激活层，更新聚合信息。  </li>
+</ul>
+</li>
+<li><code>GraphSAGE</code>  <ul>
+<li>通过逐元素的平均，聚合邻域信息。  </li>
+</ul>
+</li>
+<li><code>GAT</code>  <ul>
+<li>将注意力机制引入<code>GNN</code>，自适应地更新邻域表征。  </li>
+</ul>
+</li>
+<li><code>GATv2</code>  <ul>
+<li>改善自注意力机制，使之表达能力更强。  </li>
+</ul>
+</li>
+<li><code>Xu et al.(2018)</code>的工作  <ul>
+<li>设计一个简单的聚合函数，包含一个<span class="arithmatex">\(\epsilon\)</span>参数，以及<code>MLP</code>，与<code>Weisfeiler-Lehman</code>图同构测试一样强大。  </li>
+</ul>
+</li>
+<li>虚拟节点图增强手段  <ul>
+<li>使用虚拟节点，捕捉图的全局信息，以实现图的增强。  </li>
+<li>虚节点：连接其余所有节点，在训练过程中由所有节点表征进行联合更新。  </li>
+</ul>
+</li>
+<li>上述工作的问题  <ul>
+<li><code>GNN</code>中没有显式融合环信息。  </li>
+</ul>
+</li>
 </ul>
 
 
