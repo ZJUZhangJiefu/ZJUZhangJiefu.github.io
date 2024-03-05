@@ -10,13 +10,13 @@
         <meta name="author" content="大观散人">
       
       
-        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/Attention%20Is%20All%20You%20Need/">
+        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/SE/">
       
       
-        <link rel="prev" href="../A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/">
+        <link rel="prev" href="../CP/">
       
       
-        <link rel="next" href="../DDPM/">
+        <link rel="next" href="../RealNVP/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Attention Is All You Need(NIPS 2017) - 大观散人的博客</title>
+        <title>软件工程 - 大观散人的博客</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#attention-is-all-you-neednips-2017" class="md-skip">
+        <a href="#software-engineering" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Attention Is All You Need(NIPS 2017)
+              软件工程
             
           </span>
         </div>
@@ -228,16 +228,20 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../OS-Notes/" class="md-tabs__link">
           
   
@@ -255,7 +259,11 @@
         
   
   
+  
     
+    
+      
+  
   
   
     
@@ -263,20 +271,10 @@
       
   
   
-    
-  
   
     
     
-      
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../RealNVP/" class="md-tabs__link">
           
   
@@ -387,8 +385,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -397,12 +397,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -416,7 +416,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             计算机专业课
@@ -778,10 +778,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../SE/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    软件工程
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -790,6 +808,132 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#software-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      第二章 软件工程(Software Engineering)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第二章 软件工程(Software Engineering)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-the-discipline" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、软件工程基本概念(Defining the Discipline)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softwar-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、软件过程(Softwar Process)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software-engineering-principle" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、软件工程实践(Software Engineering Principle)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-process-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      第三章 软件过程结构(Software Process Structure)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第三章 软件过程结构(Software Process Structure)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-generic-process-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、一般过程模型(A Generic Process Model)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、过程模式(process patterns)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、过程评价(process assessment)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      第四章 过程模型(Process Models)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第四章 过程模型(Process Models)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prescriptive-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、惯例模型(prescriptive models)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -806,8 +950,6 @@
       
   
   
-    
-  
   
   
     
@@ -818,12 +960,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -837,7 +979,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             深度学习论文
@@ -1025,21 +1167,19 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
         
           
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
@@ -1053,7 +1193,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             Transformer
@@ -1064,30 +1204,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Attention Is All You Need(NIPS 2017)
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Attention%20Is%20All%20You%20Need/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1096,98 +1216,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#abstract" class="md-nav__link">
-    <span class="md-ellipsis">
-      Abstract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      1 Introduction
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-background" class="md-nav__link">
-    <span class="md-ellipsis">
-      2 Background
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-model-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      3 Model Architecture
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-why-self-attention" class="md-nav__link">
-    <span class="md-ellipsis">
-      4 Why Self-Attention
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-training" class="md-nav__link">
-    <span class="md-ellipsis">
-      5 Training
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-results" class="md-nav__link">
-    <span class="md-ellipsis">
-      6 Results
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      7 Conclusion
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1578,8 +1606,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1588,74 +1614,110 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#abstract" class="md-nav__link">
+  <a href="#software-engineering" class="md-nav__link">
     <span class="md-ellipsis">
-      Abstract
+      第二章 软件工程(Software Engineering)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第二章 软件工程(Software Engineering)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-the-discipline" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、软件工程基本概念(Defining the Discipline)
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#1-introduction" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#softwar-process" class="md-nav__link">
     <span class="md-ellipsis">
-      1 Introduction
+      二、软件过程(Softwar Process)
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#2-background" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#software-engineering-principle" class="md-nav__link">
     <span class="md-ellipsis">
-      2 Background
+      三、软件工程实践(Software Engineering Principle)
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3-model-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      3 Model Architecture
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-why-self-attention" class="md-nav__link">
+  <a href="#software-process-structure" class="md-nav__link">
     <span class="md-ellipsis">
-      4 Why Self-Attention
+      第三章 软件过程结构(Software Process Structure)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第三章 软件过程结构(Software Process Structure)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-generic-process-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、一般过程模型(A Generic Process Model)
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#5-training" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#process-patterns" class="md-nav__link">
     <span class="md-ellipsis">
-      5 Training
+      二、过程模式(process patterns)
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#6-results" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#process-assessment" class="md-nav__link">
     <span class="md-ellipsis">
-      6 Results
+      三、过程评价(process assessment)
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#7-conclusion" class="md-nav__link">
+  <a href="#process-models" class="md-nav__link">
     <span class="md-ellipsis">
-      7 Conclusion
+      第四章 过程模型(Process Models)
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="第四章 过程模型(Process Models)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prescriptive-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、惯例模型(prescriptive models)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1677,192 +1739,140 @@
   
 
 
-<h1 id="attention-is-all-you-neednips-2017"><code>Attention Is All You Need(NIPS 2017)</code></h1>
-<h2 id="abstract"><code>Abstract</code></h2>
-<p>1.主流序列转录模型  <br />
-（1）序列转录<br />
-·输入一个序列，输出另一个序列。<br />
-·举例：机器翻译<br />
-（2）主流序列转录模型的设计<br />
-①基于复杂的循环架构。<br />
-②包含编码器、解码器的卷积神经网络。<br />
-（3）当前表现最佳的序列转录模型<br />
-·通过注意力机制，连接编码器、解码器。<br />
-2.新型简单架构——<code>Transformer</code>的提出<br />
-（1）架构设计<br />
-·仅基于注意力机制，完全摒弃循环和卷积。<br />
-（2）模型在机器翻译任务上的表现<br />
-·高性能，并行化程度提高，训练时间大幅减少。<br />
-·<code>WMT 2014 English-to-German</code>翻译任务：获得<code>28.4 BLEU score</code>，比之前最佳的结果提升<code>2 BLEU</code>。<br />
-·<code>WMT 2014 English-to-French</code>翻译任务：获得最新的单模型<code>SOTA</code>分数<code>41.8 BLEU</code>，只需在<code>8</code>块<code>GPU</code>上训练<code>3.5</code>天。<br />
-（3）模型的泛化能力<br />
-·提供大型/有限训练数据，<code>Transformer</code>在英语成分分析(<code>English constituency parsing</code>)上表现好，说明<code>Transformer</code>可以较好地泛化到其他任务。    </p>
-<h2 id="1-introduction"><code>1 Introduction</code></h2>
-<p>1.循环神经网络<br />
-（1）序列建模与转录任务的<code>SOTA</code>模型<br />
-·循环神经网络（特别是长短时记忆、门控循环神经网络），被坚固地确定为序列建模与转录任务（如：语言建模、机器翻译）的<code>SOTA</code>模型。<br />
-·大量尝试持续推动着循环语言模型、编码器-解码器架构的边界。<br />
-（2）模型的不足<br />
-·循环模型沿着输入/输出符号的位置进行计算，并将符号位置与计算时间步对齐。<br />
-·循环模型通过前序隐藏状态<span class="arithmatex">\(h_{t - 1}\)</span>以及位置<span class="arithmatex">\(t\)</span>的输入，生成一系列隐藏状态<span class="arithmatex">\(h_t\)</span>。<br />
-·循环模型的序列化本质阻碍了训练样本的并行化。 
-·近期工作通过分解技巧、条件计算，实现了计算效率和模型性能的提高，但序列化计算的基本限制仍然存在。<br />
-2.注意力机制<br />
-·作为序列建模与转录模型的不可或缺部分，可以建模两个元素的依赖关系，并且不受它们在输入/输出序列中的距离的影响。<br />
-·在几乎所有情况下，注意力机制与循环神经网络协同使用。<br />
-3.本文提出的<code>Transformer</code>架构<br />
-·避开循环架构，完全依赖于注意力机制，以描绘输入、输出间的全局依赖关系。<br />
-·大幅度提升并行化程度，并实现更高的翻译质量。  </p>
-<h2 id="2-background"><code>2 Background</code></h2>
-<p>1.使用卷积减少序列化计算<br />
-（1）模型举例：<code>Extended Neural GPU/ByteNet/ConvS2S</code>。<br />
-（2）共同点：使用卷积神经网络作为基本块，并行计算各个输入/输出位置的隐藏表示。<br />
-（3）不足：随着两个输入/输出位置之间距离的增大，计算二者关联的操作数量也会增大，这导致学习远距离位置之间的依赖性更加困难。  （4）<code>Transformer</code>对上述问题的解决：只需常数操作即可获得任意两个位置之间的关联性，代价是由注意力权重平均(<code>averaging attention-weighted positions</code>)导致的有效分辨率下降。  <br />
-2.自注意力/内部注意力机制<br />
-·一种注意力机制，联系一个输入序列的不同位置，以生成序列的一种表示。<br />
-·成功应用于大量任务，如阅读理解、抽象摘要、文本蕴含，以及学习任务相关的序列表示等。<br />
-3.端到端记忆网络<br />
-·基于循环注意力机制，而非序列对齐的循环。<br />
-·在单语言问题回答、语言建模任务上表现较好。<br />
-4.<code>Transformer</code>架构<br />
-·第一个完全依赖于自注意力机制的模型，不使用序列对齐的<code>RNN</code>或卷积。  </p>
-<h2 id="3-model-architecture"><code>3 Model Architecture</code></h2>
-<p>1.最优竞争力的序列转录模型——编码器-解码器架构<br />
-·编码器：将输入序列<span class="arithmatex">\((x_1, \cdots, x_n)\)</span>映射为连续表示<span class="arithmatex">\((z_1, \cdots, z_n)\)</span>。<br />
-·解码器：给定<span class="arithmatex">\(\mathbf{z}\)</span>，一次一个元素地生成输出序列<span class="arithmatex">\((y_1, \cdots, y_m)\)</span>。<br />
-·解码器的每一步骤都是自回归的，将之前已生成的符号作为额外的输入。<br />
-2.<code>Transformer</code>架构<br />
-<img alt="" src="../assets/DL/1.JPG" /><br />
-·编码器、解码器：均使用堆叠的子注意力机制，以及逐点(<code>point-wise</code>)全连接网络。<br />
-（1）编码器<br />
-·共<code>6</code>个相同层次。<br />
-·每个层次有两个子层，分别是：多头自注意力机制、逐位置全连接前馈神经网络。<br />
-·每个子层均使用残差连接，以及层正则化(<code>layer normalization</code>)，即<code>LayerNorm(x + Sublayer(x))</code>，其中<code>Sublayer(x)</code>即为子层实现的函数。<br />
-[注1]<code>Batchnorm</code>针对<code>batch</code>作正则化，<code>Layernorm</code>针对样本作正则化。<br />
-[注2]在时序模型中，<code>Layernorm</code>比<code>Batchnorm</code>更常用，原因是各序列样本长度可能不同，故<code>Batchnorm</code>抖动较大，且不能处理长于训练序列的测试序列。<br />
-·模型的每个子层，以及嵌入(<code>embedding</code>)层，输出的维度均为<span class="arithmatex">\(d_{model} = 512\)</span>。<br />
-[注]在各个层次中，每个词元均使用<code>512</code>个维度进行表示。<br />
-（2）注意力机制<br />
-①注意力函数<br />
-·将一个查询(<code>query</code>)，以及一组键值对(<code>key-value pair</code>)，映射到一个输出。<br />
-·输出：<code>value</code>的加权和，权重由<code>query</code>和相应<code>key</code>的相似度函数进行计算。<br />
-②缩放点积注意力(<code>Scaled Dot-Product Attention</code>)<br />
-<img alt="" src="../assets/DL/2.JPG" /><br />
-·输入：<code>query, key</code>的维度均为<span class="arithmatex">\(d_k\)</span>，<code>value</code>的维度均为<span class="arithmatex">\(d_v\)</span>。<br />
-·计算步骤：首先计算<code>query</code>和所有<code>key</code>的相似度，对每个相似度除以<span class="arithmatex">\(\sqrt{d_k}\)</span>，然后应用<code>softmax</code>函数以获得<code>value</code>的权重。<br />
-·实际运行：将一组<code>query</code>打包成一个矩阵<span class="arithmatex">\(Q\)</span>，并将<code>key, value</code>分别记为矩阵<span class="arithmatex">\(K, V\)</span>。<br />
-·数学公式：<span class="arithmatex">\(Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d_k}})V\)</span><br />
-[理解]<br />
-设<code>query</code>个数为<span class="arithmatex">\(n\)</span>，键值对个数为<span class="arithmatex">\(m\)</span>，则各矩阵的形状为：<br />
-<span class="arithmatex">\(Q_{n \times d_k}, K_{m \times d_K}, V_{m \times d_v}\)</span><br />
-·缩放点积注意力：在点击注意力基础上添加缩放因子<span class="arithmatex">\(\frac{1}{\sqrt{d_k}}\)</span>。<br />
-·加性注意力：使用带一个隐藏层的前馈神经网络计算相似度。<br />
-·点积注意力：计算速度更快、空间效率更高，原因是矩阵乘法可以高度优化、并行。<br />
-·两种注意力的性能：加性注意力的性能优于不含缩放因子的点积注意力的性能。<br />
-·设计缩放因子的原因：对于较大的<span class="arithmatex">\(d_k\)</span>，点积数值也会增大，导致<code>softmax</code>函数梯度很小。<br />
-（3）多头注意力(<code>Multi-Head Attention</code>)<br />
-<img alt="" src="../assets/DL/3.JPG" /><br />
-①架构<br />
-·对<code>query, key, value</code>进行<span class="arithmatex">\(h\)</span>次不同的线性投影，分别投影到<span class="arithmatex">\(d_k, d_k, d_v\)</span>维度。<br />
-·各个投影可通过学习得到，可以并行计算注意力函数，获得<span class="arithmatex">\(d_v\)</span>维度的输出值。<br />
-·输出值先合并，再投影，获得最终输出。<br />
-②作用<br />
-·允许模型同时关注不同位置、不同表示空间的信息。<br />
-③数学公式<br />
-·<span class="arithmatex">\(MultiHead(Q, K, V) = Concat(head_1, \cdots, head_h)W^O\)</span><br />
-·<span class="arithmatex">\(head_i = Attention(QW_i^Q, KW_i^K, VW_i^V)\)</span><br />
-·<span class="arithmatex">\(W_i^Q \in \mathbf{R}^{d_{model} \times d_k}, W_i^K \in \mathbf{R}^{d_{model} \times d_k}, 
-W_i^V \in \mathbf{R}^{d_{model} \times d_v}, 
-W^O \in \mathbf{R}^{hd_v \times d_{model}}\)</span><br />
-·实验参数设置：<span class="arithmatex">\(h = 8, d_k = d_v = \frac{d_{model}}{h} = 64\)</span><br />
-·由于每个<code>head</code>的维度均降低，因此<code>multi-head</code>注意力的总计算代价与<code>single-head</code>注意力相当。<br />
-（4）位置相关的前馈神经网络(<code>PositionWise Feed-Forward Network</code>)<br />
-·编码器/解码器的每个层次都包含一个全连接前馈神经网络。<br />
-·该网络针对每个位置分别进行相同的计算。 
-·数学公式：<span class="arithmatex">\(FFN(x) = max(0, xW_1 + b_1)W_2 + b_2\)</span>
-·上述公式中，<span class="arithmatex">\(max(0, xW_1 + b_1)\)</span>即表示对<span class="arithmatex">\(xW_1 + b_1\)</span>应用<code>relu</code>函数。<br />
-·本质：两个卷积核大小为<span class="arithmatex">\(1\)</span>的卷积层，分别针对每个位置/词元进行作用。<br />
-·维度变化：<span class="arithmatex">\(x \rightarrow xW_1 + b_1\)</span>由<span class="arithmatex">\(512\)</span>维变为<span class="arithmatex">\(2048\)</span>维；<span class="arithmatex">\(xW_1 + b_1 \rightarrow max(0, xW_1 + b_1)W_2 + b_2\)</span>由<span class="arithmatex">\(2048\)</span>维恢复到<span class="arithmatex">\(512\)</span>维。<br />
-[注]<br />
-·本质上，<code>MLP</code>的作用是语义空间转换。<br />
-（5）嵌入与<code>Softmax</code><br />
-·使用预训练嵌入，将输入、输出词元(<code>token</code>)转化为<span class="arithmatex">\(d_{model}\)</span>维度的向量。<br />
-·使用预训练线性转化、<code>softmax</code>函数，转化解码器输出，以预测下一词元的概率。<br />
-·两个<code>embedding</code>层、<code>pre-softmax</code>线性变换共享权重。<br />
-·由于维度较大时，各权重偏小，因此对于<code>embedding</code>层，将权重乘以<span class="arithmatex">\(\sqrt{d_{model}}\)</span>。<br />
-（6）位置编码<br />
-·注意力机制本身不具有序列信息，通过位置编码注入词元相对/绝对位置信息。<br />
-·在编码器、解码器图示的底部，位置编码与输入<code>embedding</code>相加。<br />
-·位置编码与<code>embedding</code>具有相同的维度<span class="arithmatex">\(d_{model}\)</span>，可直接相加。<br />
-·本实验的位置编码：<br />
-<span class="arithmatex">\(PE_{(pos, 2i)} = sin(\frac{pos}{10000^{\frac{2i}{d_{model}}}})\)</span><br />
-<span class="arithmatex">\(PE_{(pos, 2i + 1)} = cos(\frac{pos}{10000^{\frac{2i}{d_{model}}}})\)</span><br />
-其中，<span class="arithmatex">\(pos\)</span>表示位置，<span class="arithmatex">\(i\)</span>表示维度序号。  </p>
-<h2 id="4-why-self-attention"><code>4 Why Self-Attention</code></h2>
-<p>1.自注意力机制与循环层、卷积层的对比<br />
-<img alt="" src="../assets/DL/4.JPG" /><br />
-·<span class="arithmatex">\(n\)</span>表示序列长度，<span class="arithmatex">\(d\)</span>表示向量的维度（即<span class="arithmatex">\(d_{model}\)</span>）。<br />
-·由于矩阵乘法高度并行化，因此自注意力机制的顺序化操作数可视为<span class="arithmatex">\(O(1)\)</span>。<br />
-·前向、后向路径的长度越短，越容易学习到长距离依赖关系。<br />
-·循环层的问题：前向/反向信号的传递，最大路径长度为<span class="arithmatex">\(O(n)\)</span>，且顺序化操作数为<span class="arithmatex">\(O(n)\)</span>，并行化程度低。<br />
-·限制自注意力：为了提升长序列任务的表现，自注意力可以进行限制，只考虑大小为<span class="arithmatex">\(r\)</span>的邻域；此时，最大路径长度变为<span class="arithmatex">\(O(\frac{n}{r})\)</span>。<br />
-2.结论<br />
-·自注意力模型更容易理解：独立的<code>attention heads</code>可以学习执行不同的任务，它们表现出的行为与句子语法、语义结构相关。  </p>
-<h2 id="5-training"><code>5 Training</code></h2>
-<p>1.训练数据和批量化<br />
-·数据集：<code>WMT 2014 English-German</code>标准数据集，共包含约<code>4.5</code>百万个句子对。<br />
-·各句子使用<code>byte-pair encoding</code>进行编码，对于约<code>37000</code>个词元使用共享的源-目标词汇表。<br />
-·英语译法语任务：在<code>WMT 2014 English-French</code>数据集上训练，约包含<code>36M</code>个句子及大小为<code>32000</code>的<code>word-piece vocabulary</code>。<br />
-·每个<code>training batch</code>包含一组句子对，这组句子对共有约<code>25000</code>个源词元，以及<code>25000</code>个目标词元。<br />
-2.硬件和<code>schedule</code><br />
-·设备：<code>8</code>块<code>P100</code>显卡。<br />
-·基本模型训练用时：每个训练步骤需<code>0.4</code>秒，共训练<code>100, 000</code>步，<code>0.5</code>天。<br />
-·大型模型训练用时：每个训练步骤需<code>1.0</code>秒，共训练<code>300, 000</code>个步骤，<code>3.5</code>天。<br />
-3.优化器<br />
-·优化器：使用超参数分别为<span class="arithmatex">\(\beta_1 = 0.9, \beta_2 = 0.98, \epsilon = 10^{-9}\)</span>的<code>Adam</code>优化器。<br />
-·学习率：<span class="arithmatex">\(lrate = d_{model}^{-0.5}\cdot min(step\_num^{-0.5}, step\_num \cdot warmup\_steps^{-1.5})\)</span><br />
-·首先，学习率线性增长；随后，学习率逐步下降。  <br />
-·实验使用的<code>warm_up steps</code>：<code>4000</code>步。<br />
-4.正则化 <br />
-（1）残差<code>dropout</code><br />
-·先对子层的输出进行<code>dropout</code>，再将其与子层输入相加，最后进行正则化。<br />
-·对于编码器、解码器中<code>embedding</code>与位置编码之和，均使用<code>dropout</code>。<br />
-·实验使用的<code>dropout rate</code>：<span class="arithmatex">\(P_{drop} = 0.1\)</span>。<br />
-（2）标签平滑(<code>label smoothing</code>)<br />
-·方法：将<span class="arithmatex">\(\epsilon_{ls} = 0.1\)</span>作为正确词元的概率阈值。<br />
-·结果：模型更不易理解，训练结果更不确定，但是精度、<code>BLEU</code>分数有所提升。  </p>
-<h2 id="6-results"><code>6 Results</code></h2>
-<p>1.机器翻译
-<img alt="" src="../assets/DL/5.JPG" /><br />
-2.模型变种<br />
-<img alt="" src="../assets/DL/6.JPG" /><br />
-·目的：评估<code>Transformer</code>各组件的作用。<br />
-·方法：使用束搜索(<code>beam search</code>)，不使用<code>checkpoint</code>平均。<br />
-·变量：<code>attention head</code>的数目、<code>attention key-value</code>的维度。<br />
-·更改变量时，保持总计算量不变。<br />
-·结果：单个<code>head</code>、过多<code>head</code>均导致模型性能降低；降低注意力<code>key</code>的规模<span class="arithmatex">\(d_k\)</span>会损害模型的质量。<br />
-·思考：确定相似度不是容易的，一个比点积更复杂的相似度函数可能带来好处。<br />
-·模型规模：更大的模型性能更佳。<br />
-·<code>dropout</code>：对于防止过拟合非常有帮助。<br />
-·<code>learned</code>位置编码：与正弦位置编码效果相当。<br />
-3.英语成分分析<br />
-<img alt="" src="../assets/DL/7.JPG" /><br />
-·目的：评估<code>Transformer</code>是否能泛化到其他任务。<br />
-·英语成分分析任务的挑战：输出有明显的结构约束，并且明显长于输入。<br />
-·结论：即使缺乏针对特定任务的微调，<code>transformer</code>模型表现极好，获得了比所有已知模型（<code>Recurrent Neural Network Grammar</code>除外）更好的性能。  </p>
-<h2 id="7-conclusion"><code>7 Conclusion</code></h2>
-<p>1.工作总结——<code>Transformer</code>架构<br />
-（1）模型简介
-·第一个完全基于注意力机制的序列转录模型。<br />
-·使用多头注意力机制，替代编码器-解码器架构中最常用的循环层。<br />
-（2）机器翻译任务的表现<br />
-·与基于循环层或卷积层的架构相比，训练明显加快。<br />
-·在<code>WMT 2014 English-to-German/WMT 2014 English-to-French</code>翻译任务上均取得新的<code>SOTA</code>。<br />
-2.未来展望<br />
-（1）<code>Transformer</code>应用于其他任务<br />
-·将<code>Transformer</code>应用于文本以外的输入/输出形式。<br />
-·研究局部、有限的注意力机制，以高效地处理图片、音频、视频等输入/输出形式。<br />
-（2）减少生成结果的序列化程度  </p>
+  <h1>软件工程</h1>
+
+<h4 id="software-engineering">第二章 软件工程(<code>Software Engineering</code>)</h4>
+<h5 id="defining-the-discipline">一、软件工程基本概念(<code>Defining the Discipline</code>)</h5>
+<p>1.软件工程定义<br />
+<code>The application of a systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software; that is, the application of engineering to software.</code><br />
+关键词：
+- <code>systematic, disciplined, quantifiable</code><br />
+- <code>development, operation, and maintenance</code>  </p>
+<p>2.软件工程特点
+（1）系统化(<code>systematic</code>)：应用系统思维思考问题。<br />
+（2）定量(<code>quantifiable</code>)：定量研究贯穿软件工程全过程。    </p>
+<p>3.软件工程——层次化技术<br />
+（1）高质量目标(<code>a quality focus</code>)<br />
+（2）过程模型(<code>process model</code>)：一种高质量的路线图(<code>road map</code>)，保证及时、高质量的结果。<br />
+（3）方法：包括需求分析、设计、测试、构造等，即如何构造软件。<br />
+（4）工具：<code>CASE(Computer-Aided Software Engineering)</code>  </p>
+<h5 id="softwar-process">二、软件过程(<code>Softwar Process</code>)</h5>
+<p>1.公共过程框架(<code>Common Porcess Framework</code>)<br />
+- 定义了过程由哪些要素组成。<br />
+- 由若干框架活动(<code>Framework Activities</code>)组成。  </p>
+<p>2.框架活动(<code>Framework Activities</code>)<br />
+- 工作任务(<code>work tasks</code>)<br />
+- 工作产品(<code>work products</code>)<br />
+- 关键点、考核物(<code>milestones &amp; deliverables</code>)<br />
+- 检查点(<code>QA checkpoints</code>)  </p>
+<p>3.普适性活动(<code>Unmrella Activities</code>)<br />
+- 项目管理(<code>Project management</code>)  <br />
+- 质量保证(<code>Quality assurance</code>)<br />
+- <code>Work product production</code><br />
+- <code>Measurement</code><br />
+- <code>Formal technical reviews</code><br />
+- <code>Configuration management</code><br />
+- (<code>Reusability management</code>)<br />
+- 风险管理(<code>Risk management</code>)  </p>
+<p>4.通用过程框架(<code>Generic Process Framework</code>)<br />
+(1)交流(<code>communication</code>)：客户沟通、需求汇总。  <br />
+(2)规划(<code>planning</code>)：建立工程计划，描述技术风险，列举资源需求，定义工作规划。<br />
+(3)建模(<code>modeling</code>)：建立模型，以帮助开发者和用户理解需求、软件设计。<br />
+(4)构造(<code>construction</code>)：代码生成、测试。<br />
+(5)部署(<code>Deployment</code>)：软件部署（如：制作安装包、安装程序，写指导文档，培训等；云时代需将软件部署至云上，部署更为复杂）  </p>
+<p>5.过程适配(<code>process adaptation</code>)——适应性的过程改造<br />
+- <code>activaties, actions and tasks</code>的总体流程(<code>overall flow</code>)，及其内在迁移<br />
+- 每个框架活动内部，动作、任务定义的程度<br />
+- 工作产品被识别、需求的程度<br />
+- 应用质量保证的方式<br />
+- 进行项目追踪和控制的方法<br />
+- 过程描述细节和严密性的程度<br />
+- 消费者参与工程的程度<br />
+- 软件团队的自主权(<code>autonomy</code>)<br />
+- 团队组织和角色的规定  </p>
+<h5 id="software-engineering-principle">三、软件工程实践(<code>Software Engineering Principle</code>)</h5>
+<p>1.实践关键<br />
+（1）理解问题(<code>communication + analysis</code>)<br />
+（2）解决方案规划(<code>modeling + software design</code>)<br />
+（3）执行计划(<code>code generation</code>)<br />
+（4）检查结果的精确度(<code>testing + quality assurance</code>)  </p>
+<p>2.一般原则<br />
+（1）用户思维：软件工程的存在原因——为用户提供价值。<br />
+（2）大道至简：<code>Keep it Simple, Stupid</code><br />
+（3）不忘初心：<code>Maintain the Vision</code><br />
+（4）换位思考：<code>What you produce, others will consume</code><br />
+（5）面向未来：<code>Be open to the future</code><br />
+（6）谋划复用：<code>Plan ahead for reuse</code><br />
+（7）多思考：<code>Think</code>  </p>
+<p>3.管理误区(<code>management myths</code>)<br />
+（1）规章制度需要依靠质量保证手段进行落实。<br />
+（2）给进度落后的项目添加人手，反而可能进一步延迟项目进度。<br />
+（3）软件项目外包，并不意味着完成了一切。  </p>
+<p>4.客户误区(<code>consumer myths</code>)<br />
+（1）需求定义必须足够详细，项目规划必须完善、充分。<br />
+（2）随着需求的不断变化，软件的相应更改不可以轻易进行，而是更改代价不断上升。  </p>
+<p>5.实践者误区<br />
+（1）并非写好程序，能够跑起来，就完成了所有工作。<br />
+（2）能工作的程序只是软件配置(<code>configuration</code>)的一部分，还包括文档、数据等。<br />
+（3）软件工程的文档并非无用，而是让产品更具有质量，生命周期更长。  </p>
+<h4 id="software-process-structure">第三章 软件过程结构(<code>Software Process Structure</code>)</h4>
+<h5 id="a-generic-process-model">一、一般过程模型(<code>A Generic Process Model</code>)</h5>
+<p>1.软件过程框架<br />
+- 框架(<code>framework</code>)<br />
+    - 框架活动(<code>framework activity</code>)<br />
+        - 若干动作(<code>action</code>)及其相应任务集  </p>
+<p>2.过程流(<code>process flow</code>)<br />
+- 交流<br />
+- 规划<br />
+- 建模<br />
+- 构造<br />
+- 部署 <br />
+（1）线性(<code>linear</code>)过程流<br />
+<img alt="" src="../assets/SE/1.JPG" /><br />
+（2）迭代(<code>iterative</code>)过程流<br />
+<img alt="" src="../assets/SE/2.JPG" /><br />
+（3）演化(<code>evolutionaru</code>)过程流<br />
+<img alt="" src="../assets/SE/3.JPG" /><br />
+（4）并行过程流(<code>parallel</code>)<br />
+- 例如：产品定义与建模并行进行。<br />
+<img alt="" src="../assets/SE/4.JPG" />  </p>
+<h5 id="process-patterns">二、过程模式(<code>process patterns</code>)</h5>
+<p>1.过程模式<br />
+- 定义了一组由活动、动作、工作任务、工作产品和相关行为构成的集合。  </p>
+<p>2.模板：提取共性，定义过程模式。  </p>
+<p>3.一般软件模式的元素<br />
+- 有意义的模板名<br />
+- 目标<br />
+- 类型<br />
+    - 任务模式<br />
+    - <code>Stage</code>模式<br />
+    - <code>Phase</code>模式<br />
+- 初始上下文：使用该模板的先验条件<br />
+- 解决方案：如何正确实现该模式<br />
+- 结果上下文：模式正确实现后，产生的结果<br />
+- 相关模式<br />
+- 已知使用/例子：模式可以应用的领域  </p>
+<h5 id="process-assessment">三、过程评价(<code>process assessment</code>)</h5>
+<p>1.过程评价：对软件过程进行检验和评价。<br />
+- 能力判定<br />
+- 软件过程改进<br />
+<img alt="" src="../assets/SE/5.JPG" />  </p>
+<p>2.<code>CMMI(The Capability Maturity Model Integration)</code>标准<br />
+（1）背景<br />
+- 由<code>CMU</code>软件工程学院提出<br />
+- 评价和指导企业软件工程的能力与成熟度  </p>
+<p>（2）级别<br />
+- 级别<code>0</code>-不完整(<code>Incomplete</code>)：未执行软件过程，或不能完成所有本级别目标）<br />
+- 级别<code>1</code>-执行级(<code>Performed</code>)：软件过程完整<br />
+- 级别<code>2</code>-管理级(<code>Managed</code>)：顾客积极交互，任务和过程受到监督、回顾和评估，分析是否与过程描述一致。<br />
+- 级别<code>3</code>-定义级(<code>Defined</code>)：管理和工程过程文档化、标准化，融入组织级别的软件过程。<br />
+- 级别<code>4</code>-量化管理级(<code>Quantitatively Managed</code>)：软件过程和产品能够通过细节化的评估，进行量化理解和控制。<br />
+- 级别<code>5</code>-优化级(<code>Optimizing</code>)：通过过程和新概念测试得到的反馈，进行持续的过程改善。  </p>
+<h4 id="process-models">第四章 过程模型(<code>Process Models</code>)</h4>
+<h5 id="prescriptive-models">一、惯例模型(<code>prescriptive models</code>)</h5>
+<p>1.惯例过程<br />
+- 对于软件工程，定义了一些有序的方法。  </p>
+<p>2.问题  </p>
 
 
 
