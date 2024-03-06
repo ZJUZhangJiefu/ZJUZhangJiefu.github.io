@@ -10,9 +10,13 @@
         <meta name="author" content="大观散人">
       
       
-        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/BERT/">
+        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/RL/">
       
       
+        <link rel="prev" href="../O-GNN/">
+      
+      
+        <link rel="next" href="../BasicDGM/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +24,7 @@
     
     
       
-        <title>BERT - 大观散人的博客</title>
+        <title>强化学习 - 大观散人的博客</title>
       
     
     
@@ -71,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -103,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              BERT
+              强化学习
             
           </span>
         </div>
@@ -273,11 +282,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../RL/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   深度学习专题
@@ -1177,8 +1188,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -1187,12 +1200,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -1206,7 +1219,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             深度学习专题
@@ -1217,10 +1230,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../RL/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    强化学习
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1229,6 +1260,99 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      动手学强化学习
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="动手学强化学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      第一讲 初探强化学习
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第一讲 初探强化学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、两种机器学习类型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、强化学习定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、强化学习的交互过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、强化学习系统要素
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、强化学习智能体分类
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1280,6 +1404,89 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      动手学强化学习
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="动手学强化学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      第一讲 初探强化学习
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第一讲 初探强化学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、两种机器学习类型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、强化学习定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、强化学习的交互过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、强化学习系统要素
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、强化学习智能体分类
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1296,9 +1503,103 @@
   
 
 
-  <h1>BERT</h1>
+  <h1>强化学习</h1>
 
-
+<h3 id="_1">动手学强化学习</h3>
+<p>课程：上海交大张伟楠老师《动手学强化学习》配套网课  </p>
+<h4 id="_2">第一讲 初探强化学习</h4>
+<h5 id="_3">一、两种机器学习类型</h5>
+<p>1.预测型<br />
+- 有监督学习：根据数据，预测所需输出。<br />
+- 无监督学习：生成数据实例。  </p>
+<p>2.决策型<br />
+- 强化学习：在<strong>动态环境</strong>中采取行动。<br />
+    - 转变到<strong>新的状态</strong><br />
+    - 获得<strong>即时奖励</strong><br />
+    - 随着时间的推移，最大化<strong>累计奖励</strong><br />
+- <strong>行动引起环境改变</strong>，因此针对多步决策，需要进一步进行思考和规划，在<strong>动态环境中优化决策</strong>，使得累计奖励最大化。<br />
+- 强调<strong>序贯决策</strong>(<code>sequential decision making</code>)，决策往往会带来<strong>后果</strong>，决策者需要为<strong>未来</strong>负责，并需要在<strong>未来时间点</strong>进行<strong>进一步决策</strong>。  </p>
+<h5 id="_4">二、强化学习定义</h5>
+<p>1.定义：通过从交互中学习，来实现目标的计算方法。<br />
+- <strong>观察</strong><br />
+- <strong>奖励</strong><br />
+- <strong>智能体</strong><br />
+- <strong>行动</strong>  </p>
+<p>2.三个方面<br />
+- 感知：在某种程度上感知环境的状态。<br />
+- 行动：采取行动，影响状态或达到目标。<br />
+- 目标：随着时间推移，最大化累积奖励。  </p>
+<h5 id="_5">三、强化学习的交互过程</h5>
+<p>1.每一时间步<span class="arithmatex">\(t\)</span>智能体的行为<br />
+- 获得观察<span class="arithmatex">\(O_t\)</span><br />
+- 获得奖励<span class="arithmatex">\(R_t\)</span><br />
+- 执行行动<span class="arithmatex">\(A_t\)</span>  </p>
+<p>2.环境<br />
+- 获得行动<span class="arithmatex">\(A_t\)</span><br />
+- 给出观察<span class="arithmatex">\(O_{t + 1}\)</span><br />
+- 给出奖励<span class="arithmatex">\(R_{t + 1}\)</span>  </p>
+<p>3.在“环境”步骤，时间步<span class="arithmatex">\(t\)</span>增加。  </p>
+<h5 id="_6">四、强化学习系统要素</h5>
+<p>1.<strong>历史</strong>：过去各个时间步，观测<span class="arithmatex">\(O_i\)</span>、行动<span class="arithmatex">\(A_i\)</span>、奖励<span class="arithmatex">\(R_i\)</span>的序列。<br />
+- <span class="arithmatex">\(H_t = O_1, A_1, R_1, \cdots, O_{t - 1}, A_{t - 1}, R_{t - 1}, O_t, R_t\)</span><br />
+- 历史即一直到时间<span class="arithmatex">\(t\)</span>为止，所有可观测变量。<br />
+- 根据历史决定未来发生的事件<br />
+    - 智能体：选择行动<span class="arithmatex">\(A_t\)</span><br />
+    - 环境：选择观察<span class="arithmatex">\(O_{t + 1}\)</span>、奖励<span class="arithmatex">\(A_{t + 1}\)</span>  </p>
+<p>2.<strong>状态</strong>：用于确定未来行动、观察和奖励事件的序列。<br />
+- 状态<span class="arithmatex">\(S_t\)</span>是关于历史<span class="arithmatex">\(H_t\)</span>的函数：<span class="arithmatex">\(S_t = f(H_t)\)</span>  </p>
+<p>3.<strong>策略</strong>(<code>policy</code>)：智能体在特定时间的行为方式。<br />
+- 策略：状态<span class="arithmatex">\(\rightarrow\)</span>行动的映射<br />
+- <strong>确定型策略</strong>(<code>deterministic policy</code>)：<span class="arithmatex">\(a = \pi (x)\)</span><br />
+- <strong>随机策略</strong>(<code>stochastic policy</code>)：<span class="arithmatex">\(\pi(a|s) = P(A_t =a|s_t = s)\)</span><br />
+    - 基于状态<span class="arithmatex">\(s\)</span>，策略<span class="arithmatex">\(a\)</span>的选择服从<strong>条件概率分布</strong><span class="arithmatex">\(\pi(a|s)\)</span>。<br />
+    - 状态集可能为离散或连续空间，相应地，条件分布可划分为离散型、连续型。  </p>
+<p>4.奖励(<code>reward</code>)<br />
+- 定义强化学习目标，一般为标量。<br />
+- 能<strong>立即</strong>感知什么是“好”的。  </p>
+<p>5.价值函数(<code>value function</code>)<br />
+- 状态价值：标量，定义从<strong>长期</strong>角度考虑，什么是“好”的。<br />
+- 价值函数：<strong>预测未来</strong>的<strong>累积</strong>奖励，用于评估在<strong>给定策略之下，状态的好坏</strong>。<br />
+    - <span class="arithmatex">\(v_{\pi}(s) = \mathbb{E}_{\pi}[R_{t + 1} + \gamma R_{t + 2} + \gamma^{2}R_{t + 3} + \cdots | S_t = s]\)</span><br />
+    - <span class="arithmatex">\(\gamma\)</span>表示衰减因子  </p>
+<p>6.环境模型(<code>model</code>)<br />
+- 环境模型(<code>environment model</code>)：用于模拟环境行为。<br />
+- 作用一：预测下一个状态<br />
+    - <span class="arithmatex">\(P_{ss'}^{a} = \mathbb{P}[S_{t + 1} = s'|S_t = s, A_t = a]\)</span><br />
+- 作用二：预测下一个即时奖励<br />
+    - <span class="arithmatex">\(R_{s}^{a}  = \mathbb{E}[R_{t + 1}|S_t = s, A_t = a]\)</span>  </p>
+<p>【例1】迷宫行走<br />
+- 状态：智能体位置<br />
+- 行动：东、南、西、北。<br />
+- 状态转移<br />
+    - 行动方向为墙：不动<br />
+- 奖励<br />
+    - 每多走一步，直接给定<span class="arithmatex">\(-1\)</span>的奖励，用以刺激智能体尽快走出迷宫。<br />
+- 状态价值：距离出口越远的状态，基于策略<span class="arithmatex">\(\pi\)</span>的状态价值<span class="arithmatex">\(v_{\pi}(s)\)</span>越低。  </p>
+<h5 id="_7">五、强化学习智能体分类</h5>
+<p>1.<strong>基于模型</strong>的强化学习<br />
+- 策略 和/或 价值函数<br />
+- 环境模型<br />
+- 举例：迷宫、围棋<br />
+- 特点：已知环境信息，可以专注地对策略进行思考。  </p>
+<p>2.<strong>模型无关</strong>的强化学习<br />
+- 策略 和/或 价值函数<br />
+- 没有环境模型<br />
+- 举例：<code>Atari</code>游戏通用策略<br />
+- 特点：真正意义的强化学习。  </p>
+<p>【例2】<code>Atari</code>游戏<br />
+- 游戏规则未知<br />
+- 从交互游戏中进行学习<br />
+- 通过操纵杆选择行动，查看分数（奖励）和像素画面。  </p>
+<p>3.基于价值<br />
+- 完全集中于价值函数的估计，没有显式策略，策略隐含在价值函数之中。<br />
+- 根据状态价值函数<span class="arithmatex">\(v(s)\)</span>，以及动作价值函数<span class="arithmatex">\(Q(s, a)\)</span>，进行策略<span class="arithmatex">\(\pi(s)\)</span>的选择。  </p>
+<p>4.基于策略<br />
+- 专注于策略学习，没有价值函数。<br />
+- 直接学习<span class="arithmatex">\(\pi(s)\)</span>，而状态价值函数<span class="arithmatex">\(v(s)\)</span>，以及动作价值函数<span class="arithmatex">\(Q(s, a)\)</span>是“潜移默化”得到的。  </p>
+<p>5.<code>Actor-Critic</code><br />
+- 同时学习策略和价值函数。<br />
+- <code>Actor</code>即策略，<code>Critic</code>即价值函数，相辅相成。  </p>
 
 
 
