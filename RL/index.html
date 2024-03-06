@@ -1339,8 +1339,26 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、强化学习中的数据
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mab-multi-armed-bandit" class="md-nav__link">
+    <span class="md-ellipsis">
+      第二讲 多臂老虎机(MAB, Multi-Armed Bandit)问题
+    </span>
+  </a>
   
 </li>
         
@@ -1475,8 +1493,26 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、强化学习中的数据
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mab-multi-armed-bandit" class="md-nav__link">
+    <span class="md-ellipsis">
+      第二讲 多臂老虎机(MAB, Multi-Armed Bandit)问题
+    </span>
+  </a>
   
 </li>
         
@@ -1526,9 +1562,9 @@
 - <strong>智能体</strong><br />
 - <strong>行动</strong>  </p>
 <p>2.三个方面<br />
-- 感知：在某种程度上感知环境的状态。<br />
-- 行动：采取行动，影响状态或达到目标。<br />
-- 目标：随着时间推移，最大化累积奖励。  </p>
+- <strong>感知</strong>：在某种程度上感知环境的状态。<br />
+- <strong>行动</strong>：采取行动，影响状态或达到目标。<br />
+- <strong>目标</strong>：随着时间推移，最大化累积奖励。  </p>
 <h5 id="_5">三、强化学习的交互过程</h5>
 <p>1.每一时间步<span class="arithmatex">\(t\)</span>智能体的行为<br />
 - 获得观察<span class="arithmatex">\(O_t\)</span><br />
@@ -1556,8 +1592,10 @@
     - 状态集可能为离散或连续空间，相应地，条件分布可划分为离散型、连续型。  </p>
 <p>4.奖励(<code>reward</code>)<br />
 - 定义强化学习目标，一般为标量。<br />
-- 能<strong>立即</strong>感知什么是“好”的。  </p>
+- 来自环境的<strong>即时奖励信号</strong>，能<strong>立即</strong>感知什么是“好”的。  </p>
 <p>5.价值函数(<code>value function</code>)<br />
+- <strong>整体回报</strong>：整个交互过程中，<strong>各轮</strong>获得的<strong>奖励</strong>信号进行<strong>累加</strong>，形成智能体的整体回报。<br />
+- <strong>价值</strong>：整体<strong>回报的期望</strong>。<br />
 - 状态价值：标量，定义从<strong>长期</strong>角度考虑，什么是“好”的。<br />
 - 价值函数：<strong>预测未来</strong>的<strong>累积</strong>奖励，用于评估在<strong>给定策略之下，状态的好坏</strong>。<br />
     - <span class="arithmatex">\(v_{\pi}(s) = \mathbb{E}_{\pi}[R_{t + 1} + \gamma R_{t + 2} + \gamma^{2}R_{t + 3} + \cdots | S_t = s]\)</span><br />
@@ -1600,6 +1638,18 @@
 <p>5.<code>Actor-Critic</code><br />
 - 同时学习策略和价值函数。<br />
 - <code>Actor</code>即策略，<code>Critic</code>即价值函数，相辅相成。  </p>
+<h5 id="_8">六、强化学习中的数据</h5>
+<p>1.训练数据来源<br />
+- 强化学习的<strong>训练数据</strong>，来自于<strong>智能体与环境交互的过程</strong>。  </p>
+<p>2.强化学习数据特点<br />
+- 若智能体<strong>不采取某个动作</strong>，则该动作对应的<strong>数据永远无法被观测到</strong>。<br />
+- 智能体的<strong>策略不同</strong>，与环境交互产生的<strong>数据分布也不同</strong>。  </p>
+<p>3.占用度量(<code>occupancy measure</code>)<br />
+- 作用：衡量智能体在和<strong>动态环境</strong>进行交互的过程中，采样到一个<strong>具体的状态动作对</strong>(<code>state-action pair</code>)的<strong>概率分布</strong>。<br />
+- 性质：给定两个<strong>策略</strong>，以及这两个策略与<strong>同一个动态环境</strong>交互得到的两个<strong>占用度量</strong>，<strong>策略相同，当且仅当两个占用度量相同</strong>。<br />
+- 奖励建立于状态-动作对，故一个<strong>策略</strong>对应的<strong>价值</strong>，实质上就是一个<strong>占用度量</strong>下对应<strong>奖励的期望</strong>。<br />
+- 寻找<strong>最优策略</strong>，对应于寻找<strong>最优占用度量</strong>。  </p>
+<h4 id="mab-multi-armed-bandit">第二讲 多臂老虎机(<code>MAB, Multi-Armed Bandit</code>)问题</h4>
 
 
 
