@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://ZJUZhangJiefu.github.io/RetroExplainer/">
       
       
+        <link rel="prev" href="../O-GNN/">
+      
+      
+        <link rel="next" href="../RL/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -242,22 +246,28 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../RealNVP/" class="md-tabs__link">
           
   
@@ -607,8 +617,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -617,12 +629,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -636,7 +648,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             深度学习论文
@@ -1088,19 +1100,21 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" checked>
         
           
           <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
@@ -1114,7 +1128,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_7">
             <span class="md-nav__icon md-icon"></span>
             逆合成预测
@@ -1158,6 +1172,96 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    RetroExplainer
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    RetroExplainer
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abstract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、分子逆合成简介
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1394,6 +1498,25 @@
     - <strong>基于<code>SMILES</code></strong>的分子表示方法<strong>语法严格，语义有效性不足</strong>，容易导致<strong>频繁出现无效语法</strong>。<br />
 - 解决方法<br />
     - 其他一些方法被提出，以<strong>避免无效字符串的生成</strong>，或<strong>嵌入更为丰富的结构信息</strong>。  </p>
+<p>5.基于图的方法<br />
+- 两阶段范式实现<br />
+    - 反应中心预测（<code>RCP, Reaction Center Prediction</code>）<br />
+    - 合成子完成（<code>SC, Synthon Complesion</code>）。<br />
+- 应用——正向反应预测<br />
+    - <code>Jin</code>等人将其应用于正向反应预测，提出使用Weisfeiler-Lehman同构测试[30]图学习来预测反应结果。<br />
+- 基于<code>GNN</code>框架的模型发展<br />
+    - 随着<code>GNN</code>的发展，许多基于<code>GNN</code>的框架出现于逆合成领域，并且在性能上取得了显著的提升。<br />
+    - <code>Shi</code>等人提出G2G框架，利用关系图卷积网络（<code>R-GCN</code>）进行<code>RCP</code>，并结合强化学习进行<code>SC</code>。<br />
+    - <code>Yan</code>等人提出的<code>RetroXpert</code>应用了图注意力网络（<code>GAT</code>）的变种进行<code>RCP</code>，以及基于序列的<code>Transformer</code>进行<code>SC</code>。  <br />
+    - <code>Somnath</code>等人提出的<code>GraphRetro</code>为两个阶段设计了两种消息传递神经网络（<code>MPNNs</code>）。<br />
+    - <code>Dai</code>等人提出<code>GLN</code>方法，利用反应模板连接产物和反应物。<br />
+- 传统基于<code>GNN</code>方法的问题<br />
+    - 主要关注分子的局部结构，忽略了长距离特性（如范德华力）的影响。<br />
+- 问题解决<br />
+    - <code>Ying</code>等人提出<code>Graphormer</code>，引入了基于最短路径的方法进行多尺度拓扑编码。<br />
+- 直接模拟图变化的方法以外的其余方法<br />
+    - 其他基于图的方法通过翻译反应物，以预测图变化。  </p>
+<p>6.</p>
 
 
 
