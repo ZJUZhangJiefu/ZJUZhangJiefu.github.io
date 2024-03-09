@@ -1258,6 +1258,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Results
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1428,6 +1437,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Results
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1511,12 +1529,40 @@
     - <code>Somnath</code>等人提出的<code>GraphRetro</code>为两个阶段设计了两种消息传递神经网络（<code>MPNNs</code>）。<br />
     - <code>Dai</code>等人提出<code>GLN</code>方法，利用反应模板连接产物和反应物。<br />
 - 传统基于<code>GNN</code>方法的问题<br />
-    - 主要关注分子的局部结构，忽略了长距离特性（如范德华力）的影响。<br />
+    - 主要关注分子的局部结构，忽略了长距离特征（如范德华力）的影响。<br />
 - 问题解决<br />
     - <code>Ying</code>等人提出<code>Graphormer</code>，引入了基于最短路径的方法进行多尺度拓扑编码。<br />
 - 直接模拟图变化的方法以外的其余方法<br />
     - 其他基于图的方法通过翻译反应物，以预测图变化。  </p>
-<p>6.</p>
+<p>6.现有逆合成方法的问题<br />
+- 信息表征的不足<br />
+    - 基于序列的方法：处理分子时，丧失先验信息。<br />
+    - 基于图的方法：忽视顺序信息、长距离特征。<br />
+- 可解释性差<br />
+    - 现有模型的决策机制尚不清晰，极大限制模型可靠性与实际应用价值。<br />
+    - 无法解释模型的工作原理，或提供实质性的<code>insight</code>。<br />
+- 单步逆合成、反应物不易获取<br />
+    - 大多数现有方法侧重于单步逆合成预测，能够生成看似合理，但可能不易购得的反应物，<br />
+    - 通常伴随手工筛选预测结果的繁琐过程。<br />
+    - 从产物到容易获得的反应物，进行多步逆合成预测和路径规划，更有实际意义。  </p>
+<p>7.论文贡献<br />
+- 提出<code>RetroExplainer</code>——一种结合化学知识、深度学习引导的分子组装方法，用于进行具有量化可解释性的逆合成预测。<br />
+- 贡献一——构建强大、信息丰富的分子表征<br />
+    - 设计一种多感知、多尺度图<code>Transformer</code>（<code>Multi-Sense Multi-Scale Graph Transformer, MSMS-GT</code>），用于通用的分子表征学习。<br />
+    - 使用动态适应性多任务学习（<code>Dynamic Adaptive Multi-Task Learning, DAMT</code>），以实现平衡的多目标优化。<br />
+    - 使用结构感知对比学习（<code>Structure-Aware Contrastive Learning, SACL</code>），以捕捉分子结构信息。<br />
+    - 结果：<code>RetroExplainer</code>在包括三个常用数据集（<code>USPTO-50K</code>、<code>USPTO-FULL</code>和<code>USPTO-MIT</code>）在内的共<code>12</code>个大规模<code>benchmark</code>数据集上表现优秀。<br />
+- 贡献二——良好的可解释性<br />
+    - 引入分子组装过程<br />
+        - 提供透明的决策过程。<br />
+        - 生成能量决策曲线，将预测分解为多个阶段，并允许在子结构级别进行归因分析。<br />
+        - 有助于理解“反事实”预测，揭示数据集中潜在的偏置。<br />
+    - 引入可解释逆合成预测<br />
+        - 提供更细致的参考信息（例如：对某一特定化学键断裂的置信度），启发研究人员设计定制化的反应物。 <br />
+- 贡献三——确保预测产物的可合成性、避免手动筛选候选反应物<br />
+    - 做法：整合<code>RetroExplainer</code>模型与<code>Retro</code>算法。<br />
+    - 结果：对<code>101</code>种复杂药物分子进行合成路线，<code>86.9%</code>的单步反应都能在文献报道中找到对应。  </p>
+<h4 id="results"><code>Results</code></h4>
 
 
 
