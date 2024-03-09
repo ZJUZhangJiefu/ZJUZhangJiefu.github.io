@@ -1265,6 +1265,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uspto" class="md-nav__link">
+    <span class="md-ellipsis">
+      基于USPTO数据集的性能比较
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      - 现有随机数据集分割方法的问题
+    </span>
+  </a>
+  
 </li>
       
     </ul>
@@ -1444,6 +1468,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uspto" class="md-nav__link">
+    <span class="md-ellipsis">
+      基于USPTO数据集的性能比较
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      - 现有随机数据集分割方法的问题
+    </span>
+  </a>
+  
 </li>
       
     </ul>
@@ -1563,6 +1611,41 @@
     - 做法：整合<code>RetroExplainer</code>模型与<code>Retro</code>算法。<br />
     - 结果：对<code>101</code>种复杂药物分子进行合成路线，<code>86.9%</code>的单步反应都能在文献报道中找到对应。  </p>
 <h4 id="results"><code>Results</code></h4>
+<h5 id="uspto">基于<code>USPTO</code>数据集的性能比较</h5>
+<ul>
+<li>实验设置  <ul>
+<li>三个常用<code>USPTO</code>的<code>benchmark</code>数据集：<code>USPTO-50K, USPTO-FULL, USPTO-MIT</code>。  </li>
+<li>比较：与<code>21</code>种逆合成方法进行对比。  </li>
+<li>数据集分割方法：与以往工作相同。  </li>
+</ul>
+</li>
+<li>
+<p>实验结果（表<code>1</code>）<br />
+<img alt="" src="../assets/DL/93.JPG" />  </p>
+<ul>
+<li>性能评估标准：<code>top-k</code>精确匹配精度，<code>k</code>分别设置为<code>1, 3, 5, 10</code>。  </li>
+<li><code>RetroExplainer</code>实验结果  <ul>
+<li>在<code>5</code>项指标上，取得最优水平。  <ul>
+<li><code>k = 1, 3, 5</code>时，针对已知反应类型。  </li>
+<li><code>k = 1, 3</code>时，针对未知反应类型。  </li>
+</ul>
+</li>
+<li><code>k = 10</code>的实验结果  <ul>
+<li>未达到最优精确度  </li>
+<li>在已知/未知反应类型的条件下，精确度接近最优模型<code>LocalRetro</code>，与其差距分别为<code>0.2%</code>和<code>1%</code>。  </li>
+</ul>
+</li>
+<li>综合结果（不同<code>top-k</code>下的平均精度）  <ul>
+<li>分别根据是否提供反应类别信息，综合考虑<code>top-1, top-3, top-5, top-10</code>预测的平均精度，<code>RetroExplainer</code>均获得最高精确度。  </li>
+<li>相比于第二名模型（已知反应类型为<code>LocalRetro</code>，未知反应类型为<code>R-SMILES</code>），平均精度分别改进<code>1%</code>和<code>0.1%</code>。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="-">- 现有随机数据集分割方法的问题</h2>
 
 
 
