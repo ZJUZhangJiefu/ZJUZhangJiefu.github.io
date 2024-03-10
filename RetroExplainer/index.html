@@ -1342,9 +1342,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
+  <a href="#uspto50k1" class="md-nav__link">
     <span class="md-ellipsis">
-      实验结果（表1）
+      USPTO50K数据集实验结果（表1）
     </span>
   </a>
   
@@ -1354,6 +1354,24 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       现有数据分割方法的问题及解决方案
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uspto-fulluspto-mit" class="md-nav__link">
+    <span class="md-ellipsis">
+      大型数据集USPTO-Full和USPTO-MIT的实验结果
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sota" class="md-nav__link">
+    <span class="md-ellipsis">
+      模型SOTA性能的解释
     </span>
   </a>
   
@@ -1647,9 +1665,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
+  <a href="#uspto50k1" class="md-nav__link">
     <span class="md-ellipsis">
-      实验结果（表1）
+      USPTO50K数据集实验结果（表1）
     </span>
   </a>
   
@@ -1659,6 +1677,24 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       现有数据分割方法的问题及解决方案
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uspto-fulluspto-mit" class="md-nav__link">
+    <span class="md-ellipsis">
+      大型数据集USPTO-Full和USPTO-MIT的实验结果
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sota" class="md-nav__link">
+    <span class="md-ellipsis">
+      模型SOTA性能的解释
     </span>
   </a>
   
@@ -1881,7 +1917,7 @@
 <li>比较：与<code>21</code>种逆合成方法进行对比。  </li>
 <li>数据集分割方法：与以往工作相同。  </li>
 </ul>
-<h6 id="1_1">实验结果（表<code>1</code>）</h6>
+<h6 id="uspto50k1"><code>USPTO50K</code>数据集实验结果（表<code>1</code>）</h6>
 <p><img alt="" src="../assets/DL/93.JPG" />  </p>
 <ul>
 <li>性能评估标准：<code>top-k</code>精确匹配精度，<code>k</code>分别设置为<code>1, 3, 5, 10</code>。  </li>
@@ -1916,14 +1952,52 @@
 <li>在上述<code>9</code>个数据集上，将<code>RetroExplainer</code>与<code>R-SMILES</code>和<code>LocalRetro</code>两种现有的最优方法进行比较。</li>
 </ul>
 </li>
-<li>结果（表<code>2</code>）<br />
-<img alt="" src="../assets/DL/94.JPG" />   <ul>
-<li><code>RetroExplainer</code>在<code>top-1, top-3, top-5, top-10</code>精确匹配准确率上，均超过了<code>baseline</code>方法。  </li>
+<li>结果（图<code>2</code>）<br />
+<img alt="" src="../assets/DL/95.JPG" />   <ul>
+<li>在上述<code>9</code>个数据集中的大部分数据集上，<code>RetroExplainer</code>在<code>top-1, top-3, top-5, top-10</code>精确匹配准确度上，均超过了<code>baseline</code>方法。  </li>
 </ul>
 </li>
 <li>结论  <ul>
 <li>进一步证明了<code>RetroExplainer</code>的有效性、健壮性。  </li>
 <li>相比现有方法，<code>RetroExplainer</code>在处理未曾见过的分子骨架结构时，能展现出更强的领域适应性。   </li>
+</ul>
+</li>
+</ul>
+<h6 id="uspto-fulluspto-mit">大型数据集<code>USPTO-Full</code>和<code>USPTO-MIT</code>的实验结果</h6>
+<ul>
+<li>结果（表<code>2</code>）<br />
+<img alt="" src="../assets/DL/94.JPG" />  <ul>
+<li>对于两个数据集的<code>4</code>中评价指标（<code>top-1, top-3, top-5, top-10</code>精确度）中，<code>RetroExplainer</code>均以较大优势取得最佳性能。  </li>
+<li><code>USPTO-FULL</code>数据集：<code>RetroExplainer</code>在<code>top-1, top-3, top-5, top-10</code>精确度上，分别比第二名的<code>R-SMILES</code>高出<code>2.5%, 4.1%, 2.7%, 2.8%</code>。  </li>
+<li><code>USPTO-MIT</code>数据集：结果类似。  </li>
+</ul>
+</li>
+<li>结论<ul>
+<li>在更大规模数据集上的评估条件下，<code>RetroExplainer</code>与以往的最先进相比方法，更为有效和稳定。  </li>
+<li><code>RetroExplainer</code>更适合大规模训练场景的应用，具有更大潜力。  </li>
+</ul>
+</li>
+<li>补充研究（后文）  <ul>
+<li>消融研究：讨论尺度信息、增强策略模块的有效性。  </li>
+<li>案例研究：说明<code>MSMS-GT</code>如何聚焦于分子的多尺度结构。 </li>
+</ul>
+</li>
+</ul>
+<h6 id="sota">模型<code>SOTA</code>性能的解释</h6>
+<ul>
+<li><code>RetroExplainer</code>取得更有表现的可能原因：数据建模的独特方法。  </li>
+<li>两种分布的同时捕捉  <ul>
+<li>提供产物分子图时，反应中心（<code>RC, Reaction Centers</code>）和离去基团（<code>LG, Leaving Groups</code>）之间的联合条件分布。  <ul>
+<li>通过联合分布，考虑离去集团对反应中心的影响，使得模型可以学习信息更丰富的表示。  </li>
+</ul>
+</li>
+<li>在确定反应中心、离去集团和产物后，离去集团之间连接关系的条件分布。  </li>
+</ul>
+</li>
+<li>效果  <ul>
+<li>增强模型泛化能力（尤其是涉及多个反应中心和离去集团的情形）</li>
+<li>避免了由于多个离去集团（或反应中心）问题，而产生的过度迭代需求。  </li>
+<li>通过学习合成子连接关系的条件分布，<code>RetroExplainer</code>能够有效适应更庞大、更复杂的数据集。  </li>
 </ul>
 </li>
 </ul>
