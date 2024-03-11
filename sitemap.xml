@@ -111,12 +111,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://ZJUZhangJiefu.github.io/RetroExplainer-Code/</loc>
+         <lastmod>2024-03-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://ZJUZhangJiefu.github.io/RetroExplainer/</loc>
          <lastmod>2024-03-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ZJUZhangJiefu.github.io/Retrosynthesis%20prediction%20with%20an%20interpretable%20deep-learning%20framework%20based%20on%20molecular%20assembly%20tasks/</loc>
+         <lastmod>2024-03-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ZJUZhangJiefu.github.io/SE-Exercise/</loc>
          <lastmod>2024-03-11</lastmod>
          <changefreq>daily</changefreq>
     </url>

@@ -1,0 +1,2624 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="大观散人">
+      
+      
+        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/RetroExplainer-Code/">
+      
+      
+        <link rel="prev" href="../DGM/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>逆合成预测 - 大观散人的博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=仿宋:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"仿宋";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="大观散人的博客" class="md-header__button md-logo" aria-label="大观散人的博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            大观散人的博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              逆合成预测
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ZJUZhangJiefu/ZJUZhangJiefu.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZJUZhangJiefu.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../CP/" class="md-tabs__link">
+          
+  
+  计算机专业课
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../RealNVP/" class="md-tabs__link">
+          
+  
+  深度学习论文
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../RL/" class="md-tabs__link">
+          
+  
+  深度学习专题
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  深度学习源代码解读
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="大观散人的博客" class="md-nav__button md-logo" aria-label="大观散人的博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    大观散人的博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ZJUZhangJiefu/ZJUZhangJiefu.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZJUZhangJiefu.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    计算机专业课
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            计算机专业课
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    编译原理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OS-Notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    操作系统
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机视觉
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            计算机视觉
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Camera%20Model%20and%203D%20Vision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    专题汇编——相机模型与立体视觉
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CV-Notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    复习提纲全解
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    软件工程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            软件工程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SE-Exercise/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    题库解析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NA-Notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数值分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AOR-Notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    应用运筹学基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    深度学习论文
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            深度学习论文
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    深度生成模型
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            深度生成模型
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    流模型
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            流模型
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RealNVP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RealNVP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GNN
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            GNN
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    图神经网络导论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Transformer
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Transformer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Attention%20Is%20All%20You%20Need/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Attention Is All You Need(NIPS 2017)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    扩散模型
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            扩散模型
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DDPM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Denoising Diffusion Probabilistic Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    优化器
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            优化器
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Descending%20Through%20A%20Crowded%20Valley/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Descending Through A Crowded Valley
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    分子对接
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            分子对接
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DSDP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DSDP - A Blind Docking Strategy Accelerated by GPUs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    逆合成预测
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            逆合成预测
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../G2GT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    G2GT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../O-GNN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    O-GNN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RetroExplainer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RetroExplainer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    深度学习专题
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            深度学习专题
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    强化学习
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DGM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    深度生成模型基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    深度学习源代码解读
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            深度学习源代码解读
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    逆合成预测
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    逆合成预测
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、数据集构建与数据处理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、数据集构建与数据处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.库引用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.参数解析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3build_datamodule" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.build_datamodule总函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4retroagtdatamodule" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.RetroAGTDataModule函数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.RetroAGTDataModule函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 __init__函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-retroagtdataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 RetroAGTDataSet数据集类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 RetroAGTDataSet数据集类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-retroagtdataset__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.1 RetroAGTDataSet.__init__()函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-retroagtdatasetprocessself" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.2 RetroAGTDataSet.process(self)函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#423-datadata_utilspymap_id_alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.3 data/data_utils.py/map_id_alignment函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#424-retroagtdatasetprocessself" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.4 RetroAGTDataSet.process(self)函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#425-datadatasetpysmile_to_mol_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.5 data/dataset.py/smile_to_mol_info函数及其相关函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#426-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.6 process函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#427-get_tgt_adj_order" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.7 get_tgt_adj_order函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、数据集构建与数据处理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、数据集构建与数据处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.库引用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.参数解析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3build_datamodule" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.build_datamodule总函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4retroagtdatamodule" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.RetroAGTDataModule函数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.RetroAGTDataModule函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 __init__函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-retroagtdataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 RetroAGTDataSet数据集类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 RetroAGTDataSet数据集类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-retroagtdataset__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.1 RetroAGTDataSet.__init__()函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-retroagtdatasetprocessself" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.2 RetroAGTDataSet.process(self)函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#423-datadata_utilspymap_id_alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.3 data/data_utils.py/map_id_alignment函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#424-retroagtdatasetprocessself" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.4 RetroAGTDataSet.process(self)函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#425-datadatasetpysmile_to_mol_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.5 data/dataset.py/smile_to_mol_info函数及其相关函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#426-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.6 process函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#427-get_tgt_adj_order" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2.7 get_tgt_adj_order函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>逆合成预测</h1>
+
+<h3 id="_1">一、数据集构建与数据处理</h3>
+<p>首先从<code>entry.py</code>进入代码。  </p>
+<h4 id="1">1.库引用</h4>
+<pre><code class="language-python">import os
+import argparse
+import pytorch_lightning as pl
+import torch
+import numpy as np
+from pytorch_lightning.utilities import seed
+from model.RetroAGT import RetroAGT
+from data.datamodule import RetroAGTDataModule
+from pytorch_lightning import Trainer
+from pytorch_lightning.callbacks import LearningRateMonitor, ModelCheckpoint, Timer
+from pytorch_lightning.loggers import TensorBoardLogger
+from data import LeavingGroup
+from pytorch_lightning.callbacks import RichProgressBar
+from pytorch_lightning.callbacks.progress.rich_progress import RichProgressBarTheme
+from pytorch_lightning.strategies import DDPStrategy
+# import torch.multiprocessing
+# torch.multiprocessing.set_sharing_strategy('file_system')
+os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
+# torch.backends.cudnn.enabled = False
+# os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+</code></pre>
+<h4 id="2">2.参数解析</h4>
+<pre><code class="language-python">
+def main():
+    parser = argparse.ArgumentParser()
+    parser = pl.Trainer.add_argparse_args(parser)
+    parser = RetroAGT.add_model_specific_args(parser)
+
+    # trainer configuration
+    parser.add_argument('--epochs', type=int, default=300)
+    parser.add_argument('--log_dir', type=str, default='tb_logs')
+    parser.add_argument('--name', type=str, default='retro1') # 用于
+    parser.add_argument('--acc_batches', type=int, default=8) # 进行精度测试的间隔轮次  
+    parser.add_argument('--model_path', type=str, default='') 
+    parser.add_argument('--predict', default=False, action='store_true')
+    parser.add_argument('--test', default=False, action='store_true')
+    parser.add_argument('--cuda', type=str, default='0')
+
+    # dataset configuration
+    parser.add_argument('--dataset', type=str, default=&quot;data/USPTO50K&quot;)
+    parser.add_argument('--not_fast_read', default=False, action='store_true')
+    parser.add_argument('--use_3d_info', default=False, action='store_true')
+    parser.add_argument('--lg_path', type=str, default='')
+    parser.add_argument('--num_workers', type=int, default=16)
+    parser.add_argument('--dataset_type', type=str, default='uspto_50k')
+
+    args = parser.parse_args()
+    print(args)
+
+    seed.seed_everything(args.seed)
+
+    print(&quot;Building DataModule...&quot;)
+    dm = build_datamodule(args)
+</code></pre>
+<ul>
+<li>上述<code>seed</code>，源代码作者指定为<code>123</code>，有利于复现实验结果。  </li>
+<li>接下来，调用<code>build_datamodule</code>函数，该函数的作用主要是：<strong>数据预处理、数据集类的实例化，以及数据的加载</strong>。  </li>
+</ul>
+<h4 id="3build_datamodule">3.<code>build_datamodule</code>总函数</h4>
+<ul>
+<li>目的：构建<code>RetroAGTDataModule</code>实例。  </li>
+<li>函数定义如下。  </li>
+</ul>
+<pre><code class="language-python">def build_datamodule(args):
+    dm = RetroAGTDataModule(
+        root=args.dataset,
+        batch_size=args.batch_size,
+        fast_read=not args.not_fast_read,
+        use_3d_info=args.use_3d_info,
+        num_workers=args.num_workers,
+        dataset_type=args.dataset_type,
+        predict=args.predict or args.test,
+    )
+    return dm
+</code></pre>
+<h4 id="4retroagtdatamodule">4.<code>RetroAGTDataModule</code>函数</h4>
+<h5 id="41-__init__">4.1 <code>__init__</code>函数</h5>
+<ul>
+<li><code>__init__</code>函数的传入参数涉及：数据根目录（如：使用<code>USPTO50K</code>数据集，则<code>root='data/USPTO50K'</code>）、是否使用<code>3D</code>信息、是否快速读取已经预处理好的数据、数据集类型、是否打乱，以及数据模块构建的其余细节。  </li>
+</ul>
+<pre><code class="language-python">def __init__(
+        self,
+        root,
+        batch_size,
+        use_3d_info=False,
+        fast_read=True,
+        split_names=None,
+        num_workers=None,
+        pin_memory=True,
+        shuffle=True,
+        predict=True,
+        dataset_type='uspto_50k'):
+</code></pre>
+<ul>
+<li>下面判别是否有已处理好的数据。  </li>
+</ul>
+<pre><code class="language-python">    exist_process = os.path.exists(os.path.join(root, 'processed/test'))
+    if exist_process:
+        print(f'dataset in {root} has already been processed, reading from processed directory...')
+        if split_names is None and not predict:
+            split_names = [&quot;train&quot;, &quot;valid&quot;, &quot;test&quot;]
+        elif split_names is None:
+            split_names = ['test']
+    else:
+        print(f'processing raw file from {root}...')
+        split_names = ['train', 'valid', 'test']
+</code></pre>
+<ul>
+<li>下面是其余细节化参数的设置。  </li>
+</ul>
+<pre><code class="language-python">self.split_names = split_names
+if num_workers is None:
+    num_workers = len(os.sched_getaffinity(0))
+#             num_workers = 32
+self.num_workers = num_workers
+self.batch_size = batch_size
+self.pin_memory = pin_memory
+self.shuffle = shuffle
+self.dataset_dict = {}
+</code></pre>
+<ul>
+<li>下面根据指定的数据集类型，对<code>RetroAGTDataSet</code>数据集类进行实例化。将要采用的是<code>USPTO-50K</code>数据集。数据集各参数，稍后会有具体的解释。  </li>
+</ul>
+<pre><code class="language-python">if dataset_type == &quot;uspto_50k&quot;:
+    max_node, max_lg_na, max_gate_num_size = 300, 100, 10
+    for data_split in split_names:
+        self.dataset_dict[data_split] = RetroAGTDataSet(root=root,
+                                                        data_split=data_split,
+                                                        fast_read=fast_read,
+                                                        use_3d_info=use_3d_info,
+                                                        max_node=max_node,
+                                                        max_lg_na=max_lg_na,
+                                                        max_gate_num_size=max_gate_num_size,
+                                                        dataset_type=dataset_type)
+
+
+elif dataset_type == &quot;uspto_full&quot;:
+    max_node, max_lg_na, max_gate_num_size = 300, 100, 20
+    for data_split in split_names:
+        self.dataset_dict[data_split] = RetroAGTDataSet(root=root,
+                                                        data_split=data_split,
+                                                        fast_read=fast_read,
+                                                        use_3d_info=use_3d_info,
+                                                        max_gate_num_size=max_gate_num_size,
+                                                        max_node=max_node, max_lg_na=max_lg_na,
+                                                        dataset_type='full')
+elif dataset_type == &quot;uspto_mit&quot;:
+    max_node, max_lg_na, max_gate_num_size, max_regents_na = 500, 300, 20, 100
+    for data_split in split_names:
+        self.dataset_dict[data_split] = RetroAGTDataSet(root=root,
+                                                        data_split=data_split,
+                                                        fast_read=fast_read,
+                                                        use_3d_info=use_3d_info,
+                                                        max_gate_num_size=max_gate_num_size,
+                                                        max_node=max_node, max_lg_na=max_lg_na,
+                                                        max_regents_na=max_regents_na,
+                                                        dataset_type='mit', known_regents=False)
+
+elif dataset_type == &quot;uspto_mit_wo_regents&quot;:
+    max_node, max_lg_na, max_gate_num_size, max_regents_na = 500, 300, 20, 100
+    for data_split in split_names:
+        self.dataset_dict[data_split] = RetroAGTDataSet(root=root,
+                                                        data_split=data_split,
+                                                        fast_read=fast_read,
+                                                        use_3d_info=use_3d_info,
+                                                        max_gate_num_size=max_gate_num_size,
+                                                        max_node=max_node, max_lg_na=max_lg_na,
+                                                        max_regents_na=max_regents_na,
+                                                        dataset_type='mit', known_regents=False)
+else:
+    raise NotImplementedError
+</code></pre>
+<p>下面进入<code>data/datasets.py</code>文件，完成数据集类的初始化，以及数据的预处理操作。  </p>
+<h5 id="42-retroagtdataset"><code>4.2</code> <code>RetroAGTDataSet</code>数据集类</h5>
+<ul>
+<li>该类继承自<code>torch_geometric.data</code>中的<code>Dataset</code>类。  </li>
+</ul>
+<h6 id="421-retroagtdataset__init__">4.2.1 <code>RetroAGTDataSet.__init__()</code>函数</h6>
+<ul>
+<li>函数参数列表如下：  </li>
+</ul>
+<pre><code class="language-python">def __init__(self, root, data_split, fast_read=True, max_node=200, max_gate_num_size=10, max_regents_na=0,
+                min_node=3, use_3d_info=False, max_lg_na=50, save_cache=True, dataset_type='50k', known_regents=False, 
+                data_root = &quot;/data_zju_3/zhangjf/USPTO&quot;
+</code></pre>
+<ul>
+<li>各传入参数的简单解释  <ul>
+<li><code>root</code>：源数据集的目录  </li>
+<li><code>data_split</code>：数据分割类型，一般为<code>train</code>, <code>test</code>, <code>valid</code>之一。  </li>
+<li><code>fast_read</code>：快速读取经过预处理的数据。  </li>
+<li><code>max_node</code>：最大结点数。  </li>
+<li><code>max_gate_num_size</code>：  </li>
+<li><code>max_regents_na</code>：  </li>
+<li><code>min_node</code>：最小结点数  </li>
+<li><code>use_3d_info</code>：是否使用三维信息，作特征编码。<strong>作者设置为<code>False</code>，实际上并未将<code>3D</code>信息融入特征编码之中</strong>。    </li>
+<li><code>max_lg_na</code>：离去集团(<code>LG, leaving group</code>)的最大原子数。  </li>
+<li><code>save_cache</code>：是否将处理好的数据存放到缓冲文件中。  </li>
+<li><code>dataset_type</code>：数据集类型。  </li>
+<li><code>known_regents</code>：  </li>
+<li><code>data_root</code>：经处理后，数据存放的目录。  </li>
+</ul>
+</li>
+<li>下列代码对类参数进行初始化，用<code>data_root/processed/leaving_group.pt</code>文件存放所有的离去集团，用<code>num_files,pt</code>存储数据文件数目。    </li>
+</ul>
+<pre><code class="language-python">self.root = root
+self.data_root = data_root
+self.lg_path = osp.join(data_root, osp.join('processed', 'leaving_group.pt'))
+# self.rxn_center_path = osp.join(root, osp.join('processed', 'rxn_center.pt'))
+self.min_node = min_node
+self.use_3d_info = use_3d_info
+self.data_split = data_split
+self.max_node = max_node
+self.max_gate_num_size = max_gate_num_size
+self.max_lg_na = max_lg_na
+self.max_regents_na = max_regents_na if known_regents else 0
+self.dataset_type = dataset_type
+self.known_regents = known_regents
+self.size_path = osp.join(osp.join(self.data_root, osp.join(&quot;processed&quot;, self.data_split)), &quot;num_files.pt&quot;)
+</code></pre>
+<ul>
+<li>下列代码统计<code>train, valid, test</code>三类数据集的数据总数。  </li>
+<li>数据集类型为<code>50k</code>时，为防止信息泄露，需要打乱原子映射的序号。  </li>
+</ul>
+<pre><code class="language-python">if osp.exists(self.size_path):
+    self.size = torch.load(self.size_path)
+else:
+    self.size = 0
+self.need_reshuffle_mapped_atom = True if '50k' in self.dataset_type else False
+self.data = None
+</code></pre>
+<ul>
+<li>注意到<code>torch_geometric.data.Dataset</code>父类的初始化函数有如下语句：</li>
+</ul>
+<pre><code class="language-python">if self.has_process:
+    self._process()
+</code></pre>
+<p>即：如果子类具有名为<code>process</code>的函数，则父类的<code>__init__</code>函数最后会调用子类的<code>process</code>函数，以进行对数据的预处理操作。原因是，几何数据往往需经过一些预处理操作，才易于训练。  </p>
+<h6 id="422-retroagtdatasetprocessself">4.2.2 <code>RetroAGTDataSet.process(self)</code>函数</h6>
+<ul>
+<li><code>process</code>的功能是数据处理，首先进行处理前的准备。  <ul>
+<li><code>cur_id</code>：表示当前处理到第<code>cur_id</code>条数据。  </li>
+<li><code>last_id</code>：用于检错。  </li>
+<li><code>count</code>：实例化<code>collections.Counter</code>类，用于计数。  </li>
+<li><code>leaving_group</code>：由于最终的<code>self.lg_path</code>要存储训练集、验证集、测试集的所有离去集团，因此看<code>self.lg_path</code>是否已经存在一些处理好的离去集团，若存在，则读入离去集团列表，并继续往其中添加不存在的离去集团。  </li>
+<li><code>max_lg_na, max_atom_na, max_regents_na</code>，分别表示<code>leaving group, atom, regent</code>三者的最大原子个数。  </li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def process(self):
+    cur_id = 0  # record the total id
+    last_id = 0  # For recovery
+    from collections import Counter
+    count = Counter()
+    try:
+        leaving_group = torch.load(self.lg_path)
+    except FileNotFoundError:
+        leaving_group = []
+    max_lg_na, max_atom_na, max_regents_na = 0, 0, 0
+    os.makedirs(self.processed_dir, exist_ok=True)
+</code></pre>
+<ul>
+<li>接下来进入正式处理数据的过程。  </li>
+<li><code>USPTO</code>反应数据格式  <ul>
+<li><code>.csv</code>文件，一行表示一条训练数据。  </li>
+<li>数据属性  <ul>
+<li><code>class</code>：反应类型（表示为整数）  </li>
+<li><code>ID</code>：化学反应在数据库中的编号。  </li>
+<li><code>rxn_smiles</code>：与反应相关的<code>SMILES</code>表示，读取为<code>str</code>类型。  <ul>
+<li>靠前的片段：反应物<code>SMILES</code>序列  </li>
+<li>靠后的片段：生成物<code>SMILES</code>序列  </li>
+<li>反应物、生成物的<code>SMILES</code>序列，用字符串<code>'&gt;&gt;'</code>区分。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>下面是外部循环相关代码（调试：训练数据处理代码）。  <ul>
+<li><code>self.raw_file_names = ['train.csv']</code>  </li>
+<li><code>self.raw_dir = 'data/USPTO50K/raw'</code>  </li>
+<li>首先读取源数据<code>csv</code>文件，用<code>pd.read_csv</code>函数读取为对象<code>csv</code>。  </li>
+<li><code>reaction_list</code>：即所有反应组成的列表，数据格式见下方。  </li>
+<li><code>reactant_smarts_list</code>：所有反应物的列表。  </li>
+<li><code>product_smarts_list</code>：所有产物的列表。逆合成任务即给定产物，预测反应物。    </li>
+<li>使用<code>&gt;&gt;</code>划分反应物、生成物合在一起的序列，会得到一个列表，列表前一项即为反应物<code>SMILES</code>序列，后一项即为生成物<code>SMILES</code>序列。  </li>
+<li><code>csv['class']</code>取值为<code>[1, 10]</code>内的整数，表明有<code>10</code>类化学反应。  </li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">for raw_file_name in self.raw_file_names:
+    # print(f&quot;Processing the {raw_file_name} dataset to torch geometric format...\n&quot;)
+    csv = pd.read_csv(osp.join(self.raw_dir, raw_file_name))
+    reaction_list = csv['rxn_smiles']
+    reactant_smarts_list = list(
+        map(lambda x: x.split('&gt;&gt;')[0], reaction_list))
+    product_smarts_list = list(
+        map(lambda x: x.split('&gt;&gt;')[1], reaction_list))
+    rxn_list = csv['class'] - 1 if 'class' in csv.keys() else None
+    # with open(osp.join(self.processed_dir, &quot;smiles_lists.csv&quot;), &quot;a+&quot;) as f:
+    #     f.write(&quot;reactants, products\n&quot;)
+    total = len(reactant_smarts_list)
+</code></pre>
+<ul>
+<li>下面对各反应数据进行正式处理。  </li>
+</ul>
+<pre><code class="language-python">for idx, (reactant_smiles, product_smiles) \
+    in tqdm(enumerate(zip(reactant_smarts_list, product_smarts_list)), total=total):
+</code></pre>
+<ul>
+<li>首先，对于<code>USPTO-50K</code>数据集，每个原子的映射序号都需要调整，调用<code>map_id_alignment</code>函数实现。  </li>
+</ul>
+<pre><code class="language-python">    if idx &lt; last_id:
+        count['idx &lt; last_id'] += 1
+        continue
+    if self.need_reshuffle_mapped_atom:
+        # some datasets like uspto50k need to shuffle the map numbers to avid the possible leakage
+        reactant_smiles, product_smiles = \
+            map_id_alignment(reactant_smiles, product_smiles, return_smiles=True)
+</code></pre>
+<h6 id="423-datadata_utilspymap_id_alignment">4.2.3 <code>data/data_utils.py/map_id_alignment</code>函数</h6>
+<ul>
+<li>函数参数  <ul>
+<li><code>reactant_smiles, product_smiles</code>：即反应物与产物的<code>SMILES</code>字符串序列。  </li>
+<li><code>product</code>：用于更新原子映射编号的参考产物。这一参数在重新排列已有的逆合成预测结果时，才会被使用。  </li>
+<li><code>return_smiles</code>：若为<code>True</code>，返回原子映射序号调整后，重新生成的<code>SMILES</code>字符串；若为<code>False</code>，返回反应物、生成物经过原子映射序号调整后的<code>MOL</code>类型实例。  </li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def map_id_alignment(reactant_smiles, product_smiles, product=None, return_smiles=True):
+    &quot;&quot;&quot;
+    if product is None, update product mapping numbers according to canonical atom order (for USPTO-50K)
+    else, update product mapping numbers according to the reference product (for re-ranking dataset)
+    :param reactant_smiles:
+    :param product_smiles:
+    :param product:
+    :param return_smiles:
+    :return:
+    &quot;&quot;&quot;
+</code></pre>
+<ul>
+<li>原子映射序号调整  <ul>
+<li>下列变量中，<code>cano</code>是标准原子顺序(<code>canonical atom order</code>)的缩写。  </li>
+<li>首先，<code>cur_product</code>是原子映射序号未经调整的、<code>rdkit.Chem.Mol</code>类型产物。  </li>
+<li><code>index2maxnums</code>字典，用于查询原子序号(<code>index</code>)到原子映射序号(<code>atom map number</code>)的对应关系。  </li>
+<li>若参考产物(<code>product</code>)传入类型为<code>SMILES</code>字符串，则调用<code>Chem.MolFromSmiles</code>读取，作为设置原子映射序号的参考<code>Mol</code>对象<code>mol_cano</code>；若为<code>Mol</code>类型，则调用<code>Chem.RWMol</code>函数读取；若<code>product</code>为空，则令当前产物<code>cur_product</code>的所有原子映射序号均为<code>0</code>，重新化为<code>SMILES</code>字符串后，再次转化为<code>Mol</code>实例。  </li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">index2mapnums = {}
+cur_product = Chem.MolFromSmiles(product_smiles)
+for atom in cur_product.GetAtoms():
+    index2mapnums[atom.GetIdx()] = atom.GetAtomMapNum()
+
+if isinstance(product, str):
+    mol_cano = Chem.MolFromSmiles(product)
+
+elif product is None:
+    mol_cano = Chem.RWMol(cur_product)
+    [atom.SetAtomMapNum(0) for atom in mol_cano.GetAtoms()]
+    smi_cano = Chem.MolToSmiles(mol_cano)
+    mol_cano = Chem.MolFromSmiles(smi_cano)
+
+else:
+    mol_cano = Chem.RWMol(product)
+</code></pre>
+<ul>
+<li>函数<code>GetSubstructMatches</code>的描述：<code>Returns the indices of the molecule’s atoms that match a substructure query.</code> （<a href="https://www.rdkit.org/docs/source/rdkit.Chem.rdchem.html">链接</a>）  </li>
+<li>首先获取<code>cur_product</code>与按照标准原子序列排序完成的<code>mol_cano</code>之间的子结构对应关系<code>matches</code>。  </li>
+<li><code>matches</code>为<code>tuple</code>类型。  </li>
+<li><code>mapnums_old2new</code>字典的作用：根据旧的原子映射序号，查找新的原子映射序号。  </li>
+<li><code>new_reactant</code>首先将反应物的原始<code>SMILES</code>（有信息泄露）读取为<code>Mol</code>实例，然后更改反应物的原子映射序号。  </li>
+<li>下面使用产物的旧序号-&gt;新序号对应关系更改反应物的原子映射序号，没有太大的道理可言，只是实现外部参数<code>reshuffle</code>打乱<code>AtomicMapNum</code>，从而防止信息泄露的目的。  </li>
+</ul>
+<pre><code class="language-python">matches = cur_product.GetSubstructMatches(mol_cano)
+# print(matches)
+if matches:
+    mapnums_old2new = {}
+    for atom, mat in zip(mol_cano.GetAtoms(), matches[0]):
+        if product is None:
+            # update product mapping numbers according to canonical atom order
+            # to completely remove potential information leak
+            mapnums_old2new[index2mapnums[mat]] = 1 + atom.GetIdx()
+            atom.SetAtomMapNum(1 + atom.GetIdx())
+        else:
+            mapnums_old2new[index2mapnums[mat]] = atom.GetAtomMapNum()
+    new_product = mol_cano
+    # update reactant mapping numbers accordingly
+
+    new_reactant = Chem.MolFromSmiles(reactant_smiles)
+    for atom in new_reactant.GetAtoms():
+        if atom.GetAtomMapNum() in mapnums_old2new.keys():
+            atom.SetAtomMapNum(mapnums_old2new[atom.GetAtomMapNum()])
+        else:
+            atom.SetAtomMapNum(0)
+
+    if product is not None:
+        assert Chem.MolToSmiles(new_product) == Chem.MolToSmiles(product), \
+            f&quot;reactant_smiles:{reactant_smiles}, product_smiles:{product_smiles}, &quot; \
+            f&quot;product:{Chem.MolToSmiles(product)}, new_product:{new_product}, &quot; \
+            f&quot;new_reactant:{Chem.MolToSmiles(new_reactant)}&quot;
+
+    if return_smiles:
+        return Chem.MolToSmiles(new_reactant), Chem.MolToSmiles(new_product)
+    else:
+        return new_reactant, new_product
+</code></pre>
+<p>下面返回<code>data/dataset.py</code>文件。  </p>
+<h6 id="424-retroagtdatasetprocessself">4.2.4 <code>RetroAGTDataSet.process(self)</code>函数</h6>
+<ul>
+<li>首先获取反应类型，此处范围变为<code>[0, 9]</code>。  </li>
+<li>然后调用<code>smile_to_mol_info</code>，获取产物的特征字典。字典包含以下特征：  <ul>
+<li><code>Mol</code>实例  </li>
+<li>边矩阵  </li>
+<li>二维距离矩阵  </li>
+<li>三维距离矩阵  </li>
+<li>原子特征（已经编码为<code>Tensor</code>，下一部分有详细解释）    </li>
+<li>原子数  </li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">rxn_type = rxn_list[idx] if rxn_list is not None else 0
+product = smile_to_mol_info(product_smiles, use_3d_info=self.use_3d_info)
+</code></pre>
+<h6 id="425-datadatasetpysmile_to_mol_info">4.2.5 <code>data/dataset.py/smile_to_mol_info</code>函数及其相关函数</h6>
+<ul>
+<li><code>smile_to_mol_info</code>函数如下，功能不再赘述。  </li>
+</ul>
+<pre><code class="language-python">def smile_to_mol_info(smile, calc_dist=True, use_3d_info=False):
+    mol = Chem.MolFromSmiles(smile)
+    bond_adj = get_bond_adj(mol)
+    dist_adj = get_dist_adj(mol) if calc_dist else None
+    dist_adj_3d = get_dist_adj(mol, use_3d_info) if calc_dist else None
+    atom_fea, n_atom = get_atoms_info(mol)
+    return {
+        &quot;mol&quot;: mol,
+        &quot;bond_adj&quot;: bond_adj,
+        &quot;dist_adj&quot;: dist_adj,
+        &quot;dist_adj_3d&quot;: dist_adj_3d,
+        &quot;atom_fea&quot;: atom_fea,
+        &quot;n_atom&quot;: n_atom
+    }
+</code></pre>
+<ul>
+<li>边矩阵函数<code>get_bond_adj</code>  <ul>
+<li>此处以二进制表明键的特征，<strong>最低位为<code>1</code></strong>表示两个原子之间<strong>存在化学键</strong>，其余位分别表示<strong>化学键类型</strong>（<strong>双键、三键、<code>1.5</code></strong>）、<strong>共轭键、键处于环中</strong>五种信息。  </li>
+<li>此处用<code>bit[5]</code>表明键是否在环中，为<strong>后续环的发现、环信息的注入</strong>作准备。  </li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def get_bond_adj(mol):
+    &quot;&quot;&quot;
+    :param mol: rdkit mol
+    :return: multi graph for {
+                sigmoid_bond_graph,
+                pi_bond_graph,
+                2pi_bond_graph,
+                aromic_graph,
+                conjugate_graph,
+                ring_graph,
+    }
+    &quot;&quot;&quot;
+    n_atom = len(mol.GetAtoms())
+    bond_adj = torch.zeros(n_atom, n_atom, dtype=torch.uint8)
+    for bond in mol.GetBonds():
+        i, j = bond.GetBeginAtomIdx(), bond.GetEndAtomIdx()
+        bond_type = bond.GetBondTypeAsDouble()
+        bond_adj[i, j] = bond_adj[j, i] = 1
+        if bond_type in [2, 3]:
+            bond_adj[i, j] = bond_adj[j, i] = bond_adj[i, j] + (1 &lt;&lt; 1)
+        if bond_type == 3:
+            bond_adj[i, j] = bond_adj[j, i] = bond_adj[i, j] + (1 &lt;&lt; 2)
+        if bond_type == 1.5:
+            bond_adj[i, j] = bond_adj[j, i] = bond_adj[i, j] + (1 &lt;&lt; 3)
+        if bond.GetIsConjugated():
+            bond_adj[i, j] = bond_adj[j, i] = bond_adj[i, j] + (1 &lt;&lt; 4)
+        if bond.IsInRing():
+            bond_adj[i, j] = bond_adj[j, i] = bond_adj[i, j] + (1 &lt;&lt; 5)
+    return bond_adj
+</code></pre>
+<ul>
+<li><code>get_dist_adj</code>函数  <ul>
+<li>此处根据是否用<code>3D</code>信息，分别返回二/三维距离矩阵。  </li>
+<li>源代码中<code>use_3d_info</code>的选项为<code>False</code>，但是可以改为<code>True</code>，说明三维信息已被以往工作考虑。  </li>
+<li>思考：一维信息（<code>SMILES</code>、分子指纹）如何融入模型？是先针对<code>Graphormer, 1DFeature</code>分别使用注意力，再融合，还是直接把<code>1D feature</code>放入<code>smile_to_mol_info</code>的返回字典中？这是值得思考的问题。  </li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def get_dist_adj(mol, use_3d_info=False):
+    if use_3d_info:
+        m2 = Chem.AddHs(mol)
+        is_success = AllChem.EmbedMolecule(m2, enforceChirality=False)
+        if is_success == -1:
+            dist_adj = None
+        else:
+            AllChem.MMFFOptimizeMolecule(m2)
+            m2 = Chem.RemoveHs(m2)
+            dist_adj = (-1 * torch.tensor(AllChem.Get3DDistanceMatrix(m2), dtype=torch.float))
+    else:
+        dist_adj = (-1 * torch.tensor(molDG.GetMoleculeBoundsMatrix(mol), dtype=torch.float))
+
+    return dist_adj
+</code></pre>
+<ul>
+<li>原子特征编码<code>get_atoms_info</code>函数，首先获取每个原子的下列特征并存放在一个大型向量中，然后把<code>nan</code>转为<code>0</code>，其余正常数值依次<code>+1</code>以形成区别，获得一个分子中所有原子的特征组成的编码。  <ul>
+<li>原子序号(<code>atom.GetAtomicNum()</code>)  </li>
+<li>总连接数(<code>atom.GetTotalDegree()</code>)，是否加氢不影响该函数的计算结果。  </li>
+<li>杂化类型(<code>atom.GetHybridization()</code>)  </li>
+<li>氢原子总数(<code>atom.GetTotalNumHs()</code>)  </li>
+<li>芳香性(<code>atom.GetIsAromatic()</code>)  </li>
+<li>环的大小(<code>n_ring</code>)  </li>
+<li>形式电荷(<code>atom.GetFormalCharge()</code>)  </li>
+<li>原子手性(<code>atom.GetChiralTag()</code>)  </li>
+<li><code>Gasteiger</code>电荷(<code>atom.GetDoubleProp("_GasteigerCharge")</code>)  </li>
+</ul>
+</li>
+<li>最后调用<code>torch.nan_to_num</code>，即将上述特征编码为向量。  </li>
+</ul>
+<pre><code class="language-python">def get_atoms_info(mol):
+    atoms = mol.GetAtoms()
+    n_atom = len(atoms)
+    atom_fea = torch.zeros(9, n_atom, dtype=torch.half)
+    AllChem.ComputeGasteigerCharges(mol)
+    for idx, atom in enumerate(atoms):
+        atom_fea[0, idx] = atom.GetAtomicNum()
+        atom_fea[1, idx] = atom.GetTotalDegree() + 1
+        atom_fea[2, idx] = int(atom.GetHybridization()) + 1
+        atom_fea[3, idx] = atom.GetTotalNumHs() + 1
+        atom_fea[4, idx] = atom.GetIsAromatic() + 1
+        for n_ring in range(3, 9):
+            if atom.IsInRingSize(n_ring):
+                atom_fea[5, idx] = n_ring + 1
+                break
+        else:
+            if atom.IsInRing():
+                atom_fea[5, idx] = 10
+
+        atom_fea[6, idx] = atom.GetFormalCharge() + 10
+        atom_fea[7, idx] = int(atom.GetChiralTag()) + 1
+        atom_fea[8, idx] = atom.GetDoubleProp(&quot;_GasteigerCharge&quot;)
+
+    atom_fea = torch.nan_to_num(atom_fea)
+    return atom_fea, n_atom
+</code></pre>
+<h6 id="426-process">4.2.6 <code>process</code>函数</h6>
+<ul>
+<li>下列代码位于对产物调用<code>smile_to_mol_info</code>之后，<code>count</code>的作用是错误恢复，<code>max_atom_na</code>动态更新，对实验作用有限。  </li>
+<li>同样调用<code>smile_to_mol_info</code>，获取反应物信息。  </li>
+</ul>
+<pre><code class="language-python">if self.use_3d_info and product['dist_adj_3d'] is None:
+    count['self.use_3d_info'] += 1
+    continue
+elif product['n_atom'] &lt;= self.min_node or product['n_atom'] &gt;= self.max_node:
+    max_atom_na = max(max_atom_na, product['n_atom'])
+    count['product'] += 1
+    continue
+
+reactant = smile_to_mol_info(reactant_smiles, calc_dist=True, use_3d_info=False)
+</code></pre>
+<ul>
+<li>下列代码首先编码溶剂(<code>regent</code>)信息。<code>USPTO-MIT</code>数据集中的反应具有溶剂信息，其余数据集则不具备。  </li>
+<li>溶剂特征  <ul>
+<li>原子特征（即前面提及的约<code>10</code>中原子特征）  </li>
+<li>边矩阵  </li>
+<li>距离矩阵  </li>
+</ul>
+</li>
+<li>然后输入反应物、产物的<code>Mol</code>实例，调用<code>get_tgt_adj_order</code>函数，获取的信息有：  <ul>
+<li>(<code>order</code>)  </li>
+<li>(<code>gate_num</code>)  </li>
+<li>(<code>bridge</code>)  </li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">regents_idx, regents = [], None
+try:
+    if self.dataset_type != 'mit':
+        if reactant['n_atom'] &lt;= self.min_node or reactant['n_atom'] &gt;= self.max_node:
+            count['reactant'] += 1
+            continue
+        order, gate_num, bridge = get_tgt_adj_order(product['mol'], reactant['mol'])
+    else:
+        order, gate_num, bridge, regents_idx = get_tgt_adj_order_mit(product['mol'], reactant['mol'],
+                                                                        reactant_smiles)
+        if reactant['n_atom'] &lt;= self.min_node or reactant['n_atom'] &gt;= self.max_node + len(
+                regents_idx):
+            count['reactant'] += 1
+            continue
+        if self.known_regents:
+            regents = {
+                'atom_fea': reactant['atom_fea'][:, regents_idx],
+                'bond_adj': reactant['bond_adj'][regents_idx, :][:, regents_idx],
+                'dist_adj': reactant['dist_adj'][regents_idx, :][:, regents_idx],
+            }
+            max_regents_na = max(max_regents_na, len(regents_idx))
+            if len(regents_idx) &gt; self.max_regents_na:
+                count['regents'] += 1
+                continue
+except ValueError as e:
+    count['ValueError'] += 1
+    continue
+</code></pre>
+<h6 id="427-get_tgt_adj_order">4.2.7 <code>get_tgt_adj_order</code>函数</h6>
+<ul>
+<li>首先记录产物各原子的<code>Idx</code>和<code>MapNum</code>，处理至此，<code>MapNum = Idx + 1</code>，下列数组有所冗余。  </li>
+</ul>
+<pre><code class="language-python">def get_tgt_adj_order(product, reactants):
+    atom_idx2map_idx = {}
+    pro_map_ids = []
+    for atom in product.GetAtoms():
+        atom_idx2map_idx[atom.GetIdx()] = atom.GetAtomMapNum()
+        pro_map_ids.append(atom.GetAtomMapNum())
+</code></pre>
+<ul>
+<li>下列代码获取<strong>反应物</strong>的原子映射号(<code>MapNum</code>)到原子序号(<code>Idx</code>)的对应关系。  </li>
+</ul>
+<pre><code class="language-python">    map_idx2atom_idx = {0: []}
+    r_atoms = list(reactants.GetAtoms())
+    for atom in r_atoms:
+        cur_mp_id = atom.GetAtomMapNum()
+        if atom.GetAtomMapNum() not in pro_map_ids:
+            map_idx2atom_idx[0].append(atom.GetIdx())
+        else:
+            map_idx2atom_idx[atom.GetAtomMapNum()] = atom.GetIdx()
+</code></pre>
+<ul>
+<li><code>order</code>列表，获取</li>
+</ul>
+<pre><code class="language-python">order = []
+for atom in product.GetAtoms():
+    order.append(map_idx2atom_idx[atom_idx2map_idx[atom.GetIdx()]])
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "header.autohide"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>
