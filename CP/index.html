@@ -575,10 +575,34 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      三、上下文无关文法
+      第三讲 语法分析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第三讲 语法分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、上下文无关文法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predictive-parsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、预测分析(Predictive Parsing)
     </span>
   </a>
   
@@ -1600,10 +1624,34 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      三、上下文无关文法
+      第三讲 语法分析
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第三讲 语法分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、上下文无关文法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predictive-parsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、预测分析(Predictive Parsing)
     </span>
   </a>
   
@@ -1878,8 +1926,130 @@ automaton follows exactly one edge to get to the next state. <br />
 ·对于任意一个字符，输出的状态转移都是相同的。<br />
 （2）举例<br />
 ·上图中，<code>10, 11, 13, 15</code>和<code>11, 12, 13</code>是等价状态。<br />
-<img alt="" src="assets\CP\28.JPG" />  </p>
-<h5 id="_11">三、上下文无关文法</h5>
+<img alt="" src="../assets/CP/28.JPG" />  </p>
+<h4 id="_11">第三讲 语法分析</h4>
+<h5 id="_12">一、上下文无关文法</h5>
+<p>1.【定义1】句子<br />
+·由若干终结符(<code>terminal</code>)组成的序列。<br />
+2.【定义2】歧义文法<br />
+·若同一序列的<code>token</code>能产生至少<span class="arithmatex">\(2\)</span>个语法分析树，则称该文法是歧义的。<br />
+3.运算符优先级与树结构的关系<br />
+·离树根越远，则优先级越高，运算越先被执行。<br />
+<img alt="" src="../assets/CP/29.JPG" /><br />
+4.歧义文法改造为非歧义文法<br />
+·下图通过文法改造，使得加减法、乘除法的优先级得以区分。<br />
+·这一方法并非万能方法。<br />
+<img alt="" src="../assets/CP/30.JPG" /><br />
+5.实际的非歧义做法<br />
+·对于语法分析器，增加规则说明，以表明遇到某些规则时，优先执行哪一种。<br />
+6.显式文件结束符<span class="arithmatex">\(\$\)</span><br />
+·设原有的起始符为<span class="arithmatex">\(S\)</span>，则新增起始符<span class="arithmatex">\(S'\)</span>，及转换规则<span class="arithmatex">\(S' \rightarrow S\$\)</span>。  </p>
+<h5 id="predictive-parsing">二、预测分析(<code>Predictive Parsing</code>)</h5>
+<p>1.分类：<code>LL(k), LR(k)</code>，即最左推导、最右推导。<br />
+·<span class="arithmatex">\(k\)</span>：代表<code>look ahead</code><span class="arithmatex">\(k\)</span>个符号。<br />
+·向前看的符号数<span class="arithmatex">\(k\)</span>越多，则分析器的预测能力越强。<br />
+2.递归下降分析法(<code>Recursive Descent Parsing</code>)<br />
+（1）简介<br />
+·自顶向下的分析方法<br />
+·特点：简单、高效<br />
+·能分析大多数文法，但并非全部。<br />
+（2）<code>LL(1)</code>文法<br />
+·从左到右分析、最左推导、向前看<span class="arithmatex">\(1\)</span>个符号。<br />
+·每一条规则左侧的非终结符，相当于一个“函数名”。<br />
+·每一条规则右侧的导出，相当于“函数体”。<br />
+【例1】给定文法规则 进行递归下降分析<br />
+<img alt="" src="../assets/CP/31.JPG" /><br />
+①罗列终结符(<code>Tokens</code>)<br />
+·<code>NUM | IF | THEN | ELSE | BEGIN | END | PRINT |
+SEMI | EQ</code><br />
+②实现  </p>
+<pre><code class="language-C">final int IF=1, THEN=2, ELSE=3, BEGIN=4, END=5, PRINT=6, SEMI=7, NUM=8, EQ=9;
+int tok = getToken();
+void advance() {tok=getToken();}
+void eat(int t) {if (tok==t) advance(); else error();}
+void S( ) {switch(tok) {
+case IF: eat(IF); E(); eat(THEN); S(); eat(ELSE); S(); break;  
+case BEGIN: eat(BEGIN); S( ); L( ); break;
+case PRINT: eat(PRINT); E( ); break;
+default: error();
+void L( ) {switch(tok) {
+case END: eat(END); break;
+case SEMI: eat(SEMI); S( ); L(); break;
+default: error();
+}}
+void E( ) { eat(NUM); eat(EQ); eat(NUM); }
+}}
+</code></pre>
+<p>③左递归、嵌套问题<br />
+·<code>S -&gt; L -&gt; S</code>的调用，产生间接左递归问题。<br />
+④预测分析的问题：仅当一个<code>token</code>足以预测所有信息时，<span class="arithmatex">\(k = 1\)</span>的预测分析才完全有效。  </p>
+<p>下列概念有助于解决左递归问题。  </p>
+<p>3.【定义3】可空集(<code>Nullable Set</code>)<br />
+·基本定义：若<span class="arithmatex">\(X := \epsilon\)</span>，则<span class="arithmatex">\(X\)</span>是可空的非终结符。<br />
+·递归定义：若<span class="arithmatex">\(X := ABC\cdots\)</span>，导出的所有非终结符<span class="arithmatex">\(ABC \cdots\)</span>都是可空的，则<span class="arithmatex">\(X\)</span>也是可空的。<br />
+·迭代计算可空集。<br />
+4.【定义4】第一集(<code>First Set</code>)<br />
+·基本定义：若<span class="arithmatex">\(T\)</span>为终结符，则<span class="arithmatex">\(First(T) = \{T\}\)</span>。<br />
+·递归定义：若<span class="arithmatex">\(X := ABC \cdots\)</span>，则<span class="arithmatex">\(First(X) = First(A) \cup First(B) \cup \cdots\)</span><br />
+·<span class="arithmatex">\(First(X) = \empty\)</span>，若<span class="arithmatex">\(X\)</span>是可空的非终结符。<br />
+5.【定义5】跟随集(<code>Follow Set</code>)<br />
+·基本定义：一开始，假设各个<span class="arithmatex">\(Follow(X) = \empty\)</span>，通过迭代计算不断扩充<span class="arithmatex">\(Follow(X)\)</span>。  <br />
+·递归定义：若<span class="arithmatex">\(Y := s_1 X s_2\)</span>，则<span class="arithmatex">\(Follow(X) = Follow(X) \cup Follow(s_2)\)</span>。<br />
+【例2】计算下列非终结符是否可空，求其<code>First Set, Follow Set</code>。<br />
+<img alt="" src="../assets/CP/32.JPG" /><br />
+（1）<span class="arithmatex">\(Y\)</span>可空<span class="arithmatex">\(\rightarrow X\)</span>可空，但<span class="arithmatex">\(Z\)</span>不可为空，原因是<span class="arithmatex">\(Z \rightarrow XYZ, Z \rightarrow d\)</span>，即非终结符<span class="arithmatex">\(Z\)</span>消失时，必定产生一个终结符<span class="arithmatex">\(d\)</span>。<br />
+（2）<span class="arithmatex">\(First(x) = \{a\}, First(y) = \{ c \}, First(z) = \{ d \} \xRightarrow{X \rightarrow Y} First(x) = \{a, c\} \xRightarrow{Z \rightarrow XYD}First(z) = \{a, c, d\}\)</span> <br />
+（3）<span class="arithmatex">\(Follow(z) = \{ \$ \}, Follow(Y) = Follow(Y) \cup Follow(Z) = \{a, c, d\}, Follow(X) = Follow(X) \cup Follow(Y) \cup Follow(Z) = \{a, c, d\}\)</span><br />
+（4）建立表格<br />
+<img alt="" src="../assets/CP/33.JPG" /><br />
+6.建立预测分析表(<code>predictive parsing table</code>)<br />
+·该表可以为空，但同一格中不能出现两个符号。<br />
+<img alt="" src="../assets/CP/34.JPG" /><br />
+·上图为已经构造好的预测分析表，现根据预测分析表进行分析。<br />
+·一开始，栈中仅有<span class="arithmatex">\(S\)</span>。<br />
+·看到输入的<span class="arithmatex">\((\)</span>，弹出<span class="arithmatex">\(S\)</span>，对于<span class="arithmatex">\(S \rightarrow(S)S\)</span>涉及的<span class="arithmatex">\(4\)</span>个符号，进行从左到右顺序入栈。<br />
+·接下来，对<span class="arithmatex">\((\)</span>进行<code>eat</code>操作，匹配。<br />
+·读入<span class="arithmatex">\()\)</span>，首先令栈顶<span class="arithmatex">\(S \rightarrow \epsilon\)</span>，然后<code>eat</code><span class="arithmatex">\()\)</span>，匹配。<br />
+·最后，令栈中仅剩的<span class="arithmatex">\(S \rightarrow \epsilon\)</span>，即完成文法分析。  </p>
+<p>7.左递归的消除<br />
+（1）举例<br />
+<img alt="" src="../assets/CP/35.JPG" /><br />
+·<span class="arithmatex">\(L \rightarrow E | LE\)</span>，产生左递归。<br />
+·上式改为<span class="arithmatex">\(L \rightarrow EM, M \rightarrow ,EM | \epsilon\)</span>，左递归改为右递归，即可令文法分析器进行正常分析。<br />
+（2）一般的左递归转换方法<br />
+·对于<span class="arithmatex">\(E \rightarrow E + T | E\)</span>，可以改造为<span class="arithmatex">\(E \rightarrow TE', E' \rightarrow + TE' | \epsilon\)</span>  </p>
+<p>8.左公因子的提取(<code>Left Factoring</code>)<br />
+（1）举例<br />
+·原始文法：<code>S ::= IF E THEN S ELSE S, S ::= IF E THEN S</code><br />
+·上述文法面临选择问题，只有知道<code>ELSE</code>时，才能确定应选择哪一文法。<br />
+·进行左公因子提取，改造文法：<code>S ::= IF E THEN S X
+X ::= ELSE S | ε</code>。<br />
+·思想：延迟决策时间，尽量晚地进行选择。<br />
+（2）模板<br />
+·原始文法：<span class="arithmatex">\(A \rightarrow \alpha B | \alpha C\)</span><br />
+·改造为：<span class="arithmatex">\(A \rightarrow \alpha A', A' \rightarrow B | C\)</span>。  </p>
+<p>9.错误恢复(<code>Error Recovery</code>)<br />
+·目的：纠正错误状态，继续正常进行分析。  </p>
+<pre><code class="language-C">void T( ) { switch (tok) {
+case ID:
+case NUM:
+case LPAREN: F( ); Tprime( ); break;
+default: error!
+}}
+</code></pre>
+<p>·之前定义的<code>First Set, Follow Set</code>有利于进行错误恢复。  </p>
+<pre><code class="language-C">int Tprime_follow [ ] = {PLUS, RPAREN, EOF};
+void Tprime( ) { switch (tok) {
+case PLUS: break;
+case TIMES: eat(TIMES); F(); Tprime(); break;
+case RPAREN: break;
+case EOF: break;
+default: print(&quot;expected +, *, right-paren, or end-of-file&quot;);
+skipto(Tprime_follow);
+}}
+</code></pre>
+<p>·错误原因：没有遇到<code>T'</code>能直接生成的<code>4</code>种符号。<br />
+·错误恢复方法：<code>skipto(Tprime_follow)</code>函数，只要<code>T'</code>后的符号位于<code>T'</code>的<code>follow set</code>中，都可以继续正常执行语法分析。此时，直接跳转到<code>T'</code>后符号的分析函数之中。  </p>
 
 
 
