@@ -1544,8 +1544,26 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、反应类型对实验的影响
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussionretroexplainer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discussion——RetroExplainer局限性与未来研究展望
+    </span>
+  </a>
   
 </li>
       
@@ -1989,8 +2007,26 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、反应类型对实验的影响
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussionretroexplainer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discussion——RetroExplainer局限性与未来研究展望
+    </span>
+  </a>
   
 </li>
       
@@ -2379,6 +2415,97 @@
 </li>
 </ul>
 <h5 id="retroexplainer">三、<code>RetroExplainer</code>应用于多步逆合成预测</h5>
+<p><img alt="" src="../assets/DL/99.JPG" /><br />
+<img alt="" src="../assets/DL/100.JPG" />    <br />
+<img alt="" src="../assets/DL/101.JPG" /><br />
+<img alt="" src="../assets/DL/102.JPG" /><br />
+<img alt="" src="../assets/DL/103.JPG" />      <br />
+- 将<code>RetroExplainer</code>模型与<code>Retro*</code>算法、可购买分子列表相结合，用<code>RetroExplainer</code>替换了<code>Retro</code>的单步模型。<br />
+- 以<code>protokylol</code>（一种用于支气管扩张剂的<code>β</code>-肾上腺素受体激动剂）为例，说明<code>RetroExplainer</code>提供的解释。（图<code>5</code>）<br />
+    - <code>RetroExplainer</code>为<code>protokylol</code>设计了一条四步合成路线。<br />
+    - 决策过程的<strong>能量得分</strong>揭示了支持<code>RetroExplainer</code>做出相应预测的关键子过程。  </p>
+<ul>
+<li>方案的实用性：许多提出的反应未能找到文献中的直接对应结果，但能发现具有高产率，且与<code>RetroExplainer</code>提出反应相匹配的类似反应。</li>
+<li>提供了包含<code>176</code>个单步的<code>101</code>个路径规划案例，其中<code>153</code>个单步预测可以通过<code>SciFindern</code>引擎搜索40找到相似反应模式。  </li>
+<li>实验设置、多路径规划结果及文献检索发现的更多详细信息：见补充信息附录7、补充数据1和补充数据2。  </li>
+</ul>
+<h5 id="_1">四、反应类型对实验的影响</h5>
+<ul>
+<li>反应类型信息的注入方式  <ul>
+<li>给出反应类型时，向<code>super node</code>中添加额外嵌入。  </li>
+<li>经<span class="arithmatex">\(L\)</span>个消息汇聚层后，<code>super node</code>被提取为图级别的表征。  </li>
+</ul>
+</li>
+<li>
+<p>（表<code>1</code>）引入反应类型后top-k准确率的提升<br />
+<img alt="" src="../assets/DL/93.JPG" />  </p>
+</li>
+<li>
+<p>反应类型影响RetroExplainer性能的机制探究  </p>
+<ul>
+<li>根据隐藏特征来源（最后一个<code>RCP</code>层/最后一个<code>LGM</code>层）、是否了解反应类型，提取<code>4</code>种类型的隐藏特征。  </li>
+<li>（图6）反应类型对隐藏特征的影响<br />
+<img alt="" src="../assets/DL/105.JPG" />  </li>
+<li>方法：使用<code>t-SNE</code>（<code>t</code>分布随机邻居嵌入）对反应类型标签进行着色，以展示压缩隐藏特征的分布情况。  </li>
+<li>结论  <ul>
+<li>相比于不受反应类型限制的情况，反应类型对产物隐藏表征施加了更为规范的约束。  </li>
+<li>约束对反应中心（RCs）的定位过程、离去基团（LGs）的匹配过程进行增强，从而提高了整体性能。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="discussionretroexplainer"><code>Discussion</code>——<code>RetroExplainer</code>局限性与未来研究展望</h4>
+<ul>
+<li>模型对离去基团(<code>LG</code>)预测能力的局限性  <ul>
+<li>预测罕见<code>LGs</code>性能受限  <ul>
+<li>LGM模块是基于预先收集的<code>LGs</code>数据库的预测分类器，简化了从补充信息附录<code>3</code>中的方程(<code>S3.5</code>)生成<code>LGs</code>的困难，并通过强先验保证了<code>LGs</code>的合法性（即所有LGs均来自预收集的数据库）。  </li>
+<li>受到训练集质量的根本限制，<code>LGM</code>方法在生成稀有<code>LGs</code>方面的灵活性有限，这是许多数据驱动模型共同面临的挑战。  </li>
+<li>即使是基于翻译的模型，在预测常见<code>LGs</code>以便生成未曾见过的<code>LGs</code>方面也不够健壮。</li>
+</ul>
+</li>
+<li>模型对常见<code>LG</code>的偏差  <ul>
+<li>尽管模型采用了如<code>SACL</code>等策略，使得<code>LGM</code>模块能够在重新排序外源反应物模式期间，从数据库中找到与未见<code>LGs</code>相似的<code>LGs</code>作为代理（参考补充信息附录<code>6</code>中的算法），并扩大<code>LGs</code>数据库（在<code>USPTO-FULL</code>数据集中，作者收集了约<code>7</code>万个<code>LGs</code>），但仍无法完全消除这种偏向于常见LGs的偏差。  </li>
+<li>案例展示：见补充信息附录<code>9</code>。  </li>
+</ul>
+</li>
+<li>有前景的改进技术  <ul>
+<li>对<code>LGM</code>进行预训练  </li>
+<li>元学习  </li>
+<li>主动学习  </li>
+<li>数据增强  </li>
+<li>上述技术有望改善模型在处理罕见化学结构片段（即<code>LGs</code>）预测问题时的性能和适应性。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>决策过程灵活性受限  <ul>
+<li>本实验涉及的分子组装过程  <ul>
+<li>作者在逆合成预测中提出了一种类似于<code>SN2</code>分子组装的过程，以生成带有能量的决策行动。  </li>
+<li>上述过程较为固定，虽然确实有效，但一些决策行动并不直观地符合其他不同的反应类型。  </li>
+<li>例如：没有明确<code>LGs</code>（离去基团）参与的特殊反应类型，可能直觉上更适合<code>SN2</code>机制（案例：见补充信息附录<code>10</code>）。  </li>
+<li>对于不遵循<code>SN2</code>机制的其他多种反应类型，当前方法可能不够灵活。  </li>
+</ul>
+</li>
+<li>可能的改进方法  <ul>
+<li>引入其他反应机制  <ul>
+<li>引入环加成反应、消去-加成反应等机制，反应机制可根据实际情况灵活选取，以设计更加灵活的决策过程。  </li>
+</ul>
+</li>
+<li>增加反应机制选择模块  <ul>
+<li>建议增加一个由<code>LGM</code>（离去基团预测模块）和<code>RCP</code>（反应中心预测）置信度决定的机制选择模块，以判断哪种类型的机制更适合用来产生更易于人类理解的解释。  </li>
+</ul>
+</li>
+<li>改进效果  <ul>
+<li>模型能更好地适应各种不同类型的化学反应，并且生成的人工智能解释将更为贴近化学家的思维习惯，以及实际反应机制。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>无法进行细粒度预测  </li>
+</ul>
 
 
 
