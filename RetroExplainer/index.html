@@ -1567,6 +1567,96 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、问题定义
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、问题定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.基于图的逆合成预测
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2reaction-center-rcleaving-group-lg" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.反应中心(Reaction Center, RC)和离去集团(Leaving Group, LG)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3gnntransformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.基于GNN的Transformer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retroexplainer_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、RetroExplainer框架
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、RetroExplainer框架">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.模型架构列举
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2msms-gt-multi-sence-and-multi-scale-graph-transformertransformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.MSMS-GT, Multi-Sence and Multi-Scale Graph Transformer（多感知、多尺度图Transformer）组件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2030,6 +2120,96 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、问题定义
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、问题定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.基于图的逆合成预测
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2reaction-center-rcleaving-group-lg" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.反应中心(Reaction Center, RC)和离去集团(Leaving Group, LG)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3gnntransformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.基于GNN的Transformer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retroexplainer_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、RetroExplainer框架
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、RetroExplainer框架">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.模型架构列举
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2msms-gt-multi-sence-and-multi-scale-graph-transformertransformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.MSMS-GT, Multi-Sence and Multi-Scale Graph Transformer（多感知、多尺度图Transformer）组件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2400,7 +2580,7 @@
 <li>实验设定  <ul>
 <li>选取<code>3</code>种不同的逆合成方法（<code>RetroXpert, GLN, NeuralSym</code>）生成的预测结果，使用<code>RetroExplainer</code>进行重新排序。  </li>
 <li>选择原因：预测结果<strong>相对容易获取</strong>。  </li>
-<li>预测结果选取：对于每个目标产物，挑选前<code>50</code>个预测结果进行重新排序；针对许多目标产物的预测结果不足<code>50</code>个的问题，引入一种基于平均百分比排名的评估策略。  </li>
+<li>预测结果选取：对于每个目标产物，挑选<strong>前<code>50</code>个预测结果进行重新排序</strong>；针对许多目标产物的预测结果不足<code>50</code>个的问题，引入一种基于<strong>平均百分比排名</strong>的评估策略。  </li>
 </ul>
 </li>
 <li>结果<br />
@@ -2425,15 +2605,18 @@
     - <code>RetroExplainer</code>为<code>protokylol</code>设计了一条四步合成路线。<br />
     - 决策过程的<strong>能量得分</strong>揭示了支持<code>RetroExplainer</code>做出相应预测的关键子过程。  </p>
 <ul>
-<li>方案的实用性：许多提出的反应未能找到文献中的直接对应结果，但能发现具有高产率，且与<code>RetroExplainer</code>提出反应相匹配的类似反应。</li>
+<li>方案的<strong>实用性</strong>  <ul>
+<li>许多提出的反应未能找到文献中的直接对应结果，但能发现具有<strong>高产率</strong>，且与<code>RetroExplainer</code>提出反应<strong>相匹配的类似反应</strong>。</li>
+</ul>
+</li>
 <li>提供了包含<code>176</code>个单步的<code>101</code>个路径规划案例，其中<code>153</code>个单步预测可以通过<code>SciFindern</code>引擎搜索40找到相似反应模式。  </li>
 <li>实验设置、多路径规划结果及文献检索发现的更多详细信息：见补充信息附录7、补充数据1和补充数据2。  </li>
 </ul>
 <h5 id="_1">四、反应类型对实验的影响</h5>
 <ul>
-<li>反应类型信息的注入方式  <ul>
-<li>给出反应类型时，向<code>super node</code>中添加额外嵌入。  </li>
-<li>经<span class="arithmatex">\(L\)</span>个消息汇聚层后，<code>super node</code>被提取为图级别的表征。  </li>
+<li><strong>反应类型信息的注入方式</strong>  <ul>
+<li><strong>给出反应类型</strong>时，<strong>向<code>super node</code></strong>中添加<strong>额外嵌入</strong>。  </li>
+<li>经<span class="arithmatex">\(L\)</span>个<strong>消息汇聚层</strong>后，<code>super node</code>被提取为<strong>图级别的表征</strong>。  </li>
 </ul>
 </li>
 <li>
@@ -2441,15 +2624,15 @@
 <img alt="" src="../assets/DL/93.JPG" />  </p>
 </li>
 <li>
-<p>反应类型影响RetroExplainer性能的机制探究  </p>
+<p><strong>反应类型影响RetroExplainer性能的机制</strong>探究  </p>
 <ul>
-<li>根据隐藏特征来源（最后一个<code>RCP</code>层/最后一个<code>LGM</code>层）、是否了解反应类型，提取<code>4</code>种类型的隐藏特征。  </li>
+<li>根据<strong>隐藏特征来源</strong>（最后一个<code>RCP</code>层/最后一个<code>LGM</code>层）、<strong>是否了解反应类型</strong>，提取<code>4</code>种类型的<strong>隐藏特征</strong>。  </li>
 <li>（图6）反应类型对隐藏特征的影响<br />
 <img alt="" src="../assets/DL/105.JPG" />  </li>
-<li>方法：使用<code>t-SNE</code>（<code>t</code>分布随机邻居嵌入）对反应类型标签进行着色，以展示压缩隐藏特征的分布情况。  </li>
+<li>方法：使用<code>t-SNE</code>（<code>t</code>分布随机邻居嵌入）对<strong>反应类型标签</strong>进行<strong>着色</strong>，以展示压缩隐藏特征的分布情况。  </li>
 <li>结论  <ul>
-<li>相比于不受反应类型限制的情况，反应类型对产物隐藏表征施加了更为规范的约束。  </li>
-<li>约束对反应中心（RCs）的定位过程、离去基团（LGs）的匹配过程进行增强，从而提高了整体性能。  </li>
+<li>相比于<strong>不受反应类型限制</strong>的情况，<strong>反应类型</strong>对产物<strong>隐藏表征</strong>施加了<strong>更为规范的约束</strong>。  </li>
+<li><strong>约束</strong>对<strong>反应中心（<code>RCs</code>）的定位</strong>过程、<strong>离去基团（<code>LGs</code>）的匹配</strong>过程进行<strong>增强</strong>，从而提高了整体性能。  </li>
 </ul>
 </li>
 </ul>
@@ -2457,43 +2640,43 @@
 </ul>
 <h4 id="discussionretroexplainer"><code>Discussion</code>——<code>RetroExplainer</code>局限性与未来研究展望</h4>
 <ul>
-<li>模型对离去基团(<code>LG</code>)预测能力的局限性  <ul>
-<li>预测罕见<code>LGs</code>性能受限  <ul>
-<li>LGM模块是基于预先收集的<code>LGs</code>数据库的预测分类器，简化了从补充信息附录<code>3</code>中的方程(<code>S3.5</code>)生成<code>LGs</code>的困难，并通过强先验保证了<code>LGs</code>的合法性（即所有LGs均来自预收集的数据库）。  </li>
-<li>受到训练集质量的根本限制，<code>LGM</code>方法在生成稀有<code>LGs</code>方面的灵活性有限，这是许多数据驱动模型共同面临的挑战。  </li>
-<li>即使是基于翻译的模型，在预测常见<code>LGs</code>以便生成未曾见过的<code>LGs</code>方面也不够健壮。</li>
+<li>模型<strong>对离去基团(<code>LG</code>)预测能力的局限性</strong>  <ul>
+<li>预测<strong>罕见<code>LGs</code></strong>性能受限  <ul>
+<li><code>LGM</code>模块是基于<strong>预先收集的<code>LGs</code>数据库</strong>的<strong>预测分类器</strong>，简化了从补充信息附录<code>3</code>中的方程(<code>S3.5</code>)生成<code>LGs</code>的困难，并通过<strong>强先验</strong>保证了<code>LGs</code>的<strong>合法性</strong>（即所有<code>LGs</code><strong>均来自预收集的数据库</strong>）。  </li>
+<li>受到训练集质量的根本限制，<code>LGM</code>方法在<strong>生成稀有<code>LGs</code>方面的灵活性有限</strong>，这是许多数据驱动模型共同面临的挑战。  </li>
+<li>即使是基于<strong>翻译</strong>的模型，在预测常见<code>LGs</code>以便生成<strong>未曾见过</strong>的<code>LGs</code>方面也<strong>不够健壮</strong>。</li>
 </ul>
 </li>
-<li>模型对常见<code>LG</code>的偏差  <ul>
-<li>尽管模型采用了如<code>SACL</code>等策略，使得<code>LGM</code>模块能够在重新排序外源反应物模式期间，从数据库中找到与未见<code>LGs</code>相似的<code>LGs</code>作为代理（参考补充信息附录<code>6</code>中的算法），并扩大<code>LGs</code>数据库（在<code>USPTO-FULL</code>数据集中，作者收集了约<code>7</code>万个<code>LGs</code>），但仍无法完全消除这种偏向于常见LGs的偏差。  </li>
+<li>模型对<strong>常见<code>LG</code>的偏差</strong>  <ul>
+<li>尽管模型采用了如<code>SACL</code>等策略，使得<code>LGM</code>模块能够在重新排序外源反应物模式期间，从数据库中<strong>找到与未见<code>LGs</code>相似</strong>的<code>LGs</code>作为<strong>代理</strong>（参考补充信息附录<code>6</code>中的算法），并<strong>扩大<code>LGs</code>数据库</strong>（在<code>USPTO-FULL</code>数据集中，作者收集了约<code>7</code>万个<code>LGs</code>），但仍<strong>无法完全消除</strong>这种<strong>偏向于常见<code>LGs</code>的偏差</strong>。  </li>
 <li>案例展示：见补充信息附录<code>9</code>。  </li>
 </ul>
 </li>
-<li>有前景的改进技术  <ul>
-<li>对<code>LGM</code>进行预训练  </li>
-<li>元学习  </li>
-<li>主动学习  </li>
-<li>数据增强  </li>
+<li>有前景的<strong>改进技术</strong>  <ul>
+<li>对<code>LGM</code>进行<strong>预训练</strong>  </li>
+<li><strong>元学习</strong>  </li>
+<li><strong>主动学习</strong>  </li>
+<li><strong>数据增强</strong>  </li>
 <li>上述技术有望改善模型在处理罕见化学结构片段（即<code>LGs</code>）预测问题时的性能和适应性。  </li>
 </ul>
 </li>
 </ul>
 </li>
-<li>决策过程灵活性受限  <ul>
-<li>本实验涉及的分子组装过程  <ul>
-<li>作者在逆合成预测中提出了一种类似于<code>SN2</code>分子组装的过程，以生成带有能量的决策行动。  </li>
-<li>上述过程较为固定，虽然确实有效，但一些决策行动并不直观地符合其他不同的反应类型。  </li>
+<li><strong>决策过程灵活性受限</strong>  <ul>
+<li>本实验涉及的<strong>分子组装</strong>过程  <ul>
+<li>作者在逆合成预测中提出了一种<strong>类似于<code>SN2</code>分子组装的过程</strong>，以生成<strong>带有能量的决策行动</strong>。  </li>
+<li>上述过程较为<strong>固定</strong>，虽然确实有效，但一些决策行动<strong>并不</strong>直观地<strong>符合其他不同的反应类型</strong>。  </li>
 <li>例如：没有明确<code>LGs</code>（离去基团）参与的特殊反应类型，可能直觉上更适合<code>SN2</code>机制（案例：见补充信息附录<code>10</code>）。  </li>
-<li>对于不遵循<code>SN2</code>机制的其他多种反应类型，当前方法可能不够灵活。  </li>
+<li>对于<strong>不遵循<code>SN2</code>机制的其他多种反应类型</strong>，当前方法可能<strong>不够灵活</strong>。  </li>
 </ul>
 </li>
 <li>可能的改进方法  <ul>
-<li>引入其他反应机制  <ul>
-<li>引入环加成反应、消去-加成反应等机制，反应机制可根据实际情况灵活选取，以设计更加灵活的决策过程。  </li>
+<li>引入<strong>其他反应机制</strong>  <ul>
+<li>引入<strong>环加成</strong>反应、<strong>消去-加成</strong>反应等机制，反应机制可根据实际情况灵活选取，以设计更加灵活的决策过程。  </li>
 </ul>
 </li>
-<li>增加反应机制选择模块  <ul>
-<li>建议增加一个由<code>LGM</code>（离去基团预测模块）和<code>RCP</code>（反应中心预测）置信度决定的机制选择模块，以判断哪种类型的机制更适合用来产生更易于人类理解的解释。  </li>
+<li>增加<strong>反应机制选择模块</strong>  <ul>
+<li>建议增加一个由<code>LGM</code>（<strong>离去基团预测</strong>模块）和<code>RCP</code>（<strong>反应中心</strong>预测）<strong>置信度</strong>决定的<strong>机制选择模块</strong>，以判断<strong>哪种类型的机制</strong>更适合用来产生<strong>更易于人类理解</strong>的解释。  </li>
 </ul>
 </li>
 <li>改进效果  <ul>
@@ -2504,8 +2687,85 @@
 </li>
 </ul>
 </li>
-<li>无法进行细粒度预测  </li>
+<li>无法进行<strong>细粒度预测</strong>    <ul>
+<li>无法预测的详细反应信息  <ul>
+<li>反应操作  </li>
+<li>温度  </li>
+<li>反应时间  </li>
 </ul>
+</li>
+<li>反应条件预测已成为自动化合成平台发展过程中愈发紧迫的挑战，未来研究有待探索。  </li>
+</ul>
+</li>
+</ul>
+<h4 id="methods"><code>Methods</code></h4>
+<h5 id="_2">一、问题定义</h5>
+<h6 id="1_2">1.基于图的逆合成预测</h6>
+<ul>
+<li>化学反应的一般表示  <ul>
+<li><span class="arithmatex">\((\{G_{p;i}\}_{i = 1}^{N_p}, \{G_{r;j}\}_{j = 1}^{N_r})\)</span>，其中，<span class="arithmatex">\(G_p\)</span>表示产物图，<span class="arithmatex">\(G_{r}\)</span>表示反应物图。  </li>
+</ul>
+</li>
+<li>反应推理模型  <ul>
+<li><span class="arithmatex">\(f_{\theta}(\{G_{p;i}\}_{i = 1}^{N_p}, \{G_{r;j}\}_{j = 1}^{N_r})\)</span>，其中<span class="arithmatex">\(\theta\)</span>是一组可学习的参数。  </li>
+</ul>
+</li>
+<li>前向推理模型  <ul>
+<li><span class="arithmatex">\(f_{\gamma}(\{G_{p;i}\}_{i = 1}^{N_p}, \{G_{r;j}\}_{j = 1}^{N_r})\)</span>  </li>
+</ul>
+</li>
+<li>逆合成模型  <ul>
+<li>只有主产物输入，作为先验条件忽略了其余副产品。  </li>
+<li><span class="arithmatex">\(f_{\gamma}(\{G_{p;i}\}_{i = 1}^{N_p}, \{G_{r;j}\}_{j = 1}^{N_r}/\{G_{p:m}\}|\{G_{p:m}\})\)</span>，其中<span class="arithmatex">\(\{G_{p:m}\}\)</span>表示主产物。  </li>
+<li>事实上，逆合成模型比前向模型更加复杂，前向模型的表现总体好于逆合成模型。  </li>
+</ul>
+</li>
+</ul>
+<h6 id="2reaction-center-rcleaving-group-lg">2.反应中心(<code>Reaction Center, RC</code>)和离去集团(<code>Leaving Group, LG</code>)</h6>
+<ul>
+<li>反应中心  <ul>
+<li>子图<span class="arithmatex">\(G_c = \{(u, v), e_{uv}|e_{uv} \in G_{p}, e_{uv} \notin G_{r:j}, \forall G_{r:j} \in \{G_{r:j}\}_{i = 1}^{N_r}\}\)</span>，其中<span class="arithmatex">\((u, v)\)</span>表示原子对，<span class="arithmatex">\(e_{uv}\)</span>表示原子对之间的边。  </li>
+</ul>
+</li>
+<li>合成子  <ul>
+<li>一组图，根据反应中心，对产物图进行变换而成。  </li>
+<li>合成子通常并不在化学上有效，后续过程通过在合成子上添加离去集团(<code>LGs</code>)，形成最终反应物。  </li>
+</ul>
+</li>
+<li>离去集团  <ul>
+<li>反应物的子图，包含了并未出现于主产物之中的反应物原子和及其关联边。  </li>
+</ul>
+</li>
+</ul>
+<h6 id="3gnntransformer">3.基于<code>GNN</code>的<code>Transformer</code></h6>
+<ul>
+<li>基于<code>GNN</code>的<code>Transformer</code>的数据流  <ul>
+<li>一个句子，可以视为带有语义边(<code>semantic edge</code>)的全连接图。  </li>
+<li>单词(<code>word tokens</code>)作为结点进行处理。  </li>
+</ul>
+</li>
+<li>多头注意力(<code>MHA</code>)  <ul>
+<li><span class="arithmatex">\(m_a^{(l)}:= \sum_{w' \in N_{w}}\tilde{a}_{w'w}S_{w'}^{(l - 1)}W_v, m_{w}^{(l)}:= \tilde{a}_{ww}S_{w}^{(l - 1)}W_V \cdots (1)\)</span>  </li>
+<li><span class="arithmatex">\(\tilde{a}_{w'w} = SOFTMAX(\frac{S_{w'}^{(l - 1)}W_Q(S_{w}^{(l - 1)}W_K)^T}{\sqrt{d_{k}}})\cdots (2)\)</span>  </li>
+<li><span class="arithmatex">\(S_{w}^{''(l)} = COMBINE(m_a^{(l)}, m_{w}^{(l)}) := CONCAT(\{m_a^{(l:k)} + m_{w}^{(l:k)}\}_{k = 1}^{n_{head}})W^O\cdots (3)\)</span>  </li>
+<li>上式中：<span class="arithmatex">\(N_{w} = S/{w}\)</span>是结点<span class="arithmatex">\(w\)</span>的语义邻域集合；<span class="arithmatex">\(d_{k}\)</span>是<span class="arithmatex">\(W_k\)</span>的隐藏维度数目。  </li>
+</ul>
+</li>
+<li><code>RetroExplainer</code>对基于<code>GNN</code>的标准<code>Transformer</code>的改进  <ul>
+<li>标准<code>Transformer</code>无法处理拓扑空间中的边。  </li>
+<li><code>RetroExplainer</code>中的<code>Transformer</code>解决了上述问题。  </li>
+</ul>
+</li>
+</ul>
+<h5 id="retroexplainer_1">二、<code>RetroExplainer</code>框架</h5>
+<p><img alt="" src="../assets/DL/106.JPG" />  </p>
+<h6 id="1_3">1.模型架构列举</h6>
+<p>（1）<code>MSMS-GT, Multi-Sence and Multi-Scale Graph Transformer</code>组件<br />
+（2）<code>DAMT</code>学习组件<br />
+（3）可解释的决策组件<br />
+（4）预测与路径规划组件  </p>
+<h6 id="2msms-gt-multi-sence-and-multi-scale-graph-transformertransformer">2.<code>MSMS-GT, Multi-Sence and Multi-Scale Graph Transformer</code>（多感知、多尺度图<code>Transformer</code>）组件</h6>
+<p><img alt="" src="../assets/DL/107.JPG" />  </p>
 
 
 
