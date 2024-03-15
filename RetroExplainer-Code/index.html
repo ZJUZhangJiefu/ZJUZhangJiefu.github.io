@@ -1610,6 +1610,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、模型训练核心代码
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、模型训练核心代码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      (一)特征嵌入表示
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="(一)特征嵌入表示">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.原子特征嵌入表示
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1781,6 +1820,45 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、模型训练核心代码
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、模型训练核心代码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      (一)特征嵌入表示
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="(一)特征嵌入表示">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.原子特征嵌入表示
+    </span>
+  </a>
   
 </li>
         
@@ -2462,10 +2540,63 @@ for atom in product.GetAtoms():
 </code></pre>
 <pre><code class="language-python">
 </code></pre>
-<pre><code class="language-python">
+<h3 id="_2">二、模型训练核心代码</h3>
+<h4 id="_3">(一)特征嵌入表示</h4>
+<h5 id="1_1">1.原子特征嵌入表示</h5>
+<p>代码：<code>model/Embeddings.py</code>  </p>
+<pre><code class="language-python">class GaussianAtomLayer(nn.Module):
+    def __init__(self, d_model=128, means=(0, 3), stds=(0.1, 10)):
+        super().__init__()
+        self.d_model = d_model
+        self.means = nn.Embedding(1, d_model)
+        self.stds = nn.Embedding(1, d_model)
+        self.mul = nn.Embedding(1, 1)
+        self.bias = nn.Embedding(1, 1)
+        nn.init.uniform_(self.means.weight, means[0], means[1])
+        nn.init.uniform_(self.stds.weight, stds[0], stds[1])
+        nn.init.constant_(self.bias.weight, 0)
+        nn.init.constant_(self.mul.weight, 1)
+
+    def real_forward(self, x):
+        mul = self.mul.weight
+        bias = self.bias.weight
+        x = mul * x.unsqueeze(-1) + bias # [batch_size, 300] -&gt; [batch_size, 300, 1]
+        x = x.expand(-1, -1, self.d_model) # [batch_size, 300, 1] -&gt; [batch_size, 300, d_model]
+        mean = self.means.weight[0]
+        std = self.stds.weight[0].abs() + 1e-5
+        return gaussian(x, mean, std).type_as(self.means.weight)
+
+    def forward(self, x):
+        &quot;&quot;&quot;
+        :param x: [bsz, n_atom]
+        :return: [bsz, n_atom, d_model]
+        &quot;&quot;&quot;
+        out = self.real_forward(x)
+        return torch.where(x.unsqueeze(-1).expand_as(out) != 0, out, torch.zeros_like(out))
 </code></pre>
-<pre><code class="language-python">
-</code></pre>
+<p>[解读]  <br />
+模块作用：对原子特征进行嵌入表示。<br />
+- 初始化参数<br />
+    - 调用<code>nn.Embedding(num_embeddings, embed_dim)</code>对<code>means, stds, mul, bias</code>进行初始化。<br />
+    - <code>nn.Embedding(num_embeddings, embed_dim)</code>作用<br />
+        - 本质：查找表，输入<code>token</code>的索引，输出<code>token</code>的嵌入表示(<code>embeddings</code>)。<br />
+        - 嵌入表示：可以在模型训练过程中不断更新。<br />
+        - <code>num_embeddings</code>：表示词汇表(<code>vocabulary</code>)的总<code>token</code>数。<br />
+        - <code>embed_dim</code>：表示每个<code>token</code>进行嵌入表示后的维度数目。<br />
+    - 此处，<code>means, stds</code>两个嵌入表示的<code>vocabulary size = 1</code>，嵌入表示维度为<code>128</code>；<code>mul, bias</code>的<code>vocabulary size = 1</code>，嵌入表示维度为<code>1</code>。<br />
+    - 调用<code>nn.init.uniform_</code>，从均匀分布中随机采样，初始化<code>means, stds</code>的嵌入表示参数；用常数初始化<code>mul, bias</code>的嵌入表示参数。<br />
+- 原子特征嵌入表示及其维度变化<br />
+    - 输入<code>x</code>：由若干原子特征形成的张量，形状为<code>[batch_size, 300]</code>。<br />
+    - 首先调用<code>unsqueeze(-1)</code>，形状：<code>[batch_size, 300] -&gt; [batch_size, 300, 1]</code>。<br />
+    - <code>x = mul * x.unsqueeze(-1) + bias</code>：对<code>x</code>进行线性变换。<br />
+    - <code>x = x.expand(-1, -1, self.d_model)</code>的作用：扩张张量<code>x</code>的维度，其中<code>expand</code>函数的各参数，分别对应于扩张后各维度的大小。作用前，<code>x.shape = [batch_size, 300, 1]</code>，<code>expand(-1, -1, self.d_model)</code>表示第<code>0, 1</code>维度的<code>size</code>不变，<code>self.d_model</code>表示第<code>2</code>维度的<code>size</code>从<code>1</code>变为<code>128</code>。<br />
+    - <code>expand</code>函数扩张维度的本质：只是基于同一片内存，创建多个视图，实质上并不进行数据拷贝和内存空间扩张。比如此处的<code>x.shape: [batch_size, 300, 1] -&gt; [batch_size, 300, self.d_model]</code>，对于<code>x[0][0][0]</code>这么一个浮点数，就创造了<code>self.d_model</code>个视图，这些新视图完全对应于同一个浮点数的内存空间，也就是<code>x[0][0][0] ~ x[0][0][self.d_model - 1]</code>，全部都对应于<code>x[0][0][0]</code>这一浮点数的内存空间。<br />
+    - 最后使用<code>mean, std</code>两个参数，返回<code>x</code>归一化后，输入到高斯分布函数获得的结果。
+- 高斯函数<br />
+<code>python
+    def gaussian(x, mean, std): 
+        return torch.exp(-0.5 * (((x - mean) / std) ** 2)) / (A * std)</code>
+    - 上述函数对应公式：<span class="arithmatex">\(G(x) = \frac{1}{\sqrt{2\pi} \sigma}e^{- \frac{1}{2}(\frac{x - \mu}{\sigma})^2}\)</span>。  </p>
 <pre><code class="language-python">
 </code></pre>
 <pre><code class="language-python">
