@@ -2245,35 +2245,35 @@
 - 非叶子结点，称为非终结符(<code>non-terminal</code>)。<br />
 1.文法符号的类型绑定<br />
 - 每个文法符号，均有一个类型的捆绑。<br />
-2.树语言的数据结构定义  </p>
-<pre><code class="language-C">Typedef char *string;
-Typedef struct A_stm_ *A_stm;
-Typedef struct A_exp_ *A_exp;
-Typedef struct A_expList_ *A_expList
-Typedef enum {A_plus, A_Minus, A_times, A_div} A_binop
-Struct A_stm_ { enum {A_compoundStm, A_assignStm, A_printStm} Kind
-union { struct {A_stm stm1, stm2;} compound;
-struct {string id; A_exp exp;} assign;
-struct {A_expList exps;} print;
-} u;
-}
-A_stm A_CompoundStm(A_stm stm1, A_stm stm2);
-A_stm A_AssignStm(string id, A_exp exp);  
-A_stm A_PrintStm(A_expList exps);
-</code></pre>
-<p>3.构造器<br />
+2.树语言的数据结构定义<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Typedef</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">string</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">Typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">A_stm_</span><span class="w"> </span><span class="o">*</span><span class="n">A_stm</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">Typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">A_exp_</span><span class="w"> </span><span class="o">*</span><span class="n">A_exp</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">Typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">A_expList_</span><span class="w"> </span><span class="o">*</span><span class="n">A_expList</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">Typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span><span class="n">A_plus</span><span class="p">,</span><span class="w"> </span><span class="n">A_Minus</span><span class="p">,</span><span class="w"> </span><span class="n">A_times</span><span class="p">,</span><span class="w"> </span><span class="n">A_div</span><span class="p">}</span><span class="w"> </span><span class="n">A_binop</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">Struct</span><span class="w"> </span><span class="n">A_stm_</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span><span class="n">A_compoundStm</span><span class="p">,</span><span class="w"> </span><span class="n">A_assignStm</span><span class="p">,</span><span class="w"> </span><span class="n">A_printStm</span><span class="p">}</span><span class="w"> </span><span class="n">Kind</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">union</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="n">A_stm</span><span class="w"> </span><span class="n">stm1</span><span class="p">,</span><span class="w"> </span><span class="n">stm2</span><span class="p">;}</span><span class="w"> </span><span class="n">compound</span><span class="p">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="n">string</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"> </span><span class="n">A_exp</span><span class="w"> </span><span class="n">exp</span><span class="p">;}</span><span class="w"> </span><span class="n">assign</span><span class="p">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="n">A_expList</span><span class="w"> </span><span class="n">exps</span><span class="p">;}</span><span class="w"> </span><span class="n">print</span><span class="p">;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span><span class="w"> </span><span class="n">u</span><span class="p">;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">}</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">A_stm</span><span class="w"> </span><span class="n">A_CompoundStm</span><span class="p">(</span><span class="n">A_stm</span><span class="w"> </span><span class="n">stm1</span><span class="p">,</span><span class="w"> </span><span class="n">A_stm</span><span class="w"> </span><span class="n">stm2</span><span class="p">);</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">A_stm</span><span class="w"> </span><span class="nf">A_AssignStm</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">A_exp</span><span class="w"> </span><span class="n">exp</span><span class="p">);</span><span class="w">  </span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">A_stm</span><span class="w"> </span><span class="nf">A_PrintStm</span><span class="p">(</span><span class="n">A_expList</span><span class="w"> </span><span class="n">exps</span><span class="p">);</span>
+</code></pre></div>
+3.构造器<br />
 4.复合语句构造函数<br />
 - 申请空间、数据结构初始化<br />
-- <code>CompoundStm, AssignStm</code>  </p>
-<pre><code class="language-C">A-stm A_CompoundStm(A_stm stm1, A_stm stm2){
-A_stm s = checked_malloc(sizeof(*s));
-s-&gt;kind = A_compoundStm;
-s-&gt;u.compound.stm1=stm1;
-s-&gt;u.compound.stm2=stm2;
-return s;
-}
-</code></pre>
-<p>5.双目运算符构造  </p>
+- <code>CompoundStm, AssignStm</code><br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">A</span><span class="o">-</span><span class="n">stm</span><span class="w"> </span><span class="n">A_CompoundStm</span><span class="p">(</span><span class="n">A_stm</span><span class="w"> </span><span class="n">stm1</span><span class="p">,</span><span class="w"> </span><span class="n">A_stm</span><span class="w"> </span><span class="n">stm2</span><span class="p">){</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">A_stm</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">checked_malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">));</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">s</span><span class="o">-&gt;</span><span class="n">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A_compoundStm</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">s</span><span class="o">-&gt;</span><span class="n">u</span><span class="p">.</span><span class="n">compound</span><span class="p">.</span><span class="n">stm1</span><span class="o">=</span><span class="n">stm1</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">s</span><span class="o">-&gt;</span><span class="n">u</span><span class="p">.</span><span class="n">compound</span><span class="p">.</span><span class="n">stm2</span><span class="o">=</span><span class="n">stm2</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
+</code></pre></div>
+5.双目运算符构造  </p>
 <h5 id="lexical-analysis">六、词法分析(<code>Lexical Analysis</code>)简介</h5>
 <p>1.编译过程<br />
 - 前端：分析（机器无关）<br />
@@ -2396,25 +2396,25 @@ automaton follows exactly one edge to get to the next state. <br />
 ①罗列终结符(<code>Tokens</code>)<br />
 ·<code>NUM | IF | THEN | ELSE | BEGIN | END | PRINT |
 SEMI | EQ</code><br />
-②实现  </p>
-<pre><code class="language-C">final int IF=1, THEN=2, ELSE=3, BEGIN=4, END=5, PRINT=6, SEMI=7, NUM=8, EQ=9;
-int tok = getToken();
-void advance() {tok=getToken();}
-void eat(int t) {if (tok==t) advance(); else error();}
-void S( ) {switch(tok) {
-case IF: eat(IF); E(); eat(THEN); S(); eat(ELSE); S(); break;  
-case BEGIN: eat(BEGIN); S( ); L( ); break;
-case PRINT: eat(PRINT); E( ); break;
-default: error();
-void L( ) {switch(tok) {
-case END: eat(END); break;
-case SEMI: eat(SEMI); S( ); L(); break;
-default: error();
-}}
-void E( ) { eat(NUM); eat(EQ); eat(NUM); }
-}}
-</code></pre>
-<p>③左递归、嵌套问题<br />
+②实现<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">IF</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">THEN</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">ELSE</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">BEGIN</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">END</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">PRINT</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="n">SEMI</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="n">NUM</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="n">EQ</span><span class="o">=</span><span class="mi">9</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">tok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getToken</span><span class="p">();</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kt">void</span><span class="w"> </span><span class="nf">advance</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">tok</span><span class="o">=</span><span class="n">getToken</span><span class="p">();}</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kt">void</span><span class="w"> </span><span class="nf">eat</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tok</span><span class="o">==</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="n">advance</span><span class="p">();</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">error</span><span class="p">();}</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kt">void</span><span class="w"> </span><span class="nf">S</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="k">switch</span><span class="p">(</span><span class="n">tok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">case</span><span class="w"> </span><span class="no">IF</span><span class="p">:</span><span class="w"> </span><span class="n">eat</span><span class="p">(</span><span class="n">IF</span><span class="p">);</span><span class="w"> </span><span class="n">E</span><span class="p">();</span><span class="w"> </span><span class="n">eat</span><span class="p">(</span><span class="n">THEN</span><span class="p">);</span><span class="w"> </span><span class="n">S</span><span class="p">();</span><span class="w"> </span><span class="n">eat</span><span class="p">(</span><span class="n">ELSE</span><span class="p">);</span><span class="w"> </span><span class="n">S</span><span class="p">();</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w">  </span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">case</span><span class="w"> </span><span class="no">BEGIN</span><span class="p">:</span><span class="w"> </span><span class="n">eat</span><span class="p">(</span><span class="n">BEGIN</span><span class="p">);</span><span class="w"> </span><span class="n">S</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="n">L</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">case</span><span class="w"> </span><span class="no">PRINT</span><span class="p">:</span><span class="w"> </span><span class="n">eat</span><span class="p">(</span><span class="n">PRINT</span><span class="p">);</span><span class="w"> </span><span class="n">E</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="n">error</span><span class="p">();</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="kt">void</span><span class="w"> </span><span class="n">L</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="k">switch</span><span class="p">(</span><span class="n">tok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="k">case</span><span class="w"> </span><span class="no">END</span><span class="p">:</span><span class="w"> </span><span class="n">eat</span><span class="p">(</span><span class="n">END</span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">case</span><span class="w"> </span><span class="no">SEMI</span><span class="p">:</span><span class="w"> </span><span class="n">eat</span><span class="p">(</span><span class="n">SEMI</span><span class="p">);</span><span class="w"> </span><span class="n">S</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="n">L</span><span class="p">();</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="n">error</span><span class="p">();</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="p">}}</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="kt">void</span><span class="w"> </span><span class="n">E</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">eat</span><span class="p">(</span><span class="n">NUM</span><span class="p">);</span><span class="w"> </span><span class="n">eat</span><span class="p">(</span><span class="n">EQ</span><span class="p">);</span><span class="w"> </span><span class="n">eat</span><span class="p">(</span><span class="n">NUM</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="p">}}</span>
+</code></pre></div>
+③左递归、嵌套问题<br />
 ·<code>S -&gt; L -&gt; S</code>的调用，产生间接左递归问题。<br />
 ④预测分析的问题：仅当一个<code>token</code>足以预测所有信息时，<span class="arithmatex">\(k = 1\)</span>的预测分析才完全有效。  </p>
 <p>下列概念有助于解决左递归问题。  </p>
@@ -2463,26 +2463,26 @@ X ::= ELSE S | ε</code>。<br />
 ·原始文法：<span class="arithmatex">\(A \rightarrow \alpha B | \alpha C\)</span><br />
 ·改造为：<span class="arithmatex">\(A \rightarrow \alpha A', A' \rightarrow B | C\)</span>。  </p>
 <h6 id="9error-recovery">9.错误恢复(<code>Error Recovery</code>)</h6>
-<p>·目的：纠正错误状态，继续正常进行分析。  </p>
-<pre><code class="language-C">void T( ) { switch (tok) {
-case ID:
-case NUM:
-case LPAREN: F( ); Tprime( ); break;
-default: error!
-}}
-</code></pre>
-<p>·之前定义的<code>First Set, Follow Set</code>有利于进行错误恢复。  </p>
-<pre><code class="language-C">int Tprime_follow [ ] = {PLUS, RPAREN, EOF};
-void Tprime( ) { switch (tok) {
-case PLUS: break;
-case TIMES: eat(TIMES); F(); Tprime(); break;
-case RPAREN: break;
-case EOF: break;
-default: print(&quot;expected +, *, right-paren, or end-of-file&quot;);
-skipto(Tprime_follow);
-}}
-</code></pre>
-<p>·错误原因：没有遇到<code>T'</code>能直接生成的<code>4</code>种符号。<br />
+<p>·目的：纠正错误状态，继续正常进行分析。<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">T</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">tok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">case</span><span class="w"> </span><span class="no">ID</span><span class="p">:</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">case</span><span class="w"> </span><span class="no">NUM</span><span class="p">:</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">case</span><span class="w"> </span><span class="no">LPAREN</span><span class="p">:</span><span class="w"> </span><span class="n">F</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="n">Tprime</span><span class="p">(</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="n">error</span><span class="o">!</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">}}</span>
+</code></pre></div>
+·之前定义的<code>First Set, Follow Set</code>有利于进行错误恢复。<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">Tprime_follow</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">PLUS</span><span class="p">,</span><span class="w"> </span><span class="n">RPAREN</span><span class="p">,</span><span class="w"> </span><span class="n">EOF</span><span class="p">};</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Tprime</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">tok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">case</span><span class="w"> </span><span class="no">PLUS</span><span class="p">:</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">case</span><span class="w"> </span><span class="no">TIMES</span><span class="p">:</span><span class="w"> </span><span class="n">eat</span><span class="p">(</span><span class="n">TIMES</span><span class="p">);</span><span class="w"> </span><span class="n">F</span><span class="p">();</span><span class="w"> </span><span class="n">Tprime</span><span class="p">();</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">case</span><span class="w"> </span><span class="no">RPAREN</span><span class="p">:</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">case</span><span class="w"> </span><span class="no">EOF</span><span class="p">:</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;expected +, *, right-paren, or end-of-file&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">skipto</span><span class="p">(</span><span class="n">Tprime_follow</span><span class="p">);</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">}}</span>
+</code></pre></div>
+·错误原因：没有遇到<code>T'</code>能直接生成的<code>4</code>种符号。<br />
 ·错误恢复方法：<code>skipto(Tprime_follow)</code>函数，只要<code>T'</code>后的符号位于<code>T'</code>的<code>follow set</code>中，都可以继续正常执行语法分析。此时，直接跳转到<code>T'</code>后符号的分析函数之中。  </p>
 <h6 id="_13">[总结]自顶向下分析</h6>
 <p>·对于非终结符，进行生成动作。<br />
