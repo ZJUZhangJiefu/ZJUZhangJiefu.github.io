@@ -1633,7 +1633,34 @@
           <li class="md-nav__item">
   <a href="#1_1" class="md-nav__link">
     <span class="md-ellipsis">
-      1.原子特征嵌入表示
+      1.原子特征高斯变换层
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.原子特征嵌入表示层
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.边特征高斯层
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.边特征嵌入表示层
     </span>
   </a>
   
@@ -1856,7 +1883,34 @@
           <li class="md-nav__item">
   <a href="#1_1" class="md-nav__link">
     <span class="md-ellipsis">
-      1.原子特征嵌入表示
+      1.原子特征高斯变换层
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.原子特征嵌入表示层
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.边特征高斯层
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.边特征嵌入表示层
     </span>
   </a>
   
@@ -2542,7 +2596,7 @@ for atom in product.GetAtoms():
 </code></pre>
 <h3 id="_2">二、模型训练核心代码</h3>
 <h4 id="_3">(一)特征嵌入表示</h4>
-<h5 id="1_1">1.原子特征嵌入表示</h5>
+<h5 id="1_1">1.原子特征高斯变换层</h5>
 <p>代码：<code>model/Embeddings.py</code>  </p>
 <pre><code class="language-python">class GaussianAtomLayer(nn.Module):
     def __init__(self, d_model=128, means=(0, 3), stds=(0.1, 10)):
@@ -2575,7 +2629,7 @@ for atom in product.GetAtoms():
         return torch.where(x.unsqueeze(-1).expand_as(out) != 0, out, torch.zeros_like(out))
 </code></pre>
 <p>[解读]  <br />
-模块作用：对原子特征进行嵌入表示。<br />
+- 模块作用：对原子特征进行高斯变换。<br />
 - 初始化参数<br />
     - 调用<code>nn.Embedding(num_embeddings, embed_dim)</code>对<code>means, stds, mul, bias</code>进行初始化。<br />
     - <code>nn.Embedding(num_embeddings, embed_dim)</code>作用<br />
@@ -2585,7 +2639,7 @@ for atom in product.GetAtoms():
         - <code>embed_dim</code>：表示每个<code>token</code>进行嵌入表示后的维度数目。<br />
     - 此处，<code>means, stds</code>两个嵌入表示的<code>vocabulary size = 1</code>，嵌入表示维度为<code>128</code>；<code>mul, bias</code>的<code>vocabulary size = 1</code>，嵌入表示维度为<code>1</code>。<br />
     - 调用<code>nn.init.uniform_</code>，从均匀分布中随机采样，初始化<code>means, stds</code>的嵌入表示参数；用常数初始化<code>mul, bias</code>的嵌入表示参数。<br />
-- 原子特征嵌入表示及其维度变化<br />
+- <code>forward</code>计算过程<br />
     - 输入<code>x</code>：由若干原子特征形成的张量，形状为<code>[batch_size, 300]</code>。<br />
     - 首先调用<code>unsqueeze(-1)</code>，形状：<code>[batch_size, 300] -&gt; [batch_size, 300, 1]</code>。<br />
     - <code>x = mul * x.unsqueeze(-1) + bias</code>：对<code>x</code>进行线性变换。<br />
@@ -2597,10 +2651,228 @@ for atom in product.GetAtoms():
     def gaussian(x, mean, std): 
         return torch.exp(-0.5 * (((x - mean) / std) ** 2)) / (A * std)</code>
     - 上述函数对应公式：<span class="arithmatex">\(G(x) = \frac{1}{\sqrt{2\pi} \sigma}e^{- \frac{1}{2}(\frac{x - \mu}{\sigma})^2}\)</span>。  </p>
-<pre><code class="language-python">
+<h5 id="2_1">2.原子特征嵌入表示层</h5>
+<p>代码：<code>model/Embeddings.py</code>  </p>
+<pre><code class="language-python">class AtomFeaEmbedding(nn.Module):
+    def __init__(self, d_model, atom_dim=65, total_degree=20, formal_charge=8, hybrid=10, exp_valance=8,
+                 hydrogen=8, aromatic=2, ring=9, n_layers=1, need_graph_token=True, known_rxn_type=True,
+                 known_rxn_cnt=True, n_rxn_cnt=10):
+        super(AtomFeaEmbedding, self).__init__()
+        self.known_rxn_cnt = known_rxn_cnt
+        self.known_rxn_type = known_rxn_type
+
+        self.atom_encoders = nn.ModuleList([
+            nn.Embedding(atom_dim + 1, d_model, padding_idx=0),  # 65
+            nn.Embedding(total_degree + 1, d_model, padding_idx=0),  # 20
+            nn.Embedding(hybrid + 1, d_model, padding_idx=0),  # 10
+            nn.Embedding(hydrogen + 1, d_model, padding_idx=0),  # 10
+            nn.Embedding(aromatic + 1, d_model, padding_idx=0),  # 2
+            nn.Embedding(ring + 1, d_model, padding_idx=0),  # 9
+            nn.Embedding(30, d_model, padding_idx=0),
+            nn.Embedding(5, d_model, padding_idx=0),
+            GaussianAtomLayer(d_model, means=(-1, 1), stds=(0.1, 10))
+        ])
+        self.need_graph_token = need_graph_token
+        # self.feed_forward = nn.Sequential(
+        #     nn.LayerNorm(d_model),
+        # )
+
+        if need_graph_token:
+            self.graph_token = nn.Embedding(1, d_model)
+            if known_rxn_cnt:
+                self.cnt_token = nn.Embedding(n_rxn_cnt, d_model)
+            if known_rxn_type:
+                self.type_token = nn.Embedding(10, d_model)
+            self.contrast_token = nn.Embedding(1, d_model)
+
+        self.apply(lambda module: init_params(module, n_layers=n_layers))
+
+    def forward(self, atom_fea, center_cnt=None, rxn_type=None, contrast=False):
+        &quot;&quot;&quot;
+        :param atom_fea: [bsz, n_fea_type, n_atom]
+        :return: [bsz, n_atom + I, d_model] I = 1 if need_graph_token else 0
+        &quot;&quot;&quot;
+        bsz, n_fea_type, n_atom = atom_fea.size()
+        out = self.atom_encoders[-1](atom_fea[:, -1])
+
+        for idx in range(n_fea_type - 1):
+            # print(idx, atom_fea[:, idx].max().item())
+            # print(idx, self.atom_encoders[idx].weight.size()[0], atom_fea[:, idx].max().int().item())
+            out += self.atom_encoders[idx](atom_fea[:, idx].int())
+
+        if self.need_graph_token:
+            graph_token = self.graph_token.weight[0].clone()
+            if contrast:
+                graph_token += self.contrast_token.weight[0]
+
+            graph_token = graph_token.view(1, 1, -1).repeat(bsz, 1, 1)
+
+            if self.known_rxn_type:
+                graph_token += self.type_token(rxn_type).view(bsz, 1, -1)
+            if self.known_rxn_cnt:
+                graph_token += self.cnt_token(center_cnt).view(bsz, 1, -1)
+
+            out = torch.cat([graph_token, out], dim=1)
+
+        return out
 </code></pre>
-<pre><code class="language-python">
+<p>[解读]<br />
+- 模块作用：对原子特征进行嵌入表示。<br />
+- <code>__init__</code>函数中的参数建立<br />
+    - <code>known_rxn_cnt</code>：知道反应类型的种类数。<br />
+    - <code>known_rxn_type</code>：知道每个化学反应的具体类型。<br />
+    - <code>self.atom_encoders</code>：分别对原子维度、单个原子的总度数、杂化类型、氢原子数、是否具有芳香性、是否在环中等信息，建立<code>nn.Embedding</code>类型的嵌入表示查找表；最后调用<code>GaussianAtomLayer</code>，对特征归一化后，输入高斯函数得到结果。<br />
+    - <code>need_graph_token</code>：表示是否需要图（全局）级别的特征，若为真，则建立一个<code>1 -&gt; 128</code>维度的查找表。<br />
+    - <code>cnt_token, type_token</code>：同样是<code>nn.Embeddings</code>嵌入表示查找表的建立。<br />
+- <code>__init__</code>函数中的参数初始化<br />
+    - 调用<code>init_params</code>自定义函数，对上述参数作初始化。该函数定义如下：<br />
+<code>python
+    def init_params(module, n_layers):
+        if isinstance(module, nn.Linear):
+            module.weight.data.normal_(mean=0.0, std=0.02 / math.sqrt(n_layers))
+            if module.bias is not None:
+                module.bias.data.zero_()
+        if isinstance(module, nn.Embedding):
+            module.weight.data.normal_(mean=0.0, std=0.02)</code> 
+    - 对于线性层、嵌入表示层，分别按照不同参数的正态分布，对参数进行采样，以实现初始化目的。<br />
+- <code>forward</code>计算过程<br />
+    - 输入特征：<code>atom_fea</code>，维度为<code>[batch_size, n_fea_type（特征类型数）, n_atom（单个产物的最大原子数）]</code>，进行代码调试时，<code>atom_fea.shape</code>实际为<code>[128, 9, 300]</code>。<br />
+    - <code>bsz = 128, n_fea_type = 9, n_atom = 300</code>.<br />
+    - <code>out = self.atom_encoders[-1](atom_fea[:, -1])</code>：对<code>9</code>种<code>atom_fea</code>的最后一种（形状为<code>[128, 300]</code>，在<code>dim = 1</code>进行切片），调用正则化高斯函数<code>GaussianAtomLayer</code>进行处理，输出形状为<code>[]</code>。<br />
+    - <code>for idx in range(n_fea_type - 1)</code>对应的循环：对<code>atom_fea</code>的前<code>8</code>种原子特征（每种原子特征形状为<code>[128, 300]</code>，在<code>dim = 1</code>进行切片）进行嵌入表示，然后加性汇聚到<code>out</code>输出结果之上。<br />
+    - <code>9</code>种原子特征：使用加性方法进行汇聚。<br />
+    - <code>graph_token</code>特征的汇聚<br />
+        - <code>self.graph_token</code>是一个<code>nn.Embedding(1, 128)</code>的组件，故：<br />
+<code>self.graph_token.weight.shape = [1, 128]</code><br />
+<code>self.graph_token.weight[0].shape = [128]</code><br />
+<code>graph_token.shape = [128]</code><br />
+        - <code>if contrast</code>：使用加性机制，汇聚<code>graph_token</code>和作为对比的<code>contrast_token</code>，这两个<code>token</code>都是全局范围的特征。<br />
+        - <code>graph_token = graph_token.view(1, 1, -1).repeat(bsz, 1, 1)</code>：<code>graph_token</code>的形状变化为<code>[128] -&gt; [1, 1, 128] -&gt; [bsz, 1, 128]</code>。<br />
+        - <code>self.type_token/cnt_token(rxn_type).view(bsz, 1, -1)</code>：形状变化为<code>[bsz, 128] -&gt; [bsz, 1, 128]</code>，结果与<code>graph_token</code>相同。<br />
+        - 图特征、反应类型嵌入表示、中心个数嵌入表示，相加进行汇聚。<br />
+    - 特征输出<br />
+        - <code>atom_fea -&gt; out</code>是原子（细粒度）特征的嵌入表示，<code>graph_token</code>是图（粗粒度）特征的嵌入表示，二者的形状分别为<code>[bsz, 300, 128], [bsz, 1, 128]</code>。<br />
+        - 通过<code>torch.concat()</code>函数，在<code>dim = 1</code>处进行通道的叠加，得到<code>out.shape = [128, 301, 128]</code>，输出结果。<br />
+        - 输出特征<code>out</code>是粗、细粒度特征的结合。  </p>
+<h5 id="3">3.边特征高斯层</h5>
+<pre><code class="language-python">class GaussianBondLayer(nn.Module):
+    def __init__(self, nhead=16, means=(0, 3), stds=(0.1, 10)):
+        super().__init__()
+        self.nhead = nhead
+        self.means = nn.Embedding(1, nhead)
+        self.stds = nn.Embedding(1, nhead)
+        self.mul = nn.Embedding(1, 1)
+        self.bias = nn.Embedding(1, 1)
+        nn.init.uniform_(self.means.weight, means[0], means[1])
+        nn.init.uniform_(self.stds.weight, stds[0], stds[1])
+        nn.init.constant_(self.bias.weight, 0)
+        nn.init.constant_(self.mul.weight, 1)
+
+    def real_forward(self, x):
+        mul = self.mul.weight
+        bias = self.bias.weight
+        x = mul * x.unsqueeze(-1) + bias
+        x = x.expand(-1, -1, -1, self.nhead)
+        mean = self.means.weight[0]
+        std = self.stds.weight[0].abs() + 1e-5
+        return gaussian(x, mean, std).type_as(self.means.weight)
+
+    def forward(self, x):
+        &quot;&quot;&quot;
+        :param x: [bsz, n_atom, n_atom]
+        :return: [bsz, n_atom, n_atom, nhead]
+        &quot;&quot;&quot;
+        out = self.real_forward(x)
+        return torch.where(x.unsqueeze(-1).expand_as(out) != 0, out, torch.zeros_like(out))
 </code></pre>
+<p>[解读]<br />
+- 作用：对边特征进行归一化，然后输入高斯函数得到结果。<br />
+- <code>__init__</code>参数定义<br />
+    - <code>n_head</code>：<br />
+    - 其余参数：与<code>GaussianAtomLayer</code>意义相同，其中<code>means, stds</code>均为<code>1 -&gt; 16</code>的<code>nn.Embeddings(num_embeddings, embed_dim)</code>嵌入表示查找表。<br />
+- <code>forward</code>计算过程<br />
+    - <code>x.shape = [bsz, n_atoms, n_atoms]</code>，即对于每个产物分子，分别有一个表示边特征的邻接矩阵。调试时<code>x.shape = [128, 300, 300]</code><br />
+    - <code>x = mul * x.unsqueeze(-1) + bias</code>：线性变换，<code>x.shape: [128, 300, 300] -&gt; [128, 300, 300, 1]</code>。<br />
+    - <code>x = x.expand(-1, -1, -1, self.nhead)</code>基于<code>dim = 3</code>的统一块内存创建多个视图，内存空间不发生扩张，原理见<code>GaussianAtomLayer</code>。<code>x.shape: [128, 300, 300, 1] -&gt; [128, 300, 300, 16]</code>。<br />
+    - 最后调用<code>gaussian</code>自定义函数，使用可学习的均值、方差，对边特征先进行归一化，再输入高斯函数得到结果。<br />
+    - 输出形状：<code>[128, 300, 300, 16]</code>。  </p>
+<h5 id="4">4.边特征嵌入表示层</h5>
+<ul>
+<li>作用：对边矩阵（形状为<code>[bsz, n_atoms, n_atoms]</code>，调试时<code>bsz = 128, n_atoms = 300</code>）。  </li>
+<li><code>__init__</code>函数<br />
+    [代码]<br />
+    ``` python
+    def <strong>init</strong>(self, embed_dim, n_head=16, max_paths=50, n_graph_type=6, max_single_hop=4, n_layers=1,
+                    need_graph_token=True, use_3d_info=False, known_rxn_type=True, known_rxn_cnt=True,
+                    use_dist_adj=True, n_rxn_cnt=10):
+            """
+            :param embed_dim:
+            :param n_head:  n_head mast has to be 2 to the nth power
+                            example: n_head=2^4, hop_distribution=[1, 2^3, 2^2, 2^1, 2^0]
+                                    n_head=2^n, hop_distribution=[1, 2^(n-1), 2^(n-2), ..., 2^0]
+            :param max_paths:
+            :param n_graph_type:
+            :param max_single_hop:
+            :param n_layers:
+            """
+            super().<strong>init</strong>()
+            self.known_rxn_cnt = known_rxn_cnt
+            self.known_rxn_type = known_rxn_type
+            self.num_heads = n_head
+            self.embed_dim = embed_dim
+            # assert n_head &amp; (n_head - 1) == 0, f"n_head mast has to be 2 to the nth power, but got{n_head}"
+            self.n_graph_type = n_graph_type
+            self.max_single_hop = max_single_hop
+            self.use_3d_info = use_3d_info
+            self.use_dist_adj = use_dist_adj
+            # self.hop_distribution = [1 &lt;&lt; i for i in range(int(math.log2(n_head) - 1), -1, -1)]
+            # self.hop_distribution[-1] += 1
+            # assert sum(self.hop_distribution) == self.num_heads
+            self.max_paths = max_paths
+            self.head_dim = embed_dim // n_head
+            assert self.head_dim * n_head == self.embed_dim, "embed_dim must be divisible by num_heads"<pre><code>    self.edge_encoders = nn.ModuleList([
+        nn.Embedding(max_paths + 1, n_head, padding_idx=0) for _ in range(n_graph_type)
+    ])
+    self.spatial_encoder = GaussianBondLayer(n_head, means=(0, 3), stds=(0.1, 10))
+    if self.use_3d_info:
+        self.spatial3d_encoder = GaussianBondLayer(n_head, means=(0, 3), stds=(0.1, 10))
+
+    # self.norm = nn.LayerNorm(n_head)
+
+    self.need_graph_token = need_graph_token
+    if need_graph_token:
+        self.graph_token = nn.Embedding(1, n_head)
+        if known_rxn_cnt:
+            self.cnt_token = nn.Embedding(n_rxn_cnt, n_head)
+        if known_rxn_type:
+            self.type_token = nn.Embedding(10, n_head)
+        self.contrast_token = nn.Embedding(1, n_head)
+
+    self.apply(lambda module: init_params(module, n_layers=n_layers))
+</code></pre>
+<p><code>``
+[解读]  
+    -</code>known_rxn_type, known_rxn_count<code>：与</code>AtomFeaEmbedding<code>意义相同。  
+    -</code>n_head<code>：注意力头（即：</code>Attention Head<code>）的个数，后续用于</code>Transformer<code>的自注意力机制。设定为</code>16<code>。  
+    -</code>embed_dim<code>：嵌入表示维度，设定为</code>128<code>。  
+    -</code>n_graph_type<code>：图的种类数，设定为</code>6<code>。  
+    -</code>max_single_hop<code>：
+    -</code>use_3d_info, use_dist_adj<code>：是否使用三维信息、距离矩阵，均为布尔变量。  
+    -</code>max_path<code>：最大路径的长度。后续对边、邻域信息和原子环境(</code>Atom Environment<code>)进行嵌入表示时，对原子的最大邻域作出了限制；对于各原子的</code>1 ~ max_path<code>-邻域信息，分别进行不同的嵌入表示。  
+    -</code>head_dim<code>：注意力头的维度，即总的嵌入表示维度/注意力头的个数。  
+    -</code>self.edge_encoders<code>：即</code>max_path<code>个边特征编码器，分别嵌入表示各原子的</code>1 ~ max_path<code>-邻域信息。  
+    -</code>self.spacial_encoder<code>：使用高斯函数，编码原子的距离信息。  
+    -</code>if need_graph_token<code>代码段  
+        - 对于图级别的</code>token<code>、反应类型、反应个数，分别进行嵌入表示，均表示为</code>n_heads<code>维度，与</code>attention head<code>的个数相对应。  
+    - 最后调用</code>init_params<code>函数，进行组件的参数初始化，该函数之前已提及。  
+-</code>forward<code>计算过程  
+- 输入：</code>bond_adj<code>，</code>shape = [batch_size, n_atoms, n_atoms]<code>，此处设定为</code>[128, 300, 300]<code>。  
+-</code>comb_embed<code>：即</code>combined embedding<code>的缩写，通过相加对各类嵌入表示进行汇总，初始化为</code>0<code>。两个</code>if<code>语句首先汇聚两种距离的嵌入表示信息。  
+-</code>comb_embed.shape = [bsz, n_atoms, n_atoms, n_heads]<code>，设定为</code>[128, 300, 300, 16]<code>，与</code>GaussianBondLayer<code>的</code>forward<code>函数输出形状相同。  
+-</code>if self.max_single_hop &gt; 0`代码段<br />
+    - </p>
+</li>
+</ul>
 <pre><code class="language-python">
 </code></pre>
 <pre><code class="language-python">
