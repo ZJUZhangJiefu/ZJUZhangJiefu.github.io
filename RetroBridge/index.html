@@ -10,13 +10,13 @@
         <meta name="author" content="大观散人">
       
       
-        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/O-GNN/">
+        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/RetroBridge/">
       
       
-        <link rel="prev" href="../G2GT/">
+        <link rel="prev" href="../RetroExplainer/">
       
       
-        <link rel="next" href="../RetroExplainer/">
+        <link rel="next" href="../RL/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>O-GNN - 大观散人的博客</title>
+        <title>RetroBridge - 大观散人的博客</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#abstract" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              O-GNN
+              RetroBridge
             
           </span>
         </div>
@@ -1244,28 +1244,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    O-GNN
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../O-GNN/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1274,294 +1256,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      正文
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="正文">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#abstract" class="md-nav__link">
-    <span class="md-ellipsis">
-      Abstract
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1-introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      1 Introduction
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1 Introduction">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.环状化合物简介
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2gnn" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.GNN分子建模研究进展
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3o-gnn" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.O-GNN
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-method" class="md-nav__link">
-    <span class="md-ellipsis">
-      2 Method
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2 Method">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-notation-and-preliminaries" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.1 Notation and Preliminaries
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.2 Model
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-theoretical-analysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.3 Theoretical Analysis
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-experiments" class="md-nav__link">
-    <span class="md-ellipsis">
-      3 Experiments
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3 Experiments">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-application-to-molecular-property-prediction" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1 Application to Molecular Property Prediction
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-application-to-ddi-prediction" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2 Application to DDI Prediction
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.3
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-conclusion-and-future-work" class="md-nav__link">
-    <span class="md-ellipsis">
-      4 Conclusion and Future Work
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      附录
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="附录">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-detailed-experiment-configurations" class="md-nav__link">
-    <span class="md-ellipsis">
-      A Detailed Experiment Configurations
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-proofs-of-the-two-propositions" class="md-nav__link">
-    <span class="md-ellipsis">
-      B Proofs of the Two Propositions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-more-ablation-study" class="md-nav__link">
-    <span class="md-ellipsis">
-      C More Ablation Study
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="C More Ablation Study">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#c1-node-representation-pooling-vs-compound-representation" class="md-nav__link">
-    <span class="md-ellipsis">
-      C.1 Node Representation Pooling v.s. Compound Representation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c2-attentively-aggregate-the-information-from-rings" class="md-nav__link">
-    <span class="md-ellipsis">
-      C.2 Attentively Aggregate the Information from Rings
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c3-o-gnn-with-brics" class="md-nav__link">
-    <span class="md-ellipsis">
-      C.3 O-GNN with BRICS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c4-more-comparison-between-o-gnn-and-o-gnn-wo-rings" class="md-nav__link">
-    <span class="md-ellipsis">
-      C.4 More Comparison Between O-GNN and O-GNN w/o Rings
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c5" class="md-nav__link">
-    <span class="md-ellipsis">
-      C.5 额外讨论
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#d-related-work-summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      D Related Work Summary
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1592,10 +1286,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../RetroBridge/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    RetroBridge
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1604,6 +1316,237 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abstract
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Abstract">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.单步逆合成问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2markov-bridge-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.马尔可夫桥模型(Markov Bridge Model)的引入
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3markov-bridge-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.使用Markov Bridge Model解决单步逆合成问题
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.研究背景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.逆合成规划任务
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.逆合成任务的建模方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.现有生成式方法对逆合成任务的适用性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.作者认为的逆合成学习目标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6retrobridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.RetroBridge方法的提出
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7retrobridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.RetroBridge方法性能的评估
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.贡献总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-related-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Related Work
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Related Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.扩散模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2schrodinger" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.Schrodinger桥问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.逆合成建模
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 Conclusion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 Conclusion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.工作总结
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.未来工作展望
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3markov-bridge-model_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.Markov Bridge Model在其他领域的应用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1806,163 +1749,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      正文
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="正文">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#abstract" class="md-nav__link">
     <span class="md-ellipsis">
       Abstract
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1-introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      1 Introduction
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1 Introduction">
+    <nav class="md-nav" aria-label="Abstract">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
-      1.环状化合物简介
+      1.单步逆合成问题
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2gnn" class="md-nav__link">
+  <a href="#2markov-bridge-model" class="md-nav__link">
     <span class="md-ellipsis">
-      2.GNN分子建模研究进展
+      2.马尔可夫桥模型(Markov Bridge Model)的引入
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3o-gnn" class="md-nav__link">
+  <a href="#3markov-bridge-model" class="md-nav__link">
     <span class="md-ellipsis">
-      3.O-GNN
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-method" class="md-nav__link">
-    <span class="md-ellipsis">
-      2 Method
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2 Method">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-notation-and-preliminaries" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.1 Notation and Preliminaries
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.2 Model
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-theoretical-analysis" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.3 Theoretical Analysis
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-experiments" class="md-nav__link">
-    <span class="md-ellipsis">
-      3 Experiments
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3 Experiments">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-application-to-molecular-property-prediction" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1 Application to Molecular Property Prediction
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-application-to-ddi-prediction" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2 Application to DDI Prediction
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.3
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-conclusion-and-future-work" class="md-nav__link">
-    <span class="md-ellipsis">
-      4 Conclusion and Future Work
+      3.使用Markov Bridge Model解决单步逆合成问题
     </span>
   </a>
   
@@ -1974,92 +1791,82 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#1-introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      附录
+      1 Introduction
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="附录">
+    <nav class="md-nav" aria-label="1 Introduction">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-detailed-experiment-configurations" class="md-nav__link">
+  <a href="#1_1" class="md-nav__link">
     <span class="md-ellipsis">
-      A Detailed Experiment Configurations
+      1.研究背景
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#b-proofs-of-the-two-propositions" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
-      B Proofs of the Two Propositions
+      2.逆合成规划任务
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#c-more-ablation-study" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
-      C More Ablation Study
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="C More Ablation Study">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#c1-node-representation-pooling-vs-compound-representation" class="md-nav__link">
-    <span class="md-ellipsis">
-      C.1 Node Representation Pooling v.s. Compound Representation
+      3.逆合成任务的建模方式
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#c2-attentively-aggregate-the-information-from-rings" class="md-nav__link">
+  <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
-      C.2 Attentively Aggregate the Information from Rings
+      4.现有生成式方法对逆合成任务的适用性
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#c3-o-gnn-with-brics" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
-      C.3 O-GNN with BRICS
+      5.作者认为的逆合成学习目标
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#c4-more-comparison-between-o-gnn-and-o-gnn-wo-rings" class="md-nav__link">
+  <a href="#6retrobridge" class="md-nav__link">
     <span class="md-ellipsis">
-      C.4 More Comparison Between O-GNN and O-GNN w/o Rings
+      6.RetroBridge方法的提出
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#c5" class="md-nav__link">
+  <a href="#7retrobridge" class="md-nav__link">
     <span class="md-ellipsis">
-      C.5 额外讨论
+      7.RetroBridge方法性能的评估
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#d-related-work-summary" class="md-nav__link">
+  <a href="#8" class="md-nav__link">
     <span class="md-ellipsis">
-      D Related Work Summary
+      8.贡献总结
     </span>
   </a>
   
@@ -2067,6 +1874,85 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-related-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Related Work
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Related Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.扩散模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2schrodinger" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.Schrodinger桥问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.逆合成建模
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 Conclusion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 Conclusion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.工作总结
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.未来工作展望
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3markov-bridge-model_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.Markov Bridge Model在其他领域的应用
+    </span>
+  </a>
   
 </li>
         
@@ -2093,288 +1979,242 @@
   
 
 
-  <h1>O-GNN</h1>
+  <h1>RetroBridge</h1>
 
-<p>论文标题：<code>O-GNN：Incorporating Ring Priors into Molecular Modeling</code><br />
-发表期刊：<code>ICLR 2023</code><br />
-论文：<a href=""></a><br />
-代码：<a href="https://github.com/O-GNN/O-GNN">github</a>  </p>
-<h3 id="_1">正文</h3>
+<p>论文标题：<code>RetroBridge: Modeling Retrosynthesis with Markov Bridges</code><br />
+发表期刊：<code>ICLR 2024(Spotlight)</code><br />
+代码链接：https://github.com/igashov/RetroBridge  </p>
 <h4 id="abstract"><code>Abstract</code></h4>
-<p>1.以往分子建模<code>GNN</code>模型的问题<br />
-- 不能显式考虑化合物(<code>compound</code>)中的环(<code>ring</code>)，限制了模型的表达能力。  </p>
-<p>2.本文工作——<code>O-GNN</code>摘要<br />
-- 提出<code>GNN</code>的一个环加强(<code>ring-enhanced</code>)的新变种（命名为<code>O-GNN</code>），在化合物的原子、化学键以外，对环信息进行了显式建模。<br />
-- 每个环分别由一个隐向量进行表征，参与原子和化学键的表征，并根据原子表征、化学键表征进行迭代更新。<br />
-- 理论分析证明：只需一个层，<code>O-GNN</code>即可区分位于不同环上的同构子图(<code>isomorphic subgraph</code>)；而传统<code>GNN</code>需要多个层进行区分。因此，<code>O-GNN</code>表达能力更强。  </p>
-<p>3.实验结果简述<br />
-- 在<code>11</code>个公开数据集上表现优秀。<br />
-- 在<code>PCQM4Mv1 benchmark</code>上，超越之前的<code>KDDCup</code>最佳解决方案，获得新的<code>SOTA</code>验证结果。<br />
-- 在<code>DrugBank</code>上的药物-药物相互作用预测任务上，取得新的<code>SOTA</code>结果。<br />
-- 在分子性质预测、逆合成预测任务上，超越不含环建模的<code>baseline</code>。  </p>
+<h5 id="1">1.单步逆合成问题</h5>
+<ul>
+<li><strong>目标</strong>：<strong>寻找可购买的起始反应物</strong>，设计出<strong>通往目标分子的多步反应途径</strong>。  </li>
+<li><strong>单步逆合成预测目标</strong>：准确预测<strong>给定目标分子</strong>时，可能用于合成目标分子的<strong>前体</strong>分子，同时需要进行<strong>置信度估计</strong>，以<strong>指导启发式搜索</strong>算法。  </li>
+<li><strong>单步逆合成建模</strong>：作者把单步逆合成问题建模为<strong>离散状态空间</strong>中的<strong>分布学习</strong>问题。  </li>
+</ul>
+<h5 id="2markov-bridge-model">2.马尔可夫桥模型(<code>Markov Bridge Model</code>)的引入</h5>
+<ul>
+<li><strong>马尔可夫桥模型</strong>（<code>Markov Bridge Model</code>）：一种<strong>生成式</strong>框架，旨在通过<strong>有限数量的匹配数据点对</strong>，对<strong>两个难以处理的离散分布</strong>的<strong>依赖关系</strong>进行近似。  </li>
+<li>理念：基于“<strong>马尔可夫桥</strong>”概念，即<strong>两端固定的马尔可夫过程</strong>。  </li>
+<li>模型与扩散方法的区别：马尔可夫桥模型<strong>不需要</strong>借助<strong>易于处理的噪声分布</strong>作为<strong>采样代理</strong>，而是<strong>直接对输入产物分子进行处理</strong>，将其<strong>视为来自难以处理的先验分布的样本</strong>。  </li>
+</ul>
+<h5 id="3markov-bridge-model">3.使用<code>Markov Bridge Model</code>解决单步逆合成问题</h5>
+<ul>
+<li>引入<code>RetroBridge</code>——一种<strong>基于<code>Markov Bridge Model</code></strong>的<strong>无模板</strong>逆合成方法。  </li>
+<li>在标准评估<code>baseline</code>上<strong>取得<code>SOTA</code>结果</strong>。  </li>
+</ul>
 <h4 id="1-introduction"><code>1 Introduction</code></h4>
-<h5 id="1">1.环状化合物简介</h5>
+<h5 id="1_1">1.研究背景</h5>
 <ul>
-<li>定义：至少包含一个环的化合物。  </li>
-<li>占比：在作者对<code>PubChem</code>的<code>109M</code>种化合物的统计中，<span class="arithmatex">\(90\%\)</span> 以上化合物至少含有一个环。  </li>
+<li>计算机与机器学习方法在<strong>全新(<code>in silico</code>)药物设计</strong>领域，展现出巨大潜力，作为一种更为经济、高效的替代方案，相较于实验性的高通量筛选方法（Thomas等人，2023年），能够<strong>设计出具有理想性质的分子</strong>。  </li>
+<li>计算模拟结果表明，生成的分子具有<strong>预测数值较高</strong>的<strong>靶标结合亲和力</strong>，以及其他有利特性，但迄今为止，对于这些<strong>分子的合成可行性</strong>关注度还相对较低（<code>Stanley &amp; Segler, 2023</code>）。  </li>
+<li>对于实验室测试而言，需要为<strong>新设计的分子</strong>探索<strong>合成路径</strong>，这是一个<strong>极具挑战性</strong>和<strong>耗时</strong>的过程。  </li>
 </ul>
-<h5 id="2gnn">2.<code>GNN</code>分子建模研究进展</h5>
+<h5 id="2">2.逆合成规划任务</h5>
 <ul>
-<li><code>GNN</code>在药物作用中的重要性  <ul>
-<li><code>Stokes et al.(2020)</code>训练<code>GNN</code>以预测大肠杆菌(<code>Escherichia coli</code>)的生长抑制，并最终发现<code>SARS-CoV-2</code>的可能抗体。  </li>
-<li><code>GNN</code>广泛应用于药物性质预测(<code>Rong et al., 2020</code>)、药物-靶标相互作用建模(<code>Torng &amp; Altman, 2019</code>)、逆合成(<code>Chen &amp; Jung, 2021</code>)等。  </li>
+<li>提出实验室中可以验证和优化的<strong>反应步骤</strong>或<strong>完整途径</strong>，以解决<strong>新设计分子的合成路径</strong>问题。  </li>
+<li><strong>单步</strong>逆合成：针对给定的<strong>目标分子</strong>，预测其<strong>前体分子(<code>percursor molecule</code>)</strong>。  </li>
+<li><strong>多步</strong>逆合成：<strong>递归应用单步</strong>逆合成方法，逐步将<strong>产物分子</strong>分解成<strong>越来越简单的中间体</strong>，并最终追踪到<strong>可获得的初始分子</strong>。  </li>
 </ul>
-</li>
-<li>以往工作的问题  <ul>
-<li>上述工作均没有在<code>GNN</code>中显式建模环信息。  </li>
-<li>从应用者角度看，对于上述任务，由重要特征缺失。  </li>
-<li>从机器学习角度，<code>Loukas(2020)</code>指出宽度、深度乘积不够大时，现有的基于消息传递的<code>GNN</code>不能正确捕捉环信息。  </li>
-<li>因此，化合物中的环信息没有得到充分利用。  </li>
-</ul>
-</li>
-</ul>
-<h5 id="3o-gnn">3.<code>O-GNN</code></h5>
+<h5 id="3">3.逆合成任务的建模方式</h5>
 <ul>
-<li>表征的更新   <ul>
-<li>每个层次时序化更新：边信息、结点信息和环信息。  </li>
+<li><strong>大多数</strong>逆合成研究  <ul>
+<li>采用<strong>判别式</strong>框架<br />
+<img alt="" src="../assets/DL/110.JPG" />  </li>
 </ul>
 </li>
-<li>消息传递、非线性的引入  <ul>
-<li>消息传递：使用自注意力层。  </li>
-<li>非线性引入：使用前馈层。  </li>
-</ul>
-</li>
-<li>实验设计  <ul>
-<li>分子性质预测  <ul>
-<li>在<code>PCQM4Mv1</code>数据集上进行实验，预测HOMO-LUMO能隙：在验证集上超过<code>KDDCup</code>。  </li>
-<li>在<code>MoleculeNet</code>上的六个数据集进行实验：超过了无环<code>GNN</code>的性能。  </li>
-<li>在<code>FS-Mol</code>数据集上进行实验：证明建模环信息可以提升精确度。  </li>
-</ul>
-</li>
-<li>药物-药物相互作用预测  <ul>
-<li><code>DrugBank</code>基于前人设定进行测试，获得<code>SOTA</code>结果。  </li>
-</ul>
-</li>
-<li>逆合成  <ul>
-<li>将<code>O-GNN</code>用于<code>LocalRetro</code>，在<code>USPTO-50k</code>上获得显著的性能提升。  </li>
+<li>本文观点  <ul>
+<li>将逆合成任务视为一个<strong>条件分布学习问题</strong>（图<code>1</code>）  </li>
+<li>视为条件分布学习问题的<strong>优点</strong>  <ul>
+<li>能够<strong>建模不确定性</strong>，以<strong>生成新颖的、多样化的逆合成路径</strong>。  </li>
+<li><strong>条件分布的概率形式</strong>，反映了<strong>同一个产物分子</strong>往往可以通过<strong>不同的反应物和试剂组合</strong>进行合成的<strong>事实</strong>。  </li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h4 id="2-method"><code>2 Method</code></h4>
-<h5 id="21-notation-and-preliminaries"><code>2.1 Notation and Preliminaries</code></h5>
+<h5 id="4">4.现有生成式方法对逆合成任务的适用性</h5>
 <ul>
-<li>
-<p>符号约定</p>
+<li>现有生成式方法：<strong>扩散模型</strong>和其他<strong>基于分数(<code>score-based</code>)、基于流(<code>flow-based</code>)</strong>的生成方法。  </li>
+<li><strong>适用性</strong>：<strong>不能自然地适用</strong>于逆合成问题的表达形式。  <ul>
+<li>上述模型的<strong>目的</strong>：用于近似<strong>单一</strong>的<strong>难以处理</strong>的数据分布。  </li>
+<li>上述模型的一般方法  <ul>
+<li>从一个<strong>简单的先验分布</strong>中<strong>采样初始噪声</strong>  </li>
+<li>将<strong>噪声映射</strong>到<strong>遵循复杂目标分布</strong>的<strong>数据点</strong>上  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="5">5.作者认为的逆合成学习目标</h5>
 <ul>
-<li>图<span class="arithmatex">\(G = (V, E)\)</span>, <span class="arithmatex">\(V\)</span>为顶点集，<span class="arithmatex">\(E\)</span>为边集，<span class="arithmatex">\(R\)</span>维环的集合。  </li>
-<li><span class="arithmatex">\(V = \{v_1, \cdots, v_{|V|}\}, E = \{e_{i,j}\}\)</span>表示顶点<span class="arithmatex">\(v_i,v_j\)</span>连成的边。  </li>
-<li>用<span class="arithmatex">\(i\)</span>简记顶点<span class="arithmatex">\(v_i\)</span>；用<span class="arithmatex">\((v_i, v_j)\)</span>表示边<span class="arithmatex">\(e_{ij}\)</span>。  </li>
-<li>顶点<span class="arithmatex">\(i\)</span>的邻域：<span class="arithmatex">\(N(i) = \{v_j|e_{ij}\in E\}\)</span>  </li>
-<li><span class="arithmatex">\(R = \{r_1, \cdots, r_n\}\)</span>，其中<span class="arithmatex">\(r_i\)</span>为单环。  </li>
-<li><span class="arithmatex">\(R(i), R(e_{ij})\)</span>分别表示：原子<span class="arithmatex">\(i\)</span>，边<span class="arithmatex">\(e_{ij}\)</span>所处的单环集合。  </li>
-<li>举例<br />
-<img alt="" src="../assets/DL/81.JPG" />  </li>
+<li>目标：学习<strong>两个难以处理分布</strong>之间的<strong>依赖关系</strong>，<strong>而非</strong>某个<strong>单一</strong>的难以处理的分布。  </li>
+<li>原因  <ul>
+<li>可以使用<strong>原始无条件生成模型</strong>，在<strong>采样</strong>过程中对<strong>相关上下文</strong>进行<strong>条件化</strong>，并<strong>持续</strong>从<strong>先验</strong>噪声中<strong>采样</strong>，以实现两个<strong>分布依赖关系的学习</strong>。  </li>
+<li>但本文实验表明：<strong>近似两个离散分布之间的依赖关系时，直接应用原始无条件生成模型不是最好的选择</strong>。  </li>
 </ul>
 </li>
-<li>
-<p>原子表征更新公式     </p>
+</ul>
+<h5 id="6retrobridge">6.<code>RetroBridge</code>方法的提出</h5>
 <ul>
-<li>公式：<span class="arithmatex">\(h_i' = Update(h_i, Aggregate(h_j|j \in N(i)))\)</span>  </li>
-<li><span class="arithmatex">\(h_i, h_i'\)</span>分别为原子<span class="arithmatex">\(i\)</span>更新前后的表征。  </li>
+<li>一种<strong>无模板、生成式</strong>逆合成方法。  </li>
+<li>将产物空间、反应物空间之间的依赖关系，建模为一个<strong>随机过程</strong>。  </li>
+<li>随机过程受到<strong>数据点起始和结束的约束</strong>。  </li>
+<li>引入<strong>马尔可夫桥模型</strong>——一个<strong>生成模型</strong>，通过<strong>有限的匹配数据点对(<code>coupled data points</code>)</strong>，学习<strong>两个难以处理的离散分布之间的依赖关系</strong>。  </li>
+<li><strong>输入：产物分子</strong>。    </li>
+<li>模型：对从一个<strong>给定产物开始</strong>，并在<strong>遵循反应物分布的数据点结束</strong>的<strong>马尔可夫桥的轨迹</strong>进行<strong>建模</strong>。  </li>
 </ul>
-</li>
-</ul>
-<h5 id="22-model"><code>2.2 Model</code></h5>
-<p><img alt="" src="../assets/DL/82.JPG" />  </p>
+<h5 id="7retrobridge">7.<code>RetroBridge</code>方法性能的评估</h5>
 <ul>
-<li>设<span class="arithmatex">\(L\)</span>为模型层数，<span class="arithmatex">\(U^{(l)}\)</span>为第<span class="arithmatex">\(l\)</span>层的复合物表征。  </li>
-<li>表征初始化  <ul>
-<li>结点表征的初始化：通过可学习的<code>embedding</code>层，初始化<span class="arithmatex">\(h_i^{(0)}\)</span>，表示原子的下列信息：  <ul>
-<li>原子类型  </li>
-<li>手性  </li>
-<li><code>degree number</code>  </li>
-<li>形式电荷  </li>
-<li>杂化类型  </li>
-<li>其余信息  </li>
+<li><strong>不确定性得分</strong>  <ul>
+<li>针对采样得到的反应物图，利用<code>RetroBridge</code>的概率性质，<strong>基于每个样本</strong>衡量不确定性得分。  </li>
 </ul>
 </li>
-<li>边表征的初始化：通过可学习的<code>embedding</code>层，初始化<span class="arithmatex">\(h_{ij}^{(0)}\)</span>，表示原子的化学键类型、立体异构、是否共轭。  </li>
-<li>化合物表征的初始化：通过可学习<code>embedding</code>层。  </li>
-<li>环表征的初始化：连接(<code>nonlinearity</code>)原子、边的<code>embedding</code>，并使用非线性层进行变换。  </li>
+<li>逆合成实验结果  <ul>
+<li><code>RetroBridge</code>在<strong>标准逆合成<code>benchmark</code></strong>中，取得<strong>具有竞争力</strong>的结果。  </li>
 </ul>
 </li>
-<li>表征更新：对于结点、化学键、环和化合物的表征，进行时序化更新。  <ul>
-<li>边表征：由连接的原子、边所处的环，以及上一层的化合物表征进行更新：<br />
-<span class="arithmatex">\(h_{ij}^{(l)} = h_{ij}^{(l - 1)} + MLP(h_i^{(l - 1)}, h_j^{(l - 1)}), h_{ij}^{(l - 1)}, \frac{\sum}h_i^{(l - 1)}{r \in R(e_{ij})h_r^{(l - 1)}}{|R(e_{ij})|}, U^{(l - 1)} \cdots (2)\)</span>   </li>
-<li>原子表征：使用注意力模型，自适应地将边表征聚合到中心原子。 <br />
-<span class="arithmatex">\(\bar{h}_{i}^{(l)} = \sum_{j \in N(i)} \alpha_{j}W_vconcat(h_{ij}^{(l - 1)}, h_j^{(l - 1)})\)</span><br />
-<span class="arithmatex">\(\alpha_j ∝ exp(a^TleakyReLU(W_qh_i^{(l - 1)} + W_kconcat(h_j^{(l - 1)}, h_{ij}^{(l)})))\cdots (3)\)</span><br />
-<span class="arithmatex">\(h_{i}^{(l)} = h_{i}^{(l - 1)} + MLP(h_i^{(l - 1)}) + MLP(h_i^{(k - 1)}, \bar{h}_i^{(l)}, \frac{1}{|R(v_i)|}\sum_{r \in R(v_i)}h_r^{(l - 1)}, U^{(l - 1)})\)</span><br />
-等式(3)中：<span class="arithmatex">\(W\)</span>的参数通过学习得到，<code>concat</code>表示将输入向量连接为一个长向量。  </li>
-<li>环表征：使用<code>MLP</code>更新  <br />
-<span class="arithmatex">\(h_{r}^{(l)} = h_{r}^{(l - 1)} + MLP(h_{r}^{(l)}, \sum_{v_i \in V(r)}h_i^{(l)}, \sum_{e_{ij} \in E(r)}h_{ij}^{(l)}, U^{(l - 1)})\)</span>  </li>
-<li>化合物表征：<br />
-<span class="arithmatex">\(U^{(l)} = U^{(l - 1)}+MLP(\frac{1}{|V|}\sum_{i = 1}^{|V|}h_i^{(l)}, \frac{1}{|E|}\sum_{i, j}^{}h_{ij}^{(l)}, \frac{1}{|R|}\sum_{r \in R}^{|V|}h_r^{(l)}, U^{(l - 1)})\)</span>  </li>
-</ul>
-</li>
-<li>输出层次  <ul>
-<li>图表征与图分类：在<span class="arithmatex">\(L\)</span>个<code>O-GNN</code>层的堆叠之后，通过简单的平均汇聚，即<span class="arithmatex">\(h_{G} = \frac{1}{|V|}\sum_{i = 1}^{|V|}h_i^{(L)}\)</span>，获得图表征，可用于图分类任务。  </li>
-<li>结点分类：对于结点分类任务，可在<span class="arithmatex">\(h_{i}^{(L)}\)</span>处添加分类头。  </li>
+<li>与<code>GraphDiffusion</code>的对比  <ul>
+<li>将<code>RetroBridge</code>与<strong>最先进的图扩散模型<code>DiGress</code></strong>进行比较。  </li>
+<li>结果：在定量和定性层面上证明，本文提出的<strong>马尔可夫桥模型更适用于需要映射两个难以处理的离散分布的任务</strong>。  </li>
 </ul>
 </li>
 </ul>
-<h5 id="23-theoretical-analysis"><code>2.3 Theoretical Analysis</code></h5>
+<h5 id="8">8.贡献总结</h5>
 <ul>
-<li>【定义1（<span class="arithmatex">\(k\)</span>-邻域节点）】<br />
-节点<span class="arithmatex">\(u\)</span>为结点<span class="arithmatex">\(v\)</span>的<span class="arithmatex">\(k\)</span>邻域节点，当且仅当<span class="arithmatex">\(u, v\)</span>之间存在一条长度不超过<span class="arithmatex">\(k\)</span>的路径。  </li>
-<li>【定义2（<span class="arithmatex">\(k\)</span>-邻域子图）】<br />
-由节点<span class="arithmatex">\(u\)</span>的所有<span class="arithmatex">\(k\)</span>邻域节点，及这些节点之间所有边，构成关于<span class="arithmatex">\(u\)</span>节点的<span class="arithmatex">\(k\)</span>邻域子图。  </li>
-<li>【定义3（等值图）】<br />
-若两个图的顶点集<span class="arithmatex">\(V_1, V_2\)</span>之间存在映射<span class="arithmatex">\(P:V_1 \rightarrow V_2\)</span>，使得：<br />
-（1）边的映射得以保持不变：<br />
-<span class="arithmatex">\(e(u, v) \in E_1 \Leftrightarrow e(P(u), P(v)) \in E_2\)</span><br />
-（2）边和结点的函数值得以保持不变：<br />
-<span class="arithmatex">\(f_1()u = f_2(P(u)), f_2(v)\)</span></li>
+<li>贡献一  <ul>
+<li>引入马尔可夫桥模型(<code>Markov Bridge Model</code>)，以通过<strong>有限数量的匹配数据点对(<code>coupled data points</code>)</strong>，近似<strong>两个难以处理的离散分布</strong>之间的<strong>概率依赖关系</strong>。  </li>
 </ul>
-<h4 id="3-experiments"><code>3 Experiments</code></h4>
+</li>
+<li>贡献二  <ul>
+<li>在学习两个<strong>难以处理(<code>intractable</code>)离散分布之间依赖关系</strong>的背景下，展示了<code>Markov Bridge Model</code><strong>相比于扩散模型的优越性</strong>。   </li>
+</ul>
+</li>
+<li>贡献三  <ul>
+<li><strong>提出<code>RetroBridge</code></strong>——<strong>首个用于逆合成建模的<code>Markov Bridge Model</code></strong>、一种<strong>无模板</strong>的<strong>单步</strong>逆合成预测方法，在标准<code>benchmark</code>上<strong>实现了<code>SOTA</code>性能</strong>。  </li>
+</ul>
+</li>
+</ul>
+<h4 id="2-related-work"><code>2 Related Work</code></h4>
+<h5 id="1_2">1.扩散模型</h5>
 <ul>
-<li>实验任务  <ul>
-<li>图分类任务：分子性质预测、药物-药物相互作用预测  </li>
-<li>节点/链接预测任务：逆合成预测  </li>
+<li>一类强大、有效、基于分数的生成方法。  </li>
+<li>在制药的许多领域取得了令人瞩目的成果  <ul>
+<li><strong>蛋白质设计</strong>  </li>
+<li><strong>小分子生成</strong>  </li>
+<li><strong>分子对接</strong>  </li>
+<li><strong>过渡态分子结构采样</strong>  </li>
 </ul>
 </li>
+<li>大多数模型为<strong>连续数据域</strong>设计；一些方法应用于<strong>离散数据</strong>，特别是<strong>离散图结构</strong>。  </li>
+<li>目前<strong>尚未</strong>有扩散模型被应用于<strong>模拟化学反应、恢复逆合成路径</strong>。  </li>
 </ul>
-<h5 id="31-application-to-molecular-property-prediction"><code>3.1 Application to Molecular Property Prediction</code></h5>
-<h5 id="32-application-to-ddi-prediction"><code>3.2 Application to DDI Prediction</code></h5>
-<h5 id="32"><code>3.2</code></h5>
-<h5 id="33"><code>3.3</code></h5>
-<h4 id="4-conclusion-and-future-work"><code>4 Conclusion and Future Work</code></h4>
+<h5 id="2schrodinger">2.<code>Schrodinger</code>桥问题</h5>
 <ul>
-<li>未来工作  <ul>
-<li>结合预训练获得更强的<code>O-GNN</code>。  </li>
-<li>在训练数据量非常首先的情况下，进一步改善模型。  </li>
-<li>高效地识别更复杂架构，并将其融入表征。  </li>
+<li>问题定义  <ul>
+<li>给定<strong>两个分布</strong>，以及它们之间的<strong>参考随机过程</strong>，解决<code>Schrodinger</code>桥（<code>Schrodinger Bridge</code>）问题相当于在<strong>路径空间</strong>上根据<code>Kullback-Leibler</code><strong>散度</strong>，找到<strong>与参考随机过程最接近的随机过程</strong>。  </li>
 </ul>
 </li>
+<li><strong>最近大多数方法</strong>的共性  <ul>
+<li>在<strong>无条件生成建模</strong>的背景下，应用<code>Schrodinger Bridge</code>形式化  </li>
 </ul>
-<h3 id="_2">附录</h3>
-<h4 id="a-detailed-experiment-configurations"><code>A Detailed Experiment Configurations</code></h4>
+</li>
+<li><strong>少数工作</strong>  <ul>
+<li>通过对<strong>两个连续分布中的匹配样本</strong>(<code>coupled samples</code>)进行训练，以<strong>近似参考随机过程</strong>。  </li>
+</ul>
+</li>
+<li>目前<strong>尚无针对类别分布进行处理的方法</strong>，该问题正是<strong>本文工作的研究主题</strong>。  </li>
+</ul>
+<h5 id="3_1">3.逆合成建模</h5>
 <ul>
-<li>分子性质预测任务超参数设置<br />
-<img alt="" src="../assets/DL/83.JPG" />  </li>
-<li><code>DDI</code>任务超参数设置<br />
-<img alt="" src="../assets/DL/84.JPG" />  </li>
-<li>逆合成任务超参数设置<br />
-<img alt="" src="../assets/DL/85.JPG" />  </li>
+<li>方法分类  <ul>
+<li><strong>基于模板</strong>的方法  </li>
+<li><strong>无模板</strong>方法  </li>
 </ul>
-<h4 id="b-proofs-of-the-two-propositions"><code>B Proofs of the Two Propositions</code></h4>
-<p>（略，见原文附录部分）  </p>
-<h4 id="c-more-ablation-study"><code>C More Ablation Study</code></h4>
-<h5 id="c1-node-representation-pooling-vs-compound-representation"><code>C.1 Node Representation Pooling v.s. Compound Representation</code></h5>
+</li>
+<li><strong>基于模板</strong>的方法  <ul>
+<li>依赖于<strong>预定义的特定反应模板</strong>或<strong>离去基团集合</strong>  </li>
+<li>[注]：由于<strong>半模板方法依赖于离去基团集合</strong>，此处将<strong>半模板</strong>方法归类为<strong>基于模板</strong>的方法。  </li>
+</ul>
+</li>
+<li><strong>无模板</strong>方法  <ul>
+<li>更加<strong>灵活</strong>，因此能够<strong>探索新的反应途径</strong>。  </li>
+</ul>
+</li>
+<li>逆合成预测中<strong>常用的两种数据表示方法</strong>  <ul>
+<li><strong>符号表示法<code>SMILES</code></strong>  </li>
+<li><strong>分子图</strong>  </li>
+</ul>
+</li>
+<li>逆合成模型  </li>
+<li><strong>语言模型</strong>  <ul>
+<li>处理<code>SMILES</code>  </li>
+<li>部分语言模型在<strong>规模更大的数据集</strong>上进行<strong>预训练</strong>  </li>
+<li><strong>无模板</strong>方法：根据<strong>序列到序列翻译问题</strong>的<strong>本质</strong>，所有这些方法都是<strong>无模板</strong>的。  </li>
+</ul>
+</li>
+<li><strong>基于图</strong>的方法  <ul>
+<li><strong>基于模板</strong>的方法  <ul>
+<li><code>GLN</code>  </li>
+<li><code>GraphRetro</code>  </li>
+<li><code>LocalRetro</code>  </li>
+</ul>
+</li>
+<li><strong>无模板</strong>方法  <ul>
+<li><code>G2G</code>  </li>
+<li><code>MEGAN</code>  </li>
+</ul>
+</li>
+<li><strong>同时利用图和<code>SMILES</code>表示</strong>的方法（<strong>无模板</strong>方法）  <ul>
+<li><code>GTA</code>  </li>
+<li><code>Graph2SMILES</code>  </li>
+<li><code>Retroformer</code>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>本文提出的方法所属类型  <ul>
+<li>一种<strong>无模板、基于图</strong>的方法。  </li>
+</ul>
+</li>
+</ul>
+<h4 id="5-conclusion"><code>5 Conclusion</code></h4>
+<h5 id="1_3">1.工作总结</h5>
 <ul>
-<li>评估数据集为<code>PCQM4Mv1</code>，以<code>MAE(Mean Absolute Errors)</code>作为衡量标准。结果表明：结点平均池化比化合物表征效果更好。<br />
-<img alt="" src="../assets/DL/86.JPG" />  </li>
+<li>提出<code>Markov Bridge Model</code>：一种新的<strong>生成式</strong>框架，适用于学习<strong>两个难以处理的离散值分布</strong>之间<strong>依赖关系</strong>。  </li>
+<li>将<code>Markov Bridge Model</code>应用于<strong>逆合成预测</strong>问题，提出<strong>无模板方法<code>RetroBridge</code></strong>，在常见的评估基准上<strong>实现<code>SOTA</code>性能</strong>。  </li>
+<li>实验结论：与<strong>扩散模型的直接改造</strong>相比，选择<strong>合适的概率建模框架</strong>，能对<strong>逆合成任务</strong>的性能产生<strong>积极</strong>影响。  </li>
 </ul>
-<h5 id="c2-attentively-aggregate-the-information-from-rings"><code>C.2 Attentively Aggregate the Information from Rings</code></h5>
+<h5 id="2_1">2.未来工作展望</h5>
 <ul>
-<li>另一个含注意力机制的环表征变种  <ul>
-<li>使用<code>MLP</code>更新环表征的数学公式：<br />
-<span class="arithmatex">\(h_r^{(l)} - h_r^{(l - 1)} + MLP(h_r^{(l - 1)}, \sum_{v_i \in V(r)}\alpha_{i}^{(l)}h_i^{(l)}, \sum_{e_{i, j} \in E(r)}\beta_{ij}^{(l)}h_{ij}^{(l)}, U^{(l - 1)})\cdots (9)\)</span>  </li>
-<li>使用注意力机制，更新结点、边表征：<br />
-<span class="arithmatex">\(\alpha_i^{(l)} ∝ exp(W_{ql}h_r^{(l - 1)} + W_{kl}h_i^{(l)})\)</span> 
-<span class="arithmatex">\(\beta_{ij}^{(l)} ∝ exp(W_{q2}h_r^{(l - 1)} + W_{k2}h_{ij}^{(l)}) \cdots (10)\)</span>  </li>
+<li>目的：解决<code>RetroBridge</code>现有的一些<strong>局限性</strong>（这些局限性<strong>同样存在于其他</strong>类似的逆合成建模方法之中），使<code>RetroBridge</code>更适合实际应用。  </li>
+<li>研究方向一——<strong>引导生成过程</strong>趋向于<strong>某个特定的化合物集合</strong>  <ul>
+<li><strong>基于模板</strong>的逆合成规划方法存在许多限制，但可能仍被许多化学家所青睐，原因是<strong>更可能符合已有的反应物、试剂和反应类型</strong>集合。  </li>
+<li>因此，引导生成过程<strong>趋向于某个特定的化合物集合</strong>，是一种潜在的改进，将增强方法的<strong>实用性</strong>。  </li>
 </ul>
 </li>
-<li>实验结果：使用<code>MLP</code>更新环表征，虽然结构简单，但效果比注意力机制更好。<br />
-<img alt="" src="../assets/DL/87.JPG" />  </li>
+<li>研究方向二——<strong>反应条件与试剂</strong>  <ul>
+<li>化学反应<strong>强烈依赖于</strong>反应条件和试剂。  </li>
+<li><code>RetroBridge</code><strong>不直接预测</strong>此类<strong>条件</strong>，也<strong>不提供</strong>关于所需<strong>反应类型的明确信息</strong>，但可以朝着<strong>适应</strong>这种设置的方向调整。  </li>
+<li>当前方法暂时难以提出完整的实验方案，但如果<strong>能在生成过程中考虑到反应条件和试剂的额外背景</strong>，则可能已经足以使方法得到更广泛的实际应用。  </li>
 </ul>
-<h5 id="c3-o-gnn-with-brics"><code>C.3 O-GNN with BRICS</code></h5>
+</li>
+<li>研究方向三——<strong>多步逆合成</strong>  <ul>
+<li>大多数具有药学意义的反应途径包含多个步骤。  </li>
+<li>未来工作将<strong>结合<code>RetroBridge</code>与现有的多步逆合成规划算法</strong>，以评估<code>RetroBridge</code><strong>在多步设置下的性能</strong>。  </li>
+</ul>
+</li>
+</ul>
+<h5 id="3markov-bridge-model_1">3.<code>Markov Bridge Model</code>在其他领域的应用</h5>
 <ul>
-<li>环表征可视为一种特殊的保守序列(<code>motif</code>)  </li>
-<li>使用<code>BRICS</code>模型将分子分解为不同的片段，并研究用<code>motif</code>表征替代环表征带来的影响。  </li>
-<li>实验结果：使用<code>BRICS motif</code>表征，效果不如环表征。<br />
-<img alt="" src="../assets/DL/88.JPG" />  </li>
-</ul>
-<h5 id="c4-more-comparison-between-o-gnn-and-o-gnn-wo-rings"><code>C.4 More Comparison Between O-GNN and O-GNN w/o Rings</code></h5>
-<ul>
-<li>研究产物分子环数不同时，是否带有环表征的<code>O-GNN</code>分别表现如何。  </li>
-<li>结果：随着环数的增加，带有环表征的<code>O-GNN</code>表现愈发优于不带环表征的<code>O-GNN</code>。<br />
-<img alt="" src="../assets/DL/89.JPG" />  </li>
-</ul>
-<h5 id="c5"><code>C.5 额外讨论</code></h5>
-<ul>
-<li>过度平滑问题  <ul>
-<li>实际上，过度平滑问题不一定会发生；只要模型被证明表达能力足够，并且训练方法正确，模型即可按照线性收敛率收敛到全局最大值，并获得较高的精确度。  </li>
+<li><code>Markov Bridge Model</code>适用的场景特点  <ul>
+<li>需要通过<strong>有限数量的匹配数据点对</strong>(<code>coupled data points</code>)，<strong>映射两个离散分布</strong>。  </li>
 </ul>
 </li>
-<li><span class="arithmatex">\(k\)</span>邻域的建模  <ul>
-<li>若需要精确建模<span class="arithmatex">\(k\)</span>邻域（为保证表达能力，不进行参数共享），则需分别使用<span class="arithmatex">\(k\)</span>个网络，对于<span class="arithmatex">\(1\)</span>到<span class="arithmatex">\(k\)</span>个邻域的结点信息进行处理。  </li>
-<li>上述方法在<span class="arithmatex">\(k\)</span>较大时，参数显然大于参数量不依赖于<span class="arithmatex">\(k\)</span>值的<code>O-GNN</code>；且分子中环的最大规模从<span class="arithmatex">\(3\)</span>到<span class="arithmatex">\(53\)</span>不等，因此最优超参数<span class="arithmatex">\(k\)</span>难以确定。  </li>
-</ul>
-</li>
-<li>模型不变性限制  <ul>
-<li>原子、化学键、环均具有不变性。  </li>
-<li>特别地，原子的类型、关联电子数、邻居数目等均为不变性特征。  </li>
-<li>环表征通过原子、边表征获得，也具有不变性。  </li>
-<li>不具有不变性的特征（如：坐标）未被编码。  </li>
-</ul>
-</li>
-<li>收敛速度比较  <ul>
-<li>基于<code>PCQM4Mv1</code>数据集，比较<code>6/12</code>层含/不含环信息的<code>O-GNN</code>。  </li>
-<li>实验结果  <ul>
-<li>训练<code>6</code>层有环信息<code>O-GNN</code>共<code>175</code>个轮次，相当于训练<code>12</code>层无环信息的<code>O-GNN</code>共<code>275</code>个轮次。  </li>
-<li>训练<code>12</code>层有环信息<code>O-GNN</code>共<code>75</code>个轮次，相当于训练<code>12</code>层无环信息的<code>O-GNN</code>共<code>275</code>个轮次。  </li>
-</ul>
-</li>
-<li>结论：带环信息的<code>O-GNN</code>收敛速度更快。<br />
-<img alt="" src="../assets/DL/90.JPG" />  </li>
-</ul>
-</li>
-<li>基于不同参数量的比较  <ul>
-<li>尽管参数量保持一致，<code>O-GNN</code>的表现仍然胜过了不带环信息的<code>O-GNN</code>。<br />
-<img alt="" src="../assets/DL/91.JPG" />  </li>
-</ul>
-</li>
-<li>在<code>MoleculeNet</code>上的预训练<code>baseline</code>  <ul>
-<li>使用基于<code>scaffold</code>的数据分割方式。  </li>
-<li><code>O-GNN</code>没有在无标签的分子上进行预训练。  </li>
-<li>结果：从平均分数看，<code>O-GNN</code>和强大的<code>baseline</code>表现类似(<code>comparable</code>)，表明了方法的有效性。<br />
-<img alt="" src="../assets/DL/92.JPG" />  </li>
-</ul>
-</li>
-</ul>
-<h5 id="d-related-work-summary"><code>D Related Work Summary</code></h5>
-<ul>
-<li><code>GCN</code>  <ul>
-<li>通过邻接矩阵、度数矩阵，对邻域信息进行聚合。  </li>
-<li>通过线性变换、非线性激活层，更新聚合信息。  </li>
-</ul>
-</li>
-<li><code>GraphSAGE</code>  <ul>
-<li>通过逐元素的平均，聚合邻域信息。  </li>
-</ul>
-</li>
-<li><code>GAT</code>  <ul>
-<li>将注意力机制引入<code>GNN</code>，自适应地更新邻域表征。  </li>
-</ul>
-</li>
-<li><code>GATv2</code>  <ul>
-<li>改善自注意力机制，使之表达能力更强。  </li>
-</ul>
-</li>
-<li><code>Xu et al.(2018)</code>的工作  <ul>
-<li>设计一个简单的聚合函数，包含一个<span class="arithmatex">\(\epsilon\)</span>参数，以及<code>MLP</code>，与<code>Weisfeiler-Lehman</code>图同构测试一样强大。  </li>
-</ul>
-</li>
-<li>虚拟节点图增强手段  <ul>
-<li>使用虚拟节点，捕捉图的全局信息，以实现图的增强。  </li>
-<li>虚节点：连接其余所有节点，在训练过程中由所有节点表征进行联合更新。  </li>
-</ul>
-</li>
-<li>上述工作的问题  <ul>
-<li><code>GNN</code>中没有显式融合环信息。  </li>
+<li><code>Markov Bridge Model</code>可能的应用场景举例  <ul>
+<li>图像到图像的转换  </li>
+<li>图像修复  </li>
+<li>文本翻译  </li>
+<li>蛋白质结合物(<code>protein binder</code>)设计  </li>
 </ul>
 </li>
 </ul>
