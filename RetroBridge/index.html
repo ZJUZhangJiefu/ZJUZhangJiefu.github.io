@@ -1502,6 +1502,87 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#4-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 Results
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-experimental-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Experimental Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Experimental Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.数据集
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.Baseline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.评估
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-neural-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Neural Network
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Neural Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#5-conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       5 Conclusion
@@ -1512,7 +1593,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_3" class="md-nav__link">
+  <a href="#1_4" class="md-nav__link">
     <span class="md-ellipsis">
       1.工作总结
     </span>
@@ -1920,6 +2001,87 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#4-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 Results
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-experimental-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Experimental Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Experimental Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.数据集
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.Baseline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.评估
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-neural-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Neural Network
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Neural Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#5-conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       5 Conclusion
@@ -1930,7 +2092,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_3" class="md-nav__link">
+  <a href="#1_4" class="md-nav__link">
     <span class="md-ellipsis">
       1.工作总结
     </span>
@@ -2177,8 +2339,84 @@
 </ul>
 </li>
 </ul>
+<h4 id="4-results"><code>4 Results</code></h4>
+<h5 id="41-experimental-setup"><code>4.1 Experimental Setup</code></h5>
+<h6 id="1_3">1.数据集</h6>
+<ul>
+<li>使用<code>USPTO-50k</code>数据集，包含美国专利文献中的<code>5</code>万个反应。  </li>
+<li>使用<code>Dai et al. (2019)</code>提供的<strong>标准训练/验证/测试</strong>分割。  </li>
+<li>数据集存在<strong>捷径</strong>，即在<strong>近<code>75%</code></strong>的情况下，<strong>原子映射为<code>1</code>的产物原子</strong>都是<strong>受到变换</strong>的原子的一部分。  </li>
+<li>模型不依赖于图节点顺序，但还是使用了<strong>带有规范<code>SMILES</code>的数据集版本</strong>。  </li>
+<li>将<code>SMILES</code>读取并转换为图之后，会<strong>随机排列图节点</strong>。  </li>
+</ul>
+<h6 id="2baseline">2.<code>Baseline</code></h6>
+<ul>
+<li>基于模板的方法  <ul>
+<li><code>GLN</code>  </li>
+<li><code>LocalRetro</code>  </li>
+<li><code>GraphRetro</code>  </li>
+</ul>
+</li>
+<li>无模板方法  <ul>
+<li><code>MEGAN</code>  </li>
+<li><code>G2G</code>  </li>
+<li><code>Augmented Transformer</code>  </li>
+<li><code>SCROP</code>  </li>
+<li><code>Tied Transformer</code>  </li>
+<li><code>GTA</code>  </li>
+<li><code>DualTF</code>  </li>
+<li><code>Graph2SMILES</code>  </li>
+<li><code>Retroformer</code>  </li>
+</ul>
+</li>
+<li><code>GLN</code>结果  <ul>
+<li>使用公开可用的代码和模型权重，获得<code>GLN</code>的预测结果。  </li>
+</ul>
+</li>
+<li><code>LocalRetro</code>结果  <ul>
+<li>使用作者提供的<code>LocalRetro</code>最新预测结果。  </li>
+</ul>
+</li>
+<li><code>MEGAN</code>的重新训练与评估  <ul>
+<li><code>MEGAN</code>最初在随机数据分割上进行训练和评估。  </li>
+<li>作者对<code>MEGAN</code>进行了重新训练并评估。  </li>
+</ul>
+</li>
+<li><code>RetroBridge</code>与图扩散模型的比较  <ul>
+<li>作者将<code>RetroBridge</code>与最先进的离散图扩散模型<code>DiGress</code>，以及基于图<code>Transformer</code>架构的无模板<code>baseline</code>进行了比较。  </li>
+</ul>
+</li>
+</ul>
+<h6 id="3_2">3.评估</h6>
+<ul>
+<li><code>Top-k</code>精确匹配准确率  <ul>
+<li>对于每个输入产物，采样<span class="arithmatex">\(100\)</span>组反应物，并报告前<span class="arithmatex">\(k\)</span>个精确匹配准确率（<span class="arithmatex">\(k = 1, 3, 5, 10\)</span>）。  </li>
+<li>衡量方法在前<span class="arithmatex">\(k\)</span>个样本中成功产生正确反应物集合的比例。  </li>
+</ul>
+</li>
+<li>往返(<code>round-trip</code>)准确率和覆盖率  <ul>
+<li>对于每个输入产物产生的前<span class="arithmatex">\(k\)</span>个样本，作者运行正向反应预测模型<code>Molecular Transformer</code>，并报告往返准确率和覆盖率。  </li>
+<li>往返准确率  <ul>
+<li>所有预测中正确预测的反应物的百分比。  </li>
+<li>反应物被认为正确的条件  <ul>
+<li>反应物与真实值匹配  </li>
+<li>反应物可以逆向生成输入产物  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>往返覆盖率  <ul>
+<li>衡量根据往返准确率定义，在前<span class="arithmatex">\(k\)</span>个预测中是否至少有一个正确的预测。  </li>
+</ul>
+</li>
+<li>往返准确率、覆盖率反映的事实：一个产物可以映射到多个不同的有效反应物集合。  </li>
+</ul>
+</li>
+</ul>
+<h5 id="42-neural-network"><code>4.2 Neural Network</code></h5>
+<h6 id="_1"></h6>
 <h4 id="5-conclusion"><code>5 Conclusion</code></h4>
-<h5 id="1_3">1.工作总结</h5>
+<h5 id="1_4">1.工作总结</h5>
 <ul>
 <li>提出<code>Markov Bridge Model</code>：一种新的<strong>生成式</strong>框架，适用于学习<strong>两个难以处理的离散值分布</strong>之间<strong>依赖关系</strong>。  </li>
 <li>将<code>Markov Bridge Model</code>应用于<strong>逆合成预测</strong>问题，提出<strong>无模板方法<code>RetroBridge</code></strong>，在常见的评估基准上<strong>实现<code>SOTA</code>性能</strong>。  </li>
