@@ -1502,6 +1502,45 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#3-retro-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Retro Bridge
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Retro Bridge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-markov-bridge-model-1markov-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Markov Bridge Model  ###### 1.Markov Bridge的定义与作用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Markov Bridge Model ###### 1.Markov Bridge的定义与作用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2markov-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.Markov Bridge的建模
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#4-results" class="md-nav__link">
     <span class="md-ellipsis">
       4 Results
@@ -2001,6 +2040,45 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#3-retro-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Retro Bridge
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Retro Bridge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-markov-bridge-model-1markov-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Markov Bridge Model  ###### 1.Markov Bridge的定义与作用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Markov Bridge Model ###### 1.Markov Bridge的定义与作用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2markov-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.Markov Bridge的建模
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#4-results" class="md-nav__link">
     <span class="md-ellipsis">
       4 Results
@@ -2336,6 +2414,58 @@
 </li>
 <li>本文提出的方法所属类型  <ul>
 <li>一种<strong>无模板、基于图</strong>的方法。  </li>
+</ul>
+</li>
+</ul>
+<h4 id="3-retro-bridge"><code>3 Retro Bridge</code></h4>
+<ul>
+<li>逆合成任务建模  <ul>
+<li>作者将逆合成任务视为：在产物<span class="arithmatex">\(p_{X}\)</span>和反应物<span class="arithmatex">\(p_{Y}\)</span>的离散取值分布之间，建模一个随机过程的生成式任务。  </li>
+<li>产物分布、反应物分布均难以计算，由有限个匹配样本对<span class="arithmatex">\(\{(x_i, y_i)\}_{i = 1}^{D}\)</span>进行表示。  </li>
+<li>其中，<span class="arithmatex">\(x_i \sim p_{X}(x_i)\)</span>是一个产物分子，<span class="arithmatex">\(y_i \sim p_{Y}(y_i)\)</span>是与产物分子相对应的反应物<strong>集合</strong>。  </li>
+<li>产物分布、反应物分布的联合分布<span class="arithmatex">\(\int p_{X, Y}(x, y)dx = p_{Y}(y)\)</span>：反映了分布<span class="arithmatex">\(p_{X}, p_{Y}\)</span>之间的关联。  </li>
+<li>联合分布：难以计算，仅能通过有限个离散样本对<span class="arithmatex">\(\{(x_i, y_i)\}_{i = 1}^{D}\)</span>进行访问。  </li>
+</ul>
+</li>
+</ul>
+<h5 id="31-markov-bridge-model-1markov-bridge"><code>3.1 Markov Bridge Model</code>  ###### 1.<code>Markov Bridge</code>的定义与作用</h5>
+<ul>
+<li>作用  <ul>
+<li>对离散空间<span class="arithmatex">\(X\)</span>与<span class="arithmatex">\(Y\)</span>之间的关联性进行建模。  </li>
+</ul>
+</li>
+<li>定义  <ul>
+<li>一个<code>Markov</code>随机过程，在起始、终止处固定到特定的数据点。  </li>
+</ul>
+</li>
+<li>数学表达  <ul>
+<li>给定一个样本对<span class="arithmatex">\((x, y) \sim p_{X, Y}(x, y)\)</span>，以及一系列时间步<span class="arithmatex">\(t = 0, 1, \cdots, T\)</span>，相应的<code>Markov Bridge</code>是一系列随机变量<span class="arithmatex">\((z_t)_{t = 0}^{T}\)</span>，满足以下性质：  <ul>
+<li>起始于数据点<span class="arithmatex">\(x\)</span>，即<span class="arithmatex">\(z_0 = x\)</span>。  </li>
+<li>满足<code>Markov</code>性质，即：<br />
+<span class="arithmatex">\(p(z_t|z_0, z_1, \cdots, z_{t - 1}, y) = p(z_t | z_{t - 1}, y)\cdots (1)\)</span>  </li>
+<li>过程终止时固定于数据点<span class="arithmatex">\(y\)</span>，通过下列额外约束实现：<br />
+<span class="arithmatex">\(p(z_T = y|z_{T - 1}, y) = 1 \cdots (2)\)</span>  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="2markov-bridge">2.<code>Markov Bridge</code>的建模</h6>
+<ul>
+<li>数据表示  <ul>
+<li><span class="arithmatex">\(p_{X}, p_{Y}\)</span>均具有有限的离散类别(<code>categorial</code>)，并带有一个有限样本空间<span class="arithmatex">\(\{1, \cdots, K \}\)</span>，则将数据点表示为<span class="arithmatex">\(K\)</span>维独热向量<span class="arithmatex">\(x, y, z_{t} \in \mathbb{R}^{K}\)</span>。  </li>
+</ul>
+</li>
+<li><code>Markov Bridge</code>的建模  <ul>
+<li>为了建模公式<span class="arithmatex">\((1)(2)\)</span>定义的<code>Markov Bridge</code>，引入一系列变换矩阵<span class="arithmatex">\(Q_{0}, Q_{1}, \cdots, Q_{T - 1} \in \mathbb{R}^{K \times K}\)</span>，其递归定义为：<br />
+<span class="arithmatex">\(Q_{t} := Q_t(y) = \alpha_{t}I_{k} + (1 - \alpha_t)y1_{K}^T \cdots(3)\)</span><br />
+其中，<span class="arithmatex">\(I_{K}\)</span>为<span class="arithmatex">\(K \times {K}\)</span>的单位矩阵，<span class="arithmatex">\(1_{K}\)</span>是一个<span class="arithmatex">\(K\)</span>维全<span class="arithmatex">\(1\)</span>向量，<span class="arithmatex">\(\alpha_{t}\)</span>是调度参数，从<span class="arithmatex">\(\alpha_0 = 1\)</span>到<span class="arithmatex">\(\alpha_{T - 1} = 0\)</span>变化。  </li>
+<li>令<span class="arithmatex">\(alpha_{T - 1} = 0\)</span>，即保证了约束<span class="arithmatex">\((2)\)</span>成立。  </li>
+</ul>
+</li>
+<li>转移概率  <ul>
+<li>转移概率<span class="arithmatex">\((1)\)</span>可以写作如下形式：<br />
+<span class="arithmatex">\(p(z_{t + 1} | z_{t}, y) = Cat(z_{t + 1}; Q_t z_t) \cdots (4)\)</span>  </li>
 </ul>
 </li>
 </ul>
