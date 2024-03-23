@@ -1512,14 +1512,23 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-markov-bridge-model-1markov-bridge" class="md-nav__link">
+  <a href="#31-markov-bridge-model" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1 Markov Bridge Model  ###### 1.Markov Bridge的定义与作用
+      3.1 Markov Bridge Model
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.1 Markov Bridge Model ###### 1.Markov Bridge的定义与作用">
+    <nav class="md-nav" aria-label="3.1 Markov Bridge Model">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1markov-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.Markov Bridge的定义与作用
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#2markov-bridge" class="md-nav__link">
@@ -2050,14 +2059,23 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-markov-bridge-model-1markov-bridge" class="md-nav__link">
+  <a href="#31-markov-bridge-model" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1 Markov Bridge Model  ###### 1.Markov Bridge的定义与作用
+      3.1 Markov Bridge Model
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.1 Markov Bridge Model ###### 1.Markov Bridge的定义与作用">
+    <nav class="md-nav" aria-label="3.1 Markov Bridge Model">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1markov-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.Markov Bridge的定义与作用
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#2markov-bridge" class="md-nav__link">
@@ -2428,7 +2446,8 @@
 </ul>
 </li>
 </ul>
-<h5 id="31-markov-bridge-model-1markov-bridge"><code>3.1 Markov Bridge Model</code>  ###### 1.<code>Markov Bridge</code>的定义与作用</h5>
+<h5 id="31-markov-bridge-model"><code>3.1 Markov Bridge Model</code></h5>
+<h6 id="1markov-bridge">1.<code>Markov Bridge</code>的定义与作用</h6>
 <ul>
 <li>作用  <ul>
 <li>对离散空间<span class="arithmatex">\(X\)</span>与<span class="arithmatex">\(Y\)</span>之间的关联性进行建模。  </li>
@@ -2458,14 +2477,29 @@
 </li>
 <li><code>Markov Bridge</code>的建模  <ul>
 <li>为了建模公式<span class="arithmatex">\((1)(2)\)</span>定义的<code>Markov Bridge</code>，引入一系列变换矩阵<span class="arithmatex">\(Q_{0}, Q_{1}, \cdots, Q_{T - 1} \in \mathbb{R}^{K \times K}\)</span>，其递归定义为：<br />
-<span class="arithmatex">\(Q_{t} := Q_t(y) = \alpha_{t}I_{k} + (1 - \alpha_t)y1_{K}^T \cdots(3)\)</span><br />
-其中，<span class="arithmatex">\(I_{K}\)</span>为<span class="arithmatex">\(K \times {K}\)</span>的单位矩阵，<span class="arithmatex">\(1_{K}\)</span>是一个<span class="arithmatex">\(K\)</span>维全<span class="arithmatex">\(1\)</span>向量，<span class="arithmatex">\(\alpha_{t}\)</span>是调度参数，从<span class="arithmatex">\(\alpha_0 = 1\)</span>到<span class="arithmatex">\(\alpha_{T - 1} = 0\)</span>变化。  </li>
+<span class="arithmatex">\(Q_{t} := Q_t(y) = \alpha_{t}I_{k} + (1 - \alpha_t)y1_{K}^T \cdots(3)\)</span>  </li>
+<li>其中，<span class="arithmatex">\(I_{K}\)</span>为<span class="arithmatex">\(K \times {K}\)</span>的单位矩阵，<span class="arithmatex">\(1_{K}\)</span>是一个<span class="arithmatex">\(K\)</span>维全<span class="arithmatex">\(1\)</span>向量，<span class="arithmatex">\(\alpha_{t}\)</span>是调度参数，从<span class="arithmatex">\(\alpha_0 = 1\)</span>到<span class="arithmatex">\(\alpha_{T - 1} = 0\)</span>变化。  </li>
 <li>令<span class="arithmatex">\(alpha_{T - 1} = 0\)</span>，即保证了约束<span class="arithmatex">\((2)\)</span>成立。  </li>
 </ul>
 </li>
 <li>转移概率  <ul>
 <li>转移概率<span class="arithmatex">\((1)\)</span>可以写作如下形式：<br />
 <span class="arithmatex">\(p(z_{t + 1} | z_{t}, y) = Cat(z_{t + 1}; Q_t z_t) \cdots (4)\)</span>  </li>
+<li>上式中，<span class="arithmatex">\(Cat(\cdot ; p)\)</span>是分类分布(<code>categorial distribution</code>)，根据<span class="arithmatex">\(p\)</span>给出条件概率。  </li>
+</ul>
+</li>
+<li><code>Markov Bridge</code>的学习  <ul>
+<li>使用有限样本集合<span class="arithmatex">\(\{(x_i, y_i)\}_{i = 1}^{D} \sim p_{X, Y}\)</span>，模型目标是：学习一个满足约束<span class="arithmatex">\((1)(2)\)</span>的<code>Markov Bridge</code>，从而能够在仅提供<span class="arithmatex">\(x\)</span>的情况下，对<span class="arithmatex">\(y\)</span>进行采样。  </li>
+<li>为了实现上述目的，使用神经网络近似计算得到的<span class="arithmatex">\(\hat{y}\)</span>对<span class="arithmatex">\(y\)</span>进行替代：<br />
+<span class="arithmatex">\(\hat{y} = \phi_{\theta}(z_t, t) \cdots (5)\)</span>  </li>
+<li>据此定义近似转移核：<br />
+<span class="arithmatex">\(q_{\theta}(z_{t + 1} | z_t) = Cat(z_{t + 1}; Q_{t}(\hat{y})z_t) \cdots (6)\)</span>  </li>
+</ul>
+</li>
+<li>模型训练目标  <ul>
+<li>训练神经网络<span class="arithmatex">\(\phi_{\theta}\)</span>的方法：最大化对数似然<span class="arithmatex">\(logq_{\theta}(y | x)\)</span>的一个下界。（证明：见附录<code>Appendix A.1</code>）  </li>
+<li>该下界的封闭形式如下：<br />
+<span class="arithmatex">\(logq_{\theta} (y | x) \geq -T \cdot \mathbb{E_{t \sim U(0, \cdots, T - 1)}} \mathbb{E_{x_{t} \sim p(z_t | x, y)}}D_{KL}(p(z_{t + 1} | z_t, y) || q_{\theta}(z_{t + 1} | z_{t})) \cdots (7)\)</span>  </li>
 </ul>
 </li>
 </ul>
