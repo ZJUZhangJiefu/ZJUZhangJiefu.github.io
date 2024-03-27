@@ -1608,20 +1608,32 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4.2 Neural Network">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#43-retrosynthesis-modeling" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      4.3 Retrosynthesis Modeling
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#44-additional-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 Additional Experiments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 Examples
+    </span>
+  </a>
   
 </li>
         
@@ -2155,20 +2167,32 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4.2 Neural Network">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#43-retrosynthesis-modeling" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      4.3 Retrosynthesis Modeling
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#44-additional-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 Additional Experiments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 Examples
+    </span>
+  </a>
   
 </li>
         
@@ -2553,32 +2577,125 @@
 </ul>
 <h6 id="3_2">3.评估</h6>
 <ul>
-<li><code>Top-k</code>精确匹配准确率  <ul>
-<li>对于每个输入产物，采样<span class="arithmatex">\(100\)</span>组反应物，并报告前<span class="arithmatex">\(k\)</span>个精确匹配准确率（<span class="arithmatex">\(k = 1, 3, 5, 10\)</span>）。  </li>
-<li>衡量方法在前<span class="arithmatex">\(k\)</span>个样本中成功产生正确反应物集合的比例。  </li>
+<li><strong><code>Top-k</code>精确匹配准确率</strong>  <ul>
+<li>对于每个输入产物，<strong>采样<span class="arithmatex">\(100\)</span>组反应物</strong>，并报告<code>Top-k</code>精确匹配准确率（<span class="arithmatex">\(k = 1, 3, 5, 10\)</span>）。  </li>
+<li>衡量方法<strong>在<code>Top-k</code>样本中成功产生正确反应物集合的比例</strong>。  </li>
 </ul>
 </li>
 <li>往返(<code>round-trip</code>)准确率和覆盖率  <ul>
-<li>对于每个输入产物产生的前<span class="arithmatex">\(k\)</span>个样本，作者运行正向反应预测模型<code>Molecular Transformer</code>，并报告往返准确率和覆盖率。  </li>
+<li>对于每个输入产物产生的<code>Top-k</code>样本，作者<strong>运行正向反应预测模型<code>Molecular Transformer</code></strong>，并报告<strong>往返准确率</strong>和<strong>覆盖率</strong>。  </li>
 <li>往返准确率  <ul>
-<li>所有预测中正确预测的反应物的百分比。  </li>
-<li>反应物被认为正确的条件  <ul>
-<li>反应物与真实值匹配  </li>
-<li>反应物可以逆向生成输入产物  </li>
+<li>所有预测中<strong>正确预测的反应物的百分比</strong>。  </li>
+<li>反应物被认为<strong>正确</strong>的条件  <ul>
+<li><strong>预测反应物与实际反应物匹配</strong>  </li>
+<li><strong>反应物</strong>可以<strong>逆向生成输入产物</strong>  </li>
 </ul>
 </li>
 </ul>
 </li>
-<li>往返覆盖率  <ul>
-<li>衡量根据往返准确率定义，在前<span class="arithmatex">\(k\)</span>个预测中是否至少有一个正确的预测。  </li>
+<li><strong>往返覆盖率</strong>  <ul>
+<li>衡量根据往返准确率定义，在<code>Top-k</code>预测中<strong>是否至少有一个正确的预测</strong>。  </li>
 </ul>
 </li>
-<li>往返准确率、覆盖率反映的事实：一个产物可以映射到多个不同的有效反应物集合。  </li>
+<li>往返准确率、覆盖率反映的事实：<strong>一个产物</strong>可以映射到<strong>多个不同的有效反应物集合</strong>。  </li>
 </ul>
 </li>
 </ul>
 <h5 id="42-neural-network"><code>4.2 Neural Network</code></h5>
-<h6 id="_1"></h6>
+<ul>
+<li>图<code>transformer</code>网络：近似<code>Markov Bridge</code>的最终状态。  </li>
+<li><strong>分子</strong>：表示为<strong>全连接图</strong>。  <ul>
+<li><strong>节点特征</strong>：经过<strong>独热编码的原子类型</strong>。（包含<code>16</code>种原子类型，以及额外的<code>dummy</code>类型）  </li>
+<li><strong>边特征</strong>：<strong>共价键</strong>类型（<code>3</code>种键类型，以及额外的<code>none</code>类型）  </li>
+</ul>
+</li>
+<li>计算了多种与图相关的节点属性和全局属性  <ul>
+<li><strong>环路的数量</strong>  </li>
+<li><strong>谱图特征</strong>(<code>spectral graph features</code>)  </li>
+</ul>
+</li>
+</ul>
+<h5 id="43-retrosynthesis-modeling"><code>4.3 Retrosynthesis Modeling</code></h5>
+<ul>
+<li>实验数据  <ul>
+<li>实验对象：<code>RetroBridge</code>，以及其他<code>SOTA</code>方法。  </li>
+<li>数据集：<code>USPTO-50k</code>测试集  </li>
+<li>评估指标：<code>top-k</code>准确率、往返准确率。</li>
+</ul>
+</li>
+<li>表<code>1</code>——精确匹配准确率<br />
+<img alt="" src="../assets/DL/113.JPG" />  </li>
+<li><code>RetroBridge</code>的<strong>精确匹配准确率</strong>  <ul>
+<li><code>top-1</code>准确率上：表现出与<code>SOTA</code>水平相当的性能。  </li>
+<li>所有其他<code>top-k</code>准确率：<strong>超越其他无模板方法</strong>。  </li>
+</ul>
+</li>
+<li>评价指标  <ul>
+<li>观点：<strong>模型在<code>top-5</code>准确率上的表现</strong>是<strong>与任务关系最密切</strong>的指标。  </li>
+<li>解释：这一数值<strong>最接近于多步逆合成规划树通常期望或希望达到的宽度</strong>。</li>
+<li>实验结果：模型对<code>top-5</code>准确率进行了提升。 </li>
+</ul>
+</li>
+<li>无模板(<code>template-free</code>)方法与基于模板的(<code>template-based</code>)方法  <ul>
+<li>为保证完整性，将<code>RetroBridge</code>的精确匹配准确率与无模板方法、基于模板的方法均进行比较。  </li>
+<li>观点：<strong>无模板建模</strong>是一项<strong>更具挑战性</strong>的任务，且<code>RetroBridge</code>属于<strong>无模板方法</strong>，因此本文主要关注无模板方法。   </li>
+</ul>
+</li>
+<li>表<code>2</code>——通过<code>Molecular Transformer</code>获得的<strong>往返准确率</strong><br />
+<img alt="" src="../assets/DL/113.JPG" />  </li>
+<li>往返准确率  <ul>
+<li>评价意义  <ul>
+<li><strong>精确匹配准确率不能完全反映产物空间、反应物空间之间的依赖关系</strong>。  </li>
+<li>采用<strong>往返准确率</strong>，补充测量<strong>前向反应预测的往返结果</strong>，可以弥补上述问题。  </li>
+</ul>
+</li>
+<li>评价对象  <ul>
+<li>基于模板的方法<code>GLN, LocalRetro</code>  </li>
+<li>无模板方法<code>GraphSMILES, Retroformer</code>  </li>
+<li>重新训练的无模板方法<code>MEGAN</code>  </li>
+</ul>
+</li>
+<li><code>RetroBridge</code>实验结果  <ul>
+<li>与<strong>无模板</strong>方法对比：<code>RetroBridge</code><strong>明显优于无模板<code>baseline</code></strong>。  </li>
+<li>与<code>SOTA</code>基于模板的方法对比：尽管无模板设置的难度要高得多，但<code>RetroBridge</code>在<strong>往返覆盖率、准确度</strong>方面也<strong>超过了<code>SOTA</code>基于模板的方法</strong>。  </li>
+</ul>
+</li>
+<li>实验结论  <ul>
+<li><strong>实验结果支持假设</strong>：给定一个<strong>初始产物分子</strong>，在<strong>缺乏特定反应物集合</strong>的情况下，应该<strong>在一个概率框架下</strong>对逆合成进行<strong>建模</strong>。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="44-additional-experiments"><code>4.4 Additional Experiments</code></h5>
+<ul>
+<li><code>RetroBridge</code>与扩散方法、<code>one-shot</code>图<code>Transformer</code>的比较  <ul>
+<li>比较对象一：<code>DiGress</code>的朴素修改版本(<code>naive adaptation</code>)。  <ul>
+<li>原因：可以认为，该<code>DiGress</code>修改版本是最具有可比性的基于扩散的逆合成方法。  </li>
+</ul>
+</li>
+<li>比较对象二：<code>one-shot</code>预测反应物的图<code>Transformer</code>。  </li>
+</ul>
+</li>
+<li>输入产物分子作为每个采样步骤(<code>sampling step</code>)的上下文(<code>context</code>)的作用研究  <ul>
+<li>不使用上下文(<code>context</code>)的模型：<br />
+<span class="arithmatex">\(\hat{y} = \phi_{\theta}(z_t, t) \cdots (5)\)</span>   </li>
+<li>使用上下文(<code>context</code>)的模型的预测公式：<br />
+<span class="arithmatex">\(\hat{y} = \phi_{\theta}(z_t, x, t) \cdots\)</span>  </li>
+</ul>
+</li>
+<li>损失函数  <ul>
+<li>交叉熵(<code>CE, Cross Entropy</code>)损失<br />
+<span class="arithmatex">\(L_{CE}(\theta) = T \cdot \mathbb{E}_{t \sim U(0, \cdots, T - 1)}\mathbb{E}_{\mathbf{z}_{t}, \mathbf{z}_{T} \sim p}CrossEntropy(\mathbf{z}_{T}, \phi_{\theta}(\mathbf{z}_{t}, t)) \cdots (13)\)</span>   </li>
+<li>变分下界(<code>VLB, Variational Lower Bound</code>)损失<br />
+<span class="arithmatex">\(logq_{\theta} (y | x) \geq -T \cdot \mathbb{E_{t \sim U(0, \cdots, T - 1)}} \mathbb{E_{x_{t} \sim p(z_t | x, y)}}D_{KL}(p(z_{t + 1} | z_t, y) || q_{\theta}(z_{t + 1} | z_{t})) \cdots (7)\)</span>  </li>
+</ul>
+</li>
+<li>表<code>3</code>——关于是否使用上下文、损失函数种类的对比实验<br />
+<img alt="" src="../assets/DL/115.JPG" />  </li>
+<li></li>
+</ul>
+<h5 id="45-examples"><code>4.5 Examples</code></h5>
 <h4 id="5-conclusion"><code>5 Conclusion</code></h4>
 <h5 id="1_4">1.工作总结</h5>
 <ul>

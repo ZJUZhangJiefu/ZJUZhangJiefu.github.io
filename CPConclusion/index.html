@@ -10,7 +10,7 @@
         <meta name="author" content="大观散人">
       
       
-        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/%E9%98%B6%E6%AE%B5%E6%B1%87%E6%8A%A5/">
+        <link rel="canonical" href="https://ZJUZhangJiefu.github.io/CPConclusion/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>阶段汇报 - 大观散人的博客</title>
+        <title>CPConclusion - 大观散人的博客</title>
       
     
     
@@ -71,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -103,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              阶段汇报
+              CPConclusion
             
           </span>
         </div>
@@ -1474,6 +1479,38 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      编译原理 笔记总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="编译原理 笔记总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      第三章 文法分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1490,63 +1527,10 @@
   
 
 
-  <h1>阶段汇报</h1>
+  <h1>CPConclusion</h1>
 
-<table><tr><td bgcolor= #E0FFF#>
-<font face="仿宋">
-<font size=4>
-
-#### 分子逆合成 阶段汇报  
-### 一、数据处理流程  
-#### 1.半模板方法(判别式方法`RetroExplainer`)  
-[注]`RetroBridge`的原子特征、边特征使用`one_hot`编码，但是能不能改进？  
-##### (1)读取csv
-- 反应物`SMILES`字符串  
-- 产物`SMILES`字符串
-- 反应类型标签  
-
-##### (2)数据预处理  
-- 针对`USPTO50K`：产物、反应物原子映射序号(`AtomMapNum`)修改为`0`，防止信息泄露。`SMILES`->`Mol instance`->修改`AtomMapNum`->重新生成不含泄露信息的`SMILES`字符串，字符串各原子排列顺序可能发生变化。  
-
-##### (3)输入数据（产物`product`）、预测目标（反应物`reactant`）字典  
-- `rdkit.Chem.rdchem.Mol`实例：`rdkit`库的分子实例，能查询分子、原子的基本信息。  
-- 原子个数(`n_atoms`)：原子个数不同，特征矩阵形状也不同。  
-- 原子特征：`9`种类型的原子特征，每个原子的每一种特征用一个实数表示，总体形状为`[9, n_atoms]`，进行嵌入表示后相加进行汇聚。  
-- 距离矩阵(`dist_adj, dist_adj_3d`)：各原子对之间的距离，形状为`[n_atoms, n_atoms]`。  
-- 化学键矩阵(`bond_adj`)：各原子对之间的邻接属性，形状为`[n_atoms, n_atoms]`。  
-- `mask`：反应了原子环境（即`k`邻域信息），采用二进制编码。如`product['bond_adj'][1][2] == 17`，表示原子`1, 2`既可经过`1`条化学键到达对方，又可以经过`4`条化学键到达对方。  
-
-##### (4)嵌入表示  
-- 原子特征：实数->`nn.Embeddings`  
-- 化学键：实数->`nn.Embeddings`  
-
-##### (5)预测信息  
-- 反应中心（邻接矩阵，反映概率）：形状为`[n_atoms, n_atoms]`，反映了每对原子之间是否存在断键、成键情况。  
-- 氢原子变化：形状为`[n_atoms, 7]`，每个原子对应一个`7`维向量，`one-hot`编码，对应于氢原子个数`-3 ~ +3`的情况。  
-- 离去基团匹配：形状为`[1]`，即对每个产物，预测的反应物离去基团有且只有一个。  
-[注]离去基团是指：出现在反应物，但并未出现于给定主产物之中的基团。对于半模板方法而言，事先统计训练集、验证集和测试集的所有离去基团，形成离去基团字典。进行推理时，如果正确的离去基团在离去基团字典中，模型就有可能正确找出；但是对于未见过的离去基团，模型作正确预测是很困难的。  
-- 离去集团连接：形状为`[n_atoms, 10]`，表示找到的离去集团应该连接到哪个原子上，与产物原子相连的是离去基团的哪一个原子。  
-
-#### 2.无模板方法(生成式方法`RetroBridge`)  
-##### (1)读取csv
-- 反应物`SMILES`字符串  
-- 产物`SMILES`字符串
-- 反应类型标签  
-
-##### (2)数据预处理  
-
-### 二、模型架构讨论  
-#### 1.半模板方法(`RetroExplainer`)  
-![](assets\\DL\\111.JPG)  
-
-#### 2.无模板方法(`RetroBridge`)  
-![](assets\\DL\\112.JPG)  
-- `X, E, y` -> `X, E, y`具体是什么特征？  
-- 输入、输出使用`one-hot encoding`  
-- 猜测  
-    - `X`：原子类型，`one-hot`编码。  
-    - `E`：化学键矩阵，表明各原子对之间的化学键存在性及其种类，同样为`one-hot`编码。  
-    - `y`：
+<h3 id="_1">编译原理 笔记总结</h3>
+<h4 id="_2">第三章 文法分析</h4>
 
 
 
