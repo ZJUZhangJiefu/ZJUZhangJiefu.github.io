@@ -2694,37 +2694,37 @@
 <li>表<code>3</code>——关于是否使用上下文、损失函数种类的对比实验<br />
 <img alt="" src="../assets/DL/115.JPG" />  </li>
 <li>超参数设置  <ul>
-<li>在所有实验中，均采用相同的神经网络结构、相同的超参数集合。</li>
+<li>在所有实验中，均采用<strong>相同的神经网络结构、相同的超参数集合</strong>。</li>
 </ul>
 </li>
 <li>实验结论  <ul>
-<li>结论一——迭代采样的重要性  <ul>
-<li>扩散模型、<code>Markov Bridge</code>模型中的迭代采样步骤，对于解决两个图分布之间的映射问题至关重要。  </li>
+<li>结论一——<strong>迭代采样</strong>的重要性  <ul>
+<li>扩散模型、<code>Markov Bridge</code>模型中的<strong>迭代采样</strong>步骤，对于解决<strong>两个图分布</strong>之间的<strong>映射问题至关重要</strong>。  </li>
 <li>训练相当时间的<code>Graph Transformer</code>：未能成功恢复任何反应物。  </li>
 </ul>
 </li>
 <li>解释  <ul>
-<li>训练任务极其具有挑战性，原因是某个化学键或原子类型的错误预测，对于评估精确度是极其有害(<code>detrimental</code>)的。  </li>
+<li>训练任务极其具有挑战性，原因是<strong>某个化学键或原子类型的错误预测</strong>，对于<strong>评估精确度</strong>是<strong>极其有害</strong>(<code>detrimental</code>)的。  </li>
 <li><code>one-shot</code>基于图的逆合成预测模型  <ul>
-<li>所有<code>one-shot</code>基于图的逆合成预测模型均属于基于模板的方法。  </li>
-<li>这些网络并不直接预测整个反应物集合，而是解决简单许多的任务（如：图编辑预测(<code>prediction of graph edits</code>)）。  </li>
-<li>为了获得最终反应物集合，图编辑预测需要被额外组件进行处理，该组件依赖于预定义的反应模板或离去基团字典。  </li>
+<li><strong>所有<code>one-shot</code>基于图的逆合成预测模型</strong>均属于<strong>基于模板</strong>的方法。  </li>
+<li>这些网络<strong>并不直接预测整个反应物集合</strong>，而是<strong>解决简单许多的任务</strong>（如：<strong>图编辑预测</strong>(<code>prediction of graph edits</code>)）。  </li>
+<li>为了获得最终反应物集合，<strong>图编辑预测</strong>需要被<strong>额外组件</strong>进行<strong>处理</strong>，该组件依赖于<strong>预定义</strong>的<strong>反应模板</strong>或<strong>离去基团字典</strong>。  </li>
 </ul>
 </li>
 </ul>
 </li>
-<li>结论二——<code>Markov Bridge</code>比扩散模型更适用于两个离散图分布的映射  <ul>
-<li>表<code>3</code>表明：在所有指标上，<code>RetroBridge</code>均优于带上下文的<code>DiGress</code>。  </li>
-<li>若将输入产物作为上下文，则<code>DiGress</code>无法预测出任何反应物。  </li>
-<li>结果表明：与扩散模型相比，<code>Markov Bridge</code>框架能够更自然地捕捉到任务的底层架构(<code>underlying structure</code>)。  </li>
-<li>扩散模型：将采样的噪声映射到反应物，仅能通过额外的上下文获得输入产物分子的信息。    </li>
-<li><code>Markov Bridge</code>模型：采样管轨迹起始于难以处理的分布<span class="arithmatex">\(p_{X}(x) = \int p_{X, Y}(x, y)dy\)</span>中的一个产物分子。  </li>
+<li>结论二——<strong><code>Markov Bridge</code>比扩散模型更适用于两个离散图分布之间的映射</strong>  <ul>
+<li>表<code>3</code>表明：在所有指标上，<code>RetroBridge</code>均<strong>优于带上下文的<code>DiGress</code></strong>。  </li>
+<li>若不将输入产物作为上下文，则<code>DiGress</code>无法预测出任何反应物。  </li>
+<li>结果表明：与扩散模型相比，<code>Markov Bridge</code>框架能够<strong>更自然地捕捉到任务的底层架构</strong>(<code>underlying structure</code>)。  </li>
+<li>扩散模型：将<strong>采样的噪声</strong>映射到<strong>反应物</strong>，仅能<strong>通过额外的上下文</strong>获得<strong>输入产物分子的信息</strong>。    </li>
+<li><code>Markov Bridge</code>模型：<strong>采样轨迹起始于</strong>难以处理的分布<span class="arithmatex">\(p_{X}(x) = \int p_{X, Y}(x, y)dy\)</span>中的一个<strong>产物分子</strong>。  </li>
 </ul>
 </li>
-<li>结论三——变分下界损失（公式<code>(7)</code>）优于交叉熵损失  </li>
-<li>结论四——将输入产物分子作为采样上下文有利于提升<code>MarkovBridge</code>性能  <ul>
-<li>将输入产物分子作为<code>RetroBridge</code>在每个采样步骤的输入，有利于提升模型性能。  </li>
-<li>然而，即使没有额外上下文，<code>RetroBridge</code>仍然获得了可观的精确度。  </li>
+<li>结论三——<strong>变分下界损失（公式<code>(7)</code>）优于交叉熵损失</strong>  </li>
+<li>结论四——将<strong>输入产物分子作为采样上下文</strong>有利于<strong>提升<code>MarkovBridge</code>性能</strong>  <ul>
+<li>将<strong>输入产物分子</strong>作为<code>RetroBridge</code>在<strong>每个采样步骤的输入</strong>，有利于提升模型性能。  </li>
+<li>然而，<strong>即使没有额外上下文</strong>，<code>RetroBridge</code><strong>仍然取得了可观的精确度</strong>。  </li>
 </ul>
 </li>
 </ul>
@@ -2733,10 +2733,10 @@
 <h5 id="45-examples"><code>4.5 Examples</code></h5>
 <p><img alt="" src="../assets/DL/116.JPG" /><br />
 - 图<code>3</code>——<code>USPTO-50K</code>测试集随机采样的三个反应样本<br />
-    - 对每个样本，提供了<code>RetroBridge</code>预测的<code>top-3</code>样本及其置信度。<br />
-    - 在三个样本中，模型均正确地预测了反应物集合。<br />
-    - 样本一：对于正确反应物的置信度较高，第一、第二预测的置信度分数差距较大。<br />
-    - 样本二、样本三：模型对回答的自信程度不足，各<code>top-k</code>预测的置信度分数差距不明显。  </p>
+    - 对每个样本，提供了<code>RetroBridge</code><strong>预测的<code>top-3</code>样本及其置信度</strong>。<br />
+    - 在三个样本中，模型均<strong>正确</strong>地预测了反应物集合。<br />
+    - 样本一：对于<strong>正确反应物</strong>的<strong>置信度较高</strong>，第一、第二预测的置信度分数差距较大。<br />
+    - 样本二、样本三：模型对回答的<strong>自信程度不足</strong>，各<code>top-k</code>预测的<strong>置信度分数差距不明显</strong>。  </p>
 <h4 id="5-conclusion"><code>5 Conclusion</code></h4>
 <h5 id="1_4">1.工作总结</h5>
 <ul>
